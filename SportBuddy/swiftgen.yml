@@ -1,0 +1,31 @@
+strings:
+  inputs: ./SportBuddy/App/Resources/en.lproj/Localizable.strings
+  options:
+    separator: "_"
+  outputs:
+    templateName: structured-swift5
+    output: ./SportBuddy/App/Resources/Generated/Strings.swift
+    params:
+      forceProvidesNamespaces: true
+      publicAccess: true
+
+xcassets:
+  inputs:
+    - ./SportBuddy/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: ./SportBuddy/App/Resources/Generated/Assets.swift
+      params:
+        enumName: Assets
+        forceProvidesNamespaces: true
+        publicAccess: true
+
+fonts:
+  inputs: ./SportBuddy/App/Resources/Fonts
+  outputs:
+    - templateName: swift5
+      output: ./SportBuddy/App/Resources/Generated/Fonts.swift
+      params:
+        enumName: Fonts
+        forceProvidesNamespaces: true
+        publicAccess: true

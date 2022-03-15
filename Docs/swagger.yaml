@@ -1,0 +1,760 @@
+---
+swagger: "2.0"
+info:
+  description: API specification for my thesis work
+  version: 2.0.0
+  title: SportButty
+  contact:
+    email: abc@def.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: virtserver.swaggerhub.com
+basePath: /stateman-team/SportBuddy/2.0.0
+tags:
+- name: Client
+  description: iOS client
+- name: Admin
+  description: Webadmin client
+- name: Backend
+  description: Backend
+schemes:
+- https
+paths:
+  /login:
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Login an existing user
+      description: Login an existing user of the application or an admin
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: query
+        required: true
+        type: string
+      - name: password
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: User logged in
+          schema:
+            $ref: '#/definitions/UserResponseDTO'
+        "400":
+          description: Invalid input, bad request
+  /test:
+    get:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Test
+      description: Test
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        "200":
+          description: Test succeeded
+        "400":
+          description: Test failed
+  /forgotPassword:
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Send a recovery email to an existing user
+      description: Send a recovery email to an existing user of the application or an admin
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Email sent or email not found
+        "400":
+          description: Bad request
+  /logout:
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Logout an existing user
+      description: Logout an existing user of the application or an admin
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: User logged out
+        "400":
+          description: Invalid input, bad request
+  /register:
+    post:
+      tags:
+      - Client
+      - Backend
+      summary: Register a user
+      description: Register a new user in the application
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: name
+        in: query
+        required: true
+        type: string
+      - name: email
+        in: query
+        required: true
+        type: string
+      - name: password
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: User registered
+          schema:
+            $ref: '#/definitions/UserResponseDTO'
+        "400":
+          description: Invalid input, bad request
+  /searchUser:
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Search a user
+      description: Search a user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: name
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDTO'
+        "400":
+          description: Invalid input, bad request
+  /chat:
+    get:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Chatting
+      description: Get a chat's messages
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chatId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat messages
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ChatDTO'
+        "400":
+          description: Invalid input, bad request
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Chatting
+      description: Send a chat message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chatId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - name: message
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message sent
+        "400":
+          description: Invalid input, bad request
+    put:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Chatting
+      description: Modify a chat message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ChatEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - name: modifiedMessage
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message modified
+        "400":
+          description: Invalid input, bad request
+    delete:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Chatting
+      description: Delete a chat message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ChatEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message deleted
+        "400":
+          description: Invalid input, bad request
+  /group:
+    get:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging
+      description: Get a group's messages
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: groupId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Group messages
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GroupDTO'
+        "400":
+          description: Invalid input, bad request
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging
+      description: Post a group message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: groupId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - name: message
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Group message sent
+        "400":
+          description: Invalid input, bad request
+    put:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging
+      description: Modify a group message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: GroupEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - name: modifiedMessage
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Group message modified
+        "400":
+          description: Invalid input, bad request
+    delete:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging
+      description: Delete a group message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: GroupEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Group message deleted
+        "400":
+          description: Invalid input, bad request
+  /groupManaging:
+    get:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Get groups
+      description: Get the list of groups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Groups
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SportTypeDTO'
+        "400":
+          description: Invalid input, bad request
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging managing
+      description: Join a group
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: groupId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Joined group
+        "400":
+          description: Invalid input, bad request
+    delete:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging managing
+      description: Leave group
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: GroupEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Left group
+        "400":
+          description: Invalid input, bad request
+  /exercise:
+    get:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Handle exercises
+      description: Get the exercises
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Exercises
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ExerciseDTO'
+        "400":
+          description: Invalid input, bad request
+    post:
+      tags:
+      - Admin
+      - Backend
+      summary: Handle exercises
+      description: Post an exercises
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: exercise
+        required: true
+        schema:
+          $ref: '#/definitions/ExerciseDTO'
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Exercise added
+        "400":
+          description: Invalid input, bad request
+    put:
+      tags:
+      - Admin
+      - Backend
+      summary: Handle exercises
+      description: Modify an exercise
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: exerciseId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - in: body
+        name: exercise
+        required: true
+        schema:
+          $ref: '#/definitions/ExerciseDTO'
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Exercise modified
+        "400":
+          description: Invalid input, bad request
+    delete:
+      tags:
+      - Admin
+      - Backend
+      summary: Handle exercises
+      description: Delete an exercise
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: exerciseId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Exercise deleted
+        "400":
+          description: Invalid input, bad request
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  UserResponseDTO:
+    required:
+    - token
+    - user
+    properties:
+      token:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      user:
+        $ref: '#/definitions/UserDTO'
+  SportTypeDTO:
+    type: string
+    enum:
+    - athletics
+    - yoga
+    - workout
+  ExerciseTypeDTO:
+    type: string
+    enum:
+    - running
+    - highJump
+    - stretching
+  MotionTypeDTO:
+    type: string
+    enum:
+    - runningMotion1
+    - runningMotion2
+    - runningMotion3
+  ExerciseDTO:
+    required:
+    - exerciseType
+    - exerciseVideoUrl
+    - fractions
+    - previewImageUrl
+    - primaryId
+    properties:
+      primaryId:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      exerciseType:
+        $ref: '#/definitions/ExerciseTypeDTO'
+      previewImageUrl:
+        type: string
+        format: url
+        example: https://www.google.hu
+      exerciseVideoUrl:
+        type: string
+        format: url
+        example: https://www.google.hu
+      fractions:
+        type: array
+        items:
+          $ref: '#/definitions/ExerciseFractionDTO'
+  ExerciseFractionDTO:
+    required:
+    - motionType
+    - time
+    properties:
+      time:
+        $ref: '#/definitions/ExerciseFractionTimeUnitDTO'
+      motionType:
+        $ref: '#/definitions/MotionTypeDTO'
+  ExerciseFractionTimeUnitDTO:
+    required:
+    - fromTime
+    - toTime
+    properties:
+      fromTime:
+        type: integer
+        example: 1634691600
+        description: In milliseconds from the beginning of the video
+      toTime:
+        type: integer
+        example: 1634691600
+        description: In milliseconds from the beginning of the video
+  UserDTO:
+    required:
+    - chats
+    - email
+    - name
+    - primaryId
+    - sports
+    properties:
+      primaryId:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      name:
+        type: string
+        example: Kovács Tibor
+      email:
+        type: string
+        example: kovacs.tibor@gmail.com
+      profileImageUrl:
+        type: string
+        format: url
+        example: https://www.google.hu
+      sports:
+        type: array
+        items:
+          $ref: '#/definitions/SportTypeDTO'
+      chats:
+        type: array
+        items:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+  ChatDTO:
+    required:
+    - chatEntries
+    - primaryId
+    - users
+    properties:
+      primaryId:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      users:
+        type: array
+        items:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      chatEntries:
+        type: array
+        items:
+          $ref: '#/definitions/ChatEntryDTO'
+  ChatEntryDTO:
+    required:
+    - message
+    - primaryId
+    - sender
+    - timestamp
+    properties:
+      primaryId:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      message:
+        type: string
+        example: Hello world!
+      timestamp:
+        type: integer
+        example: 1634691600
+        description: In epoch seconds
+      sender:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+  GroupDTO:
+    required:
+    - groupEntries
+    - primaryId
+    - sportType
+    - users
+    properties:
+      primaryId:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      sportType:
+        $ref: '#/definitions/SportTypeDTO'
+      users:
+        type: array
+        items:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      groupEntries:
+        type: array
+        items:
+          $ref: '#/definitions/GroupEntryDTO'
+  GroupEntryDTO:
+    required:
+    - message
+    - primaryId
+    - sender
+    - timestamp
+    properties:
+      primaryId:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      message:
+        type: string
+        example: Hello world!
+      timestamp:
+        type: integer
+        example: 1634691600
+        description: In epoch seconds
+      sender:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851

@@ -1,2 +1,2 @@
-# MSc-SportBuddy-iOS
+# SportBuddy-iOS
 SportBuddy iOS client app

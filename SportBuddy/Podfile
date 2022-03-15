@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '15.0'
+
+target 'SportBuddy' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'SwiftGen', '6.5.1'
+  pod 'SwiftLint', '0.46.1'
+  pod 'Alamofire', '4.9.1'
+
+  # Pods for SportBuddy
+
+  target 'SportBuddyTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'SportBuddyUITests' do
+    # Pods for testing
+  end
+
+end
