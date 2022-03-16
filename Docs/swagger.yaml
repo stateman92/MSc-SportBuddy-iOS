@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: API specification for my thesis work
   version: 2.0.0
-  title: SportButty
+  title: SportBuddy
   contact:
     email: abc@def.com
   license:
@@ -157,6 +157,8 @@ paths:
         in: query
         required: true
         type: string
+      security:
+      - Bearer: []
       responses:
         "200":
           description: Users
@@ -244,7 +246,6 @@ paths:
         in: query
         required: true
         type: string
-        format: uuid
       security:
       - Bearer: []
       responses:
@@ -422,11 +423,11 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: groupId
-        in: query
+      - in: body
+        name: group
         required: true
-        type: string
-        format: uuid
+        schema:
+          $ref: '#/definitions/SportTypeDTO'
       security:
       - Bearer: []
       responses:
@@ -446,11 +447,11 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: GroupEntryDTOId
-        in: query
+      - in: body
+        name: group
         required: true
-        type: string
-        format: uuid
+        schema:
+          $ref: '#/definitions/SportTypeDTO'
       security:
       - Bearer: []
       responses:
@@ -516,11 +517,6 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: exerciseId
-        in: query
-        required: true
-        type: string
-        format: uuid
       - in: body
         name: exercise
         required: true
