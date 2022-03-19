@@ -180,12 +180,7 @@ paths:
       - application/json
       produces:
       - application/json
-      parameters:
-      - name: chatId
-        in: query
-        required: true
-        type: string
-        format: uuid
+      parameters: []
       security:
       - Bearer: []
       responses:
@@ -277,6 +272,30 @@ paths:
           description: Chat message deleted
         "400":
           description: Invalid input, bad request
+    patch:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Chatting
+      description: Undo message deletion
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ChatEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message restored
+        "400":
+          description: Invalid input, bad request
   /group:
     get:
       tags:
@@ -289,12 +308,7 @@ paths:
       - application/json
       produces:
       - application/json
-      parameters:
-      - name: groupId
-        in: query
-        required: true
-        type: string
-        format: uuid
+      parameters: []
       security:
       - Bearer: []
       responses:
@@ -355,7 +369,6 @@ paths:
         in: query
         required: true
         type: string
-        format: uuid
       security:
       - Bearer: []
       responses:
@@ -387,6 +400,30 @@ paths:
           description: Group message deleted
         "400":
           description: Invalid input, bad request
+    patch:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging
+      description: Undo message deletion
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: GroupEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Group message restored
+        "400":
+          description: Invalid input, bad request
   /groupManaging:
     get:
       tags:
@@ -408,7 +445,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/SportTypeDTO'
+              $ref: '#/definitions/GroupDTO'
         "400":
           description: Invalid input, bad request
     post:
@@ -423,11 +460,11 @@ paths:
       produces:
       - application/json
       parameters:
-      - in: body
-        name: group
+      - name: groupId
+        in: query
         required: true
-        schema:
-          $ref: '#/definitions/SportTypeDTO'
+        type: string
+        format: uuid
       security:
       - Bearer: []
       responses:
@@ -447,11 +484,11 @@ paths:
       produces:
       - application/json
       parameters:
-      - in: body
-        name: group
+      - name: groupId
+        in: query
         required: true
-        schema:
-          $ref: '#/definitions/SportTypeDTO'
+        type: string
+        format: uuid
       security:
       - Bearer: []
       responses:
@@ -639,9 +676,9 @@ definitions:
     required:
     - chats
     - email
+    - groups
     - name
     - primaryId
-    - sports
     properties:
       primaryId:
         type: string
@@ -657,11 +694,13 @@ definitions:
         type: string
         format: url
         example: https://www.google.hu
-      sports:
+      chats:
         type: array
         items:
-          $ref: '#/definitions/SportTypeDTO'
-      chats:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      groups:
         type: array
         items:
           type: string
@@ -689,6 +728,7 @@ definitions:
           $ref: '#/definitions/ChatEntryDTO'
   ChatEntryDTO:
     required:
+    - deleted
     - message
     - primaryId
     - sender
@@ -709,6 +749,9 @@ definitions:
         type: string
         format: uuid
         example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      deleted:
+        type: boolean
+        example: true
   GroupDTO:
     required:
     - groupEntries
@@ -734,6 +777,7 @@ definitions:
           $ref: '#/definitions/GroupEntryDTO'
   GroupEntryDTO:
     required:
+    - deleted
     - message
     - primaryId
     - sender
@@ -754,3 +798,6 @@ definitions:
         type: string
         format: uuid
         example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      deleted:
+        type: boolean
+        example: true
