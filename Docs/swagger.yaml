@@ -169,6 +169,82 @@ paths:
         "400":
           description: Invalid input, bad request
   /chat:
+    put:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Chatting
+      description: Update a chat
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chatId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - in: body
+        name: image
+        required: false
+        schema:
+          type: string
+      - name: users
+        in: query
+        required: false
+        type: array
+        items:
+          type: string
+          format: uuid
+        collectionFormat: multi
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat updated
+        "400":
+          description: Invalid input, bad request
+  /group:
+    put:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Group messaging
+      description: Update a group
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: groupId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - in: body
+        name: image
+        required: false
+        schema:
+          type: string
+      - name: users
+        in: query
+        required: false
+        type: array
+        items:
+          type: string
+          format: uuid
+        collectionFormat: multi
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Group updated
+        "400":
+          description: Invalid input, bad request
+  /chatEntries:
     get:
       tags:
       - Client
@@ -296,7 +372,7 @@ paths:
           description: Chat message restored
         "400":
           description: Invalid input, bad request
-  /group:
+  /groupEntries:
     get:
       tags:
       - Client
@@ -629,7 +705,7 @@ definitions:
     - exerciseType
     - exerciseVideoUrl
     - fractions
-    - previewImageUrl
+    - previewImage
     - primaryId
     properties:
       primaryId:
@@ -638,10 +714,9 @@ definitions:
         example: d290f1ee-6c54-4b01-90e6-d701748f0851
       exerciseType:
         $ref: '#/definitions/ExerciseTypeDTO'
-      previewImageUrl:
+      previewImage:
         type: string
-        format: url
-        example: https://www.google.hu
+        format: base64
       exerciseVideoUrl:
         type: string
         format: url
@@ -690,10 +765,12 @@ definitions:
       email:
         type: string
         example: kovacs.tibor@gmail.com
-      profileImageUrl:
+      profileImage:
         type: string
-        format: url
-        example: https://www.google.hu
+        format: base64
+      bio:
+        type: string
+        example: Hi! I'm Bob.
       chats:
         type: array
         items:
@@ -709,6 +786,7 @@ definitions:
   ChatDTO:
     required:
     - chatEntries
+    - image
     - primaryId
     - users
     properties:
@@ -726,6 +804,9 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/ChatEntryDTO'
+      image:
+        type: string
+        format: base64
   ChatEntryDTO:
     required:
     - deleted
@@ -755,6 +836,7 @@ definitions:
   GroupDTO:
     required:
     - groupEntries
+    - image
     - primaryId
     - sportType
     - users
@@ -775,6 +857,9 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/GroupEntryDTO'
+      image:
+        type: string
+        format: base64
   GroupEntryDTO:
     required:
     - deleted
