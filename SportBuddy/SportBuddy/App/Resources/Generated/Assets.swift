@@ -20,6 +20,9 @@ public typealias AssetColorTypeAlias = ColorAsset.Color
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum Assets {
   public static let accentColor = ColorAsset(name: "AccentColor")
+  public enum Colors {
+    public static let primary = ColorAsset(name: "primary")
+  }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
