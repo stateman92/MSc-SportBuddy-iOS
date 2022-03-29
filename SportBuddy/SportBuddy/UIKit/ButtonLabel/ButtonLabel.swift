@@ -209,11 +209,10 @@ extension ButtonLabel {
 
     func setup(size: Size) {
         heightConstraint.constant = size.height
-        let oldFont = config.attributedTitle?.font
         if config.attributedTitle == nil {
             config.attributedTitle = AttributedString()
         }
-        config.attributedTitle?.font = oldFont?.withSize(size.fontSize) ?? .systemFont(ofSize: size.fontSize)
+        config.attributedTitle?.font = Fonts.Fredoka.regular.font(size: size.fontSize)
         configuration = config
     }
 

@@ -11,7 +11,7 @@ import UIKit
 final class AppDelegate: UIResponder {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        SwaggerClientAPI.basePath = "https://sportbuddy-backend.herokuapp.com"
+        AppLoader.setup()
         return true
     }
 }
