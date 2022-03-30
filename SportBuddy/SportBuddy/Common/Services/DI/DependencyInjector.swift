@@ -18,9 +18,10 @@ public struct DependencyInjector {
 extension DependencyInjector {
     /// Register all the dependencies of the application.
     static func registerDependencies() {
-        resolver.register { UINavigationController() }.scope(.shared)
-
         registerOnboardingScreen()
+        registerLoginScreen()
+
+        resolver.register { UINavigationController(rootViewController: resolve() as OnboardingScreen) }.scope(.shared)
     }
 
     /// Resolve a given type of dependency.

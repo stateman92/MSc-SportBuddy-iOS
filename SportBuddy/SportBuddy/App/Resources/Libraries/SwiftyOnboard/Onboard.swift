@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class Onboard: View, UIScrollViewDelegate {
+final class Onboard: View {
     weak var dataSource: OnboardDataSource? {
         didSet {
             if let color = dataSource?.onboardBackgroundColorFor(self, atIndex: 0) {
@@ -31,47 +31,58 @@ final class Onboard: View, UIScrollViewDelegate {
         return scrollView
     }()
 
-    private var dataSourceSet = false
     private(set) var overlay: OnboardOverlay?
+    private var dataSourceSet = false
     private var pages = [OnboardPage]()
     private var shouldSwipe = true
     private var fadePages = true
-}
 
-extension Onboard {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if dataSourceSet {
-            loadView()
-            dataSourceSet = false
+    override var bounds: CGRect {
+        didSet {
+            if dataSourceSet {
+                dataSourceSet = false
+                loadView()
+            }
         }
+    }
+
+    override init() {
+        super.init()
+        setup()
     }
 }
 
 extension Onboard {
+    private func setup() {
+        DispatchQueue.main.async {
+            self.containerView.scrollRectToVisible(.zero, animated: true)
+        }
+    }
+
     private func loadView() {
-        setBackgroundView()
-        setUpContainerView()
-        setUpPages()
-        setOverlayView()
+        subviews.forEach { $0.removeFromSuperview() }
+        setupBackgroundView()
+        setupContainerView()
+        setupPages()
+        setupOverlayView()
         containerView.isScrollEnabled = shouldSwipe
     }
 
-    private func setUpContainerView() {
-        containerView.frame = bounds
-        containerView.delegate = self
-        containerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedPage)))
-        addSubview(containerView)
-    }
-
-    private func setBackgroundView() {
+    private func setupBackgroundView() {
         if let background = dataSource?.onboardViewForBackground(self) {
             addSubview(background)
             sendSubviewToBack(background)
         }
     }
 
-    private func setUpPages() {
+    private func setupContainerView() {
+        containerView.frame = bounds
+        containerView.delegate = self
+        containerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedPage)))
+        addSubview(containerView)
+    }
+
+    private func setupPages() {
         guard let pageCount = dataSource?.onboardNumberOfPages(self) else { return }
         for index in 0..<pageCount {
             if let view = dataSource?.onboardPageForIndex(self, index: index) {
@@ -86,12 +97,15 @@ extension Onboard {
         containerView.contentSize = CGSize(width: bounds.width * CGFloat(pageCount), height: bounds.height)
     }
 
-    private func setOverlayView() {
+    private func setupOverlayView() {
         if let dataSource = dataSource, let overlay = dataSource.onboardViewForOverlay(self) {
             overlay.page(count: dataSource.onboardNumberOfPages(self))
             addSubview(overlay)
-            bringSubviewToFront(overlay)
-            overlay.frame = bounds
+            overlay.translatesAutoresizingMaskIntoConstraints = false
+            overlay.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            overlay.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            overlay.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            overlay.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
             overlay.pageControl.addAction(.init { [weak self] _ in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
@@ -126,7 +140,7 @@ extension Onboard {
     }
 
     private func colorFrom(start color1: UIColor, end color2: UIColor, percent: CGFloat) -> UIColor {
-        func cofd(_ color1: CGFloat,_ color2: CGFloat,_ percent: CGFloat)-> CGFloat{
+        func cofd(_ color1: CGFloat, _ color2: CGFloat, _ percent: CGFloat) -> CGFloat {
             let c1 = CGFloat(color1)
             let c2 = CGFloat(color2)
             return (c1 + ((c2 - c1) * percent))
@@ -150,18 +164,7 @@ extension Onboard {
     }
 }
 
-extension Onboard {
-    var currentPage: Int{
-        Int(getCurrentPosition())
-    }
-
-    func getCurrentPosition() -> CGFloat {
-        let boundsWidth = containerView.bounds.width
-        let contentOffset = containerView.contentOffset.x
-        let currentPosition = contentOffset / boundsWidth
-        return currentPosition
-    }
-
+extension Onboard: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = Int(getCurrentPosition())
         delegate?.onboard(self, currentPage: currentPage)
@@ -183,12 +186,24 @@ extension Onboard {
             backgroundColor = color
         }
     }
+}
+
+extension Onboard {
+    var currentPage: Int{
+        Int(getCurrentPosition())
+    }
+
+    func getCurrentPosition() -> CGFloat {
+        let boundsWidth = containerView.bounds.width
+        let contentOffset = containerView.contentOffset.x
+        let currentPosition = contentOffset / boundsWidth
+        return currentPosition
+    }
 
     func goToPage(index: Int, animated: Bool) {
         guard let dataSource = dataSource else { return }
         if index < dataSource.onboardNumberOfPages(self) {
-            let index = CGFloat(index)
-            containerView.setContentOffset(CGPoint(x: index * bounds.width, y: .zero), animated: animated)
+            containerView.setContentOffset(CGPoint(x: CGFloat(index) * bounds.width, y: .zero), animated: animated)
         }
     }
 }

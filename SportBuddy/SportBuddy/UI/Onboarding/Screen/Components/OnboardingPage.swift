@@ -8,8 +8,8 @@
 import UIKit
 
 final class OnboardingPage: View {
-    let title = ButtonLabel(style: .label)
-    let subTitle = ButtonLabel(style: .label)
+    let title = ButtonLabel(style: .label(textColor: .white))
+    let subTitle = ButtonLabel(style: .label(textColor: .black))
 
     let imageView: UIImageView = {
         let imageView = ImageView()

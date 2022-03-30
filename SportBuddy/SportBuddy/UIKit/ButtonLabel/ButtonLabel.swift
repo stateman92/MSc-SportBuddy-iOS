@@ -102,6 +102,7 @@ final class ButtonLabel: UIButton {
 
     private var heightConstraint: NSLayoutConstraint!
     private var config = Configuration.plain()
+    private var size: Size
     private var configIsLabel: Bool {
         !heightConstraint.isActive
     }
@@ -111,7 +112,7 @@ final class ButtonLabel: UIButton {
             return super.intrinsicContentSize
         }
         let label = UILabel()
-        label.font = config.attributedTitle?.font
+        label.font = titleLabel?.font
         label.text = titleLabel?.text
         if config.image == nil {
             return label.intrinsicContentSize
@@ -127,6 +128,7 @@ final class ButtonLabel: UIButton {
          size: Size = .normal,
          image: Image = .none,
          tapped: (() -> Void)? = nil) {
+        self.size = size
         super.init(frame: .zero)
         setupView(text: text, style: style, size: size, image: image, tapped: tapped)
     }
@@ -171,12 +173,8 @@ extension ButtonLabel {
     }
 
     func setup(text: String) {
-        let attributedTitle = config.attributedTitle
-        var newAttributedTitle = AttributedString(text)
-        if let oldFont = attributedTitle?.font {
-            newAttributedTitle.font = oldFont
-        }
-        config.attributedTitle = newAttributedTitle
+        config.attributedTitle = AttributedString(text)
+        config.attributedTitle?.font = Fonts.Fredoka.regular.font(size: size.fontSize)
         configuration = config
     }
 
@@ -197,6 +195,7 @@ extension ButtonLabel {
         }
 
         config.attributedTitle = oldAttributedTitle
+        config.attributedTitle?.font = Fonts.Fredoka.regular.font(size: size.fontSize)
         config.image = oldImage
         config.imagePlacement = oldImagePlacement
         config.imagePadding = oldImagePadding
@@ -208,6 +207,7 @@ extension ButtonLabel {
     }
 
     func setup(size: Size) {
+        self.size = size
         heightConstraint.constant = size.height
         if config.attributedTitle == nil {
             config.attributedTitle = AttributedString()

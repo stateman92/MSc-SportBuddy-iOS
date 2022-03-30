@@ -9,25 +9,32 @@ import UIKit
 
 final class OnboardingScreen: Screen<OnboardingViewModel> {
     let backgroundView = BackgroundView()
-    let swiftyOnboard = Onboard()
+    let onboard = Onboard()
+}
 
+extension OnboardingScreen {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+}
 
+extension OnboardingScreen {
+    private func setupView() {
         view.addSubview(backgroundView)
         backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
-        swiftyOnboard.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(swiftyOnboard)
-        swiftyOnboard.delegate = self
-        swiftyOnboard.dataSource = self
-        swiftyOnboard.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        swiftyOnboard.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        swiftyOnboard.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        swiftyOnboard.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        onboard.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(onboard)
+        onboard.delegate = self
+        onboard.dataSource = self
+        onboard.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        onboard.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        onboard.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        onboard.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
 
@@ -36,9 +43,7 @@ extension OnboardingScreen: OnboardDataSource {
         3
     }
 
-    func onboardOverlayForPosition(_ onboard: Onboard,
-                                   overlay: OnboardOverlay,
-                                   for position: Double) {
+    func onboardOverlayForPosition(_ onboard: Onboard, overlay: OnboardOverlay, for position: Double) {
         guard let continueButton = overlay.continueButton as? ButtonLabel,
               let skipButton = overlay.skipButton as? ButtonLabel else { return }
 
@@ -56,8 +61,20 @@ extension OnboardingScreen: OnboardDataSource {
 
     func onboardViewForOverlay(_ onboard: Onboard) -> OnboardOverlay? {
         let overlay = OnboardingOverlay()
-        overlay.continueButton.addAction(.init { _ in
-            onboard.goToPage(index: overlay.continueButton.tag + 1, animated: true)
+        overlay.continueButton.addAction(.init { [weak self] _ in
+            if overlay.continueButton.tag < 2 {
+                onboard.goToPage(index: overlay.continueButton.tag + 1, animated: true)
+            } else {
+                UIView.animate(withDuration: 0.5) {
+                    self?.onboard.alpha = .zero
+                } completion: { _ in
+                    self?.onboard.removeFromSuperview()
+                }
+                self?.backgroundView.finish {
+                    self?.backgroundView.removeFromSuperview()
+                    self?.viewModel.navigateNext()
+                }
+            }
         }, for: .touchUpInside)
         overlay.skipButton.addAction(.init { _ in
             onboard.goToPage(index: 2, animated: true)
@@ -68,9 +85,7 @@ extension OnboardingScreen: OnboardDataSource {
     func onboardPageForIndex(_ onboard: Onboard, index: Int) -> OnboardPage? {
         let page = OnboardingPage()
         page.title.setup(text: "TITLE")
-        page.title.setup(style: .label(textColor: .white))
         page.subTitle.setup(text: "SUBTITLE")
-        page.subTitle.setup(style: .label(textColor: .black))
         switch index {
         case 0: page.imageView.image = Images.firstOnboarding.image
         case 1: page.imageView.image = Images.secondOnboarding.image

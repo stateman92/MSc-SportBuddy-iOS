@@ -33,6 +33,27 @@ final class BackgroundView: View {
 }
 
 extension BackgroundView {
+    func finish(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.9 * Constants.durationMultiplier,
+                       delay: .zero,
+                       options: [.curveEaseOut, .allowUserInteraction]) {
+            self.firstVisualEffect.effect = nil
+            self.secondVisualEffect.effect = nil
+            self.gradientLayer.opacity = .zero
+        }
+        UIView.animate(withDuration: 1 * Constants.durationMultiplier,
+                       delay: 0.33,
+                       options: [.curveEaseIn, .allowUserInteraction]) {
+            self.firstCircle.transform = self.firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
+            self.secondCircle.transform = self.secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
+            self.rectangle.transform = self.rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))
+        } completion: { _ in
+            completion()
+        }
+    }
+}
+
+extension BackgroundView {
     private func setupView() {
         backgroundColor = Color.background.color
         setupGradientLayer()

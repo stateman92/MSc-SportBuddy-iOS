@@ -61,7 +61,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -8).isActive = true
 //        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8).isActive = true
 //        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -8).isActive = true
-        window?.rootViewController = UINavigationController(rootViewController: OnboardingScreen())
+        window?.rootViewController = DependencyInjector.resolve() as UINavigationController
         window?.makeKeyAndVisible()
     }
 
