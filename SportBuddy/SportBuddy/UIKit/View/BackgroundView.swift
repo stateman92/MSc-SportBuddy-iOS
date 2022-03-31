@@ -41,9 +41,8 @@ extension BackgroundView {
             self.secondVisualEffect.effect = nil
             self.gradientLayer.opacity = .zero
         }
-        UIView.animate(withDuration: 1 * Constants.durationMultiplier,
-                       delay: 0.33,
-                       options: [.curveEaseIn, .allowUserInteraction]) {
+        // swiftlint:disable:next multiline_arguments
+        UIView.animate(withDuration: 1 * Constants.durationMultiplier, delay: 0.33, options: [.curveEaseIn]) {
             self.firstCircle.transform = self.firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
             self.secondCircle.transform = self.secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
             self.rectangle.transform = self.rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))

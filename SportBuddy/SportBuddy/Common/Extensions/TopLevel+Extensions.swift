@@ -1,0 +1,33 @@
+//
+//  TopLevel+Extensions.swift
+//  SportBuddy
+//
+//  Created by Kristof Kalai on 2022. 03. 31..
+//
+
+import Foundation
+
+/// Return the value associated with a given object for a given key.
+/// - Parameters:
+///   - _: the source object for the association.
+///   - key: the key for the association.
+/// - Returns:
+///     The value associated with the key.
+public func getAssociatedObject<T>(_ object: Any, _ key: UnsafeRawPointer) -> T? {
+    objc_getAssociatedObject(object, key) as? T
+}
+
+/// Set an associated value for a given object using a given key and association policy.
+/// - Parameters:
+///   - _: the source object for the association.
+///   - key: the key for the association.
+///   - value: the value to associate with the key key for object. If `nil`, then it clears the (probably) existing association.
+///   - policy: the policy for the association. By default `.OBJC_ASSOCIATION_RETAIN`.
+/// - Returns:
+///     The value associated with the key.
+public func setAssociatedObject<T>(_ object: Any,
+                                   _ key: UnsafeRawPointer,
+                                   _ value: T?,
+                                   _ policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN) {
+    objc_setAssociatedObject(object, key, value, policy)
+}

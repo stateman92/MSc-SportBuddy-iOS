@@ -6,3 +6,13 @@
 //
 
 final class LoginViewModel: ViewModel { }
+
+extension LoginViewModel {
+    func login() {
+
+    }
+
+    func signUp() {
+
+    }
+}

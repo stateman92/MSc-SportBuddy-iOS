@@ -77,6 +77,15 @@
 		58B2E1DF27F3BCEB004135E2 /* OnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2E1DE27F3BCEB004135E2 /* OnboardOverlay.swift */; };
 		58B2E1E227F3BE46004135E2 /* OnboardingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2E1E127F3BE46004135E2 /* OnboardingOverlay.swift */; };
 		58B2E1E427F3C377004135E2 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2E1E327F3C377004135E2 /* OnboardingPage.swift */; };
+		58C1D43C27F515B5005D13C4 /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D43B27F515B5005D13C4 /* Default.swift */; };
+		58C1D43F27F51845005D13C4 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D43E27F51845005D13C4 /* SegmentedControl.swift */; };
+		58C1D44527F51963005D13C4 /* IconSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44127F51963005D13C4 /* IconSegment.swift */; };
+		58C1D44627F51963005D13C4 /* SwipingSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44227F51963005D13C4 /* SwipingSegmentedControl.swift */; };
+		58C1D44727F51963005D13C4 /* LabelSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44327F51963005D13C4 /* LabelSegment.swift */; };
+		58C1D44827F51963005D13C4 /* SwipingSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44427F51963005D13C4 /* SwipingSegment.swift */; };
+		58C1D44B27F51BFC005D13C4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44A27F51BFC005D13C4 /* UIView+Extensions.swift */; };
+		58C1D44D27F51C7A005D13C4 /* TopLevel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44C27F51C7A005D13C4 /* TopLevel+Extensions.swift */; };
+		58C1D44F27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44E27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift */; };
 		58F976D827DE76CB00E74C5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F976DA27DE76CB00E74C5F /* Localizable.strings */; };
 		58F976DD27DE77BB00E74C5F /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F976DC27DE77BB00E74C5F /* Fonts.swift */; };
 		58F976DF27DE77C500E74C5F /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F976DE27DE77C400E74C5F /* Assets.swift */; };
@@ -183,6 +192,15 @@
 		58B2E1DE27F3BCEB004135E2 /* OnboardOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardOverlay.swift; sourceTree = "<group>"; };
 		58B2E1E127F3BE46004135E2 /* OnboardingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOverlay.swift; sourceTree = "<group>"; };
 		58B2E1E327F3C377004135E2 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		58C1D43B27F515B5005D13C4 /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
+		58C1D43E27F51845005D13C4 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		58C1D44127F51963005D13C4 /* IconSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconSegment.swift; sourceTree = "<group>"; };
+		58C1D44227F51963005D13C4 /* SwipingSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipingSegmentedControl.swift; sourceTree = "<group>"; };
+		58C1D44327F51963005D13C4 /* LabelSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSegment.swift; sourceTree = "<group>"; };
+		58C1D44427F51963005D13C4 /* SwipingSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipingSegment.swift; sourceTree = "<group>"; };
+		58C1D44A27F51BFC005D13C4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		58C1D44C27F51C7A005D13C4 /* TopLevel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopLevel+Extensions.swift"; sourceTree = "<group>"; };
+		58C1D44E27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		58F976D427DE76A600E74C5F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		58F976D927DE76CB00E74C5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58F976DB27DE76CD00E74C5F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -290,6 +308,7 @@
 		580521BE27EF6E7200B3A8B1 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				58C1D43D27F5183A005D13C4 /* SegmentedControl */,
 				5801910927F3929500BB3E3E /* VisualEffectView */,
 				580521DC27EFB47500B3A8B1 /* View */,
 				580521D727EFB36200B3A8B1 /* CameraView */,
@@ -355,6 +374,7 @@
 		580521CF27EFB2AA00B3A8B1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				58C1D43A27F515AC005D13C4 /* Default */,
 				580190FA27F382EA00BB3E3E /* AppLoader */,
 				580190F727F3826000BB3E3E /* DI */,
 			);
@@ -574,6 +594,44 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		58C1D43A27F515AC005D13C4 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				58C1D43B27F515B5005D13C4 /* Default.swift */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
+		58C1D43D27F5183A005D13C4 /* SegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				58C1D43E27F51845005D13C4 /* SegmentedControl.swift */,
+				58C1D44027F51963005D13C4 /* SwipingSegmentedControl */,
+			);
+			path = SegmentedControl;
+			sourceTree = "<group>";
+		};
+		58C1D44027F51963005D13C4 /* SwipingSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				58C1D44127F51963005D13C4 /* IconSegment.swift */,
+				58C1D44227F51963005D13C4 /* SwipingSegmentedControl.swift */,
+				58C1D44327F51963005D13C4 /* LabelSegment.swift */,
+				58C1D44427F51963005D13C4 /* SwipingSegment.swift */,
+			);
+			path = SwipingSegmentedControl;
+			sourceTree = "<group>";
+		};
+		58C1D44927F51BED005D13C4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				58C1D44A27F51BFC005D13C4 /* UIView+Extensions.swift */,
+				58C1D44C27F51C7A005D13C4 /* TopLevel+Extensions.swift */,
+				58C1D44E27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		58F976CE27DE733000E74C5F /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +658,7 @@
 		58F976D127DE734600E74C5F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				58C1D44927F51BED005D13C4 /* Extensions */,
 				580521CF27EFB2AA00B3A8B1 /* Services */,
 				580190FF27F384E400BB3E3E /* Screen.swift */,
 				5801910127F3851A00BB3E3E /* ViewModel.swift */,
@@ -971,6 +1030,7 @@
 				58AB996B27E0E7D20033B800 /* APIHelper.swift in Sources */,
 				58AB996D27E0E7D20033B800 /* JSONValue.swift in Sources */,
 				580190F027F3820A00BB3E3E /* OnboardingScreen.swift in Sources */,
+				58C1D44827F51963005D13C4 /* SwipingSegment.swift in Sources */,
 				58AB996C27E0E7D20033B800 /* AlamofireImplementations.swift in Sources */,
 				58AB997127E0E7D20033B800 /* CodableHelper.swift in Sources */,
 				58B2E1DB27F3BC46004135E2 /* OnboardPage.swift in Sources */,
@@ -978,16 +1038,23 @@
 				58AB996E27E0E7D20033B800 /* ClientAPI.swift in Sources */,
 				580190F227F3821200BB3E3E /* OnboardingViewModel.swift in Sources */,
 				58289BE927DE6E9200FCEF08 /* AppDelegate.swift in Sources */,
+				58C1D44627F51963005D13C4 /* SwipingSegmentedControl.swift in Sources */,
 				58B2E1D427F3BAA2004135E2 /* OnboardDataSource.swift in Sources */,
+				58C1D44D27F51C7A005D13C4 /* TopLevel+Extensions.swift in Sources */,
 				58AB997A27E0E7D20033B800 /* ChatEntryDTO.swift in Sources */,
 				5801910B27F392A300BB3E3E /* VisualEffectView.swift in Sources */,
+				58C1D44B27F51BFC005D13C4 /* UIView+Extensions.swift in Sources */,
 				58B2E1DF27F3BCEB004135E2 /* OnboardOverlay.swift in Sources */,
 				580521D527EFB2D400B3A8B1 /* StackView.swift in Sources */,
 				5801910427F38A7D00BB3E3E /* Typealiases.swift in Sources */,
+				58C1D44F27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift in Sources */,
 				580521DE27EFB47C00B3A8B1 /* View.swift in Sources */,
 				58AB997727E0E7D20033B800 /* UserResponseDTO.swift in Sources */,
+				58C1D43C27F515B5005D13C4 /* Default.swift in Sources */,
 				58AB997227E0E7D20033B800 /* JSONEncodableEncoding.swift in Sources */,
+				58C1D44727F51963005D13C4 /* LabelSegment.swift in Sources */,
 				58AB997327E0E7D20033B800 /* APIs.swift in Sources */,
+				58C1D43F27F51845005D13C4 /* SegmentedControl.swift in Sources */,
 				58AB996F27E0E7D20033B800 /* BackendAPI.swift in Sources */,
 				58B2E1D627F3BABE004135E2 /* OnboardDelegate.swift in Sources */,
 				58F976DD27DE77BB00E74C5F /* Fonts.swift in Sources */,
@@ -995,6 +1062,7 @@
 				58F976E127DE77CE00E74C5F /* Strings.swift in Sources */,
 				58AB997C27E0E7D20033B800 /* UserDTO.swift in Sources */,
 				58F976DF27DE77C500E74C5F /* Assets.swift in Sources */,
+				58C1D44527F51963005D13C4 /* IconSegment.swift in Sources */,
 				58289BEB27DE6E9200FCEF08 /* SceneDelegate.swift in Sources */,
 				58AB998227E0E7D20033B800 /* Models.swift in Sources */,
 				5801910827F38F8D00BB3E3E /* RoundedView.swift in Sources */,

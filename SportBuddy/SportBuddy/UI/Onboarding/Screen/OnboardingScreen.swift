@@ -21,20 +21,33 @@ extension OnboardingScreen {
 
 extension OnboardingScreen {
     private func setupView() {
-        view.addSubview(backgroundView)
-        backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        setupBackgroundView()
+        setupOnboard()
+    }
+}
 
-        onboard.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(onboard)
-        onboard.delegate = self
-        onboard.dataSource = self
-        onboard.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        onboard.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        onboard.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        onboard.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+extension OnboardingScreen {
+    private func setupBackgrounView() {
+        backgroundView.then {
+            view.addSubview($0)
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+    }
+
+    private func setupOnboard() {
+        onboard.then {
+            onboard.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+            $0.delegate = self
+            $0.dataSource = self
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
     }
 }
 
@@ -65,6 +78,7 @@ extension OnboardingScreen: OnboardDataSource {
             if overlay.continueButton.tag < 2 {
                 onboard.goToPage(index: overlay.continueButton.tag + 1, animated: true)
             } else {
+                // swiftlint:disable:next multiline_arguments
                 UIView.animate(withDuration: 0.5) {
                     self?.onboard.alpha = .zero
                 } completion: { _ in
