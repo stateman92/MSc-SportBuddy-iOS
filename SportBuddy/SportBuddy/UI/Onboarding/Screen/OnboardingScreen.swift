@@ -27,7 +27,7 @@ extension OnboardingScreen {
 }
 
 extension OnboardingScreen {
-    private func setupBackgrounView() {
+    private func setupBackgroundView() {
         backgroundView.then {
             view.addSubview($0)
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
