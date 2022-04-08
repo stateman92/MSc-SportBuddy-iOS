@@ -14,6 +14,12 @@ final class AppDelegate: UIResponder {
         AppLoader.setup()
         return true
     }
+
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        AppLoader.application(app, open: url, options: options)
+    }
 }
 
 // MARK: UISceneSession Lifecycle

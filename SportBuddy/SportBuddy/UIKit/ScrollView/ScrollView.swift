@@ -21,6 +21,6 @@ final class ScrollView: UIScrollView {
 
 extension ScrollView {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
     }
 }

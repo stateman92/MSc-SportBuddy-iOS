@@ -7,15 +7,16 @@
 
 import UIKit
 
-final class LoginScreen: Screen<LoginViewModel> {
+final class LoginScreen: ScrollingScreen<LoginViewModel> {
     private let backgroundView = BackgroundView()
     private let segmentedControl = SwipingSegmentedControl()
 
-    private let inputStackView = StackView()
-    private let emailInput = TextField()
-    private let passwordInput = TextField()
-    private let loginRegistrationButton = ButtonLabel(text: "Login")
-    private let forgotPasswordButton = ButtonLabel(text: "Forgot password?", style: .tertiary)
+    private let cardView = CardView()
+    private let input = InputView()
+    private let orView = View()
+    private lazy var googleLoginButton = GoogleLoginButton(viewController: self) { [weak self] token in
+        self?.viewModel.googleLogin(token: token)
+    }
 }
 
 extension LoginScreen {
@@ -29,95 +30,129 @@ extension LoginScreen {
     private func setupView() {
         setupBackgroundView()
         setupSegmentedControl()
-        setupInputStackView()
-        setupLoginRegistrationButton()
+        setupCardView()
+        setupInput()
+        setupOrView()
+        setupGoogleLoginButton()
+
+        setupInitialAnimation()
     }
 }
 
 extension LoginScreen {
     private func setupBackgroundView() {
         backgroundView.then {
-            $0.alpha = .zero
             view.addSubview($0)
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        }
-        UIView.animate(withDuration: 0.75) {
-            self.backgroundView.alpha = 1
+            view.sendSubviewToBack($0)
+            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
         }
     }
 
     private func setupSegmentedControl() {
-        segmentedControl.alpha = .zero
-        view.addSubview(segmentedControl)
+        segmentedControl.then {
+            scrollView.addSubview($0)
 
-        let palePrimaryColor = Color.primary.color.withAlphaComponent(0.5)
-        segmentedControl.segments.append(LabelSegment(
-            text: "Log in",
-            normalBackgroundColor: .clear,
-            normalFont: Fonts.Fredoka.light.font(size: 21),
-            normalTextColor: .white,
-            selectedFont: Fonts.Fredoka.regular.font(size: 21),
-            selectedTextColor: Color.primary.color,
-            selectedBackgroundColor: .white))
-        segmentedControl.segments.append(LabelSegment(
-            text: "Sign up",
-            normalBackgroundColor: .clear,
-            normalFont: Fonts.Fredoka.light.font(size: 21),
-            normalTextColor: .white,
-            selectedFont: Fonts.Fredoka.regular.font(size: 21),
-            selectedTextColor: Color.primary.color,
-            selectedBackgroundColor: .white))
-        segmentedControl.setOptions([.backgroundColor(palePrimaryColor),
-                                     .animationSpringDamping(0.66),
-                                     .indicatorViewInset(2),
-                                     .cornerRadius(21)])
+            $0.segments.append(LabelSegment(
+                text: "Log in",
+                normalBackgroundColor: .clear,
+                normalFont: Fonts.Fredoka.light.font(size: 21),
+                normalTextColor: .white,
+                selectedFont: Fonts.Fredoka.regular.font(size: 21),
+                selectedTextColor: Color.primary.color,
+                selectedBackgroundColor: .white))
+            $0.segments.append(LabelSegment(
+                text: "Sign up",
+                normalBackgroundColor: .clear,
+                normalFont: Fonts.Fredoka.light.font(size: 21),
+                normalTextColor: .white,
+                selectedFont: Fonts.Fredoka.regular.font(size: 21),
+                selectedTextColor: Color.primary.color,
+                selectedBackgroundColor: .white))
+            $0.setOptions([.backgroundColor(Color.primary.color.withAlphaComponent(0.5)),
+                           .animationSpringDamping(0.66),
+                           .indicatorViewInset(2),
+                           .cornerRadius(21)])
 
-        segmentedControl.addAction(.init { [weak self] _ in
-            guard let self = self else { return }
-            if self.segmentedControl.index == 0 {
-                // login
-            } else {
-                // registration
+            $0.addAction(.init { [weak self] _ in
+                guard let self = self else { return }
+                self.input.state = self.segmentedControl.index == 0 ? .login : .signUp
+            }, for: .valueChanged)
+
+            $0.anchorToCenterX()
+            $0.anchorToTop(constant: 64)
+        }
+    }
+
+    private func setupCardView() {
+        cardView.then {
+            scrollView.addSubview($0)
+
+            $0.anchorToCenterX()
+            $0.anchorToSuperview(leading: 48, trailing: -48)
+            $0.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 64).isActive = true
+        }
+    }
+
+    private func setupInput() {
+        input.then {
+            cardView.add(view: $0, padding: 15)
+        }
+    }
+
+    private func setupOrView() {
+        let stackView = StackView().then {
+            let firstDash = View().then {
+                $0.backgroundColor = .white
+                $0.setHeight(2)
+                $0.setWidth(45)
+                $0.layer.cornerRadius = 1
             }
-        }, for: .valueChanged)
+            let orLabel = Label().then {
+                $0.text = "OR"
+                $0.textColor = .white
+            }
+            let secondDash = View().then {
+                $0.backgroundColor = .white
+                $0.setHeight(2)
+                $0.setWidth(45)
+                $0.layer.cornerRadius = 1
+            }
+            $0.addArrangedSubview(firstDash)
+            $0.addArrangedSubview(orLabel)
+            $0.addArrangedSubview(secondDash)
 
-        segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        segmentedControl.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -128).isActive = true
+            $0.spacing = 8
+            $0.alignment = .center
+        }
 
-        UIView.animate(withDuration: 0.75) {
-            self.segmentedControl.alpha = 1
+        orView.then {
+            scrollView.addSubview($0)
+
+            $0.anchorToCenterX()
+            $0.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 32).isActive = true
+
+            $0.addSubview(stackView)
+            stackView.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
         }
     }
 
-    private func setupInputStackView() {
-        inputStackView.alpha = .zero
-        inputStackView.axis = .vertical
-        view.addSubview(inputStackView)
-        inputStackView.addArrangedSubview(emailInput)
-        inputStackView.addArrangedSubview(passwordInput)
-        let spacer = View()
-        spacer.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        inputStackView.addArrangedSubview(spacer)
-        inputStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        inputStackView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 32).isActive = true
+    private func setupGoogleLoginButton() {
+        googleLoginButton.then {
+            scrollView.addSubview($0)
 
-        UIView.animate(withDuration: 0.75) {
-            self.inputStackView.alpha = 1
+            $0.anchorToCenterX()
+            $0.anchorToBottom()
+            $0.topAnchor.constraint(equalTo: orView.bottomAnchor, constant: 32).isActive = true
         }
     }
 
-    private func setupLoginRegistrationButton() {
-        loginRegistrationButton.alpha = .zero
-        view.addSubview(loginRegistrationButton)
+    private func setupInitialAnimation() {
+        view.subviews.forEach { view in
+            view.alpha = .zero
 
-        loginRegistrationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginRegistrationButton.centerYAnchor.constraint(equalTo: inputStackView.bottomAnchor).isActive = true
-
-        UIView.animate(withDuration: 0.75) {
-            self.loginRegistrationButton.alpha = 1
+            UIView.animate(withDuration: 0.75) {
+                view.alpha = 1
+            }
         }
     }
 }

@@ -101,11 +101,7 @@ extension Onboard {
         if let dataSource = dataSource, let overlay = dataSource.onboardViewForOverlay(self) {
             overlay.page(count: dataSource.onboardNumberOfPages(self))
             addSubview(overlay)
-            overlay.translatesAutoresizingMaskIntoConstraints = false
-            overlay.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-            overlay.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-            overlay.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            overlay.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            overlay.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
             overlay.pageControl.addAction(.init { [weak self] _ in
                 guard let self = self else { return }
                 DispatchQueue.main.async {

@@ -194,7 +194,7 @@ extension SwipingSegmentedControl {
 
     convenience init() {
         self.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
         layer.masksToBounds = true
 
         normalSegmentViewsContainerView.clipsToBounds = true

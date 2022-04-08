@@ -21,7 +21,7 @@ final class ImageView: UIImageView {
 
 extension ImageView {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
         contentMode = .scaleAspectFit
     }
 }

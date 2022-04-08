@@ -21,6 +21,6 @@ final class StackView: UIStackView {
 
 extension StackView {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
     }
 }

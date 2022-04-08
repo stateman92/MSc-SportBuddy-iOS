@@ -13,14 +13,14 @@ public struct ExerciseDTO: Codable {
 
     public var primaryId: UUID
     public var exerciseType: ExerciseTypeDTO
-    public var previewImageUrl: String
+    public var previewImage: String
     public var exerciseVideoUrl: String
     public var fractions: [ExerciseFractionDTO]
 
-    public init(primaryId: UUID, exerciseType: ExerciseTypeDTO, previewImageUrl: String, exerciseVideoUrl: String, fractions: [ExerciseFractionDTO]) {
+    public init(primaryId: UUID, exerciseType: ExerciseTypeDTO, previewImage: String, exerciseVideoUrl: String, fractions: [ExerciseFractionDTO]) {
         self.primaryId = primaryId
         self.exerciseType = exerciseType
-        self.previewImageUrl = previewImageUrl
+        self.previewImage = previewImage
         self.exerciseVideoUrl = exerciseVideoUrl
         self.fractions = fractions
     }

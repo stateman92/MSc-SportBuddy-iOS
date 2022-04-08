@@ -9,6 +9,8 @@ import UIKit
 
 /// Navigation protocol for in-app navigation.
 protocol Navigator: AnyObject, AutoMockable {
+    var viewControllers: [UIViewController] { get set }
+
     /// Presents a view controller modally.
     /// - Parameter viewControllerToPresent: the view controller to display over the current view controller’s content.
     /// - Parameter animated: `true` if you want to animate the presentation, otherwise `false`.

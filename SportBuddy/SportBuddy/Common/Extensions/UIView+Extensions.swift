@@ -93,7 +93,7 @@ extension UIView {
     /// Just those porperties will be set that are not `nil`.
     /// - Returns:
     ///     The `UIPanGestureRecognizer`.
-    @discardableResult public func addPanGestureRecognizer(
+    @discardableResult func addPanGestureRecognizer(
         minimumNumberOfTouches: Int? = nil,
         maximumNumberOfTouches: Int? = nil,
         action: @escaping (_ panGestureRecognizer: UIPanGestureRecognizer) -> Void
@@ -123,9 +123,9 @@ extension UIView {
     /// Just those porperties will be set that are not `nil`.
     /// - Returns:
     ///     The `UIPanGestureRecognizer`.
-    @discardableResult public func addPanGestureRecognizer(minimumNumberOfTouches: Int? = nil,
-                                                           maximumNumberOfTouches: Int? = nil,
-                                                           action: @escaping () -> Void) -> UIPanGestureRecognizer {
+    @discardableResult func addPanGestureRecognizer(minimumNumberOfTouches: Int? = nil,
+                                                    maximumNumberOfTouches: Int? = nil,
+                                                    action: @escaping () -> Void) -> UIPanGestureRecognizer {
         addPanGestureRecognizer(minimumNumberOfTouches: minimumNumberOfTouches,
                                 maximumNumberOfTouches: maximumNumberOfTouches,
                                 action: { _ in action() })
@@ -210,7 +210,7 @@ extension UIView {
     /// - Parameter size: the size of the constraint.
     func setSize(_ size: CGSize) {
         setHeight(size.height)
-        setHeight(size.width)
+        setWidth(size.width)
     }
 }
 

@@ -9,7 +9,8 @@ import UIKit
 
 final class BackgroundView: View {
     enum Constants {
-        fileprivate static let durationMultiplier: CGFloat = 1
+        fileprivate static let durationMultiplier: CGFloat = 0.5
+        fileprivate static let finishingDurationMultiplier: CGFloat = 1
     }
 
     private let gradientLayer = CAGradientLayer()
@@ -34,7 +35,7 @@ final class BackgroundView: View {
 
 extension BackgroundView {
     func finish(completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.9 * Constants.durationMultiplier,
+        UIView.animate(withDuration: 0.9 * Constants.finishingDurationMultiplier,
                        delay: .zero,
                        options: [.curveEaseOut, .allowUserInteraction]) {
             self.firstVisualEffect.effect = nil
@@ -42,7 +43,7 @@ extension BackgroundView {
             self.gradientLayer.opacity = .zero
         }
         // swiftlint:disable:next multiline_arguments
-        UIView.animate(withDuration: 1 * Constants.durationMultiplier, delay: 0.33, options: [.curveEaseIn]) {
+        UIView.animate(withDuration: 1 * Constants.finishingDurationMultiplier, delay: 0.33, options: [.curveEaseIn]) {
             self.firstCircle.transform = self.firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
             self.secondCircle.transform = self.secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
             self.rectangle.transform = self.rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))

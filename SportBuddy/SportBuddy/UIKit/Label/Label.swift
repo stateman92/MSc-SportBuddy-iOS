@@ -21,6 +21,7 @@ final class Label: UILabel {
 
 extension Label {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
+        font = Fonts.Fredoka.regular.font(size: font.pointSize)
     }
 }

@@ -9,8 +9,8 @@ import UIKit
 
 extension UIApplication {
     /// The key window (if exists).
-    var keyWindow: UIWindow? {
-        windows.first { $0.isKeyWindow }
+    static var keyWindow: UIWindow? {
+        (shared.connectedScenes.first as? UIWindowScene)?.windows.first { $0.isKeyWindow }
     }
 
     /// Set the default network indicator on the status bar.

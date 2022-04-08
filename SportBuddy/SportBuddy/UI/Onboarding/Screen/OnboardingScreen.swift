@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OnboardingScreen: Screen<OnboardingViewModel> {
+final class OnboardingScreen: BaseScreen<OnboardingViewModel> {
     let backgroundView = BackgroundView()
     let onboard = Onboard()
 }
@@ -30,23 +30,16 @@ extension OnboardingScreen {
     private func setupBackgroundView() {
         backgroundView.then {
             view.addSubview($0)
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
         }
     }
 
     private func setupOnboard() {
         onboard.then {
-            onboard.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
             $0.delegate = self
             $0.dataSource = self
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
         }
     }
 }

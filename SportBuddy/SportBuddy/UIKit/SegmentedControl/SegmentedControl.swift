@@ -21,6 +21,6 @@ final class SegmentedControl: UISegmentedControl {
 
 extension SegmentedControl {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
     }
 }

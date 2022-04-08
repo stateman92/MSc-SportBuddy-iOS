@@ -21,6 +21,6 @@ final class Switch: UISwitch {
 
 extension Switch {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
     }
 }

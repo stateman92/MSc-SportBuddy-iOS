@@ -25,7 +25,8 @@ final class ButtonLabel: UIButton {
                 configuration = .filled()
                 configuration.baseBackgroundColor = Assets.Colors.primary.color
             case .secondary:
-                configuration = .bordered()
+                configuration = .borderedProminent()
+                configuration.baseBackgroundColor = .white.withAlphaComponent(0.5)
                 configuration.baseForegroundColor = Assets.Colors.primary.color
             case .tertiary:
                 configuration = .borderless()
@@ -143,7 +144,7 @@ extension ButtonLabel {
     private func setupView(text: String, style: Style, size: Size, image: Image, tapped: (() -> Void)?) {
         heightConstraint = heightAnchor.constraint(equalToConstant: .zero)
         heightConstraint.isActive = true
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
         config.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
         config.imagePadding = 5
         config.cornerStyle = .large

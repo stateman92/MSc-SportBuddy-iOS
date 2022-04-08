@@ -51,18 +51,16 @@ extension OnboardingOverlay {
         translatesAutoresizingMaskIntoConstraints = true
 
         addSubview(pageControl)
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        pageControl.setHeight(16)
+        pageControl.anchorToSuperview(leading: .zero, trailing: .zero)
         pageControl.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
-        pageControl.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        pageControl.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 
         addSubview(continueButton)
+        continueButton.anchorToCenterX()
         continueButton.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -16).isActive = true
-        continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
         addSubview(skipButton)
-        skipButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        skipButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+        skipButton.anchorToTrailing(constant: -32)
+        skipButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
     }
 }

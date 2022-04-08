@@ -7,6 +7,7 @@ import UIKit
 @testable import SportBuddy
 
 class NavigatorMock: Navigator {
+    var viewControllers: [UIViewController] = []
 
     //MARK: - present
 

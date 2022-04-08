@@ -17,8 +17,8 @@ open class AdminAPI {
      - parameter chatEntryDTOId: (query)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func chatDelete(chatEntryDTOId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        chatDeleteWithRequestBuilder(chatEntryDTOId: chatEntryDTOId).execute { (response, error) -> Void in
+    open class func chatEntriesDelete(chatEntryDTOId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        chatEntriesDeleteWithRequestBuilder(chatEntryDTOId: chatEntryDTOId).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -30,7 +30,7 @@ open class AdminAPI {
 
     /**
      Chatting
-     - DELETE /chat
+     - DELETE /chatEntries
      - Delete a chat message
      - API Key:
        - type: apiKey Authorization 
@@ -40,8 +40,8 @@ open class AdminAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func chatDeleteWithRequestBuilder(chatEntryDTOId: UUID) -> RequestBuilder<Void> {
-        let path = "/chat"
+    open class func chatEntriesDeleteWithRequestBuilder(chatEntryDTOId: UUID) -> RequestBuilder<Void> {
+        let path = "/chatEntries"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -58,11 +58,10 @@ open class AdminAPI {
     /**
      Chatting
      
-     - parameter chatId: (query)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func chatGet(chatId: UUID, completion: @escaping ((_ data: [ChatDTO]?,_ error: Error?) -> Void)) {
-        chatGetWithRequestBuilder(chatId: chatId).execute { (response, error) -> Void in
+    open class func chatEntriesGet(completion: @escaping ((_ data: [ChatDTO]?,_ error: Error?) -> Void)) {
+        chatEntriesGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -70,26 +69,21 @@ open class AdminAPI {
 
     /**
      Chatting
-     - GET /chat
+     - GET /chatEntries
      - Get a chat's messages
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
      - examples: [{contentType=application/json, example={}}]
-     
-     - parameter chatId: (query)  
 
      - returns: RequestBuilder<[ChatDTO]> 
      */
-    open class func chatGetWithRequestBuilder(chatId: UUID) -> RequestBuilder<[ChatDTO]> {
-        let path = "/chat"
+    open class func chatEntriesGetWithRequestBuilder() -> RequestBuilder<[ChatDTO]> {
+        let path = "/chatEntries"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "chatId": chatId
-        ])
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[ChatDTO]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
@@ -99,12 +93,11 @@ open class AdminAPI {
     /**
      Chatting
      
-     - parameter chatId: (query)  
-     - parameter message: (query)  
+     - parameter chatEntryDTOId: (query)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func chatPost(chatId: UUID, message: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        chatPostWithRequestBuilder(chatId: chatId, message: message).execute { (response, error) -> Void in
+    open class func chatEntriesPatch(chatEntryDTOId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        chatEntriesPatchWithRequestBuilder(chatEntryDTOId: chatEntryDTOId).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -116,7 +109,52 @@ open class AdminAPI {
 
     /**
      Chatting
-     - POST /chat
+     - PATCH /chatEntries
+     - Undo message deletion
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     
+     - parameter chatEntryDTOId: (query)  
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func chatEntriesPatchWithRequestBuilder(chatEntryDTOId: UUID) -> RequestBuilder<Void> {
+        let path = "/chatEntries"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ChatEntryDTOId": chatEntryDTOId
+        ])
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Chatting
+     
+     - parameter chatId: (query)  
+     - parameter message: (query)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func chatEntriesPost(chatId: UUID, message: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        chatEntriesPostWithRequestBuilder(chatId: chatId, message: message).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Chatting
+     - POST /chatEntries
      - Send a chat message
      - API Key:
        - type: apiKey Authorization 
@@ -127,8 +165,8 @@ open class AdminAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func chatPostWithRequestBuilder(chatId: UUID, message: String) -> RequestBuilder<Void> {
-        let path = "/chat"
+    open class func chatEntriesPostWithRequestBuilder(chatId: UUID, message: String) -> RequestBuilder<Void> {
+        let path = "/chatEntries"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -150,8 +188,8 @@ open class AdminAPI {
      - parameter modifiedMessage: (query)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func chatPut(chatEntryDTOId: UUID, modifiedMessage: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        chatPutWithRequestBuilder(chatEntryDTOId: chatEntryDTOId, modifiedMessage: modifiedMessage).execute { (response, error) -> Void in
+    open class func chatEntriesPut(chatEntryDTOId: UUID, modifiedMessage: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        chatEntriesPutWithRequestBuilder(chatEntryDTOId: chatEntryDTOId, modifiedMessage: modifiedMessage).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -163,7 +201,7 @@ open class AdminAPI {
 
     /**
      Chatting
-     - PUT /chat
+     - PUT /chatEntries
      - Modify a chat message
      - API Key:
        - type: apiKey Authorization 
@@ -174,8 +212,8 @@ open class AdminAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func chatPutWithRequestBuilder(chatEntryDTOId: UUID, modifiedMessage: UUID) -> RequestBuilder<Void> {
-        let path = "/chat"
+    open class func chatEntriesPutWithRequestBuilder(chatEntryDTOId: UUID, modifiedMessage: String) -> RequestBuilder<Void> {
+        let path = "/chatEntries"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -188,6 +226,55 @@ open class AdminAPI {
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Chatting
+     
+     - parameter chatId: (query)  
+     - parameter image: (body)  (optional)
+     - parameter users: (query)  (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func chatPut(chatId: UUID, image: String? = nil, users: [UUID]? = nil, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        chatPutWithRequestBuilder(chatId: chatId, image: image, users: users).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Chatting
+     - PUT /chat
+     - Update a chat
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     
+     - parameter chatId: (query)  
+     - parameter image: (body)  (optional)
+     - parameter users: (query)  (optional)
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func chatPutWithRequestBuilder(chatId: UUID, image: String? = nil, users: [UUID]? = nil) -> RequestBuilder<Void> {
+        let path = "/chat"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: image)
+
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "chatId": chatId, 
+            "users": users
+        ])
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
@@ -313,12 +400,11 @@ open class AdminAPI {
     /**
      Handle exercises
      
-     - parameter exerciseId: (query)  
      - parameter exercise: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func exercisePut(exerciseId: UUID, exercise: ExerciseDTO, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        exercisePutWithRequestBuilder(exerciseId: exerciseId, exercise: exercise).execute { (response, error) -> Void in
+    open class func exercisePut(exercise: ExerciseDTO, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        exercisePutWithRequestBuilder(exercise: exercise).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -336,20 +422,16 @@ open class AdminAPI {
        - type: apiKey Authorization 
        - name: Bearer
      
-     - parameter exerciseId: (query)  
      - parameter exercise: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func exercisePutWithRequestBuilder(exerciseId: UUID, exercise: ExerciseDTO) -> RequestBuilder<Void> {
+    open class func exercisePutWithRequestBuilder(exercise: ExerciseDTO) -> RequestBuilder<Void> {
         let path = "/exercise"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: exercise)
 
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "exerciseId": exerciseId
-        ])
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
@@ -403,8 +485,8 @@ open class AdminAPI {
      - parameter groupEntryDTOId: (query)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func groupDelete(groupEntryDTOId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        groupDeleteWithRequestBuilder(groupEntryDTOId: groupEntryDTOId).execute { (response, error) -> Void in
+    open class func groupEntriesDelete(groupEntryDTOId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        groupEntriesDeleteWithRequestBuilder(groupEntryDTOId: groupEntryDTOId).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -416,7 +498,7 @@ open class AdminAPI {
 
     /**
      Group messaging
-     - DELETE /group
+     - DELETE /groupEntries
      - Delete a group message
      - API Key:
        - type: apiKey Authorization 
@@ -426,8 +508,8 @@ open class AdminAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func groupDeleteWithRequestBuilder(groupEntryDTOId: UUID) -> RequestBuilder<Void> {
-        let path = "/group"
+    open class func groupEntriesDeleteWithRequestBuilder(groupEntryDTOId: UUID) -> RequestBuilder<Void> {
+        let path = "/groupEntries"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -444,11 +526,10 @@ open class AdminAPI {
     /**
      Group messaging
      
-     - parameter groupId: (query)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func groupGet(groupId: UUID, completion: @escaping ((_ data: [GroupDTO]?,_ error: Error?) -> Void)) {
-        groupGetWithRequestBuilder(groupId: groupId).execute { (response, error) -> Void in
+    open class func groupEntriesGet(completion: @escaping ((_ data: [GroupDTO]?,_ error: Error?) -> Void)) {
+        groupEntriesGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -456,26 +537,21 @@ open class AdminAPI {
 
     /**
      Group messaging
-     - GET /group
+     - GET /groupEntries
      - Get a group's messages
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
      - examples: [{contentType=application/json, example={}}]
-     
-     - parameter groupId: (query)  
 
      - returns: RequestBuilder<[GroupDTO]> 
      */
-    open class func groupGetWithRequestBuilder(groupId: UUID) -> RequestBuilder<[GroupDTO]> {
-        let path = "/group"
+    open class func groupEntriesGetWithRequestBuilder() -> RequestBuilder<[GroupDTO]> {
+        let path = "/groupEntries"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "groupId": groupId
-        ])
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[GroupDTO]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
@@ -483,13 +559,151 @@ open class AdminAPI {
     }
 
     /**
-     Group messaging managing
+     Group messaging
      
      - parameter groupEntryDTOId: (query)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func groupManagingDelete(groupEntryDTOId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        groupManagingDeleteWithRequestBuilder(groupEntryDTOId: groupEntryDTOId).execute { (response, error) -> Void in
+    open class func groupEntriesPatch(groupEntryDTOId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        groupEntriesPatchWithRequestBuilder(groupEntryDTOId: groupEntryDTOId).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Group messaging
+     - PATCH /groupEntries
+     - Undo message deletion
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     
+     - parameter groupEntryDTOId: (query)  
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func groupEntriesPatchWithRequestBuilder(groupEntryDTOId: UUID) -> RequestBuilder<Void> {
+        let path = "/groupEntries"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "GroupEntryDTOId": groupEntryDTOId
+        ])
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Group messaging
+     
+     - parameter groupId: (query)  
+     - parameter message: (query)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func groupEntriesPost(groupId: UUID, message: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        groupEntriesPostWithRequestBuilder(groupId: groupId, message: message).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Group messaging
+     - POST /groupEntries
+     - Post a group message
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     
+     - parameter groupId: (query)  
+     - parameter message: (query)  
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func groupEntriesPostWithRequestBuilder(groupId: UUID, message: String) -> RequestBuilder<Void> {
+        let path = "/groupEntries"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "groupId": groupId, 
+            "message": message
+        ])
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Group messaging
+     
+     - parameter groupEntryDTOId: (query)  
+     - parameter modifiedMessage: (query)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func groupEntriesPut(groupEntryDTOId: UUID, modifiedMessage: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        groupEntriesPutWithRequestBuilder(groupEntryDTOId: groupEntryDTOId, modifiedMessage: modifiedMessage).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Group messaging
+     - PUT /groupEntries
+     - Modify a group message
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     
+     - parameter groupEntryDTOId: (query)  
+     - parameter modifiedMessage: (query)  
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func groupEntriesPutWithRequestBuilder(groupEntryDTOId: UUID, modifiedMessage: String) -> RequestBuilder<Void> {
+        let path = "/groupEntries"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "GroupEntryDTOId": groupEntryDTOId, 
+            "modifiedMessage": modifiedMessage
+        ])
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Group messaging managing
+     
+     - parameter groupId: (query)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func groupManagingDelete(groupId: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        groupManagingDeleteWithRequestBuilder(groupId: groupId).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -507,18 +721,18 @@ open class AdminAPI {
        - type: apiKey Authorization 
        - name: Bearer
      
-     - parameter groupEntryDTOId: (query)  
+     - parameter groupId: (query)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func groupManagingDeleteWithRequestBuilder(groupEntryDTOId: UUID) -> RequestBuilder<Void> {
+    open class func groupManagingDeleteWithRequestBuilder(groupId: UUID) -> RequestBuilder<Void> {
         let path = "/groupManaging"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "GroupEntryDTOId": groupEntryDTOId
+            "groupId": groupId
         ])
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
@@ -531,7 +745,7 @@ open class AdminAPI {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func groupManagingGet(completion: @escaping ((_ data: [SportTypeDTO]?,_ error: Error?) -> Void)) {
+    open class func groupManagingGet(completion: @escaping ((_ data: [GroupDTO]?,_ error: Error?) -> Void)) {
         groupManagingGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -547,16 +761,16 @@ open class AdminAPI {
        - name: Bearer
      - examples: [{contentType=application/json, example={}}]
 
-     - returns: RequestBuilder<[SportTypeDTO]> 
+     - returns: RequestBuilder<[GroupDTO]> 
      */
-    open class func groupManagingGetWithRequestBuilder() -> RequestBuilder<[SportTypeDTO]> {
+    open class func groupManagingGetWithRequestBuilder() -> RequestBuilder<[GroupDTO]> {
         let path = "/groupManaging"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[SportTypeDTO]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[GroupDTO]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -609,58 +823,12 @@ open class AdminAPI {
      Group messaging
      
      - parameter groupId: (query)  
-     - parameter message: (query)  
+     - parameter image: (body)  (optional)
+     - parameter users: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func groupPost(groupId: UUID, message: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        groupPostWithRequestBuilder(groupId: groupId, message: message).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
-        }
-    }
-
-
-    /**
-     Group messaging
-     - POST /group
-     - Post a group message
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     
-     - parameter groupId: (query)  
-     - parameter message: (query)  
-
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupPostWithRequestBuilder(groupId: UUID, message: String) -> RequestBuilder<Void> {
-        let path = "/group"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "groupId": groupId, 
-            "message": message
-        ])
-
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Group messaging
-     
-     - parameter groupEntryDTOId: (query)  
-     - parameter modifiedMessage: (query)  
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func groupPut(groupEntryDTOId: UUID, modifiedMessage: UUID, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        groupPutWithRequestBuilder(groupEntryDTOId: groupEntryDTOId, modifiedMessage: modifiedMessage).execute { (response, error) -> Void in
+    open class func groupPut(groupId: UUID, image: String? = nil, users: [UUID]? = nil, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        groupPutWithRequestBuilder(groupId: groupId, image: image, users: users).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -673,30 +841,31 @@ open class AdminAPI {
     /**
      Group messaging
      - PUT /group
-     - Modify a group message
+     - Update a group
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
      
-     - parameter groupEntryDTOId: (query)  
-     - parameter modifiedMessage: (query)  
+     - parameter groupId: (query)  
+     - parameter image: (body)  (optional)
+     - parameter users: (query)  (optional)
 
      - returns: RequestBuilder<Void> 
      */
-    open class func groupPutWithRequestBuilder(groupEntryDTOId: UUID, modifiedMessage: UUID) -> RequestBuilder<Void> {
+    open class func groupPutWithRequestBuilder(groupId: UUID, image: String? = nil, users: [UUID]? = nil) -> RequestBuilder<Void> {
         let path = "/group"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: image)
+
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "GroupEntryDTOId": groupEntryDTOId, 
-            "modifiedMessage": modifiedMessage
+            "groupId": groupId, 
+            "users": users
         ])
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
@@ -795,6 +964,9 @@ open class AdminAPI {
      Search a user
      - POST /searchUser
      - Search a user
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
      - examples: [{contentType=application/json, example={}}]
      
      - parameter name: (query)  

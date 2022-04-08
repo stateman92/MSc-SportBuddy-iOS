@@ -16,12 +16,14 @@ public struct ChatEntryDTO: Codable {
     /** In epoch seconds */
     public var timestamp: Int
     public var sender: UUID
+    public var deleted: Bool
 
-    public init(primaryId: UUID, message: String, timestamp: Int, sender: UUID) {
+    public init(primaryId: UUID, message: String, timestamp: Int, sender: UUID, deleted: Bool) {
         self.primaryId = primaryId
         self.message = message
         self.timestamp = timestamp
         self.sender = sender
+        self.deleted = deleted
     }
 
 

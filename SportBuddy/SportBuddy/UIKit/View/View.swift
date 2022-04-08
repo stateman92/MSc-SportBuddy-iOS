@@ -21,6 +21,6 @@ class View: UIView {
 
 extension View {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
+        usingAutoLayout()
     }
 }

@@ -14,17 +14,19 @@ public struct UserDTO: Codable {
     public var primaryId: UUID
     public var name: String
     public var email: String
-    public var profileImageUrl: String?
-    public var sports: [SportTypeDTO]
+    public var profileImage: String?
+    public var bio: String?
     public var chats: [UUID]
+    public var groups: [UUID]
 
-    public init(primaryId: UUID, name: String, email: String, profileImageUrl: String?, sports: [SportTypeDTO], chats: [UUID]) {
+    public init(primaryId: UUID, name: String, email: String, profileImage: String?, bio: String?, chats: [UUID], groups: [UUID]) {
         self.primaryId = primaryId
         self.name = name
         self.email = email
-        self.profileImageUrl = profileImageUrl
-        self.sports = sports
+        self.profileImage = profileImage
+        self.bio = bio
         self.chats = chats
+        self.groups = groups
     }
 
 

@@ -21,8 +21,7 @@ final class VisualEffectView: UIVisualEffectView {
 
 extension VisualEffectView {
     private func setupView() {
-        translatesAutoresizingMaskIntoConstraints = false
-        effect = UIBlurEffect(style: .dark)
+        usingAutoLayout()
     }
 }
 

@@ -30,21 +30,17 @@ extension OnboardingPage: OnboardPage { }
 extension OnboardingPage {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = true
-        addSubview(imageView)
 
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
-        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 128).isActive = true
+        addSubview(imageView)
+        imageView.anchorToSuperview(top: 144, leading: 32, trailing: -32)
         imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
 
         addSubview(title)
-        title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
-        title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+        title.anchorToSuperview(leading: 32, trailing: -32)
         title.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -32).isActive = true
 
         addSubview(subTitle)
-        subTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
-        subTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+        subTitle.anchorToSuperview(leading: 32, trailing: -32)
         subTitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 48).isActive = true
     }
 }

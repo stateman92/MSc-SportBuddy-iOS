@@ -14,11 +14,13 @@ public struct ChatDTO: Codable {
     public var primaryId: UUID
     public var users: [UUID]
     public var chatEntries: [ChatEntryDTO]
+    public var image: String
 
-    public init(primaryId: UUID, users: [UUID], chatEntries: [ChatEntryDTO]) {
+    public init(primaryId: UUID, users: [UUID], chatEntries: [ChatEntryDTO], image: String) {
         self.primaryId = primaryId
         self.users = users
         self.chatEntries = chatEntries
+        self.image = image
     }
 
 
