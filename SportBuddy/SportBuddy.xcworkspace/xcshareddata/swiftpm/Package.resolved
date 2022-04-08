@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "Defaults",
-        "repositoryURL": "https://github.com/sindresorhus/Defaults",
-        "state": {
-          "branch": null,
-          "revision": "119f654d44f7b90f00dc11f7dd1c94a36f12576b",
-          "version": "6.2.1"
-        }
-      },
-      {
         "package": "GoogleSignIn",
         "repositoryURL": "https://github.com/google/GoogleSignIn-iOS",
         "state": {

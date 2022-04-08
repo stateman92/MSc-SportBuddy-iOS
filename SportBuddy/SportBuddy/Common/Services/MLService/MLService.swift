@@ -1,17 +1,17 @@
 //
-//  DefaultMLService.swift
-//  GoogleMLKitPoseDetection
+//  MLService.swift
+//  SportBuddy
 //
 //  Created by Kristof Kalai on 2022. 04. 06..
 //
 
 import MLKit
 
-struct DefaultMLService {
+struct MLService: AutoMockable {
     private let poseDetector: PoseDetector
 }
 
-extension DefaultMLService: MLServiceProtocol {
+extension MLService: MLServiceProtocol {
     /// Create a service.
     /// - Parameters:
     ///   - from: the mode of the detector service.

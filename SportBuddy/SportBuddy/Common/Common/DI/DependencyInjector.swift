@@ -32,11 +32,27 @@ extension DependencyInjector {
 
 extension DependencyInjector {
     private static func registerServices() {
-        resolver.register { LoadingService() }.implements(LoadingServiceProtocol.self).scope(.application)
-        resolver.register { NetworkService() }.implements(NetworkServiceProtocol.self)
         resolver
-            .register { UINavigationController(rootViewController: resolve() as OnboardingScreen) }
-            .implements(Navigator.self)
+            .register { LoadingService() }
+            .implements(LoadingServiceProtocol.self)
+            .scope(.application)
+
+        resolver
+            .register { MLService() }
+            .implements(MLServiceProtocol.self)
+            .scope(.application)
+
+        resolver
+            .register { NavigatorService(rootViewController: resolve() as OnboardingScreen) }
+            .implements(NavigatorServiceProtocol.self)
             .scope(.shared)
+
+        resolver
+            .register { NetworkService() }
+            .implements(NetworkServiceProtocol.self)
+
+        resolver
+            .register { SettingsService() }
+            .implements(SettingsServiceProtocol.self)
     }
 }

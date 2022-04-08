@@ -1,12 +1,13 @@
 //
 //  MLServiceProtocol.swift
-//  GoogleMLKitPoseDetection
+//  SportBuddy
 //
 //  Created by Kristof Kalai on 2022. 04. 06..
 //
 
 import CoreGraphics
 
+/// A protocol for managing the body recognition.
 protocol MLServiceProtocol: AutoMockable {
     /// Create a service.
     /// - Parameters:

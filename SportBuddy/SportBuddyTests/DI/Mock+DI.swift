@@ -16,7 +16,24 @@ extension DependencyInjector {
 
 extension DependencyInjector {
     private static func registerServicesForTests() {
-        resolver.register { LoadingServiceProtocolMock() }.implements(LoadingServiceProtocol.self).scope(.unique)
-        resolver.register { NavigatorMock() }.implements(Navigator.self).scope(.unique)
+        resolver
+            .register { LoadingServiceProtocolMock() }
+            .implements(LoadingServiceProtocol.self)
+            .scope(.unique)
+
+        resolver
+            .register { MLServiceProtocolMock() }
+            .implements(MLServiceProtocol.self)
+            .scope(.unique)
+
+        resolver
+            .register { NavigatorServiceProtocolMock(rootViewController: .init()) }
+            .implements(NavigatorServiceProtocol.self)
+            .scope(.unique)
+
+        resolver
+            .register { NetworkServiceProtocolMock() }
+            .implements(NetworkServiceProtocol.self)
+            .scope(.unique)
     }
 }

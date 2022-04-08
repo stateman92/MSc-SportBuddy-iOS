@@ -33,13 +33,11 @@ final class AnimatedKeyboardObserver {
                     return
                 }
 
-                UIView.animate(duration: duration, timingFunction: .init(from: curve)) {
-                    beforeShowKeyboard.send((beginFrame, endFrame))
-                } animations: {
-                    showingKeyboard.send((beginFrame, endFrame))
-                } completion: { _ in
-                    afterShowingKeyboard.send((beginFrame, endFrame))
-                }
+                UIView.animate(duration: duration,
+                               timingFunction: .init(from: curve),
+                               before: { beforeShowKeyboard.send((beginFrame, endFrame)) },
+                               animations: { [self] in showingKeyboard.send((beginFrame, endFrame)) },
+                               completion: { [self] _ in afterShowingKeyboard.send((beginFrame, endFrame)) })
             }
             .store(in: &cancellables)
 
@@ -52,13 +50,11 @@ final class AnimatedKeyboardObserver {
                     return
                 }
 
-                UIView.animate(duration: duration, timingFunction: .init(from: curve)) {
-                    beforeHideKeyboard.send((beginFrame, endFrame))
-                } animations: {
-                    hidingKeyboard.send((beginFrame, endFrame))
-                } completion: { _ in
-                    afterHidingKeyboard.send((beginFrame, endFrame))
-                }
+                UIView.animate(duration: duration,
+                               timingFunction: .init(from: curve),
+                               before: { beforeHideKeyboard.send((beginFrame, endFrame)) },
+                               animations: { [self] in hidingKeyboard.send((beginFrame, endFrame)) },
+                               completion: { [self] _ in afterHidingKeyboard.send((beginFrame, endFrame)) })
             }
             .store(in: &cancellables)
     }

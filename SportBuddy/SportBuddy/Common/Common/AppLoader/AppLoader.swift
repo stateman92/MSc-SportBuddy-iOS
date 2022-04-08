@@ -10,7 +10,7 @@ import IQKeyboardManagerSwift
 
 struct AppLoader {
     static var signInConfig: GIDConfiguration {
-        let id = "748558315095-al2qh257aee11chn5anbf73qqve43ah4.apps.googleusercontent.com"
+        let id = ""
         return GIDConfiguration(clientID: id)
     }
 
@@ -33,12 +33,10 @@ extension AppLoader {
     }
 
     static func setupUI(windowScene: UIWindowScene) -> UIWindow {
-        let navigationController: UINavigationController = DependencyInjector.resolve()
-        navigationController.then {
-            $0.isNavigationBarHidden = true
-        }
+        let navigatorService: NavigatorServiceProtocol = DependencyInjector.resolve()
+        navigatorService.isNavigationBarHidden = true
         return UIWindow(windowScene: windowScene).then {
-            $0.rootViewController = navigationController
+            navigatorService.becameRoot(in: $0)
             $0.makeKeyAndVisible()
         }
     }

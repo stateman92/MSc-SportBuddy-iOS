@@ -9,6 +9,6 @@ final class OnboardingViewModel: BaseViewModel { }
 
 extension OnboardingViewModel {
     func navigateNext() {
-        navigator.viewControllers = [DependencyInjector.resolve() as LoginScreen]
+        navigatorService.viewControllers = [DependencyInjector.resolve() as LoginScreen]
     }
 }

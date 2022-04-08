@@ -19,8 +19,8 @@ extension Notification {
     }
 
     /// Whether the keyboard belongs to the current app.
-    var keyboardBelongsToCurrentApp: Bool? {
-        (userInfo?[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber)?.boolValue
+    var keyboardBelongsToCurrentApp: Bool {
+        (userInfo?[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber)?.boolValue ?? false
     }
 
     /// The time interval of the keyboard animation (in seconds).

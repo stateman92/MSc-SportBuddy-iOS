@@ -6,8 +6,41 @@ import Combine
 import UIKit
 @testable import SportBuddy
 
-class NavigatorMock: Navigator {
+class NavigatorServiceProtocolMock: NavigatorServiceProtocol {
+    var isNavigationBarHidden: Bool {
+        get { return underlyingIsNavigationBarHidden }
+        set(value) { underlyingIsNavigationBarHidden = value }
+    }
+    var underlyingIsNavigationBarHidden: Bool!
     var viewControllers: [UIViewController] = []
+
+    //MARK: - init
+
+    var initRootViewControllerReceivedRootViewController: UIViewController?
+    var initRootViewControllerReceivedInvocations: [UIViewController] = []
+    var initRootViewControllerClosure: ((UIViewController) -> Void)?
+
+    required init(rootViewController: UIViewController) {
+        initRootViewControllerReceivedRootViewController = rootViewController
+        initRootViewControllerReceivedInvocations.append(rootViewController)
+        initRootViewControllerClosure?(rootViewController)
+    }
+    //MARK: - becameRoot
+
+    var becameRootInCallsCount = 0
+    var becameRootInCalled: Bool {
+        return becameRootInCallsCount > 0
+    }
+    var becameRootInReceivedWindow: UIWindow?
+    var becameRootInReceivedInvocations: [UIWindow] = []
+    var becameRootInClosure: ((UIWindow) -> Void)?
+
+    func becameRoot(in window: UIWindow) {
+        becameRootInCallsCount += 1
+        becameRootInReceivedWindow = window
+        becameRootInReceivedInvocations.append(window)
+        becameRootInClosure?(window)
+    }
 
     //MARK: - present
 

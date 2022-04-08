@@ -13,8 +13,8 @@ extension LoginViewModel {
     func login(email: String, password: String) {
         networkService.login(email: email, password: password) { [weak self] result in
             switch result {
-            case let .success(userResponse):
-                self?.navigator.viewControllers = [UIViewController()]
+            case .success:
+                self?.navigatorService.viewControllers = [UIViewController()]
             case let .failure(error):
                 dump(error)
             }
@@ -24,8 +24,8 @@ extension LoginViewModel {
     func signUp(name: String, email: String, password: String) {
         networkService.signUp(name: name, email: email, password: password) { [weak self] result in
             switch result {
-            case let .success(userResponse):
-                self?.navigator.viewControllers = [UIViewController()]
+            case .success:
+                self?.navigatorService.viewControllers = [UIViewController()]
             case let .failure(error):
                 dump(error)
             }
@@ -35,8 +35,8 @@ extension LoginViewModel {
     func forgotPassword(email: String) {
         networkService.forgotPassword(email: email) { [weak self] result in
             switch result {
-            case let .success(userResponse):
-                self?.navigator.viewControllers = [UIViewController()]
+            case .success:
+                self?.navigatorService.viewControllers = [UIViewController()]
             case let .failure(error):
                 dump(error)
             }

@@ -233,17 +233,14 @@ extension UIView {
                 UIView.animate(withDuration: duration,
                                usingSpringWithDamping: spring.damping,
                                initialSpringVelocity: spring.velocity,
-                               options: options) {
-                    animations()
-                } completion: { finished in
-                    completion(finished)
-                }
+                               options: options,
+                               animations: { animations() },
+                               completion: { completion($0) })
             } else {
-                UIView.animate(withDuration: duration, options: options) {
-                    animations()
-                } completion: { finished in
-                    completion(finished)
-                }
+                UIView.animate(withDuration: duration,
+                               options: options,
+                               animations: { animations() },
+                               completion: { completion($0) })
             }
         } else {
             animations()

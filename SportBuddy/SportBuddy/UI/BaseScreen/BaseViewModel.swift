@@ -12,5 +12,5 @@ class BaseViewModel {
 
     @LazyInjected var loadingService: LoadingServiceProtocol
     @LazyInjected var networkService: NetworkServiceProtocol
-    @LazyInjected var navigator: Navigator
+    @LazyInjected var navigatorService: NavigatorServiceProtocol
 }
