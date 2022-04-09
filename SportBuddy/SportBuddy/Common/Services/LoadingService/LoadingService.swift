@@ -9,7 +9,14 @@ import Combine
 
 /// Service for showing loading indicator during network calls.
 final class LoadingService {
-    private let isShowing = CurrentValueSubject<Bool, Never>(false)
+    private let isShowing: CurrentValueSubject<Bool, Never>
+    private let triggerSameValue: Bool
+    private var cancellables = Set<AnyCancellable>()
+
+    init(isShowing: Bool, triggerSameValue: Bool) {
+        self.isShowing = .init(isShowing)
+        self.triggerSameValue = triggerSameValue
+    }
 }
 
 extension LoadingService: LoadingServiceProtocol {
@@ -21,8 +28,9 @@ extension LoadingService: LoadingServiceProtocol {
     /// Set the loading state of the application.
     /// - Parameter showing: whether the loading should be shown.
     func setState(isShowing showing: Bool) {
-        guard isShowing.value != showing else { return }
-        isShowing.send(showing)
+        if isShowing.value != showing || (isShowing.value == showing && triggerSameValue) {
+            isShowing.send(showing)
+        }
     }
 
     /// Set the loading state to true, do some work in the closure, and then call the parameter in the closure.
@@ -34,5 +42,11 @@ extension LoadingService: LoadingServiceProtocol {
         closure { [weak self] in
             self?.setState(isShowing: false)
         }
+    }
+
+    func bind(to service: LoadingOverlayServiceProtocol) {
+        state
+            .sink { service.set(isShowing: $0) }
+            .store(in: &cancellables)
     }
 }

@@ -13,6 +13,17 @@ class LoadingServiceProtocolMock: LoadingServiceProtocol {
     }
     var underlyingState: AnyPublisher<Bool, Never>!
 
+    //MARK: - init
+
+    var initIsShowingTriggerSameValueReceivedArguments: (isShowing: Bool, triggerSameValue: Bool)?
+    var initIsShowingTriggerSameValueReceivedInvocations: [(isShowing: Bool, triggerSameValue: Bool)] = []
+    var initIsShowingTriggerSameValueClosure: ((Bool, Bool) -> Void)?
+
+    required init(isShowing: Bool, triggerSameValue: Bool) {
+        initIsShowingTriggerSameValueReceivedArguments = (isShowing: isShowing, triggerSameValue: triggerSameValue)
+        initIsShowingTriggerSameValueReceivedInvocations.append((isShowing: isShowing, triggerSameValue: triggerSameValue))
+        initIsShowingTriggerSameValueClosure?(isShowing, triggerSameValue)
+    }
     //MARK: - setState
 
     var setStateIsShowingCallsCount = 0
@@ -45,6 +56,23 @@ class LoadingServiceProtocolMock: LoadingServiceProtocol {
         loadingDuringReceivedClosure = closure
         loadingDuringReceivedInvocations.append(closure)
         loadingDuringClosure?(closure)
+    }
+
+    //MARK: - bind
+
+    var bindToCallsCount = 0
+    var bindToCalled: Bool {
+        return bindToCallsCount > 0
+    }
+    var bindToReceivedService: LoadingOverlayServiceProtocol?
+    var bindToReceivedInvocations: [LoadingOverlayServiceProtocol] = []
+    var bindToClosure: ((LoadingOverlayServiceProtocol) -> Void)?
+
+    func bind(to service: LoadingOverlayServiceProtocol) {
+        bindToCallsCount += 1
+        bindToReceivedService = service
+        bindToReceivedInvocations.append(service)
+        bindToClosure?(service)
     }
 
 }

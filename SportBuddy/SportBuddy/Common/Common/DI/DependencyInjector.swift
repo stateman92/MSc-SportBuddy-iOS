@@ -33,6 +33,11 @@ extension DependencyInjector {
 extension DependencyInjector {
     private static func registerServices() {
         resolver
+            .register { LoadingOverlayService() }
+            .implements(LoadingOverlayServiceProtocol.self)
+            .scope(.application)
+
+        resolver
             .register { LoadingService() }
             .implements(LoadingServiceProtocol.self)
             .scope(.application)
@@ -45,14 +50,16 @@ extension DependencyInjector {
         resolver
             .register { NavigatorService(rootViewController: resolve() as OnboardingScreen) }
             .implements(NavigatorServiceProtocol.self)
-            .scope(.shared)
+            .scope(.application)
 
         resolver
             .register { NetworkService() }
             .implements(NetworkServiceProtocol.self)
+            .scope(.application)
 
         resolver
             .register { SettingsService() }
             .implements(SettingsServiceProtocol.self)
+            .scope(.application)
     }
 }

@@ -12,6 +12,7 @@ class BaseScreen<ViewModel: BaseViewModel>: UIViewController {
     // MARK: Properties
 
     @LazyInjected private var loadingService: LoadingServiceProtocol
+    @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
     @LazyInjected var viewModel: ViewModel
     var cancellables = Set<AnyCancellable>()
 
@@ -20,9 +21,7 @@ class BaseScreen<ViewModel: BaseViewModel>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Color.background.color
-        loadingService.state
-            .sink { LoadingOverlay.shared.set(isShowing: $0) }
-            .store(in: &cancellables)
+        loadingService.bind(to: loadingOverlayService)
         hideKeyboardWhenTappedOutside()
     }
 }

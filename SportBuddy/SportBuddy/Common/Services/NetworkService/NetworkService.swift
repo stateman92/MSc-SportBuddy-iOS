@@ -10,6 +10,8 @@ import Combine
 /// Service for showing loading indicator during network calls.
 final class NetworkService {
     @LazyInjected private var loadingService: LoadingServiceProtocol
+
+    init() { }
 }
 
 extension NetworkService: NetworkServiceProtocol {

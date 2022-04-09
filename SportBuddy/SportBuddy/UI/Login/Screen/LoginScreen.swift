@@ -96,6 +96,9 @@ extension LoginScreen {
     private func setupInput() {
         input.then {
             cardView.add(view: $0, padding: 15)
+            $0.login = { [weak self] in
+                self?.viewModel.login(email: $0, password: $1)
+            }
         }
     }
 

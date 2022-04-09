@@ -9,8 +9,11 @@ import Foundation
 
 final class SettingsService {
     /// The common `UserDefaults`.
-    private let defaults = UserDefaults()
-    init() { }
+    private let defaults: UserDefaults
+
+    init() {
+        defaults = .standard
+    }
 }
 
 extension SettingsService: SettingsServiceProtocol {

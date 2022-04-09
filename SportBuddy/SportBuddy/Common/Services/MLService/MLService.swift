@@ -7,18 +7,18 @@
 
 import MLKit
 
-struct MLService: AutoMockable {
+final class MLService: AutoMockable {
     private let poseDetector: PoseDetector
-}
 
-extension MLService: MLServiceProtocol {
     /// Create a service.
     /// - Parameters:
     ///   - from: the mode of the detector service.
     init(from poseDetectorMode: MLPoseDetectorMode) {
         poseDetector = .poseDetector(mode: poseDetectorMode.accuratePoseDetectorOptions)
     }
+}
 
+extension MLService: MLServiceProtocol {
     /// Detect the endpoints.
     /// - Parameters:
     ///   - for: the input type.

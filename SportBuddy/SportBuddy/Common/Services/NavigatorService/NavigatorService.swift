@@ -8,7 +8,7 @@
 import UIKit
 
 final class NavigatorService {
-    private let navigationController: UINavigationController
+    private let navigationController: NavigationController
 
     init(rootViewController: UIViewController) {
         navigationController = .init(rootViewController: rootViewController)
@@ -16,10 +16,6 @@ final class NavigatorService {
 }
 
 extension NavigatorService: NavigatorServiceProtocol {
-    var asNavigationController: UINavigationController {
-        navigationController
-    }
-
     var isNavigationBarHidden: Bool {
         get {
             navigationController.isNavigationBarHidden
@@ -39,7 +35,7 @@ extension NavigatorService: NavigatorServiceProtocol {
     }
 
     func becameRoot(in window: UIWindow) {
-        window.rootViewController = navigationController
+        navigationController.becameRoot(in: window)
     }
 
     func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {

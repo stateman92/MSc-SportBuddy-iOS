@@ -45,7 +45,6 @@
 		5832044927FE2959009A4644 /* PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043827FE2959009A4644 /* PathComponent.swift */; };
 		5832044A27FE2959009A4644 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043927FE2959009A4644 /* InputType.swift */; };
 		5832044B27FE2959009A4644 /* BoneEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043A27FE2959009A4644 /* BoneEndpoint.swift */; };
-		5877507D27FCA31D00D638A0 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877507B27FCA31D00D638A0 /* LoadingOverlay.swift */; };
 		5877507E27FCA31D00D638A0 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */; };
 		5877508627FCA33D00D638A0 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877508027FCA33D00D638A0 /* BaseViewModel.swift */; };
 		5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877508527FCA33D00D638A0 /* BaseScreen.swift */; };
@@ -124,6 +123,10 @@
 		58E0A1752800D922000A81A5 /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1742800D922000A81A5 /* SettingsServiceProtocol.swift */; };
 		58E0A1782800D9B8000A81A5 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1772800D9B8000A81A5 /* Key.swift */; };
 		58E0A17A2800D9CC000A81A5 /* StringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1792800D9CC000A81A5 /* StringKey.swift */; };
+		58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A17E28010A0A000A81A5 /* NavigationController.swift */; };
+		58E0A18228010CA5000A81A5 /* LoadingOverlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18128010CA5000A81A5 /* LoadingOverlayService.swift */; };
+		58E0A18428010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18328010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift */; };
+		58E0A187280110E7000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A186280110E6000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */; };
 		58EBF1E627FBB4E900BA81CB /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1E427FBB4E900BA81CB /* LoadingService.swift */; };
 		58EBF1E727FBB4E900BA81CB /* LoadingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1E527FBB4E900BA81CB /* LoadingServiceProtocol.swift */; };
 		58EBF1EA27FBB4F200BA81CB /* NavigatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1E927FBB4F200BA81CB /* NavigatorServiceProtocol.swift */; };
@@ -212,7 +215,6 @@
 		5832043827FE2959009A4644 /* PathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
 		5832043927FE2959009A4644 /* InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
 		5832043A27FE2959009A4644 /* BoneEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoneEndpoint.swift; sourceTree = "<group>"; };
-		5877507B27FCA31D00D638A0 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		5877508027FCA33D00D638A0 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5877508527FCA33D00D638A0 /* BaseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
@@ -289,6 +291,10 @@
 		58E0A1742800D922000A81A5 /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		58E0A1772800D9B8000A81A5 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		58E0A1792800D9CC000A81A5 /* StringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKey.swift; sourceTree = "<group>"; };
+		58E0A17E28010A0A000A81A5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		58E0A18128010CA5000A81A5 /* LoadingOverlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayService.swift; sourceTree = "<group>"; };
+		58E0A18328010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayServiceProtocol.swift; sourceTree = "<group>"; };
+		58E0A186280110E6000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingOverlayServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58EBF1E427FBB4E900BA81CB /* LoadingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
 		58EBF1E527FBB4E900BA81CB /* LoadingServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingServiceProtocol.swift; sourceTree = "<group>"; };
 		58EBF1E927FBB4F200BA81CB /* NavigatorServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorServiceProtocol.swift; sourceTree = "<group>"; };
@@ -475,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				58EBF1EB27FBB50000BA81CB /* AutoMockable.swift */,
+				58E0A18028010C8C000A81A5 /* LoadingOverlayService */,
 				58EBF1E327FBB4E900BA81CB /* LoadingService */,
 				5832042527FE294B009A4644 /* MLService */,
 				58EBF1E827FBB4F200BA81CB /* NavigatorService */,
@@ -641,15 +648,6 @@
 				580190F727F3826000BB3E3E /* DI */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		5877507A27FCA31D00D638A0 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				5877507B27FCA31D00D638A0 /* LoadingOverlay.swift */,
-				5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		5877507F27FCA33D00D638A0 /* BaseScreen */ = {
@@ -861,10 +859,35 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		58E0A17D280109FF000A81A5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				58E0A17E28010A0A000A81A5 /* NavigationController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		58E0A18028010C8C000A81A5 /* LoadingOverlayService */ = {
+			isa = PBXGroup;
+			children = (
+				58E0A18528010D01000A81A5 /* Components */,
+				58E0A18328010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift */,
+				58E0A18128010CA5000A81A5 /* LoadingOverlayService.swift */,
+			);
+			path = LoadingOverlayService;
+			sourceTree = "<group>";
+		};
+		58E0A18528010D01000A81A5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		58EBF1E327FBB4E900BA81CB /* LoadingService */ = {
 			isa = PBXGroup;
 			children = (
-				5877507A27FCA31D00D638A0 /* Components */,
 				58EBF1E527FBB4E900BA81CB /* LoadingServiceProtocol.swift */,
 				58EBF1E427FBB4E900BA81CB /* LoadingService.swift */,
 			);
@@ -874,6 +897,7 @@
 		58EBF1E827FBB4F200BA81CB /* NavigatorService */ = {
 			isa = PBXGroup;
 			children = (
+				58E0A17D280109FF000A81A5 /* Components */,
 				58EBF1E927FBB4F200BA81CB /* NavigatorServiceProtocol.swift */,
 				58E0A15F2800C3CB000A81A5 /* NavigatorService.swift */,
 			);
@@ -883,6 +907,7 @@
 		58EBF1ED27FBB5F200BA81CB /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				58E0A186280110E6000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */,
 				58E0A16C2800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift */,
 				58E0A16B2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift */,
 				58E0A16A2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift */,
@@ -1391,6 +1416,7 @@
 				580521D327EFB2C900B3A8B1 /* ScrollView.swift in Sources */,
 				588F478B27FE56600062F838 /* MotionTypeDTO.swift in Sources */,
 				588F479227FE56600062F838 /* ExerciseFractionDTO.swift in Sources */,
+				58E0A18228010CA5000A81A5 /* LoadingOverlayService.swift in Sources */,
 				588F478F27FE56600062F838 /* UserDTO.swift in Sources */,
 				588F478D27FE56600062F838 /* ChatEntryDTO.swift in Sources */,
 				589AA53527FF04400002C4D5 /* NotificationCenter+Extensions.swift in Sources */,
@@ -1402,7 +1428,6 @@
 				5832044927FE2959009A4644 /* PathComponent.swift in Sources */,
 				588F479327FE56600062F838 /* Extensions.swift in Sources */,
 				5832044027FE2959009A4644 /* MLImage.swift in Sources */,
-				5877507D27FCA31D00D638A0 /* LoadingOverlay.swift in Sources */,
 				5801910627F38B7F00BB3E3E /* BackgroundView.swift in Sources */,
 				58EBF20927FBB76500BA81CB /* UITableView+Extensions.swift in Sources */,
 				5828B54727F4DF6D0079A727 /* Login+DI.swift in Sources */,
@@ -1465,6 +1490,7 @@
 				58F976E127DE77CE00E74C5F /* Strings.swift in Sources */,
 				588F479427FE56600062F838 /* JSONEncodingHelper.swift in Sources */,
 				5832044B27FE2959009A4644 /* BoneEndpoint.swift in Sources */,
+				58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */,
 				58E0A17A2800D9CC000A81A5 /* StringKey.swift in Sources */,
 				58F976DF27DE77C500E74C5F /* Assets.swift in Sources */,
 				589AA54427FF07120002C4D5 /* BinaryFloatingPoint+Extensions.swift in Sources */,
@@ -1477,6 +1503,7 @@
 				58E0A1732800D918000A81A5 /* SettingsService.swift in Sources */,
 				58E0A1752800D922000A81A5 /* SettingsServiceProtocol.swift in Sources */,
 				588F478227FE56600062F838 /* BackendAPI.swift in Sources */,
+				58E0A18428010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift in Sources */,
 				58EBF1EC27FBB50000BA81CB /* AutoMockable.swift in Sources */,
 				5832043C27FE2959009A4644 /* MLService.swift in Sources */,
 				588F475C27FE4F350062F838 /* NetworkServiceProtocol.swift in Sources */,
@@ -1501,6 +1528,7 @@
 				58EBF20427FBB6B500BA81CB /* LoadingServiceTests.swift in Sources */,
 				58E0A16D2800C6AB000A81A5 /* NetworkServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58E0A1702800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */,
+				58E0A187280110E7000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58EBF1FA27FBB69A00BA81CB /* XCTestCase+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

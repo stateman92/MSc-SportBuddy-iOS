@@ -8,6 +8,13 @@ import UIKit
 
 class NetworkServiceProtocolMock: NetworkServiceProtocol {
 
+    //MARK: - init
+
+    var initClosure: (() -> Void)?
+
+    required init() {
+        initClosure?()
+    }
     //MARK: - login
 
     var loginEmailPasswordCompletionCallsCount = 0

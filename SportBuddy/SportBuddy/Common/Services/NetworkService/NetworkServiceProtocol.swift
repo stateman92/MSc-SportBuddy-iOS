@@ -7,6 +7,7 @@
 
 /// A protocol for managing the network calls.
 protocol NetworkServiceProtocol: AutoMockable {
+    init()
     func login(email: String, password: String, completion: @escaping (Result<UserResponseDTO, Error>) -> Void)
     func signUp(name: String,
                 email: String,
