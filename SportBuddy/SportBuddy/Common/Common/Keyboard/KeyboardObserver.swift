@@ -10,8 +10,7 @@ import UIKit
 
 /// A singleton class to deal with keyboard updates.
 final class KeyboardObserver {
-    /// Singleton.
-    static let shared = KeyboardObserver()
+    // MARK: Properties
 
     let willShowNotification = PassthroughSubject<Notification, Never>()
     let willHideNotification = PassthroughSubject<Notification, Never>()
@@ -24,6 +23,8 @@ final class KeyboardObserver {
     /// The programmer's given subscribers.
     private var functions = [UUID: (notification: Notification) -> Void]()
 
+    /// Singleton.
+    static let shared = KeyboardObserver()
     private init() {
         NotificationCenter.publisher(for: .name(UIResponder.keyboardWillShowNotification))
             .forward(to: willShowNotification, in: &cancellables)
@@ -48,6 +49,8 @@ final class KeyboardObserver {
             .store(in: &cancellables)
     }
 }
+
+// MARK: - Public methods
 
 extension KeyboardObserver {
     /// Add a subscriber.

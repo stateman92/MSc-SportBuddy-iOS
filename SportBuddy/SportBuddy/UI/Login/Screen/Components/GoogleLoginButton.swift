@@ -8,13 +8,19 @@
 import GoogleSignIn
 
 final class GoogleLoginButton: View {
+    // MARK: Properties
+
     private let googleSignInButton = GIDSignInButton()
+
+    // MARK: Initialization
 
     init(viewController: UIViewController, successfulLogin: @escaping (String) -> Void) {
         super.init()
         setupView(viewController: viewController, successfulLogin: successfulLogin)
     }
 }
+
+// MARK: - Private methods
 
 extension GoogleLoginButton {
     private func setupView(viewController: UIViewController, successfulLogin: @escaping (String) -> Void) {

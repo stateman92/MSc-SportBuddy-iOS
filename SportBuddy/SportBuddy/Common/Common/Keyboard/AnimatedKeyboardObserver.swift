@@ -10,10 +10,7 @@ import UIKit
 
 /// A singleton class to deal with keyboard updates.
 final class AnimatedKeyboardObserver {
-    /// Singleton.
-    static let shared = AnimatedKeyboardObserver()
-
-    private let keyboardObserver = KeyboardObserver.shared
+    // MARK: Properties
 
     let beforeShowKeyboard = PassthroughSubject<(CGRect, CGRect), Never>()
     let showingKeyboard = PassthroughSubject<(CGRect, CGRect), Never>()
@@ -21,8 +18,11 @@ final class AnimatedKeyboardObserver {
     let beforeHideKeyboard = PassthroughSubject<(CGRect, CGRect), Never>()
     let hidingKeyboard = PassthroughSubject<(CGRect, CGRect), Never>()
     let afterHidingKeyboard = PassthroughSubject<(CGRect, CGRect), Never>()
+    private let keyboardObserver = KeyboardObserver.shared
     private var cancellables = Set<AnyCancellable>()
 
+    /// Singleton.
+    static let shared = AnimatedKeyboardObserver()
     private init() {
         keyboardObserver.willShowNotification
             .sink { [unowned self] notification in

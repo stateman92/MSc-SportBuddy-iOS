@@ -11,7 +11,6 @@ final class StyledTextField: View {
     // MARK: Properties
 
     let textField = TextField()
-    private let contentView = View()
     let placeholderLabel = Label()
     var placeholder: String {
         get {
@@ -33,6 +32,7 @@ final class StyledTextField: View {
     var text: String {
         textField.text ?? .init()
     }
+    private let contentView = View()
 
     // MARK: Initialization
 
@@ -88,6 +88,8 @@ extension StyledTextField {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension StyledTextField: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -104,6 +106,8 @@ extension StyledTextField: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - Private methods
 
 extension StyledTextField {
     private func showPlaceholder() {

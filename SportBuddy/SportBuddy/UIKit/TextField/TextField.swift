@@ -8,6 +8,8 @@
 import UIKit
 
 class TextField: UITextField {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -19,6 +21,8 @@ class TextField: UITextField {
     }
 }
 
+// MARK: - Overridden methods
+
 extension TextField {
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -29,6 +33,8 @@ extension TextField {
         }
     }
 }
+
+// MARK: - Setups
 
 extension TextField {
     private func setupView() {

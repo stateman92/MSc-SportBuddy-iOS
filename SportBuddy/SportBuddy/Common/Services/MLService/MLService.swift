@@ -8,15 +8,21 @@
 import MLKit
 
 final class MLService: AutoMockable {
+    // MARK: Properties
+
     private let poseDetector: PoseDetector
 
-    /// Create a service.
+    // MARK: Initialization
+
+    /// Initialize the service.
     /// - Parameters:
     ///   - from: the mode of the detector service.
     init(from poseDetectorMode: MLPoseDetectorMode) {
         poseDetector = .poseDetector(mode: poseDetectorMode.accuratePoseDetectorOptions)
     }
 }
+
+// MARK: - MLServiceProtocol
 
 extension MLService: MLServiceProtocol {
     /// Detect the endpoints.
@@ -34,6 +40,8 @@ extension MLService: MLServiceProtocol {
         poseDetector.detect(for: inputType, visionImage: image.visionImage, size: size, destinationRect: rect)
     }
 }
+
+// MARK: - Private extensions
 
 extension Array where Element: Pose {
     /// Get the poses as landmarks.

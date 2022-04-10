@@ -5,10 +5,10 @@
 //  Created by Kristof Kalai on 2022. 03. 30..
 //
 
-import Foundation
 import Resolver
 
 extension DependencyInjector {
+    /// Register all the dependencies of the login module.
     static func registerLoginScreen() {
         resolver.register { LoginScreen() }
         resolver.register { LoginViewModel() }

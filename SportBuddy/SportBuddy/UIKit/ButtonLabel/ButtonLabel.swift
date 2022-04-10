@@ -8,6 +8,8 @@
 import UIKit
 
 final class ButtonLabel: UIButton {
+    // MARK: Nested types
+
     enum Style {
         case primary
         case secondary
@@ -101,6 +103,8 @@ final class ButtonLabel: UIButton {
         }
     }
 
+    // MARK: Properties
+
     private var heightConstraint: NSLayoutConstraint!
     private var config = Configuration.plain()
     private var size: Size
@@ -124,6 +128,8 @@ final class ButtonLabel: UIButton {
         return .init(width: label.intrinsicContentSize.width + config.imagePadding + imageSize.width, height: height)
     }
 
+    // MARK: Initialization
+
     init(text: String = .init(),
          style: Style = .primary,
          size: Size = .normal,
@@ -139,6 +145,8 @@ final class ButtonLabel: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension ButtonLabel {
     private func setupView(text: String, style: Style, size: Size, image: Image, tapped: (() -> Void)?) {
@@ -161,6 +169,8 @@ extension ButtonLabel {
         }
     }
 }
+
+// MARK: - Public methods
 
 extension ButtonLabel {
     @discardableResult func tapped(tapped: @escaping () -> Void) -> UIAction {

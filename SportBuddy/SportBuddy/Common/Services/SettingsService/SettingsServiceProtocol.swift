@@ -8,7 +8,8 @@
 import Foundation
 
 /// A protocol for managing key-value pairs persistently.
-protocol SettingsServiceProtocol {
+protocol SettingsServiceProtocol: Initable {
+    /// Initialize the service.
     init()
 
     /// Save a `Codable` value to the device.
@@ -47,6 +48,8 @@ protocol SettingsServiceProtocol {
     ///   - forKey: the value that is associated with this key will be deleted.
     func delete(forKey key: Key)
 }
+
+// MARK: - Public methods
 
 extension SettingsServiceProtocol {
     /// Encode the given object.

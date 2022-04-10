@@ -9,11 +9,18 @@ import UIKit
 
 /// A protocol for managing the in-app navigation.
 protocol NavigatorServiceProtocol: AnyObject, AutoMockable {
+    /// Initialize the service.
+    /// - Parameter rootViewController: the root view controller.
     init(rootViewController: UIViewController)
 
+    /// Whether the navigation bar is hidden.
     var isNavigationBarHidden: Bool { get set }
+
+    /// The view controllers on the navigation stack.
     var viewControllers: [UIViewController] { get set }
 
+    /// Call to set the navigator as root in the given window.
+    /// - Parameter window: the given window.
     func becameRoot(in window: UIWindow)
 
     /// Presents a view controller modally.

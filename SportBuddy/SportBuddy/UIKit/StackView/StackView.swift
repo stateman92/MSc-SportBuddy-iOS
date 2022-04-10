@@ -8,6 +8,8 @@
 import UIKit
 
 final class StackView: UIStackView {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +20,8 @@ final class StackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension StackView {
     private func setupView() {

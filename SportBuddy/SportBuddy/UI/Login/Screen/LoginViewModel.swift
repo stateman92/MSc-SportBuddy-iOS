@@ -9,6 +9,8 @@ import UIKit
 
 final class LoginViewModel: BaseViewModel { }
 
+// MARK: - Public methods
+
 extension LoginViewModel {
     func login(email: String, password: String) {
         networkService.login(email: email, password: password) { [weak self] result in

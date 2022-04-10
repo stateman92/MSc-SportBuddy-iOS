@@ -8,12 +8,27 @@
 import UIKit
 
 final class IconSegment: SwipingSegment {
+    // MARK: Properties
+
     private let icon: UIImage
     private let iconSize: CGSize
     private let normalBackgroundColor: UIColor
     private let normalIconTintColor: UIColor
     private let selectedBackgroundColor: UIColor
     private let selectedIconTintColor: UIColor
+
+    private(set) lazy var normalView: UIView = {
+        createView(backgroundColor: normalBackgroundColor, iconTintColor: normalIconTintColor)
+    }()
+
+    private(set) lazy var selectedView: UIView = {
+        createView(backgroundColor: selectedBackgroundColor, iconTintColor: selectedIconTintColor)
+    }()
+    var intrinsicContentSize: CGSize? {
+        nil
+    }
+
+    // MARK: Initialization
 
     init(icon: UIImage,
          iconSize: CGSize,
@@ -28,19 +43,9 @@ final class IconSegment: SwipingSegment {
         self.selectedBackgroundColor = selectedBackgroundColor
         self.selectedIconTintColor = selectedIconTintColor
     }
-
-    private(set) lazy var normalView: UIView = {
-        createView(backgroundColor: normalBackgroundColor, iconTintColor: normalIconTintColor)
-    }()
-
-    private(set) lazy var selectedView: UIView = {
-        createView(backgroundColor: selectedBackgroundColor, iconTintColor: selectedIconTintColor)
-    }()
-
-    var intrinsicContentSize: CGSize? {
-        nil
-    }
 }
+
+// MARK: - Private methods
 
 extension IconSegment {
     private func createView(backgroundColor: UIColor, iconTintColor: UIColor) -> UIView {
@@ -58,6 +63,8 @@ extension IconSegment {
         return view
     }
 }
+
+// MARK: - Public methods
 
 extension IconSegment {
     // swiftlint:disable:next function_parameter_count

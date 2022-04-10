@@ -8,9 +8,10 @@
 import UIKit
 
 final class LoginScreen: ScrollingScreen<LoginViewModel> {
+    // MARK: Properties
+
     private let backgroundView = BackgroundView()
     private let segmentedControl = SwipingSegmentedControl()
-
     private let cardView = CardView()
     private let input = InputView()
     private let orView = View()
@@ -19,12 +20,16 @@ final class LoginScreen: ScrollingScreen<LoginViewModel> {
     }
 }
 
+// MARK: - Lifecycle
+
 extension LoginScreen {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 }
+
+// MARK: - Setups
 
 extension LoginScreen {
     private func setupView() {
@@ -37,9 +42,7 @@ extension LoginScreen {
 
         setupInitialAnimation()
     }
-}
 
-extension LoginScreen {
     private func setupBackgroundView() {
         backgroundView.then {
             view.addSubview($0)

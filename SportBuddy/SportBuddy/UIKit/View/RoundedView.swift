@@ -8,8 +8,12 @@
 import UIKit
 
 final class RoundedView: View {
+    // MARK: Properties
+
     var multiplier: CGFloat = 1
 }
+
+// MARK: - Overridden methods
 
 extension RoundedView {
     override var bounds: CGRect {

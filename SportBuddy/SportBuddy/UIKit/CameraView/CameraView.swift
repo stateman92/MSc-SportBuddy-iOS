@@ -8,13 +8,17 @@
 import AVFoundation
 import UIKit
 
-final class CameraView: View { }
+final class CameraView: View {
+    // MARK: Properties
 
-extension CameraView {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         (layer as? AVCaptureVideoPreviewLayer)!
     }
+}
 
+// MARK: - Overridden methods
+
+extension CameraView {
     override class var layerClass: AnyClass {
         AVCaptureVideoPreviewLayer.self
     }

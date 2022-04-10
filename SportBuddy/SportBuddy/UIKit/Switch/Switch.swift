@@ -8,6 +8,8 @@
 import UIKit
 
 final class Switch: UISwitch {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +20,8 @@ final class Switch: UISwitch {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension Switch {
     private func setupView() {

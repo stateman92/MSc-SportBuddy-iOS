@@ -13,7 +13,7 @@ import Foundation
 ///   - key: the key for the association.
 /// - Returns:
 ///     The value associated with the key.
-public func getAssociatedObject<T>(_ object: Any, _ key: UnsafeRawPointer) -> T? {
+func getAssociatedObject<T>(_ object: Any, _ key: UnsafeRawPointer) -> T? {
     objc_getAssociatedObject(object, key) as? T
 }
 
@@ -25,9 +25,9 @@ public func getAssociatedObject<T>(_ object: Any, _ key: UnsafeRawPointer) -> T?
 ///   - policy: the policy for the association. By default `.OBJC_ASSOCIATION_RETAIN`.
 /// - Returns:
 ///     The value associated with the key.
-public func setAssociatedObject<T>(_ object: Any,
-                                   _ key: UnsafeRawPointer,
-                                   _ value: T?,
-                                   _ policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN) {
+func setAssociatedObject<T>(_ object: Any,
+                            _ key: UnsafeRawPointer,
+                            _ value: T?,
+                            _ policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN) {
     objc_setAssociatedObject(object, key, value, policy)
 }

@@ -8,13 +8,19 @@
 import Foundation
 
 final class SettingsService {
-    /// The common `UserDefaults`.
+    // MARK: Properties
+
     private let defaults: UserDefaults
 
+    // MARK: Initialization
+
+    /// Initialize the service.
     init() {
         defaults = .standard
     }
 }
+
+// MARK: - SettingsServiceProtocol
 
 extension SettingsService: SettingsServiceProtocol {
     /// Save a `Codable` value to the device.

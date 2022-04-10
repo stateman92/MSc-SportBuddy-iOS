@@ -8,11 +8,15 @@
 import UIKit
 
 final class CardView: View {
+    // MARK: Initialization
+
     override init() {
         super.init()
         setupView()
     }
 }
+
+// MARK: - Overridden methods
 
 extension CardView {
     override var bounds: CGRect {
@@ -27,11 +31,15 @@ extension CardView {
     }
 }
 
+// MARK: - Setups
+
 extension CardView {
     private func setupView() {
         backgroundColor = .white
     }
 }
+
+// MARK: - Public methods
 
 extension CardView {
     func add(view: UIView, padding: CGFloat) {

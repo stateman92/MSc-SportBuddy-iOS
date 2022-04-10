@@ -8,9 +8,13 @@
 import UIKit
 
 final class OnboardingScreen: BaseScreen<OnboardingViewModel> {
+    // MARK: Properties
+
     let backgroundView = BackgroundView()
     let onboard = Onboard()
 }
+
+// MARK: - Lifecycle
 
 extension OnboardingScreen {
     override func viewDidLoad() {
@@ -19,14 +23,14 @@ extension OnboardingScreen {
     }
 }
 
+// MARK: - Setups
+
 extension OnboardingScreen {
     private func setupView() {
         setupBackgroundView()
         setupOnboard()
     }
-}
 
-extension OnboardingScreen {
     private func setupBackgroundView() {
         backgroundView.then {
             view.addSubview($0)
@@ -43,6 +47,8 @@ extension OnboardingScreen {
         }
     }
 }
+
+// MARK: - OnboardDataSource
 
 extension OnboardingScreen: OnboardDataSource {
     func onboardNumberOfPages(_ onboard: Onboard) -> Int {
@@ -101,6 +107,8 @@ extension OnboardingScreen: OnboardDataSource {
         return page
     }
 }
+
+// MARK: - OnboardDelegate
 
 extension OnboardingScreen: OnboardDelegate {
     func onboard(_ onboard: Onboard, leftEdge position: Double) {

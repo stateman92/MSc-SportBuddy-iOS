@@ -8,7 +8,11 @@
 import Combine
 
 /// A protocol for managing the loading states.
-protocol LoadingServiceProtocol: AutoMockable {
+protocol LoadingServiceProtocol: AutoMockable, Initable {
+    /// Initialize the service.
+    /// - Parameters:
+    ///   - isShowing: whether the loading indicator should be shown or not.
+    ///   - triggerSameValue: whether the service indicates value changes from the same value.
     init(isShowing: Bool, triggerSameValue: Bool)
 
     /// A publisher which emits values when the application's loading state changes.
@@ -24,11 +28,14 @@ protocol LoadingServiceProtocol: AutoMockable {
     /// But it's guaranteed that it will be called synchronously.
     func loading(during closure: @escaping (@escaping () -> Void) -> Void)
 
+    /// Bind the state-handling to the view-handing.
+    /// - Parameter service: the view-handling service to bind the service
     func bind(to service: LoadingOverlayServiceProtocol)
 }
 
 extension LoadingServiceProtocol {
-    init(isShowing: Bool = false, triggerSameValue: Bool = true) {
-        self.init(isShowing: isShowing, triggerSameValue: triggerSameValue)
+    /// Initialize the service. By default `isShowing` is `false` and `triggerSameValue` is `true`.
+    init() {
+        self.init(isShowing: false, triggerSameValue: true)
     }
 }

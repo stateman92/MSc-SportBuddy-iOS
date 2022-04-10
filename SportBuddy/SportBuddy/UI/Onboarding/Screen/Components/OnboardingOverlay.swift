@@ -8,21 +8,28 @@
 import UIKit
 
 final class OnboardingOverlay: View {
+    // MARK: Properties
+
     let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
         pageControl.pageIndicatorTintColor = .lightGray
         return pageControl
     }()
-
     let continueButton: UIButton = ButtonLabel(text: "Continue")
     let skipButton: UIButton = ButtonLabel(text: "Skip", style: .secondary)
+
+    // MARK: - Initialization
 
     override init() {
         super.init()
         setup()
     }
+}
 
+// MARK: - Overridden methods
+
+extension OnboardingOverlay {
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         for subview in subviews {
             if !subview.isHidden,
@@ -36,6 +43,8 @@ final class OnboardingOverlay: View {
     }
 }
 
+// MARK: - OnboardOverlay
+
 extension OnboardingOverlay: OnboardOverlay {
     func page(count: Int) {
         pageControl.numberOfPages = count
@@ -45,6 +54,8 @@ extension OnboardingOverlay: OnboardOverlay {
         pageControl.currentPage = index
     }
 }
+
+// MARK: - Setups
 
 extension OnboardingOverlay {
     private func setup() {

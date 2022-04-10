@@ -8,6 +8,8 @@
 import UIKit
 
 final class SegmentedControl: UISegmentedControl {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +20,8 @@ final class SegmentedControl: UISegmentedControl {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension SegmentedControl {
     private func setupView() {

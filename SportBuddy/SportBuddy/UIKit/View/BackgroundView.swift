@@ -8,10 +8,14 @@
 import UIKit
 
 final class BackgroundView: View {
+    // MARK: Constants
+
     enum Constants {
         fileprivate static let durationMultiplier: CGFloat = 0.5
         fileprivate static let finishingDurationMultiplier: CGFloat = 1
     }
+
+    // MARK: Properties
 
     private let gradientLayer = CAGradientLayer()
     private let firstCircle = RoundedView()
@@ -20,18 +24,26 @@ final class BackgroundView: View {
     private let firstVisualEffect = VisualEffectView()
     private let secondVisualEffect = VisualEffectView()
 
-    override var bounds: CGRect {
-        didSet {
-            gradientLayer.frame = bounds
-            firstCircle.layer.cornerRadius = firstCircle.bounds.height / 2
-        }
-    }
+    // MARK: Initialization
 
     override init() {
         super.init()
         setupView()
     }
 }
+
+// MARK: - Overridden methods
+
+extension BackgroundView {
+    override var bounds: CGRect {
+        didSet {
+            gradientLayer.frame = bounds
+            firstCircle.layer.cornerRadius = firstCircle.bounds.height / 2
+        }
+    }
+}
+
+// MARK: - Public methods
 
 extension BackgroundView {
     func finish(completion: @escaping () -> Void) {
@@ -53,9 +65,12 @@ extension BackgroundView {
     }
 }
 
+// MARK: - Setups
+
 extension BackgroundView {
     private func setupView() {
         backgroundColor = Color.background.color
+
         setupGradientLayer()
         setupFirstCircle()
         setupSecondCircle()
@@ -129,19 +144,11 @@ extension BackgroundView {
     private func setupVisualEffect() {
         addSubview(firstVisualEffect)
         firstVisualEffect.set(style: .regular)
-
-        firstVisualEffect.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        firstVisualEffect.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        firstVisualEffect.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        firstVisualEffect.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        firstVisualEffect.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
 
         addSubview(secondVisualEffect)
         secondVisualEffect.set(style: .light)
-
-        secondVisualEffect.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        secondVisualEffect.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        secondVisualEffect.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        secondVisualEffect.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        secondVisualEffect.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
     }
 
     private func setupAnimation() {

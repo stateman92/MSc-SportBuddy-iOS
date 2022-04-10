@@ -8,9 +8,10 @@
 import UIKit
 
 final class OnboardingPage: View {
+    // MARK: Properties
+
     let title = ButtonLabel(style: .label(textColor: .white))
     let subTitle = ButtonLabel(style: .label(textColor: .black))
-
     let imageView: UIImageView = {
         let imageView = ImageView()
         imageView.contentMode = .scaleAspectFill
@@ -19,13 +20,19 @@ final class OnboardingPage: View {
         return imageView
     }()
 
+    // MARK: Initialization
+
     override init() {
         super.init()
         setup()
     }
 }
 
+// MARK: - OnboardPage
+
 extension OnboardingPage: OnboardPage { }
+
+// MARK: - Setups
 
 extension OnboardingPage {
     private func setup() {

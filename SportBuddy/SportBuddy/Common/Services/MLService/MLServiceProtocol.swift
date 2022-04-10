@@ -8,8 +8,8 @@
 import CoreGraphics
 
 /// A protocol for managing the body recognition.
-protocol MLServiceProtocol: AutoMockable {
-    /// Create a service.
+protocol MLServiceProtocol: AutoMockable, Initable {
+    /// Initialize the service.
     /// - Parameters:
     ///   - from: the mode of the detector service.
     init(from poseDetectorMode: MLPoseDetectorMode)
@@ -26,7 +26,7 @@ protocol MLServiceProtocol: AutoMockable {
 }
 
 extension MLServiceProtocol {
-    /// Create a service with `.singleImage` detector mode.
+    /// Initialize the service with `.singleImage` detector mode.
     init() {
         self.init(from: .singleImage)
     }

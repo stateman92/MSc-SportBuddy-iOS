@@ -8,6 +8,8 @@
 import UIKit
 
 class View: UIView {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +20,8 @@ class View: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension View {
     private func setupView() {

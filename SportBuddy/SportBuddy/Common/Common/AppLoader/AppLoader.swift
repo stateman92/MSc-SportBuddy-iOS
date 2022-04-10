@@ -9,6 +9,8 @@ import GoogleSignIn
 import IQKeyboardManagerSwift
 
 struct AppLoader {
+    // MARK: Properties
+
     static var signInConfig: GIDConfiguration {
         let id = ""
         return GIDConfiguration(clientID: id)
@@ -16,6 +18,8 @@ struct AppLoader {
 
     private init() { }
 }
+
+// MARK: - Public methods
 
 extension AppLoader {
     static func setup() {

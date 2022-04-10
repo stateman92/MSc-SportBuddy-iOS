@@ -11,7 +11,7 @@ extension UIView.AnimationCurve {
     /// Get the timing function as `UIView.AnimationOptions`.
     /// - Note:
     /// If `self` cannot represented with one of the `class` variables, then the returned options will be empty.
-    public var asAnimationOptions: UIView.AnimationOptions {
+    var asAnimationOptions: UIView.AnimationOptions {
         switch self {
         case .easeIn: return .curveEaseIn
         case .easeOut: return .curveEaseOut

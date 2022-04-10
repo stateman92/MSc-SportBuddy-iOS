@@ -8,10 +8,14 @@
 import UIKit
 
 final class InputView: View {
+    // MARK: Nested type
+
     enum State {
         case login
         case signUp
     }
+
+    // MARK: Properties
 
     var state: State = .login {
         didSet {
@@ -30,11 +34,15 @@ final class InputView: View {
     private let loginRegistrationButton = ButtonLabel(text: "Login")
     private let forgotPasswordButton = ButtonLabel(text: "Forgot password?", style: .tertiary)
 
+    // MARK: Initialization
+
     override init() {
         super.init()
         setupView()
     }
 }
+
+// MARK: - Setups
 
 extension InputView {
     private func setupView() {
@@ -45,9 +53,7 @@ extension InputView {
         setupLoginRegistrationButton()
         setupForgotPasswordButton()
     }
-}
 
-extension InputView {
     private func setupInputStackView() {
         inputStackView.then {
             $0.axis = .vertical
@@ -123,6 +129,8 @@ extension InputView {
         }
     }
 }
+
+// MARK: - Private methods
 
 extension InputView {
     private func set(state: State) {

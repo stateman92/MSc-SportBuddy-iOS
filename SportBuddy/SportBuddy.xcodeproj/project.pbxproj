@@ -45,6 +45,7 @@
 		5832044927FE2959009A4644 /* PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043827FE2959009A4644 /* PathComponent.swift */; };
 		5832044A27FE2959009A4644 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043927FE2959009A4644 /* InputType.swift */; };
 		5832044B27FE2959009A4644 /* BoneEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043A27FE2959009A4644 /* BoneEndpoint.swift */; };
+		584BC5FA2802713C004582E9 /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BC5F92802713C004582E9 /* Initable.swift */; };
 		5877507E27FCA31D00D638A0 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */; };
 		5877508627FCA33D00D638A0 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877508027FCA33D00D638A0 /* BaseViewModel.swift */; };
 		5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877508527FCA33D00D638A0 /* BaseScreen.swift */; };
@@ -204,8 +205,6 @@
 		5828B54627F4DF6D0079A727 /* Login+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+DI.swift"; sourceTree = "<group>"; };
 		5828B54827F4DF870079A727 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		5828B54A27F4DFAA0079A727 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		5832042027FE2841009A4644 /* GoogleMLKitPoseDetectionSPM */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GoogleMLKitPoseDetectionSPM; path = ../../../GoogleMLKitPoseDetectionSPM; sourceTree = "<group>"; };
-		5832042127FE2868009A4644 /* GoogleMLKitPoseDetection.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMLKitPoseDetection.xcframework; path = ../../../GoogleMLKitPoseDetectionSPM/Sources/GoogleMLKitPoseDetection.xcframework; sourceTree = "<group>"; };
 		5832042727FE2959009A4644 /* MLServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLServiceProtocol.swift; sourceTree = "<group>"; };
 		5832042827FE2959009A4644 /* MLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLService.swift; sourceTree = "<group>"; };
 		5832042A27FE2959009A4644 /* MLPoseLandmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPoseLandmark.swift; sourceTree = "<group>"; };
@@ -215,6 +214,7 @@
 		5832043827FE2959009A4644 /* PathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
 		5832043927FE2959009A4644 /* InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
 		5832043A27FE2959009A4644 /* BoneEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoneEndpoint.swift; sourceTree = "<group>"; };
+		584BC5F92802713C004582E9 /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		5877508027FCA33D00D638A0 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5877508527FCA33D00D638A0 /* BaseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
@@ -481,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				58EBF1EB27FBB50000BA81CB /* AutoMockable.swift */,
+				584BC5F92802713C004582E9 /* Initable.swift */,
 				58E0A18028010C8C000A81A5 /* LoadingOverlayService */,
 				58EBF1E327FBB4E900BA81CB /* LoadingService */,
 				5832042527FE294B009A4644 /* MLService */,
@@ -1061,8 +1062,6 @@
 		D06E279F5F02AD9E62D48899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5832042127FE2868009A4644 /* GoogleMLKitPoseDetection.xcframework */,
-				5832042027FE2841009A4644 /* GoogleMLKitPoseDetectionSPM */,
 				5877508E27FCAC8E00D638A0 /* AuthenticationServices.framework */,
 				1471EC1610B623B3EA8427E8 /* Pods_SportBuddy.framework */,
 				0565560F900F1A4C246CD108 /* Pods_SportBuddyTests.framework */,
@@ -1452,6 +1451,7 @@
 				58EBF1E727FBB4E900BA81CB /* LoadingServiceProtocol.swift in Sources */,
 				58C1D44627F51963005D13C4 /* SwipingSegmentedControl.swift in Sources */,
 				589AA53E27FF05B90002C4D5 /* AnimationCurve+Extensions.swift in Sources */,
+				584BC5FA2802713C004582E9 /* Initable.swift in Sources */,
 				588F478627FE56600062F838 /* APIs.swift in Sources */,
 				58B2E1D427F3BAA2004135E2 /* OnboardDataSource.swift in Sources */,
 				58E0A1602800C3CB000A81A5 /* NavigatorService.swift in Sources */,

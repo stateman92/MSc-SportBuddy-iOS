@@ -8,6 +8,8 @@
 import UIKit
 
 final class LabelSegment: SwipingSegment {
+    // MARK: Properties
+
     private let text: String
     private let numberOfLines: Int
     private let normalBackgroundColor: UIColor
@@ -16,6 +18,19 @@ final class LabelSegment: SwipingSegment {
     private let selectedFont: UIFont
     private let selectedTextColor: UIColor
     private let selectedBackgroundColor: UIColor
+
+    private(set) lazy var normalView: UIView = {
+        createLabel(backgroundColor: normalBackgroundColor, font: normalFont, textColor: normalTextColor)
+    }()
+
+    private(set) lazy var selectedView: UIView = {
+        createLabel(backgroundColor: selectedBackgroundColor, font: selectedFont, textColor: selectedTextColor)
+    }()
+    var intrinsicContentSize: CGSize? {
+        selectedView.intrinsicContentSize.applying(.init(scaleX: 1.5, y: 1.5))
+    }
+
+    // MARK: Initialization
 
     init(text: String = .init(),
          numberOfLines: Int = 1,
@@ -34,19 +49,9 @@ final class LabelSegment: SwipingSegment {
         self.selectedTextColor = selectedTextColor
         self.selectedBackgroundColor = selectedBackgroundColor
     }
-
-    private(set) lazy var normalView: UIView = {
-        createLabel(backgroundColor: normalBackgroundColor, font: normalFont, textColor: normalTextColor)
-    }()
-
-    private(set) lazy var selectedView: UIView = {
-        createLabel(backgroundColor: selectedBackgroundColor, font: selectedFont, textColor: selectedTextColor)
-    }()
-
-    var intrinsicContentSize: CGSize? {
-        selectedView.intrinsicContentSize.applying(.init(scaleX: 1.5, y: 1.5))
-    }
 }
+
+// MARK: - Private methods
 
 extension LabelSegment {
     private func createLabel(backgroundColor: UIColor, font: UIFont, textColor: UIColor) -> UILabel {
@@ -61,6 +66,8 @@ extension LabelSegment {
         return label
     }
 }
+
+// MARK: - Public methods
 
 extension LabelSegment {
     // swiftlint:disable:next function_parameter_count

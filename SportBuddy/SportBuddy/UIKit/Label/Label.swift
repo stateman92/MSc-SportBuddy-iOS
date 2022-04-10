@@ -8,6 +8,8 @@
 import UIKit
 
 final class Label: UILabel {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +20,8 @@ final class Label: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension Label {
     private func setupView() {

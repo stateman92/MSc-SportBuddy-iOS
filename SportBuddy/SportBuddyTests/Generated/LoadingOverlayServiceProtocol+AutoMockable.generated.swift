@@ -36,4 +36,11 @@ class LoadingOverlayServiceProtocolMock: LoadingOverlayServiceProtocol {
         setIsShowingClosure?(isShowing)
     }
 
+    //MARK: - init
+
+    var initClosure: (() -> Void)?
+
+    required init() {
+        initClosure?()
+    }
 }

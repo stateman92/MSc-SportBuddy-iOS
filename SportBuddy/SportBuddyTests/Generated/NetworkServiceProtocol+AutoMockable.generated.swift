@@ -65,5 +65,4 @@ class NetworkServiceProtocolMock: NetworkServiceProtocol {
         forgotPasswordEmailCompletionReceivedInvocations.append((email: email, completion: completion))
         forgotPasswordEmailCompletionClosure?(email, completion)
     }
-
 }

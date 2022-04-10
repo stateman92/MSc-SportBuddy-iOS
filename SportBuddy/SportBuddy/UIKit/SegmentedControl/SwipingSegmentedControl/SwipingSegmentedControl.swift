@@ -8,6 +8,8 @@
 import UIKit
 
 final class SwipingSegmentedControl: UIControl {
+    // MARK: Nested types
+
     enum Option {
         case indicatorViewBackgroundColor(UIColor)
         case indicatorViewInset(CGFloat)
@@ -44,26 +46,26 @@ final class SwipingSegmentedControl: UIControl {
         }
     }
 
+    // MARK: Constants
+
     private enum Constants {
         static let minimumIntrinsicContentSizeHeight: CGFloat = 32
         static let minimumSegmentIntrinsicContentSizeWidth: CGFloat = 20
     }
 
+    // MARK: Properties
+
     static let noSegment = -1
     private(set) var index = noSegment
-
     var segments: [SwipingSegment] = [] {
         didSet {
             applySegments()
         }
     }
-
     let indicatorView = IndicatorView()
-
     var alwaysAnnouncesValue = false
     var announcesValueImmediately = false
     var panningDisabled = false
-
     var indicatorViewInset: CGFloat = 2 {
         didSet {
             updateCornerRadii()
@@ -71,27 +73,86 @@ final class SwipingSegmentedControl: UIControl {
     }
     var animationDuration: TimeInterval = 0.3
     var animationSpringDamping: CGFloat = 0.75
-
-    private let normalSegmentViewsContainerView = UIView()
-    private let selectedSegmentViewsContainerView = UIView()
-    private let pointerInteractionViewsContainerView = UIView()
-
-    private var initialIndicatorViewFrame: CGRect?
-
-    private var tapGestureRecognizer: UITapGestureRecognizer!
-    private var panGestureRecognizer: UIPanGestureRecognizer!
-
-    private var normalSegmentViews: [UIView] = []
-    private var normalSegmentViewCount: Int { normalSegmentViews.count }
-
-    private var selectedSegmentViews: [UIView] = []
-
     var segmentPadding: CGFloat = 14 {
         didSet {
             invalidateIntrinsicContentSize()
         }
     }
+
+    private let normalSegmentViewsContainerView = UIView()
+    private let selectedSegmentViewsContainerView = UIView()
+    private let pointerInteractionViewsContainerView = UIView()
+    private var initialIndicatorViewFrame: CGRect?
+    private var tapGestureRecognizer: UITapGestureRecognizer!
+    private var panGestureRecognizer: UIPanGestureRecognizer!
+    private var normalSegmentViews: [UIView] = []
+    private var normalSegmentViewCount: Int { normalSegmentViews.count }
+    private var selectedSegmentViews: [UIView] = []
+
+    private var allSegmentViews: [UIView] {
+        normalSegmentViews + selectedSegmentViews
+    }
+    private var safeIndex: Int {
+        index >= .zero ? index : .zero
+    }
+    private var lastIndex: Int {
+        segments.endIndex - 1
+    }
+    private var totalInsetSize: CGFloat {
+        indicatorViewInset * 2
+    }
+    private var isLayoutDirectionRightToLeft: Bool {
+        UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft
+    }
+
+    // MARK: Initialization
+
+    convenience init() {
+        self.init(frame: .zero)
+        usingAutoLayout()
+        layer.masksToBounds = true
+
+        normalSegmentViewsContainerView.clipsToBounds = true
+        addSubview(normalSegmentViewsContainerView)
+
+        addSubview(indicatorView)
+
+        selectedSegmentViewsContainerView.clipsToBounds = true
+        addSubview(selectedSegmentViewsContainerView)
+        selectedSegmentViewsContainerView.layer.mask = indicatorView.segmentMaskView.layer
+
+        pointerInteractionViewsContainerView.clipsToBounds = true
+        addSubview(pointerInteractionViewsContainerView)
+
+        addTapGestureRecognizer { [weak self] gestureRecognizer in
+            guard let self = self else { return }
+            self.set(index: self.closestIndex(toPoint: gestureRecognizer.location(in: self)),
+                     shouldSendValueChangedEvent: true)
+        }
+
+        addPanGestureRecognizer { [weak self] gestureRecognizer in
+            guard let self = self else { return }
+            switch gestureRecognizer.state {
+            case .began:
+                self.initialIndicatorViewFrame = self.indicatorView.frame
+            case .changed:
+                var frame = self.initialIndicatorViewFrame!
+                frame.origin.x += gestureRecognizer.translation(in: self).x
+                frame.origin.x = max(min(frame.origin.x, self.bounds.width - self.indicatorViewInset - frame.width),
+                                     self.indicatorViewInset)
+                self.indicatorView.frame = frame
+            case .ended, .failed, .cancelled:
+                self.set(index: self.closestIndex(toPoint: self.indicatorView.center),
+                         shouldSendValueChangedEvent: true)
+            default: break
+            }
+        }.delegate = self
+
+        applySegments(shouldResetIndex: false)
+    }
 }
+
+// MARK: - Public methods
 
 extension SwipingSegmentedControl {
     var indicatorViewBackgroundColor: UIColor? {
@@ -121,24 +182,6 @@ extension SwipingSegmentedControl {
         }
     }
 
-    private var allSegmentViews: [UIView] {
-        normalSegmentViews + selectedSegmentViews
-    }
-    private var safeIndex: Int {
-        index >= .zero ? index : .zero
-    }
-    private var lastIndex: Int {
-        segments.endIndex - 1
-    }
-    private var totalInsetSize: CGFloat {
-        indicatorViewInset * 2
-    }
-    private var isLayoutDirectionRightToLeft: Bool {
-        UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft
-    }
-}
-
-extension SwipingSegmentedControl {
     func set(index: Int, animated: Bool = true, shouldSendValueChangedEvent: Bool = false) {
         guard segments.indices.contains(index) || index == Self.noSegment else { return }
 
@@ -191,51 +234,9 @@ extension SwipingSegmentedControl {
             }
         }
     }
-
-    convenience init() {
-        self.init(frame: .zero)
-        usingAutoLayout()
-        layer.masksToBounds = true
-
-        normalSegmentViewsContainerView.clipsToBounds = true
-        addSubview(normalSegmentViewsContainerView)
-
-        addSubview(indicatorView)
-
-        selectedSegmentViewsContainerView.clipsToBounds = true
-        addSubview(selectedSegmentViewsContainerView)
-        selectedSegmentViewsContainerView.layer.mask = indicatorView.segmentMaskView.layer
-
-        pointerInteractionViewsContainerView.clipsToBounds = true
-        addSubview(pointerInteractionViewsContainerView)
-
-        addTapGestureRecognizer { [weak self] gestureRecognizer in
-            guard let self = self else { return }
-            self.set(index: self.closestIndex(toPoint: gestureRecognizer.location(in: self)),
-                     shouldSendValueChangedEvent: true)
-        }
-
-        addPanGestureRecognizer { [weak self] gestureRecognizer in
-            guard let self = self else { return }
-            switch gestureRecognizer.state {
-            case .began:
-                self.initialIndicatorViewFrame = self.indicatorView.frame
-            case .changed:
-                var frame = self.initialIndicatorViewFrame!
-                frame.origin.x += gestureRecognizer.translation(in: self).x
-                frame.origin.x = max(min(frame.origin.x, self.bounds.width - self.indicatorViewInset - frame.width),
-                                     self.indicatorViewInset)
-                self.indicatorView.frame = frame
-            case .ended, .failed, .cancelled:
-                self.set(index: self.closestIndex(toPoint: self.indicatorView.center),
-                         shouldSendValueChangedEvent: true)
-            default: break
-            }
-        }.delegate = self
-
-        applySegments(shouldResetIndex: false)
-    }
 }
+
+// MARK: - Overridden methods
 
 extension SwipingSegmentedControl {
     var cornerRadius: CGFloat {
@@ -285,8 +286,9 @@ extension SwipingSegmentedControl {
     }
 }
 
-extension SwipingSegmentedControl {
+// MARK: - Private methods
 
+extension SwipingSegmentedControl {
     private func setIndicatorViewVisible(_ isVisible: Bool, animated: Bool, completion: @escaping () -> Void = { }) {
         UIView.animate(withDuration: (animated ? 0.1 : .zero),
                        delay: .zero,
@@ -382,6 +384,8 @@ extension SwipingSegmentedControl {
         return Int(distances.firstIndex(of: distances.min()!)!)
     }
 }
+
+// MARK: - UIGestureRecognizerDelegate
 
 extension SwipingSegmentedControl: UIGestureRecognizerDelegate {
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

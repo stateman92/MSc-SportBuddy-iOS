@@ -37,4 +37,11 @@ class MLServiceProtocolMock: MLServiceProtocol {
         return detectForInSizeDestinationRectClosure.map({ $0(inputType, image, size, destinationRect) }) ?? detectForInSizeDestinationRectReturnValue
     }
 
+    //MARK: - init
+
+    var initClosure: (() -> Void)?
+
+    required init() {
+        initClosure?()
+    }
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 final class ImageView: UIImageView {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +20,8 @@ final class ImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension ImageView {
     private func setupView() {

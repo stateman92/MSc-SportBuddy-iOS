@@ -7,17 +7,27 @@
 
 import Combine
 
-/// Service for showing loading indicator during network calls.
+/// A class for managing the loading states.
 final class LoadingService {
+    // MARK: Properties
+
     private let isShowing: CurrentValueSubject<Bool, Never>
     private let triggerSameValue: Bool
     private var cancellables = Set<AnyCancellable>()
 
+    // MARK: Initialization
+
+    /// Initialize the service.
+    /// - Parameters:
+    ///   - isShowing: whether the loading indicator should be shown or not.
+    ///   - triggerSameValue: whether the service indicates value changes from the same value.
     init(isShowing: Bool, triggerSameValue: Bool) {
         self.isShowing = .init(isShowing)
         self.triggerSameValue = triggerSameValue
     }
 }
+
+// MARK: - LoadingServiceProtocol
 
 extension LoadingService: LoadingServiceProtocol {
     /// A publisher which emits values when the application's loading state changes.
@@ -44,6 +54,8 @@ extension LoadingService: LoadingServiceProtocol {
         }
     }
 
+    /// Bind the state-handling to the view-handing.
+    /// - Parameter service: the view-handling service to bind the service
     func bind(to service: LoadingOverlayServiceProtocol) {
         state
             .sink { service.set(isShowing: $0) }

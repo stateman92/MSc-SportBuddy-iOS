@@ -8,6 +8,8 @@
 import UIKit
 
 final class ScrollView: UIScrollView {
+    // MARK: Initialization
+
     init() {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +20,8 @@ final class ScrollView: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Setups
 
 extension ScrollView {
     private func setupView() {

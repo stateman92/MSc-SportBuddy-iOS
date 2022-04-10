@@ -7,21 +7,24 @@
 
 import UIKit
 
-/// A class that manages the view that shows the loading state.
+/// A class for showing the loading states.
 final class LoadingOverlayService {
-    private var isShowing = false
+    // MARK: Properties
 
+    private var isShowing = false
+    private let animationDuration = 0.25
+    private let loadingOverlayView = LoadingOverlayView()
+
+    // MARK: Initialization
+
+    /// Initialize the service.
+    /// - Parameter isShowing: whether the loading indicator should be shown or not.
     init(isShowing: Bool) {
         set(isShowing: isShowing)
     }
-
-    // MARK: Properties
-
-    private let animationDuration = 0.25
-    private let loadingOverlayView = LoadingOverlayView()
 }
 
-// MARK: - Public methods
+// MARK: - LoadingOverlayServiceProtocol
 
 extension LoadingOverlayService: LoadingOverlayServiceProtocol {
     /// Set the loading state.

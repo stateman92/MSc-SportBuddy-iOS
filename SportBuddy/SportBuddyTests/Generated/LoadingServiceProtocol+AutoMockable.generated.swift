@@ -75,4 +75,11 @@ class LoadingServiceProtocolMock: LoadingServiceProtocol {
         bindToClosure?(service)
     }
 
+    //MARK: - init
+
+    var initClosure: (() -> Void)?
+
+    required init() {
+        initClosure?()
+    }
 }

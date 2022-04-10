@@ -15,6 +15,8 @@ public struct DependencyInjector {
     private init() { }
 }
 
+// MARK: - Public methods
+
 extension DependencyInjector {
     /// Register all the dependencies of the application.
     static func registerDependencies() {
@@ -29,6 +31,8 @@ extension DependencyInjector {
         resolver.resolve()
     }
 }
+
+// MARK: - Private methods
 
 extension DependencyInjector {
     private static func registerServices() {

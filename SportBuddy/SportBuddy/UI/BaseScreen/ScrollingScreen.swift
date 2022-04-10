@@ -21,6 +21,8 @@ class ScrollingScreen<ViewModel: BaseViewModel>: BaseScreen<ViewModel> {
     }
 }
 
+// MARK: - Setups
+
 extension ScrollingScreen {
     private func setupView() {
         scrollView.then {

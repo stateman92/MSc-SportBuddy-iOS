@@ -9,27 +9,27 @@ import UIKit
 
 extension CAMediaTimingFunction {
     /// The default `CAMediaTimingFunction`.
-    public class var `default`: Self {
+    class var `default`: Self {
         Self(name: .default)
     }
 
     /// The ease in (begins slowly) `CAMediaTimingFunction`.
-    public class var easeIn: Self {
+    class var easeIn: Self {
         Self(name: .easeIn)
     }
 
     /// The ease out (finishes slowly) `CAMediaTimingFunction`.
-    public class var easeOut: Self {
+    class var easeOut: Self {
         Self(name: .easeOut)
     }
 
     /// The linear `CAMediaTimingFunction`.
-    public class var linear: Self {
+    class var linear: Self {
         Self(name: .linear)
     }
 
     /// The ease in ease out (begins and finishes slowly) `CAMediaTimingFunction`.
-    public class var easeInEaseOut: Self {
+    class var easeInEaseOut: Self {
         Self(name: .easeInEaseOut)
     }
 
@@ -37,7 +37,7 @@ extension CAMediaTimingFunction {
     /// - Parameters:
     ///   - controlPoint1: the first control point.
     ///   - controlPoint2: the second control point.
-    public convenience init(controlPoint1: CGPoint, controlPoint2: CGPoint) {
+    convenience init(controlPoint1: CGPoint, controlPoint2: CGPoint) {
         self.init(controlPoints: controlPoint1.x.float,
                   controlPoint1.y.float,
                   controlPoint2.x.float,
@@ -47,7 +47,7 @@ extension CAMediaTimingFunction {
     /// Get the timing function as `UIView.AnimationOptions`.
     /// - Note:
     /// If `self` cannot represented with one of the `class` variables, then the returned options will be empty.
-    public var asAnimationOptions: UIView.AnimationOptions {
+    var asAnimationOptions: UIView.AnimationOptions {
         switch self {
         case .easeIn: return .curveEaseIn
         case .easeOut: return .curveEaseOut
@@ -62,7 +62,7 @@ extension CAMediaTimingFunction {
     ///   - from: the options.
     /// - Note:
     /// If the `UIView.AnimationOptions` doesn't contain a timing function, then `self` will be `.linear`.
-    public convenience init(from options: UIView.AnimationOptions) {
+    convenience init(from options: UIView.AnimationOptions) {
         if options.contains(.curveEaseIn) {
             self.init(name: .easeIn)
         } else if options.contains(.curveEaseOut) {

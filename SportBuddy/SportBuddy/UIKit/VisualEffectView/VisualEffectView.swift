@@ -8,6 +8,8 @@
 import UIKit
 
 final class VisualEffectView: UIVisualEffectView {
+    // MARK: Initialization
+
     override init(effect: UIVisualEffect? = nil) {
         super.init(effect: effect)
         setupView()
@@ -19,11 +21,15 @@ final class VisualEffectView: UIVisualEffectView {
     }
 }
 
+// MARK: - Setups
+
 extension VisualEffectView {
     private func setupView() {
         usingAutoLayout()
     }
 }
+
+// MARK: - Public methods
 
 extension VisualEffectView {
     func set(style: UIBlurEffect.Style) {
