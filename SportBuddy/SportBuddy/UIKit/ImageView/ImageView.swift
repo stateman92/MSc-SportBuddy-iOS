@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ImageView: UIImageView {
+class ImageView: UIImageView {
     // MARK: Initialization
 
     init() {

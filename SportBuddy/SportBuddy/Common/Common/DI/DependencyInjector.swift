@@ -37,6 +37,16 @@ extension DependencyInjector {
 extension DependencyInjector {
     private static func registerServices() {
         resolver
+            .register { AnimationService() }
+            .implements(AnimationServiceProtocol.self)
+            .scope(.application)
+
+        resolver
+            .register { ImageLoadingService() }
+            .implements(ImageLoadingServiceProtocol.self)
+            .scope(.application)
+
+        resolver
             .register { LoadingOverlayService() }
             .implements(LoadingOverlayServiceProtocol.self)
             .scope(.application)

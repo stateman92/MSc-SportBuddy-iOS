@@ -17,6 +17,16 @@ extension DependencyInjector {
 extension DependencyInjector {
     private static func registerServicesForTests() {
         resolver
+            .register { AnimationServiceProtocolMock() }
+            .implements(AnimationServiceProtocol.self)
+            .scope(.unique)
+
+        resolver
+            .register { ImageLoadingServiceProtocolMock() }
+            .implements(ImageLoadingServiceProtocol.self)
+            .scope(.unique)
+
+        resolver
             .register { LoadingOverlayServiceProtocolMock() }
             .implements(LoadingOverlayServiceProtocol.self)
             .scope(.unique)
