@@ -20,60 +20,12 @@ public struct DependencyInjector {
 extension DependencyInjector {
     /// Register all the dependencies of the application.
     static func registerDependencies() {
-        registerOnboardingScreen()
-        registerLoginScreen()
-
+        registerUI()
         registerServices()
     }
 
     /// Resolve a given type of dependency.
     static func resolve<Service>() -> Service {
         resolver.resolve()
-    }
-}
-
-// MARK: - Private methods
-
-extension DependencyInjector {
-    private static func registerServices() {
-        resolver
-            .register { AnimationService() }
-            .implements(AnimationServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { ImageLoadingService() }
-            .implements(ImageLoadingServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { LoadingOverlayService() }
-            .implements(LoadingOverlayServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { LoadingService() }
-            .implements(LoadingServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { MLService() }
-            .implements(MLServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { NavigatorService(rootViewController: resolve() as OnboardingScreen) }
-            .implements(NavigatorServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { NetworkService() }
-            .implements(NetworkServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { SettingsService() }
-            .implements(SettingsServiceProtocol.self)
-            .scope(.application)
     }
 }

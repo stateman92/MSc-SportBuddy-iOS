@@ -4,6 +4,7 @@
 
 import Combine
 import UIKit
+import SFSafeSymbols
 @testable import SportBuddy
 
 class AnimationServiceProtocolMock: AnimationServiceProtocol {

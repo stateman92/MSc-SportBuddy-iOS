@@ -7,10 +7,12 @@
 
 import Foundation
 
+/// A class for managing key-value pairs persistently.
 final class SettingsService {
     // MARK: Properties
 
     private let defaults: UserDefaults
+    @LazyInjected private var coderService: CoderServiceProtocol
 
     // MARK: Initialization
 
@@ -30,7 +32,7 @@ extension SettingsService: SettingsServiceProtocol {
     /// - Returns:
     ///     Whether the operation was successful.
     @discardableResult func save<T>(object: T?, forKey key: Key) -> Bool where T: Codable {
-        if let encoded = encode(object: object) {
+        if let encoded = coderService.encode(object: object) {
             defaults.set(encoded, forKey: key.keyName)
             return true
         }
@@ -45,7 +47,7 @@ extension SettingsService: SettingsServiceProtocol {
     /// - Returns:
     ///     The value for the given key.
     func retrieve<T>(forKey key: Key) -> T? where T: Codable {
-        decode(data: defaults.object(forKey: key.keyName) as? Data)
+        coderService.decode(data: defaults.object(forKey: key.keyName) as? Data)
     }
 
     /// Check whether a value is saved to the given key.

@@ -1,0 +1,177 @@
+name: GoogleDataTransport, nameSpecified: 
+body: 
+                   …
+version: 9.1.2
+
+name: GoogleDataTransport, nameSpecified: 
+body: 
+                   …
+version: 9.1.2
+
+name: GoogleMLKit, nameSpecified: 
+body: Copyright 2022 Googl…
+version: 2.6.0
+
+name: GoogleMLKit, nameSpecified: 
+body: Copyright 2022 Googl…
+version: 2.6.0
+
+name: GoogleToolboxForMac, nameSpecified: 
+body: 
+                   …
+version: 2.3.2
+
+name: GoogleToolboxForMac, nameSpecified: 
+body: 
+                   …
+version: 2.3.2
+
+name: GoogleUtilities, nameSpecified: 
+body: 
+                   …
+version: 7.7.0
+
+name: GoogleUtilities, nameSpecified: 
+body: 
+                   …
+version: 7.7.0
+
+name: GoogleUtilitiesComponents, nameSpecified: 
+body: 
+                   …
+version: 1.1.0
+
+name: GoogleUtilitiesComponents, nameSpecified: 
+body: 
+                   …
+version: 1.1.0
+
+name: GTMSessionFetcher, nameSpecified: 
+body: 
+                   …
+version: 1.7.1
+
+name: GTMSessionFetcher, nameSpecified: 
+body: 
+                   …
+version: 1.7.1
+
+name: MLImage, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: MLImage, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: MLKitCommon, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 5.0.0
+
+name: MLKitCommon, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 5.0.0
+
+name: MLKitPoseDetectionAccurate, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: MLKitPoseDetectionAccurate, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: MLKitPoseDetectionCommon, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: MLKitPoseDetectionCommon, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: MLKitVision, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 3.0.0
+
+name: MLKitVision, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 3.0.0
+
+name: MLKitXenoCommon, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: MLKitXenoCommon, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 
+
+name: nanopb, nameSpecified: 
+body: Copyright (c) 2011 P…
+version: 2.30908.0
+
+name: nanopb, nameSpecified: 
+body: Copyright (c) 2011 P…
+version: 2.30908.0
+
+name: PromisesObjC, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
+name: PromisesObjC, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
+name: Protobuf, nameSpecified: 
+body: Copyright 2008 Googl…
+version: 3.20.0
+
+name: Protobuf, nameSpecified: 
+body: Copyright 2008 Googl…
+version: 3.20.0
+
+name: SwiftGen, nameSpecified: 
+body: MIT Licence
+
+Copyrig…
+version: 6.5.1
+
+name: SwiftGen, nameSpecified: 
+body: MIT Licence
+
+Copyrig…
+version: 6.5.1
+
+name: SwiftLint, nameSpecified: 
+body: The MIT License (MIT…
+version: 0.46.1
+
+name: SwiftLint, nameSpecified: 
+body: The MIT License (MIT…
+version: 0.46.1
+
+name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 4.9.1, source: https://github.com/Alamofire/Alamofire
+
+name: AppAuth-iOS, nameSpecified: AppAuth, owner: openid, version: 1.5.0, source: https://github.com/openid/AppAuth-iOS
+
+name: GoogleSignIn-iOS, nameSpecified: GoogleSignIn, owner: google, version: 6.1.0, source: https://github.com/google/GoogleSignIn-iOS
+
+name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, version: 1.7.1, source: https://github.com/google/gtm-session-fetcher
+
+name: GTMAppAuth, nameSpecified: GTMAppAuth, owner: google, version: 1.2.3, source: https://github.com/google/GTMAppAuth
+
+name: IQKeyboardManager, nameSpecified: IQKeyboardManagerSwift, owner: hackiftekhar, version: 6.5.0, source: https://github.com/hackiftekhar/IQKeyboardManager
+
+name: Kingfisher, nameSpecified: Kingfisher, owner: onevcat, version: 7.2.0, source: https://github.com/onevcat/Kingfisher
+
+name: lottie-ios, nameSpecified: Lottie, owner: airbnb, version: 3.3.0, source: https://github.com/airbnb/lottie-ios
+
+name: Resolver, nameSpecified: Resolver, owner: hmlongco, version: 1.5.0, source: https://github.com/hmlongco/Resolver
+
+name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: SFSafeSymbols, version: 3.3.1, source: https://github.com/SFSafeSymbols/SFSafeSymbols
+
+name: Starscream, nameSpecified: Starscream, owner: daltoniam, version: 4.0.4, source: https://github.com/daltoniam/Starscream
+
+add-version-numbers: false
+
+LicensePlist Version: 3.21.1

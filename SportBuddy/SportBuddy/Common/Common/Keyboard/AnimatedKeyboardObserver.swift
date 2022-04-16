@@ -19,7 +19,7 @@ final class AnimatedKeyboardObserver {
     let hidingKeyboard = PassthroughSubject<(CGRect, CGRect), Never>()
     let afterHidingKeyboard = PassthroughSubject<(CGRect, CGRect), Never>()
     private let keyboardObserver = KeyboardObserver.shared
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables = Cancellables()
 
     /// Singleton.
     static let shared = AnimatedKeyboardObserver()

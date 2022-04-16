@@ -12,7 +12,7 @@ extension Publisher where Failure == Never {
     /// - Parameters:
     ///   - in: the `Cancellables` to store the publisher in.
     ///   - receiveValue: this method will be called if a new value arrived.
-    func sink(in set: inout Set<AnyCancellable>, receiveValue: @escaping ((Output) -> Void)) {
+    func sink(in set: inout Cancellables, receiveValue: @escaping ((Output) -> Void)) {
         sink(receiveValue: receiveValue).store(in: &set)
     }
 
@@ -29,7 +29,7 @@ extension Publisher where Failure == Never {
     /// - Parameters:
     ///   - to: the given subject.
     ///   - in: the `Cancellables` to store the publisher in.
-    func forward(to subject: PassthroughSubject<Output, Failure>, in set: inout Set<AnyCancellable>) {
+    func forward(to subject: PassthroughSubject<Output, Failure>, in set: inout Cancellables) {
         forward(to: subject).store(in: &set)
     }
 }

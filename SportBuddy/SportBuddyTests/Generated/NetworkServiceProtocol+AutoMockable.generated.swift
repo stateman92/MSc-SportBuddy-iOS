@@ -4,17 +4,11 @@
 
 import Combine
 import UIKit
+import SFSafeSymbols
 @testable import SportBuddy
 
 class NetworkServiceProtocolMock: NetworkServiceProtocol {
 
-    //MARK: - init
-
-    var initClosure: (() -> Void)?
-
-    required init() {
-        initClosure?()
-    }
     //MARK: - login
 
     var loginEmailPasswordCompletionCallsCount = 0
@@ -64,5 +58,13 @@ class NetworkServiceProtocolMock: NetworkServiceProtocol {
         forgotPasswordEmailCompletionReceivedArguments = (email: email, completion: completion)
         forgotPasswordEmailCompletionReceivedInvocations.append((email: email, completion: completion))
         forgotPasswordEmailCompletionClosure?(email, completion)
+    }
+
+    //MARK: - init
+
+    var initClosure: (() -> Void)?
+
+    required init() {
+        initClosure?()
     }
 }

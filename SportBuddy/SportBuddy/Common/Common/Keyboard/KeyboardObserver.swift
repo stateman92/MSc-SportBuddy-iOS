@@ -18,7 +18,7 @@ final class KeyboardObserver {
     let didHideNotification = PassthroughSubject<Notification, Never>()
     let keyboardWillChangeFrameNotification = PassthroughSubject<Notification, Never>()
     let keyboardDidChangeFrameNotification = PassthroughSubject<Notification, Never>()
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables = Cancellables()
 
     /// The programmer's given subscribers.
     private var functions = [UUID: (notification: Notification) -> Void]()

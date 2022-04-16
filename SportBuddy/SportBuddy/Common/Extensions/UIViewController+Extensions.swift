@@ -14,7 +14,11 @@ extension UIViewController {
     /// - Returns:
     ///     The gesture recognizer.
     @discardableResult func hideKeyboardWhenTappedOutside() -> UITapGestureRecognizer {
-        view.addTapGestureRecognizer { [weak self] in
+        guard !(self is UITabBarController) else {
+            let warning = "The function hideKeyboardWhenTappedOutside() shouldn't be called from a UITabBarController!"
+            preconditionFailure(warning)
+        }
+        return view.addTapGestureRecognizer { [weak self] in
             self?.view.endEditing(true)
         }
     }

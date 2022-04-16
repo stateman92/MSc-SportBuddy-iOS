@@ -7,18 +7,23 @@
 
 import UIKit
 
-final class LoginViewModel: BaseViewModel { }
+final class LoginViewModel: BaseViewModel {
+    @LazyInjected private var mainScreen: MainScreen
+}
 
 // MARK: - Public methods
 
 extension LoginViewModel {
     func login(email: String, password: String) {
         networkService.login(email: email, password: password) { [weak self] result in
-            switch result {
-            case .success:
-                self?.navigatorService.viewControllers = [UIViewController()]
-            case let .failure(error):
-                dump(error)
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.navigatorService.viewControllers = [MainScreen()]
+                switch result {
+                case .success: break
+                case let .failure(error):
+                    dump(error)
+                }
             }
         }
     }

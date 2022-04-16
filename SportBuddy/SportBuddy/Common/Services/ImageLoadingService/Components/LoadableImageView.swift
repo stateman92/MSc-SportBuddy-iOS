@@ -13,14 +13,14 @@ final class LoadableImageView: ImageView {
 
     override init() {
         super.init()
-        setupUI()
+        setupView()
     }
 }
 
 // MARK: - Setups
 
 extension LoadableImageView {
-    private func setupUI() {
+    private func setupView() {
         kf.indicatorType = .activity
     }
 }

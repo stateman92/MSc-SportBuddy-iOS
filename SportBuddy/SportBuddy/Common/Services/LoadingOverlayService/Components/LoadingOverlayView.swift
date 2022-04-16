@@ -17,14 +17,14 @@ final class LoadingOverlayView: View {
 
     override init() {
         super.init()
-        setupUI()
+        setupView()
     }
 }
 
 // MARK: - Setups
 
 extension LoadingOverlayView {
-    private func setupUI() {
+    private func setupView() {
         setupBackground()
         setupIndicator()
     }

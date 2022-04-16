@@ -17,14 +17,14 @@ final class AnimationView: View {
     init(jsonName: String) {
         animationView = .init(name: jsonName)
         super.init()
-        setupUI()
+        setupView()
     }
 }
 
 // MARK: - Setups
 
 extension AnimationView {
-    private func setupUI() {
+    private func setupView() {
         setupLottie()
     }
 

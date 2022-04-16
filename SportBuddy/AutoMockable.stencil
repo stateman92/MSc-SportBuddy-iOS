@@ -104,6 +104,7 @@
 
 import Combine
 import UIKit
+import SFSafeSymbols
 @testable import SportBuddy
 
 class {{ type.name }}Mock: {{ type.name }} {

@@ -13,7 +13,7 @@ final class LoadingService {
 
     private let isShowing: CurrentValueSubject<Bool, Never>
     private let triggerSameValue: Bool
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables = Cancellables()
 
     // MARK: Initialization
 

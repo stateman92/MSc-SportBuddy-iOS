@@ -13,7 +13,7 @@ final class LoadingServiceTests: XCTestCase {
     // MARK: Properties
 
     private var sut: LoadingServiceProtocol!
-    private var cancellables: Set<AnyCancellable>!
+    private var cancellables: Cancellables!
 }
 
 // MARK: - Overridden methods
@@ -29,6 +29,7 @@ extension LoadingServiceTests {
 // MARK: - Test initial state
 
 extension LoadingServiceTests {
+    /// Test the service's initial state.
     func testInitialState() {
         // Given
 
@@ -48,6 +49,7 @@ extension LoadingServiceTests {
 // MARK: - Test states
 
 extension LoadingServiceTests {
+    /// Test the changes in the service's states if the user wants it to be loading.
     func testSetLoading() {
         // Given
 
@@ -65,6 +67,7 @@ extension LoadingServiceTests {
         XCTAssertEqual(receivedValues, [true])
     }
 
+    /// Test the changes in the service's states if the user not wants it to be loading.
     func testSetNotLoading() {
         // Given
 
@@ -82,6 +85,7 @@ extension LoadingServiceTests {
         XCTAssertEqual(receivedValues, [false])
     }
 
+    /// Test the changes in the service's states if the user wants it to be loading multiple times.
     func testSetLoadingMultipleTimes() {
         // Given
 
@@ -104,6 +108,7 @@ extension LoadingServiceTests {
 // MARK: - Test loading
 
 extension LoadingServiceTests {
+    /// Test the changes in the service's states if the user wants it to be loading with closure.
     func testSetLoadingClosure() {
         // Given
 

@@ -81,6 +81,24 @@
           "revision": "97de0b0320036607564af4a60025b48f8d041221",
           "version": "1.5.0"
         }
+      },
+      {
+        "package": "SFSafeSymbols",
+        "repositoryURL": "https://github.com/SFSafeSymbols/SFSafeSymbols",
+        "state": {
+          "branch": null,
+          "revision": "25e688a85f1a21cf5bd5d7eaa3c498f10238f153",
+          "version": "3.3.1"
+        }
+      },
+      {
+        "package": "Starscream",
+        "repositoryURL": "https://github.com/daltoniam/Starscream",
+        "state": {
+          "branch": null,
+          "revision": "df8d82047f6654d8e4b655d1b1525c64e1059d21",
+          "version": "4.0.4"
+        }
       }
     ]
   },

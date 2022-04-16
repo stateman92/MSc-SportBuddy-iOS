@@ -7,6 +7,7 @@
 
 import MLKit
 
+/// A class for managing the body recognition.
 final class MLService: AutoMockable {
     // MARK: Properties
 

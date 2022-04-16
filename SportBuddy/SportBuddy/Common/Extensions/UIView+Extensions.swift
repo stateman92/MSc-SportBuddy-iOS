@@ -145,35 +145,47 @@ extension UIView {
 
 extension UIView {
     /// Constraint the leading anchor to the superview's leading anchor.
-    /// - Parameter constant: the constant of the constraint. By default `.zero`.
-    func anchorToLeading(constant: CGFloat = .zero) {
+    /// - Parameters:
+    ///   - constant: the constant of the constraint. By default `.zero`.
+    ///   - safeArea: whether to use the safe area or not. By default `false`.
+    func anchorToLeading(constant: CGFloat = .zero, safeArea: Bool = false) {
         guard let superview = superview else { return }
         usingAutoLayout()
-        leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: constant).isActive = true
+        let anchor = safeArea ? superview.safeAreaLayoutGuide.leadingAnchor : superview.leadingAnchor
+        leadingAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
     /// Constraint the trailing anchor to the superview's trailing anchor.
-    /// - Parameter constant: the constant of the constraint. By default `.zero`.
-    func anchorToTrailing(constant: CGFloat = .zero) {
+    /// - Parameters:
+    ///   - constant: the constant of the constraint. By default `.zero`.
+    ///   - safeArea: whether to use the safe area or not. By default `false`.
+    func anchorToTrailing(constant: CGFloat = .zero, safeArea: Bool = false) {
         guard let superview = superview else { return }
         usingAutoLayout()
-        trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: constant).isActive = true
+        let anchor = safeArea ? superview.safeAreaLayoutGuide.trailingAnchor : superview.trailingAnchor
+        trailingAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
     /// Constraint the bottom anchor to the superview's bottom anchor.
-    /// - Parameter constant: the constant of the constraint. By default `.zero`.
-    func anchorToBottom(constant: CGFloat = .zero) {
+    /// - Parameters:
+    ///   - constant: the constant of the constraint. By default `.zero`.
+    ///   - safeArea: whether to use the safe area or not. By default `false`.
+    func anchorToBottom(constant: CGFloat = .zero, safeArea: Bool = false) {
         guard let superview = superview else { return }
         usingAutoLayout()
-        bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: constant).isActive = true
+        let anchor = safeArea ? superview.safeAreaLayoutGuide.bottomAnchor : superview.bottomAnchor
+        bottomAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
     /// Constraint the top anchor to the superview's top anchor.
-    /// - Parameter constant: the constant of the constraint. By default `.zero`.
-    func anchorToTop(constant: CGFloat = .zero) {
+    /// - Parameters:
+    ///   - constant: the constant of the constraint. By default `.zero`.
+    ///   - safeArea: whether to use the safe area or not. By default `false`.
+    func anchorToTop(constant: CGFloat = .zero, safeArea: Bool = false) {
         guard let superview = superview else { return }
         usingAutoLayout()
-        topAnchor.constraint(equalTo: superview.topAnchor, constant: constant).isActive = true
+        let anchor = safeArea ? superview.safeAreaLayoutGuide.topAnchor : superview.topAnchor
+        topAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
     /// Constraint the center y anchor to the superview's center y anchor.
@@ -222,25 +234,56 @@ extension UIView {
     }
 
     /// Constraint the view's anchors to the superview's anchors.
-    /// - Parameter top: the constant of the top constraint. If nil, it will be ignored. By default `nil`.
-    /// - Parameter bottom: the constant of the constraint. If nil, it will be ignored. By default `nil`.
-    /// - Parameter leading: the constant of the constraint. If nil, it will be ignored. By default `nil`.
-    /// - Parameter trailing: the constant of the constraint. If nil, it will be ignored. By default `nil`.
+    /// - Parameters:
+    ///   - top: the constant of the top constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - bottom: the constant of the constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - leading: the constant of the constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - trailing: the constant of the constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - safeArea: whether to use the safe area or not. By default `false`.
     func anchorToSuperview(top: CGFloat? = nil,
                            bottom: CGFloat? = nil,
                            leading: CGFloat? = nil,
-                           trailing: CGFloat? = nil) {
+                           trailing: CGFloat? = nil,
+                           safeArea: Bool = false) {
+        anchorToSuperview(top: top,
+                          topSafeArea: safeArea,
+                          bottom: bottom,
+                          bottomSafeArea: safeArea,
+                          leading: leading,
+                          leadingSafeArea: safeArea,
+                          trailing: trailing,
+                          trailingSafeArea: safeArea)
+    }
+
+    /// Constraint the view's anchors to the superview's anchors.
+    /// - Parameters:
+    ///   - top: the constant of the top constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - topSafeArea: whether to use the top safe area or not. By default `false`.
+    ///   - bottom: the constant of the constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - bottomSafeArea: whether to use the bottom safe area or not. By default `false`.
+    ///   - leading: the constant of the constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - leadingSafeArea: whether to use the leading safe area or not. By default `false`.
+    ///   - trailing: the constant of the constraint. If `nil`, it will be ignored. By default `nil`.
+    ///   - trailingSafeArea: whether to use the trailing safe area or not. By default `false`.
+    func anchorToSuperview(top: CGFloat? = nil,
+                           topSafeArea: Bool = false,
+                           bottom: CGFloat? = nil,
+                           bottomSafeArea: Bool = false,
+                           leading: CGFloat? = nil,
+                           leadingSafeArea: Bool = false,
+                           trailing: CGFloat? = nil,
+                           trailingSafeArea: Bool = false) {
         if let top = top {
-            anchorToTop(constant: top)
+            anchorToTop(constant: top, safeArea: topSafeArea)
         }
         if let bottom = bottom {
-            anchorToBottom(constant: bottom)
+            anchorToBottom(constant: bottom, safeArea: bottomSafeArea)
         }
         if let leading = leading {
-            anchorToLeading(constant: leading)
+            anchorToLeading(constant: leading, safeArea: leadingSafeArea)
         }
         if let trailing = trailing {
-            anchorToTrailing(constant: trailing)
+            anchorToTrailing(constant: trailing, safeArea: trailingSafeArea)
         }
     }
 }

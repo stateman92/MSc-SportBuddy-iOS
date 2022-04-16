@@ -10,7 +10,6 @@ import UIKit
 final class OnboardingScreen: BaseScreen<OnboardingViewModel> {
     // MARK: Properties
 
-    let backgroundView = BackgroundView()
     let onboard = Onboard()
 }
 
@@ -27,15 +26,7 @@ extension OnboardingScreen {
 
 extension OnboardingScreen {
     private func setupView() {
-        setupBackgroundView()
         setupOnboard()
-    }
-
-    private func setupBackgroundView() {
-        backgroundView.then {
-            view.addSubview($0)
-            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
-        }
     }
 
     private func setupOnboard() {

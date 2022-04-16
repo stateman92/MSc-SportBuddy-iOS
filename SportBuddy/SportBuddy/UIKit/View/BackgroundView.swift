@@ -23,6 +23,19 @@ final class BackgroundView: View {
     private let rectangle = RoundedView()
     private let firstVisualEffect = VisualEffectView()
     private let secondVisualEffect = VisualEffectView()
+    var isAnimating = true {
+        didSet {
+            if isAnimating {
+                setupAnimation()
+            } else {
+                CATransaction.begin()
+                subviews.forEach { $0.layer.removeAllAnimations() }
+                layer.removeAllAnimations()
+                layoutIfNeeded()
+                CATransaction.commit()
+            }
+        }
+    }
 
     // MARK: Initialization
 
@@ -47,21 +60,7 @@ extension BackgroundView {
 
 extension BackgroundView {
     func finish(completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.9 * Constants.finishingDurationMultiplier,
-                       delay: .zero,
-                       options: [.curveEaseOut, .allowUserInteraction]) {
-            self.firstVisualEffect.effect = nil
-            self.secondVisualEffect.effect = nil
-            self.gradientLayer.opacity = .zero
-        }
-        // swiftlint:disable:next multiline_arguments
-        UIView.animate(withDuration: 1 * Constants.finishingDurationMultiplier, delay: 0.33, options: [.curveEaseIn]) {
-            self.firstCircle.transform = self.firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
-            self.secondCircle.transform = self.secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
-            self.rectangle.transform = self.rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))
-        } completion: { _ in
-            completion()
-        }
+        finish(durationMultiplier: Constants.finishingDurationMultiplier, completion: completion)
     }
 }
 
@@ -173,6 +172,26 @@ extension BackgroundView {
                 .concatenating(.init(scaleX: 0.75, y: 1.25))
                 .concatenating(.init(translationX: -100, y: -150))
                 .concatenating(.init(rotationAngle: 3 * .pi / 2))
+        }
+    }
+}
+
+extension BackgroundView {
+    private func finish(durationMultiplier: TimeInterval, completion: @escaping () -> Void = { }) {
+        UIView.animate(withDuration: 0.9 * durationMultiplier,
+                       delay: .zero,
+                       options: [.curveEaseOut, .allowUserInteraction]) {
+            self.firstVisualEffect.effect = nil
+            self.secondVisualEffect.effect = nil
+            self.gradientLayer.opacity = .zero
+        }
+        // swiftlint:disable:next multiline_arguments
+        UIView.animate(withDuration: 1 * durationMultiplier, delay: 0.33, options: [.curveEaseIn]) {
+            self.firstCircle.transform = self.firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
+            self.secondCircle.transform = self.secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
+            self.rectangle.transform = self.rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))
+        } completion: { _ in
+            completion()
         }
     }
 }

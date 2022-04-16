@@ -7,7 +7,7 @@
 
 import Combine
 
-/// Service for showing loading indicator during network calls.
+/// A class for managing the network calls.
 final class NetworkService {
     // MARK: Properties
 

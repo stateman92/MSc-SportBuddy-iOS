@@ -7,9 +7,6 @@
 
 /// A protocol for managing the network calls.
 protocol NetworkServiceProtocol: AutoMockable, Initable {
-    /// Initialize the service.
-    init()
-
     /// Call to login the user.
     /// - Parameters:
     ///   - email: the user's email.

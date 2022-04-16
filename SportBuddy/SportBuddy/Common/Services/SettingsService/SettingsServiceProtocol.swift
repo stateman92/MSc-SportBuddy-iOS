@@ -9,9 +9,6 @@ import Foundation
 
 /// A protocol for managing key-value pairs persistently.
 protocol SettingsServiceProtocol: Initable {
-    /// Initialize the service.
-    init()
-
     /// Save a `Codable` value to the device.
     /// - Parameters:
     ///   - object: the `Codable` to be stored.
@@ -47,36 +44,4 @@ protocol SettingsServiceProtocol: Initable {
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
     func delete(forKey key: Key)
-}
-
-// MARK: - Public methods
-
-extension SettingsServiceProtocol {
-    /// Encode the given object.
-    /// - Parameters:
-    ///   - object: the object.
-    /// - Note:
-    /// This method gives a unified method to encode objects.
-    /// - Returns:
-    ///     The encoded `Data?`.
-    func encode<T>(object: T?) -> Data? where T: Codable {
-        guard let object = object else { return nil }
-        let jsonEncoder = JSONEncoder()
-        jsonEncoder.dateEncodingStrategy = .iso8601
-        return try? jsonEncoder.encode(object)
-    }
-
-    /// Decode the given data.
-    /// - Parameters:
-    ///   - data: the data.
-    /// - Note:
-    /// This method gives a unified method to decode objects.
-    /// - Returns:
-    ///     The decoded object.
-    func decode<T>(data: Data?) -> T? where T: Codable {
-        guard let data = data else { return nil }
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.dateDecodingStrategy = .iso8601
-        return try? jsonDecoder.decode(T.self, from: data)
-    }
 }
