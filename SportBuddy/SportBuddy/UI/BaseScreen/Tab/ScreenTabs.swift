@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// A protocol for managing 
+/// A protocol for managing tabs in a controller.
 protocol ScreenTabs: Initable {
     var viewControllers: [UIViewController] { get }
 }
