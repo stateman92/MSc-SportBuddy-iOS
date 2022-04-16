@@ -11,8 +11,6 @@ import UIKit
 class BaseTabScreen<ViewModel: BaseViewModel>: UITabBarController, UITabBarControllerDelegate {
     // MARK: Properties
 
-    @LazyInjected private var loadingService: LoadingServiceProtocol
-    @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
     @LazyInjected var viewModel: ViewModel
     var cancellables = Cancellables()
 

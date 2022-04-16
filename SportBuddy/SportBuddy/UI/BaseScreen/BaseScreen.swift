@@ -18,7 +18,10 @@ class BaseScreen<ViewModel: BaseViewModel>: UIViewController {
 
     // MARK: Properties
 
+    @LazyInjected private var animationService: AnimationServiceProtocol
+    @LazyInjected private var imageLoadingService: ImageLoadingServiceProtocol
     @LazyInjected private var loadingService: LoadingServiceProtocol
+    @LazyInjected private var systemImageService: SystemImageServiceProtocol
     @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
     @LazyInjected var viewModel: ViewModel
     var cancellables = Cancellables()

@@ -34,6 +34,11 @@ extension DependencyInjector {
             .scope(.application)
 
         resolver
+            .register { LoggingService() }
+            .implements(LoggingServiceProtocol.self)
+            .scope(.application)
+
+        resolver
             .register { MLService() }
             .implements(MLServiceProtocol.self)
             .scope(.application)

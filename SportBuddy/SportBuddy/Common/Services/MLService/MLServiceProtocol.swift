@@ -26,7 +26,7 @@ protocol MLServiceProtocol: AutoMockable, Initable {
 }
 
 extension MLServiceProtocol {
-    /// Initialize the service with `.singleImage` detector mode.
+    /// Initialize the service. By default `poseDetectorMode` is `.singleImage`.
     init() {
         self.init(from: .singleImage)
     }

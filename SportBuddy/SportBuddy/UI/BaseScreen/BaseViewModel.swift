@@ -10,8 +10,10 @@ import UIKit
 class BaseViewModel {
     // MARK: Properties
 
+    @LazyInjected var loggingService: LoggingServiceProtocol
     @LazyInjected var mlService: MLServiceProtocol
     @LazyInjected var navigatorService: NavigatorServiceProtocol
     @LazyInjected var networkService: NetworkServiceProtocol
     @LazyInjected var settingService: SettingsServiceProtocol
+    @LazyInjected var webSocketService: WebSocketServiceProtocol
 }

@@ -114,6 +114,10 @@
 		588F479527FE56600062F838 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F477C27FE56600062F838 /* Models.swift */; };
 		588F479627FE56600062F838 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F477D27FE56600062F838 /* Configuration.swift */; };
 		588F479827FE59F90062F838 /* ScrollingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F479727FE59F90062F838 /* ScrollingScreen.swift */; };
+		588F5E79280B306C00947800 /* LoggingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F5E78280B306C00947800 /* LoggingServiceProtocol.swift */; };
+		588F5E7B280B307F00947800 /* LoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F5E7A280B307F00947800 /* LoggingService.swift */; };
+		588F5E7E280B31AA00947800 /* LogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F5E7D280B31AA00947800 /* LogType.swift */; };
+		588F5E80280B34EF00947800 /* LogPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F5E7F280B34EF00947800 /* LogPrivacy.swift */; };
 		589AA52F27FEFFAC0002C4D5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589AA52E27FEFFAC0002C4D5 /* CardView.swift */; };
 		589AA53127FF00F20002C4D5 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589AA53027FF00F20002C4D5 /* InputView.swift */; };
 		589AA53327FF03500002C4D5 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589AA53227FF03500002C4D5 /* KeyboardObserver.swift */; };
@@ -323,6 +327,10 @@
 		588F477C27FE56600062F838 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		588F477D27FE56600062F838 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		588F479727FE59F90062F838 /* ScrollingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingScreen.swift; sourceTree = "<group>"; };
+		588F5E78280B306C00947800 /* LoggingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingServiceProtocol.swift; sourceTree = "<group>"; };
+		588F5E7A280B307F00947800 /* LoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingService.swift; sourceTree = "<group>"; };
+		588F5E7D280B31AA00947800 /* LogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogType.swift; sourceTree = "<group>"; };
+		588F5E7F280B34EF00947800 /* LogPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPrivacy.swift; sourceTree = "<group>"; };
 		589AA52E27FEFFAC0002C4D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		589AA53027FF00F20002C4D5 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		589AA53227FF03500002C4D5 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
@@ -572,6 +580,7 @@
 				58FD650A280312D000FE6A51 /* ImageLoadingService */,
 				58E0A18028010C8C000A81A5 /* LoadingOverlayService */,
 				58EBF1E327FBB4E900BA81CB /* LoadingService */,
+				588F5E77280B305900947800 /* LoggingService */,
 				5832042527FE294B009A4644 /* MLService */,
 				58EBF1E827FBB4F200BA81CB /* NavigatorService */,
 				588F475827FE4F0C0062F838 /* NetworkService */,
@@ -1005,6 +1014,25 @@
 				588F477927FE56600062F838 /* ExerciseFractionDTO.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		588F5E77280B305900947800 /* LoggingService */ = {
+			isa = PBXGroup;
+			children = (
+				588F5E7C280B31A200947800 /* Components */,
+				588F5E78280B306C00947800 /* LoggingServiceProtocol.swift */,
+				588F5E7A280B307F00947800 /* LoggingService.swift */,
+			);
+			path = LoggingService;
+			sourceTree = "<group>";
+		};
+		588F5E7C280B31A200947800 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				588F5E7D280B31AA00947800 /* LogType.swift */,
+				588F5E7F280B34EF00947800 /* LogPrivacy.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		589AA53827FF05540002C4D5 /* Keyboard */ = {
@@ -1731,6 +1759,7 @@
 				589AA53527FF04400002C4D5 /* NotificationCenter+Extensions.swift in Sources */,
 				588F479027FE56600062F838 /* GroupEntryDTO.swift in Sources */,
 				580190FE27F383AC00BB3E3E /* LazyInjected.swift in Sources */,
+				588F5E79280B306C00947800 /* LoggingServiceProtocol.swift in Sources */,
 				580521D927EFB36B00B3A8B1 /* CameraView.swift in Sources */,
 				580521CC27EFB24400B3A8B1 /* ImageView.swift in Sources */,
 				588F478727FE56600062F838 /* SportTypeDTO.swift in Sources */,
@@ -1813,12 +1842,14 @@
 				58B2E1D627F3BABE004135E2 /* OnboardDelegate.swift in Sources */,
 				589AA53A27FF055C0002C4D5 /* AnimatedKeyboardObserver.swift in Sources */,
 				588F478127FE56600062F838 /* ClientAPI.swift in Sources */,
+				588F5E80280B34EF00947800 /* LogPrivacy.swift in Sources */,
 				58F976DD27DE77BB00E74C5F /* Fonts.swift in Sources */,
 				58F976E127DE77CE00E74C5F /* Strings.swift in Sources */,
 				588F479427FE56600062F838 /* JSONEncodingHelper.swift in Sources */,
 				5832044B27FE2959009A4644 /* BoneEndpoint.swift in Sources */,
 				587F300D2809CE9B00EFA7E9 /* BaseTabScreen.swift in Sources */,
 				58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */,
+				588F5E7B280B307F00947800 /* LoggingService.swift in Sources */,
 				58E0A17A2800D9CC000A81A5 /* StringKey.swift in Sources */,
 				580DF5D92809EF8600BE0493 /* TrainingsViewModel.swift in Sources */,
 				580DF5DB2809EF8F00BE0493 /* Settings+DI.swift in Sources */,
@@ -1843,6 +1874,7 @@
 				580DF5D12809EF5A00BE0493 /* ChatsScreen.swift in Sources */,
 				587F30292809D3C100EFA7E9 /* GroupsViewModel.swift in Sources */,
 				58FD65072803116300FE6A51 /* LoadableImageView.swift in Sources */,
+				588F5E7E280B31AA00947800 /* LogType.swift in Sources */,
 				5801910827F38F8D00BB3E3E /* RoundedView.swift in Sources */,
 				580DF5F8280A219B00BE0493 /* TabScreen.swift in Sources */,
 				588F478527FE56600062F838 /* JSONEncodableEncoding.swift in Sources */,

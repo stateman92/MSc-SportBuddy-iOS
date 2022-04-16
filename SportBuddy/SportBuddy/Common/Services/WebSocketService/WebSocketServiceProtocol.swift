@@ -30,7 +30,7 @@ protocol WebSocketServiceProtocol: Initable {
 }
 
 extension WebSocketServiceProtocol {
-    /// Initialize the service with `true` autoconnect mode.
+    /// Initialize the service. By default `autoConnect` is `true`.
     init() {
         self.init(autoConnect: true)
     }
