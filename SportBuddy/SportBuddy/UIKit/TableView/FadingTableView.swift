@@ -11,8 +11,8 @@ final class FadingTableView: TableView {
     // MARK: Properties
 
     private let maskLayer = CAGradientLayer()
-    private let outerColor = UIColor(white: 1.0, alpha: 0.0)
-    private let innerColor = UIColor(white: 1.0, alpha: 1.0)
+    private let outerColor = UIColor(white: 1, alpha: .zero)
+    private let innerColor = UIColor(white: 1, alpha: 1)
 
     // MARK: Initialization
 
@@ -28,6 +28,14 @@ extension FadingTableView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        if contentOffset.y <= -contentInset.top {
+            maskLayer.colors = [innerColor, innerColor, innerColor, outerColor].map(\.cgColor)
+        } else if contentOffset.y + frame.size.height >= contentSize.height {
+            maskLayer.colors = [outerColor, innerColor, innerColor, innerColor].map(\.cgColor)
+        } else {
+            maskLayer.colors = [outerColor, innerColor, innerColor, outerColor].map(\.cgColor)
+        }
+
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         maskLayer.position = CGPoint(x: .zero, y: contentOffset.y)
@@ -40,11 +48,10 @@ extension FadingTableView {
 
 extension FadingTableView {
     private func setupView() {
-        let percent: CGFloat = 0.5
+        let percent: CGFloat = 0.2
 
         maskLayer.locations = [.zero, percent, 1 - percent, 1].map { NSNumber(value: Double($0)) }
         maskLayer.anchorPoint = .zero
-        maskLayer.colors = [outerColor, innerColor, innerColor, outerColor].map(\.cgColor)
         layer.mask = maskLayer
     }
 }

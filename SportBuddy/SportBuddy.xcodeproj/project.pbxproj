@@ -45,6 +45,9 @@
 		580DF5F8280A219B00BE0493 /* TabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5F7280A219B00BE0493 /* TabScreen.swift */; };
 		5828491F280BA3D800034010 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828491E280BA3D800034010 /* TableView.swift */; };
 		58284921280BA3DF00034010 /* FadingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58284920280BA3DF00034010 /* FadingTableView.swift */; };
+		58284923280BA4DA00034010 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58284922280BA4DA00034010 /* TabBar.swift */; };
+		58284926280BA5D300034010 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58284925280BA5D300034010 /* TabBarItem.swift */; };
+		58284928280BA7E900034010 /* CustomTabbedTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58284927280BA7E900034010 /* CustomTabbedTabScreen.swift */; };
 		58289BE927DE6E9200FCEF08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58289BE827DE6E9200FCEF08 /* AppDelegate.swift */; };
 		58289BEB27DE6E9200FCEF08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58289BEA27DE6E9200FCEF08 /* SceneDelegate.swift */; };
 		58289BF227DE6E9300FCEF08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58289BF127DE6E9300FCEF08 /* Assets.xcassets */; };
@@ -257,6 +260,9 @@
 		580DF5F7280A219B00BE0493 /* TabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabScreen.swift; sourceTree = "<group>"; };
 		5828491E280BA3D800034010 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		58284920280BA3DF00034010 /* FadingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingTableView.swift; sourceTree = "<group>"; };
+		58284922280BA4DA00034010 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		58284925280BA5D300034010 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		58284927280BA7E900034010 /* CustomTabbedTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbedTabScreen.swift; sourceTree = "<group>"; };
 		58289BE527DE6E9200FCEF08 /* SportBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58289BE827DE6E9200FCEF08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58289BEA27DE6E9200FCEF08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -627,6 +633,7 @@
 		580DF5E22809FA8C00BE0493 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				58284924280BA5C200034010 /* TabBar */,
 				587F300C2809CE9B00EFA7E9 /* BaseTabScreen.swift */,
 				580DF5E32809FA9600BE0493 /* ScreenTabs.swift */,
 			);
@@ -649,6 +656,16 @@
 				58284920280BA3DF00034010 /* FadingTableView.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		58284924280BA5C200034010 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				58284922280BA4DA00034010 /* TabBar.swift */,
+				58284925280BA5D300034010 /* TabBarItem.swift */,
+				58284927280BA7E900034010 /* CustomTabbedTabScreen.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		58289BDC27DE6E9200FCEF08 = {
@@ -1841,6 +1858,7 @@
 				587F303C2809DF5300EFA7E9 /* UI+DI.swift in Sources */,
 				5801910427F38A7D00BB3E3E /* Typealiases.swift in Sources */,
 				588F475627FE344B0062F838 /* GoogleLoginButton.swift in Sources */,
+				58284928280BA7E900034010 /* CustomTabbedTabScreen.swift in Sources */,
 				589AA52F27FEFFAC0002C4D5 /* CardView.swift in Sources */,
 				580DF5D72809EF7700BE0493 /* ChatsViewModel.swift in Sources */,
 				58C1D44F27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift in Sources */,
@@ -1875,6 +1893,7 @@
 				588F478427FE56600062F838 /* CodableHelper.swift in Sources */,
 				58289BEB27DE6E9200FCEF08 /* SceneDelegate.swift in Sources */,
 				588F479127FE56600062F838 /* ExerciseDTO.swift in Sources */,
+				58284926280BA5D300034010 /* TabBarItem.swift in Sources */,
 				589AA54027FF06AE0002C4D5 /* UIView+Animations.swift in Sources */,
 				5832043F27FE2959009A4644 /* MLPoseLandmarkType.swift in Sources */,
 				58E0A1732800D918000A81A5 /* SettingsService.swift in Sources */,
@@ -1884,6 +1903,7 @@
 				58FD650E2803135200FE6A51 /* ImageLoadingService.swift in Sources */,
 				58EBF1EC27FBB50000BA81CB /* AutoMockable.swift in Sources */,
 				5832043C27FE2959009A4644 /* MLService.swift in Sources */,
+				58284923280BA4DA00034010 /* TabBar.swift in Sources */,
 				580DF5EC280A0BB000BE0493 /* SystemImageService.swift in Sources */,
 				588F475C27FE4F350062F838 /* NetworkServiceProtocol.swift in Sources */,
 				580DF5D12809EF5A00BE0493 /* ChatsScreen.swift in Sources */,

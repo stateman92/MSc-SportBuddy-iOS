@@ -19,4 +19,13 @@ extension UIApplication {
     func setNetworkIndicator(isVisible: Bool) {
         isNetworkActivityIndicatorVisible = isVisible
     }
+
+    /// Detecth whether the device has notch.
+    static var hasNotch: Bool {
+        bottomNotchSize.isPositive
+    }
+
+    static var bottomNotchSize: CGFloat {
+        UIApplication.keyWindow?.safeAreaInsets.bottom ?? .zero
+    }
 }

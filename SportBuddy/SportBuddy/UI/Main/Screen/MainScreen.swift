@@ -7,7 +7,18 @@
 
 import UIKit
 
-final class MainScreen: BaseTabScreen<MainViewModel, MainScreenTabs> {
+final class MainScreen: CustomTabbedTabScreen<MainViewModel, MainScreenTabs> {
+    // MARK: Initialization
+
+    init() {
+        super.init(selectedColor: UIColor {
+            switch $0.userInterfaceStyle {
+            case .dark: return .white
+            default: return .darkGray
+            }
+        }, unselectedColor: .systemGray)
+    }
+
     // MARK: - Overridden methods
 
     override func setupTabBarAppearance() {
