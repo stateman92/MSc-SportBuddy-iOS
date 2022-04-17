@@ -8,13 +8,14 @@
 import UIKit
 
 final class MainTabBar: UITabBar {
-    // MARK: Properties
+    // MARK: Initialization
 
     init(cornerRadius: CGFloat = 20) {
         super.init(frame: .zero)
         layer.masksToBounds = true
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        transform = .init(translationX: .zero, y: -25)
     }
 
     @available(*, unavailable)

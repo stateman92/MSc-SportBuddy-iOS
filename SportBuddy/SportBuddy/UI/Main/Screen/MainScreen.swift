@@ -7,46 +7,37 @@
 
 import UIKit
 
-final class MainScreen: BaseTabScreen<MainViewModel> {
-    // MARK: Properties
+final class MainScreen: BaseTabScreen<MainViewModel, MainScreenTabs> {
+    // MARK: - Overridden methods
 
-    @LazyInjected var mainScreenTabs: MainScreenTabs
-}
-
-// MARK: - Lifecycle
-
-extension MainScreen {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-}
-
-// MARK: - Setups
-
-extension MainScreen {
-    private func setupView() {
-        setupTabBar()
-        mainScreenTabs.setup(on: self)
-    }
-
-    private func setupTabBar() {
+    override func setupTabBarAppearance() {
+        super.setupTabBarAppearance()
         setTabBar(tabBar: MainTabBar())
 
         let tabBarAppearance = UITabBarAppearance()
         let tabBarItemAppearance = UITabBarItemAppearance()
 
-        tabBarItemAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.white]
-        tabBarItemAppearance.selected.iconColor = .white
+        let color = UIColor {
+            switch $0.userInterfaceStyle {
+            case .dark: return .white
+            default: return .darkGray
+            }
+        }
+        tabBarItemAppearance.selected.titleTextAttributes = [.foregroundColor: color]
+        tabBarItemAppearance.selected.iconColor = color
         tabBarAppearance.then {
             $0.stackedLayoutAppearance = tabBarItemAppearance
             tabBar.standardAppearance = $0
             tabBar.scrollEdgeAppearance = $0
         }
+    }
+}
+
+// MARK: - Lifecycle
+
+extension MainScreen {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }

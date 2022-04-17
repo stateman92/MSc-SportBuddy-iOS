@@ -43,6 +43,8 @@
 		580DF5F0280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5EF280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift */; };
 		580DF5F6280A209C00BE0493 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5F5280A209C00BE0493 /* MainTabBar.swift */; };
 		580DF5F8280A219B00BE0493 /* TabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5F7280A219B00BE0493 /* TabScreen.swift */; };
+		5828491F280BA3D800034010 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828491E280BA3D800034010 /* TableView.swift */; };
+		58284921280BA3DF00034010 /* FadingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58284920280BA3DF00034010 /* FadingTableView.swift */; };
 		58289BE927DE6E9200FCEF08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58289BE827DE6E9200FCEF08 /* AppDelegate.swift */; };
 		58289BEB27DE6E9200FCEF08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58289BEA27DE6E9200FCEF08 /* SceneDelegate.swift */; };
 		58289BF227DE6E9300FCEF08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58289BF127DE6E9300FCEF08 /* Assets.xcassets */; };
@@ -253,6 +255,8 @@
 		580DF5EF280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SystemImageServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		580DF5F5280A209C00BE0493 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		580DF5F7280A219B00BE0493 /* TabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabScreen.swift; sourceTree = "<group>"; };
+		5828491E280BA3D800034010 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		58284920280BA3DF00034010 /* FadingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingTableView.swift; sourceTree = "<group>"; };
 		58289BE527DE6E9200FCEF08 /* SportBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58289BE827DE6E9200FCEF08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58289BEA27DE6E9200FCEF08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -514,6 +518,7 @@
 				58C1D43D27F5183A005D13C4 /* SegmentedControl */,
 				580521C727EFB21B00B3A8B1 /* StackView */,
 				580521C927EFB22A00B3A8B1 /* Switch */,
+				5828491D280BA3CE00034010 /* TableView */,
 				580521D627EFB2EB00B3A8B1 /* TextField */,
 				580521DC27EFB47500B3A8B1 /* View */,
 				5801910927F3929500BB3E3E /* VisualEffectView */,
@@ -635,6 +640,15 @@
 				580DF5EB280A0BB000BE0493 /* SystemImageService.swift */,
 			);
 			path = SystemImageService;
+			sourceTree = "<group>";
+		};
+		5828491D280BA3CE00034010 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5828491E280BA3D800034010 /* TableView.swift */,
+				58284920280BA3DF00034010 /* FadingTableView.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		58289BDC27DE6E9200FCEF08 = {
@@ -1737,6 +1751,7 @@
 			files = (
 				58FD650C280312E500FE6A51 /* ImageLoadingServiceProtocol.swift in Sources */,
 				5832043E27FE2959009A4644 /* MLPoseDetectorMode.swift in Sources */,
+				58284921280BA3DF00034010 /* FadingTableView.swift in Sources */,
 				58EBF20727FBB76100BA81CB /* UIApplication+Extensions.swift in Sources */,
 				588F478827FE56600062F838 /* ExerciseFractionTimeUnitDTO.swift in Sources */,
 				5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */,
@@ -1883,6 +1898,7 @@
 				58FD65152803151C00FE6A51 /* AnimationService.swift in Sources */,
 				58FD65122803148800FE6A51 /* AnimationServiceProtocol.swift in Sources */,
 				58B2E1E427F3C377004135E2 /* OnboardingPage.swift in Sources */,
+				5828491F280BA3D800034010 /* TableView.swift in Sources */,
 				5828B54927F4DF870079A727 /* LoginScreen.swift in Sources */,
 				5828B54B27F4DFAA0079A727 /* LoginViewModel.swift in Sources */,
 				588F475F27FE4FF60062F838 /* NetworkError.swift in Sources */,

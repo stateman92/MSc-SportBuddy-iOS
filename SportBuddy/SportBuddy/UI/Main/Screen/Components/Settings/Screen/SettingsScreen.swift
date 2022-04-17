@@ -10,7 +10,7 @@ import UIKit
 final class SettingsScreen: TabScreen<SettingsViewModel> {
     // MARK: Properties
 
-    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let tableView = FadingTableView(frame: .zero, style: .insetGrouped)
 
     // MARK: Initialization
 

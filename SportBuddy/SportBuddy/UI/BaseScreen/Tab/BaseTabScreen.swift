@@ -8,17 +8,18 @@
 import Combine
 import UIKit
 
-class BaseTabScreen<ViewModel: BaseViewModel>: UITabBarController, UITabBarControllerDelegate {
+class BaseTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: UITabBarController, UITabBarControllerDelegate {
     // MARK: Properties
 
     @LazyInjected var viewModel: ViewModel
+    @LazyInjected private var tabs: Tabs
     var cancellables = Cancellables()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        setupView()
     }
 
     // MARK: - UITabBarControllerDelegate
@@ -33,6 +34,10 @@ class BaseTabScreen<ViewModel: BaseViewModel>: UITabBarController, UITabBarContr
         navigationItem.backBarButtonItem = viewController.navigationItem.backBarButtonItem
         navigationItem.hidesBackButton = viewController.navigationItem.hidesBackButton
     }
+
+    // MARK: - Overridable methods
+
+    func setupTabBarAppearance() { }
 }
 
 // MARK: - Public methods
@@ -40,5 +45,15 @@ class BaseTabScreen<ViewModel: BaseViewModel>: UITabBarController, UITabBarContr
 extension BaseTabScreen {
     func setTabBar(tabBar: UITabBar) {
         setValue(tabBar, forKey: "tabBar")
+    }
+}
+
+// MARK: - Setups
+
+extension BaseTabScreen {
+    private func setupView() {
+        setupTabBarAppearance()
+        delegate = self
+        tabs.setup(on: self)
     }
 }
