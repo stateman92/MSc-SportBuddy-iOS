@@ -19,6 +19,11 @@ extension DependencyInjector {
             .scope(.application)
 
         resolver
+            .register { DefaultSettingsService() }
+            .implements(DefaultSettingsServiceProtocol.self)
+            .scope(.application)
+
+        resolver
             .register { ImageLoadingService() }
             .implements(ImageLoadingServiceProtocol.self)
             .scope(.application)
@@ -51,6 +56,11 @@ extension DependencyInjector {
         resolver
             .register { NetworkService() }
             .implements(NetworkServiceProtocol.self)
+            .scope(.application)
+
+        resolver
+            .register { SecureSettingsService() }
+            .implements(SecureSettingsServiceProtocol.self)
             .scope(.application)
 
         resolver

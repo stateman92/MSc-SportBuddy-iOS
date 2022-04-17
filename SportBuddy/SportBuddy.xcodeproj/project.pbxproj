@@ -137,6 +137,14 @@
 		589AA54727FF0AFD0002C4D5 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 589AA54627FF0AFD0002C4D5 /* IQKeyboardManagerSwift */; };
 		58A9971627EFB73D0003D3E9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 58A9971527EFB73D0003D3E9 /* Alamofire */; };
 		58A9971B27EFD9990003D3E9 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9971A27EFD9990003D3E9 /* TextField.swift */; };
+		58AAEC2F280BBC040054E2F0 /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = 58AAEC2E280BBC040054E2F0 /* Valet */; };
+		58AAEC32280BBC4A0054E2F0 /* SecureSettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAEC31280BBC4A0054E2F0 /* SecureSettingsServiceProtocol.swift */; };
+		58AAEC34280BBC660054E2F0 /* SecureSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAEC33280BBC660054E2F0 /* SecureSettingsService.swift */; };
+		58AAEC37280BBEA80054E2F0 /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAEC36280BBEA80054E2F0 /* SettingsServiceProtocol.swift */; };
+		58AAEC39280BBEAE0054E2F0 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAEC38280BBEAE0054E2F0 /* SettingsService.swift */; };
+		58AAEC3B280BC0230054E2F0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAEC3A280BC0230054E2F0 /* Cache.swift */; };
+		58AAEC3D280BC0890054E2F0 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAEC3C280BC0880054E2F0 /* Domain.swift */; };
+		58AAEC41280BC1EE0054E2F0 /* EquatableCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAEC40280BC1EE0054E2F0 /* EquatableCache.swift */; };
 		58B2E1CD27F3B5A3004135E2 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2E1CC27F3B5A3004135E2 /* Onboard.swift */; };
 		58B2E1CF27F3B5B4004135E2 /* DefaultOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2E1CE27F3B5B4004135E2 /* DefaultOnboardOverlay.swift */; };
 		58B2E1D127F3B5C1004135E2 /* DefaultOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2E1D027F3B5C1004135E2 /* DefaultOnboardPage.swift */; };
@@ -161,8 +169,8 @@
 		58E0A16E2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A16A2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift */; };
 		58E0A16F2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A16B2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift */; };
 		58E0A1702800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A16C2800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift */; };
-		58E0A1732800D918000A81A5 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1722800D918000A81A5 /* SettingsService.swift */; };
-		58E0A1752800D922000A81A5 /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1742800D922000A81A5 /* SettingsServiceProtocol.swift */; };
+		58E0A1732800D918000A81A5 /* DefaultSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */; };
+		58E0A1752800D922000A81A5 /* DefaultSettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */; };
 		58E0A1782800D9B8000A81A5 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1772800D9B8000A81A5 /* Key.swift */; };
 		58E0A17A2800D9CC000A81A5 /* StringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1792800D9CC000A81A5 /* StringKey.swift */; };
 		58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A17E28010A0A000A81A5 /* NavigationController.swift */; };
@@ -353,6 +361,13 @@
 		589AA54127FF06DE0002C4D5 /* CAMediaTimingFunction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAMediaTimingFunction+Extensions.swift"; sourceTree = "<group>"; };
 		589AA54327FF07120002C4D5 /* BinaryFloatingPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BinaryFloatingPoint+Extensions.swift"; sourceTree = "<group>"; };
 		58A9971A27EFD9990003D3E9 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		58AAEC31280BBC4A0054E2F0 /* SecureSettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureSettingsServiceProtocol.swift; sourceTree = "<group>"; };
+		58AAEC33280BBC660054E2F0 /* SecureSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureSettingsService.swift; sourceTree = "<group>"; };
+		58AAEC36280BBEA80054E2F0 /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
+		58AAEC38280BBEAE0054E2F0 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		58AAEC3A280BC0230054E2F0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		58AAEC3C280BC0880054E2F0 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
+		58AAEC40280BC1EE0054E2F0 /* EquatableCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableCache.swift; sourceTree = "<group>"; };
 		58B2E1CC27F3B5A3004135E2 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
 		58B2E1CE27F3B5B4004135E2 /* DefaultOnboardOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultOnboardOverlay.swift; sourceTree = "<group>"; };
 		58B2E1D027F3B5C1004135E2 /* DefaultOnboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultOnboardPage.swift; sourceTree = "<group>"; };
@@ -377,8 +392,8 @@
 		58E0A16A2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigatorServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58E0A16B2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58E0A16C2800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		58E0A1722800D918000A81A5 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
-		58E0A1742800D922000A81A5 /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
+		58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsService.swift; sourceTree = "<group>"; };
+		58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		58E0A1772800D9B8000A81A5 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		58E0A1792800D9CC000A81A5 /* StringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKey.swift; sourceTree = "<group>"; };
 		58E0A17E28010A0A000A81A5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -429,6 +444,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58AAEC2F280BBC040054E2F0 /* Valet in Frameworks */,
 				580DF5E9280A0B4F00BE0493 /* SFSafeSymbols in Frameworks */,
 				589AA54727FF0AFD0002C4D5 /* IQKeyboardManagerSwift in Frameworks */,
 				580521E427EFB62300B3A8B1 /* Resolver in Frameworks */,
@@ -588,6 +604,7 @@
 				587F30392809DE8600EFA7E9 /* Services+DI.swift */,
 				58FD65102803147300FE6A51 /* AnimationService */,
 				587F30342809DCE700EFA7E9 /* CoderService */,
+				58E0A1712800D906000A81A5 /* DefaultSettingsService */,
 				58FD650A280312D000FE6A51 /* ImageLoadingService */,
 				58E0A18028010C8C000A81A5 /* LoadingOverlayService */,
 				58EBF1E327FBB4E900BA81CB /* LoadingService */,
@@ -595,7 +612,8 @@
 				5832042527FE294B009A4644 /* MLService */,
 				58EBF1E827FBB4F200BA81CB /* NavigatorService */,
 				588F475827FE4F0C0062F838 /* NetworkService */,
-				58E0A1712800D906000A81A5 /* SettingsService */,
+				58AAEC30280BBC090054E2F0 /* SecureSettingsService */,
+				58AAEC35280BBE8A0054E2F0 /* SettingsService */,
 				580DF5EA280A0B7C00BE0493 /* SystemImageService */,
 				587F302F2809D92600EFA7E9 /* WebSocketService */,
 			);
@@ -697,6 +715,7 @@
 				5877508D27FCAC8100D638A0 /* SportBuddy.entitlements */,
 				58F976D227DE735000E74C5F /* App */,
 				58F976D127DE734600E74C5F /* Common */,
+				58AAEC3E280BC14A0054E2F0 /* Domain */,
 				58F976CE27DE733000E74C5F /* UI */,
 				580521BE27EF6E7200B3A8B1 /* UIKit */,
 				58289BE827DE6E9200FCEF08 /* AppDelegate.swift */,
@@ -791,6 +810,7 @@
 		5832044E27FE2BF2009A4644 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				58AAEC3F280BC1E10054E2F0 /* Cache */,
 				589AA53827FF05540002C4D5 /* Keyboard */,
 				580190FA27F382EA00BB3E3E /* AppLoader */,
 				580190F727F3826000BB3E3E /* DI */,
@@ -1075,6 +1095,42 @@
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
+		58AAEC30280BBC090054E2F0 /* SecureSettingsService */ = {
+			isa = PBXGroup;
+			children = (
+				58AAEC31280BBC4A0054E2F0 /* SecureSettingsServiceProtocol.swift */,
+				58AAEC33280BBC660054E2F0 /* SecureSettingsService.swift */,
+			);
+			path = SecureSettingsService;
+			sourceTree = "<group>";
+		};
+		58AAEC35280BBE8A0054E2F0 /* SettingsService */ = {
+			isa = PBXGroup;
+			children = (
+				58E0A1762800D9B0000A81A5 /* Components */,
+				58AAEC36280BBEA80054E2F0 /* SettingsServiceProtocol.swift */,
+				58AAEC38280BBEAE0054E2F0 /* SettingsService.swift */,
+			);
+			path = SettingsService;
+			sourceTree = "<group>";
+		};
+		58AAEC3E280BC14A0054E2F0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				58AAEC3C280BC0880054E2F0 /* Domain.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		58AAEC3F280BC1E10054E2F0 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				58AAEC3A280BC0230054E2F0 /* Cache.swift */,
+				58AAEC40280BC1EE0054E2F0 /* EquatableCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		58B2E1CB27F3B595004135E2 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -1171,14 +1227,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		58E0A1712800D906000A81A5 /* SettingsService */ = {
+		58E0A1712800D906000A81A5 /* DefaultSettingsService */ = {
 			isa = PBXGroup;
 			children = (
-				58E0A1762800D9B0000A81A5 /* Components */,
-				58E0A1742800D922000A81A5 /* SettingsServiceProtocol.swift */,
-				58E0A1722800D918000A81A5 /* SettingsService.swift */,
+				58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */,
+				58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */,
 			);
-			path = SettingsService;
+			path = DefaultSettingsService;
 			sourceTree = "<group>";
 		};
 		58E0A1762800D9B0000A81A5 /* Components */ = {
@@ -1457,6 +1512,7 @@
 				58FD65042803111D00FE6A51 /* Lottie */,
 				587F302D2809D92100EFA7E9 /* Starscream */,
 				580DF5E8280A0B4F00BE0493 /* SFSafeSymbols */,
+				58AAEC2E280BBC040054E2F0 /* Valet */,
 			);
 			productName = SportBuddy;
 			productReference = 58289BE527DE6E9200FCEF08 /* SportBuddy.app */;
@@ -1544,6 +1600,7 @@
 				58FD65032803111D00FE6A51 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				587F302C2809D92100EFA7E9 /* XCRemoteSwiftPackageReference "Starscream" */,
 				580DF5E7280A0B4F00BE0493 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				58AAEC2D280BBC040054E2F0 /* XCRemoteSwiftPackageReference "Valet" */,
 			);
 			productRefGroup = 58289BE627DE6E9200FCEF08 /* Products */;
 			projectDirPath = "";
@@ -1769,6 +1826,7 @@
 				58FD650C280312E500FE6A51 /* ImageLoadingServiceProtocol.swift in Sources */,
 				5832043E27FE2959009A4644 /* MLPoseDetectorMode.swift in Sources */,
 				58284921280BA3DF00034010 /* FadingTableView.swift in Sources */,
+				58AAEC41280BC1EE0054E2F0 /* EquatableCache.swift in Sources */,
 				58EBF20727FBB76100BA81CB /* UIApplication+Extensions.swift in Sources */,
 				588F478827FE56600062F838 /* ExerciseFractionTimeUnitDTO.swift in Sources */,
 				5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */,
@@ -1776,6 +1834,7 @@
 				58A9971B27EFD9990003D3E9 /* TextField.swift in Sources */,
 				580521CE27EFB29300B3A8B1 /* Switch.swift in Sources */,
 				580521C227EF70AD00B3A8B1 /* ButtonLabel.swift in Sources */,
+				58AAEC3B280BC0230054E2F0 /* Cache.swift in Sources */,
 				58B2E1CD27F3B5A3004135E2 /* Onboard.swift in Sources */,
 				588F478927FE56600062F838 /* ExerciseTypeDTO.swift in Sources */,
 				588F478327FE56600062F838 /* AdminAPI.swift in Sources */,
@@ -1825,6 +1884,7 @@
 				580190F227F3821200BB3E3E /* OnboardingViewModel.swift in Sources */,
 				580DF5E42809FA9600BE0493 /* ScreenTabs.swift in Sources */,
 				588F478E27FE56600062F838 /* GroupDTO.swift in Sources */,
+				58AAEC34280BBC660054E2F0 /* SecureSettingsService.swift in Sources */,
 				58289BE927DE6E9200FCEF08 /* AppDelegate.swift in Sources */,
 				587F30112809CEC600EFA7E9 /* Main+DI.swift in Sources */,
 				58EBF1E727FBB4E900BA81CB /* LoadingServiceProtocol.swift in Sources */,
@@ -1854,6 +1914,7 @@
 				588F478A27FE56600062F838 /* UserResponseDTO.swift in Sources */,
 				580521D527EFB2D400B3A8B1 /* StackView.swift in Sources */,
 				588F479827FE59F90062F838 /* ScrollingScreen.swift in Sources */,
+				58AAEC39280BBEAE0054E2F0 /* SettingsService.swift in Sources */,
 				5832043D27FE2959009A4644 /* MLPoseLandmark.swift in Sources */,
 				587F303C2809DF5300EFA7E9 /* UI+DI.swift in Sources */,
 				5801910427F38A7D00BB3E3E /* Typealiases.swift in Sources */,
@@ -1873,6 +1934,7 @@
 				58C1D43F27F51845005D13C4 /* SegmentedControl.swift in Sources */,
 				5877508C27FCA6AE00D638A0 /* StyledTextField.swift in Sources */,
 				58B2E1D627F3BABE004135E2 /* OnboardDelegate.swift in Sources */,
+				58AAEC37280BBEA80054E2F0 /* SettingsServiceProtocol.swift in Sources */,
 				589AA53A27FF055C0002C4D5 /* AnimatedKeyboardObserver.swift in Sources */,
 				588F478127FE56600062F838 /* ClientAPI.swift in Sources */,
 				588F5E80280B34EF00947800 /* LogPrivacy.swift in Sources */,
@@ -1893,11 +1955,12 @@
 				588F478427FE56600062F838 /* CodableHelper.swift in Sources */,
 				58289BEB27DE6E9200FCEF08 /* SceneDelegate.swift in Sources */,
 				588F479127FE56600062F838 /* ExerciseDTO.swift in Sources */,
+				58AAEC3D280BC0890054E2F0 /* Domain.swift in Sources */,
 				58284926280BA5D300034010 /* TabBarItem.swift in Sources */,
 				589AA54027FF06AE0002C4D5 /* UIView+Animations.swift in Sources */,
 				5832043F27FE2959009A4644 /* MLPoseLandmarkType.swift in Sources */,
-				58E0A1732800D918000A81A5 /* SettingsService.swift in Sources */,
-				58E0A1752800D922000A81A5 /* SettingsServiceProtocol.swift in Sources */,
+				58E0A1732800D918000A81A5 /* DefaultSettingsService.swift in Sources */,
+				58E0A1752800D922000A81A5 /* DefaultSettingsServiceProtocol.swift in Sources */,
 				588F478227FE56600062F838 /* BackendAPI.swift in Sources */,
 				58E0A18428010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift in Sources */,
 				58FD650E2803135200FE6A51 /* ImageLoadingService.swift in Sources */,
@@ -1917,6 +1980,7 @@
 				580190F627F3824600BB3E3E /* Onboarding+DI.swift in Sources */,
 				58FD65152803151C00FE6A51 /* AnimationService.swift in Sources */,
 				58FD65122803148800FE6A51 /* AnimationServiceProtocol.swift in Sources */,
+				58AAEC32280BBC4A0054E2F0 /* SecureSettingsServiceProtocol.swift in Sources */,
 				58B2E1E427F3C377004135E2 /* OnboardingPage.swift in Sources */,
 				5828491F280BA3D800034010 /* TableView.swift in Sources */,
 				5828B54927F4DF870079A727 /* LoginScreen.swift in Sources */,
@@ -2341,6 +2405,14 @@
 				version = 4.9.1;
 			};
 		};
+		58AAEC2D280BBC040054E2F0 /* XCRemoteSwiftPackageReference "Valet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Square/Valet";
+			requirement = {
+				kind = exactVersion;
+				version = 4.1.2;
+			};
+		};
 		58FD65002803110100FE6A51 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -2389,6 +2461,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 58A9971427EFB73D0003D3E9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		58AAEC2E280BBC040054E2F0 /* Valet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58AAEC2D280BBC040054E2F0 /* XCRemoteSwiftPackageReference "Valet" */;
+			productName = Valet;
 		};
 		58FD65012803110100FE6A51 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -32,6 +32,7 @@ extension LoggingService: LoggingServiceProtocol {
         case let .fault(privacy): fault(message: message, privacy: privacy)
         case .critical: critical(message: message)
         }
+        dump("Logged: type: \(logType), message: \(message)")
     }
 }
 

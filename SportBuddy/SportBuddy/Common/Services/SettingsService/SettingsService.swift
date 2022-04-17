@@ -2,78 +2,86 @@
 //  SettingsService.swift
 //  SportBuddy
 //
-//  Created by Kristof Kalai on 2022. 04. 08..
+//  Created by Kristof Kalai on 2022. 04. 17..
 //
 
 import Foundation
 
-/// A class for managing key-value pairs persistently.
+/// A protocol for managing all types of key-value pairs persistently.
 final class SettingsService {
-    // MARK: Properties
-
-    private let defaults: UserDefaults
-    @LazyInjected private var coderService: CoderServiceProtocol
-
-    // MARK: Initialization
-
-    /// Initialize the service.
-    init() {
-        defaults = .standard
-    }
+    @LazyInjected private var defaultSettingsService: DefaultSettingsServiceProtocol
+    @LazyInjected private var secureSettingsService: SecureSettingsServiceProtocol
 }
-
-// MARK: - SettingsServiceProtocol
 
 extension SettingsService: SettingsServiceProtocol {
     /// Save a `Codable` value to the device.
     /// - Parameters:
     ///   - object: the `Codable` to be stored.
     ///   - forKey: the key with that will be associated.
+    ///   - secure: whether the value should be stored securly.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func save<T>(object: T?, forKey key: Key) -> Bool where T: Codable {
-        if let encoded = coderService.encode(object: object) {
-            defaults.set(encoded, forKey: key.keyName)
-            return true
+    @discardableResult func save<T>(object: T?, forKey key: Key, secure: Bool) -> Bool where T: Codable {
+        if secure {
+            return secureSettingsService.save(object: object, forKey: key)
+        } else {
+            return defaultSettingsService.save(object: object, forKey: key)
         }
-        return false
     }
 
     /// Retrieve a `Codable` from the device.
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be returned.
+    ///   - secure: whether the value was secure.
     /// - Note:
     /// If nothing is stored for the given key (or some error happened), return `nil`.
     /// - Returns:
     ///     The value for the given key.
-    func retrieve<T>(forKey key: Key) -> T? where T: Codable {
-        coderService.decode(data: defaults.object(forKey: key.keyName) as? Data)
+    func retrieve<T>(forKey key: Key, secure: Bool) -> T? where T: Codable {
+        if secure {
+            return secureSettingsService.retrieve(forKey: key)
+        } else {
+            return defaultSettingsService.retrieve(forKey: key)
+        }
     }
 
     /// Check whether a value is saved to the given key.
     /// - Parameters:
     ///   - key: the key.
+    ///   - secure: whether the value was secure.
     /// - Returns:
     ///     Whether a stored value is found for the given key.
-    func has(key: Key) -> Bool {
-        defaults.object(forKey: key.keyName) != nil
+    func has(key: Key, secure: Bool) -> Bool {
+        if secure {
+            return secureSettingsService.has(key: key)
+        } else {
+            return defaultSettingsService.has(key: key)
+        }
     }
 
     /// Delete the stored value from the device.
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
+    ///   - secure: whether the value was secure.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func delete<T>(forKey key: Key) -> T? where T: Codable {
-        let object: T? = retrieve(forKey: key)
-        delete(forKey: key)
-        return object
+    @discardableResult func delete<T>(forKey key: Key, secure: Bool) -> T? where T: Codable {
+        if secure {
+            return secureSettingsService.delete(forKey: key)
+        } else {
+            return defaultSettingsService.delete(forKey: key)
+        }
     }
 
     /// Delete the stored value from the device.
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
-    func delete(forKey key: Key) {
-        defaults.removeObject(forKey: key.keyName)
+    ///   - secure: whether the value was secure.
+    func delete(forKey key: Key, secure: Bool) {
+        if secure {
+            secureSettingsService.delete(forKey: key)
+        } else {
+            defaultSettingsService.delete(forKey: key)
+        }
     }
 }
