@@ -47,8 +47,8 @@ extension DependencyInjector {
             .scope(.unique)
 
         resolver
-            .register { NetworkServiceProtocolMock() }
-            .implements(NetworkServiceProtocol.self)
+            .register { SystemImageService() }
+            .implements(SystemImageServiceProtocol.self)
             .scope(.unique)
     }
 }

@@ -13,7 +13,13 @@ class BaseViewModel {
     @LazyInjected var loggingService: LoggingServiceProtocol
     @LazyInjected var mlService: MLServiceProtocol
     @LazyInjected var navigatorService: NavigatorServiceProtocol
-    @LazyInjected var networkService: NetworkServiceProtocol
     @LazyInjected var settingService: SettingsServiceProtocol
     @LazyInjected var webSocketService: WebSocketServiceProtocol
+
+    @LazyInjected var userDomain: UserDomainProtocol
+    @LazyInjected var groupDomain: GroupDomainProtocol
+    @LazyInjected var chatDomain: ChatDomainProtocol
+    @LazyInjected var trainingDomain: TrainingDomainProtocol
+
+    var cancellables = Cancellables()
 }

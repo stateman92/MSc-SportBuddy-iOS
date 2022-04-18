@@ -24,7 +24,7 @@ struct AppLoader {
 extension AppLoader {
     static func setup() {
         DependencyInjector.registerDependencies()
-        SwaggerClientAPI.basePath = "https://sportbuddy-backend.herokuapp.com"
+        OpenAPIClientAPI.basePath = "https://sportbuddy-backend.herokuapp.com"
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
                 // Show the app's signed-out state.

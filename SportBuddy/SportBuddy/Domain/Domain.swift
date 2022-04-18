@@ -5,7 +5,7 @@
 //  Created by Kristof Kalai on 2022. 04. 17..
 //
 
-class Domain {
+class Domain<Cache> {
     // MARK: Nested types
 
     private enum DomainError: Error {
@@ -14,28 +14,31 @@ class Domain {
 
     // MARK: Properties
 
-    @LazyInjected private static var loggingService: LoggingServiceProtocol
+    @LazyInjected private var loggingService: LoggingServiceProtocol
+    @LazyInjected var loadingService: LoadingServiceProtocol
+    @LazyInjected var cache: Cache
+    var cancellables = Cancellables()
 }
 
 extension Domain {
-    static func log(_ message: String?, file: String = #file, function: String = #function, line: Int = #line) {
+    func log(_ message: String?, file: String = #file, function: String = #function, line: Int = #line) {
         let message = "APISuccess: \(message ?? "unknown")\(log(file: file, function: function, line: line))"
         loggingService.debug(message: message)
     }
 
-    static func log(_ error: Error?, file: String = #file, function: String = #function, line: Int = #line) {
+    func log(_ error: Error?, file: String = #file, function: String = #function, line: Int = #line) {
         let message = "APIError: \(error ?? DomainError.unknown)\(log(file: file, function: function, line: line))"
         loggingService.debug(message: message)
     }
 
-    static func log(_ any: Any, file: String = #file, function: String = #function, line: Int = #line) {
+    func log(_ any: Any, file: String = #file, function: String = #function, line: Int = #line) {
         let message = "APISuccess: \(any)\(log(file: file, function: function, line: line))"
         loggingService.debug(message: message)
     }
 }
 
 extension Domain {
-    private static func log(file: String, function: String, line: Int) -> String {
+    private func log(file: String, function: String, line: Int) -> String {
         " in \(file), in \(function) at \(line)"
     }
 }

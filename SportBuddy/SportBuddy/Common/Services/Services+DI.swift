@@ -8,74 +8,25 @@
 extension DependencyInjector {
     /// Register all the service-related dependencies of the application.
     static func registerServices() {
-        resolver
-            .register { AnimationService() }
-            .implements(AnimationServiceProtocol.self)
-            .scope(.application)
+        register(service: AnimationService(), implements: AnimationServiceProtocol.self)
+        register(service: CoderService(), implements: CoderServiceProtocol.self)
+        register(service: DefaultSettingsService(), implements: DefaultSettingsServiceProtocol.self)
+        register(service: ImageLoadingService(), implements: ImageLoadingServiceProtocol.self)
+        register(service: LoadingOverlayService(), implements: LoadingOverlayServiceProtocol.self)
+        register(service: LoadingService(), implements: LoadingServiceProtocol.self)
+        register(service: LoggingService(), implements: LoggingServiceProtocol.self)
+        register(service: MLService(), implements: MLServiceProtocol.self)
+        register(service: NavigatorService(rootViewController: resolve() as OnboardingScreen),
+                 implements: NavigatorServiceProtocol.self)
+        register(service: SecureSettingsService(), implements: SecureSettingsServiceProtocol.self)
+        register(service: SettingsService(), implements: SystemImageServiceProtocol.self)
+        register(service: SystemImageService(), implements: AnimationServiceProtocol.self)
+        register(service: WebSocketService(), implements: WebSocketServiceProtocol.self)
+    }
+}
 
-        resolver
-            .register { CoderService() }
-            .implements(CoderServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { DefaultSettingsService() }
-            .implements(DefaultSettingsServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { ImageLoadingService() }
-            .implements(ImageLoadingServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { LoadingOverlayService() }
-            .implements(LoadingOverlayServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { LoadingService() }
-            .implements(LoadingServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { LoggingService() }
-            .implements(LoggingServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { MLService() }
-            .implements(MLServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { NavigatorService(rootViewController: resolve() as OnboardingScreen) }
-            .implements(NavigatorServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { NetworkService() }
-            .implements(NetworkServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { SecureSettingsService() }
-            .implements(SecureSettingsServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { SettingsService() }
-            .implements(SettingsServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { SystemImageService() }
-            .implements(SystemImageServiceProtocol.self)
-            .scope(.application)
-
-        resolver
-            .register { WebSocketService() }
-            .implements(WebSocketServiceProtocol.self)
-            .scope(.application)
+extension DependencyInjector {
+    private static func register<T, S>(service: @autoclosure @escaping () -> T, implements implemented: S.Type) {
+        resolver.register { service() }.implements(implemented).scope(.application)
     }
 }

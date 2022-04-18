@@ -27,7 +27,7 @@ SportBuddy iOS client app
 
 #### Update licences
 
-- Make sure you've installed [LicensePlist](https://github.com/mono0926/LicensePlist) - if not, use e.g. `brew install mono0926/license-plist/license-plist
+- Make sure you've installed [LicensePlist](https://github.com/mono0926/LicensePlist) - if not, use e.g. `brew install mono0926/license-plist/license-plist via [Homebrew](https://brew.sh/)
 `
 
 - Run `license-plist` in the terminal in the SportBuddy directory
@@ -36,8 +36,14 @@ SportBuddy iOS client app
 
 #### Update mocks
 
-- Make sure you've installed [Sourcery](https://github.com/krzysztofzablocki/Sourcery) - if not use, e.g. `brew install sourcery`
+- Make sure you've installed [Sourcery](https://github.com/krzysztofzablocki/Sourcery) - if not use, e.g. `brew install sourcery` via [Homebrew](https://brew.sh/)
 
 - Run `sh sourcery.sh` in the terminal in the SportBuddy directory
 
 - Copy (reference) the results (SportBuddy/SportBuddyTests/Generated/) to the SportBuddy/SportBuddyTests/Generated/ folder (rewrite the old versions in Xcode)
+
+#### Update openapi generated files
+
+- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) - if not use, e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
+
+- Run `openapi-generator generate -i /path/to/descriptor/swagger.yaml -g swift5 --additional-properties=responseAs=AsyncAwait -o /path/to/output` in the terminal

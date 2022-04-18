@@ -20,11 +20,12 @@ extension UIApplication {
         isNetworkActivityIndicatorVisible = isVisible
     }
 
-    /// Detecth whether the device has notch.
+    /// Detect whether the device has notch.
     static var hasNotch: Bool {
         bottomNotchSize.isPositive
     }
 
+    /// Height of the bottom notch.
     static var bottomNotchSize: CGFloat {
         UIApplication.keyWindow?.safeAreaInsets.bottom ?? .zero
     }

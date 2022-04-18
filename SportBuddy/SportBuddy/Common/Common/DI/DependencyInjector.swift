@@ -20,8 +20,9 @@ public struct DependencyInjector {
 extension DependencyInjector {
     /// Register all the dependencies of the application.
     static func registerDependencies() {
-        registerUI()
         registerServices()
+        registerDomains()
+        registerUI()
     }
 
     /// Resolve a given type of dependency.

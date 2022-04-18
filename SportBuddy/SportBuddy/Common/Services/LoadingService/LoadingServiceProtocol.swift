@@ -38,4 +38,15 @@ extension LoadingServiceProtocol {
     init() {
         self.init(isShowing: false, triggerSameValue: true)
     }
+
+    /// Set the loading state to true, do some work in the closure, and then call the parameter in the closure.
+    /// - Parameter during: the closure in which the work is being done.
+    func loading(during closure: @escaping () async -> Void) {
+        loading { finished in
+            Task {
+                await closure()
+                finished()
+            }
+        }
+    }
 }
