@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 /// A class for managing the loading states.
 final class LoadingService {

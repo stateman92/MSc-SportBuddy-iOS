@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 /// A protocol for managing the loading states.
 protocol LoadingServiceProtocol: AutoMockable, Initable {
@@ -39,13 +40,15 @@ extension LoadingServiceProtocol {
         self.init(isShowing: false, triggerSameValue: true)
     }
 
-    /// Set the loading state to true, do some work in the closure, and then call the parameter in the closure.
+    /// Set the loading state to `true`, do some work in the closure, and then call the parameter in the closure.
     /// - Parameter during: the closure in which the work is being done.
     func loading(during closure: @escaping () async -> Void) {
         loading { finished in
             Task {
                 await closure()
-                finished()
+                dispatchToMain {
+                    finished()
+                }
             }
         }
     }

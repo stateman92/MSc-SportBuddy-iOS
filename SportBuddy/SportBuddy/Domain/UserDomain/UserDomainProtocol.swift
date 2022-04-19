@@ -29,5 +29,6 @@ protocol UserDomainProtocol {
     ///   - email: the user's email.
     func forgotPassword(email: String) -> AnyPublisher<Void, UserDomainError>
 
+    /// Call to login the user with google services.
     func loginWithGoogle() -> AnyPublisher<Void, UserDomainError>
 }

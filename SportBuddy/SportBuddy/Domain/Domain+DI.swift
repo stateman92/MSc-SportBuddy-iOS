@@ -8,18 +8,30 @@
 extension DependencyInjector {
     /// Register all the domain-related dependencies of the application.
     static func registerDomains() {
-        register(domain: UserDomain(), cache: UserCache(), implements: UserDomainProtocol.self)
-        register(domain: GroupDomain(), cache: GroupCache(), implements: GroupDomainProtocol.self)
-        register(domain: ChatDomain(), cache: ChatCache(), implements: ChatDomainProtocol.self)
-        register(domain: TrainingDomain(), cache: TrainingCache(), implements: TrainingDomainProtocol.self)
+        registerCaches()
+        registerDomainClasses()
     }
 }
 
 extension DependencyInjector {
-    private static func register<T, S, R>(domain: @autoclosure @escaping () -> T,
-                                          cache: @autoclosure @escaping () -> Cache<S>,
-                                          implements implemented: R.Type) {
+    private static func registerCaches() {
+        resolver.register { UserCache() }
+        resolver.register { TokenCache() }
+        resolver.register { GroupCache() }
+        resolver.register { ChatCache() }
+        resolver.register { TrainingCache() }
+    }
+
+    private static func registerDomainClasses() {
+        register(domain: UserDomain(), implements: UserDomainProtocol.self)
+        register(domain: GroupDomain(), implements: GroupDomainProtocol.self)
+        register(domain: ChatDomain(), implements: ChatDomainProtocol.self)
+        register(domain: TrainingDomain(), implements: TrainingDomainProtocol.self)
+    }
+}
+
+extension DependencyInjector {
+    private static func register<T, S>(domain: @autoclosure @escaping () -> T, implements implemented: S.Type) {
         resolver.register { domain() }.implements(implemented).scope(.application)
-        resolver.register { cache() }
     }
 }

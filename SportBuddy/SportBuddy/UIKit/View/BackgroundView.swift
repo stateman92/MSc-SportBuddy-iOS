@@ -21,8 +21,8 @@ final class BackgroundView: View {
     private let firstCircle = RoundedView()
     private let secondCircle = RoundedView()
     private let rectangle = RoundedView()
-    private let firstVisualEffect = VisualEffectView()
-    private let secondVisualEffect = VisualEffectView()
+    private let visualEffectView = VisualEffectView()
+    private var cancellables = Cancellables()
     var isAnimating = true {
         didSet {
             if isAnimating {
@@ -76,15 +76,24 @@ extension BackgroundView {
         setupRectangle()
         setupVisualEffect()
         setupAnimation()
+        NotificationCenter.publisher(for: .name(UIApplication.willEnterForegroundNotification))
+            .sink { [unowned self] _ in
+                if isAnimating {
+                    setupAnimation()
+                }
+            }
+            .store(in: &cancellables)
     }
 
     private func setupGradientLayer() {
-        layer.addSublayer(gradientLayer)
-        gradientLayer.colors = [UIColor.cyan.withAlphaComponent(0.33).cgColor,
-                                UIColor.purple.withAlphaComponent(0.11).cgColor]
-        gradientLayer.startPoint = .zero
-        gradientLayer.endPoint = .init(x: 1, y: 1)
-        gradientLayer.locations = [0, 1]
+        gradientLayer.then {
+            layer.addSublayer($0)
+            $0.colors = [UIColor.cyan.withAlphaComponent(0.33).cgColor,
+                         UIColor.purple.withAlphaComponent(0.11).cgColor]
+            $0.startPoint = .zero
+            $0.endPoint = .init(x: 1, y: 1)
+            $0.locations = [0, 1]
+        }
     }
 
     private func setupFirstCircle() {
@@ -97,11 +106,13 @@ extension BackgroundView {
         layoutGuide.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2).isActive = true
         layoutGuide.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
 
-        firstCircle.centerXAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
-        firstCircle.centerYAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
-        firstCircle.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.66).isActive = true
-        firstCircle.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.66).isActive = true
-        firstCircle.backgroundColor = .blue.withAlphaComponent(0.3)
+        firstCircle.then {
+            $0.centerXAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
+            $0.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.66).isActive = true
+            $0.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.66).isActive = true
+            $0.backgroundColor = .blue.withAlphaComponent(0.3)
+        }
     }
 
     private func setupSecondCircle() {
@@ -114,11 +125,13 @@ extension BackgroundView {
         layoutGuide.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15).isActive = true
         layoutGuide.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
 
-        secondCircle.centerXAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
-        secondCircle.centerYAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
-        secondCircle.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        secondCircle.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85).isActive = true
-        secondCircle.backgroundColor = .systemPink.withAlphaComponent(0.6)
+        secondCircle.then {
+            $0.centerXAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
+            $0.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+            $0.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85).isActive = true
+            $0.backgroundColor = .systemPink.withAlphaComponent(0.6)
+        }
     }
 
     private func setupRectangle() {
@@ -133,24 +146,28 @@ extension BackgroundView {
         layoutGuide.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.55).isActive = true
         layoutGuide.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
 
-        rectangle.centerXAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
-        rectangle.centerYAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
-        rectangle.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        rectangle.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.65).isActive = true
-        rectangle.backgroundColor = .systemMint.withAlphaComponent(0.4)
+        rectangle.then {
+            $0.centerXAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
+            $0.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+            $0.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.65).isActive = true
+            $0.backgroundColor = .systemMint.withAlphaComponent(0.4)
+        }
     }
 
     private func setupVisualEffect() {
-        addSubview(firstVisualEffect)
-        firstVisualEffect.set(style: .regular)
-        firstVisualEffect.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
-
-        addSubview(secondVisualEffect)
-        secondVisualEffect.set(style: .light)
-        secondVisualEffect.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
+        visualEffectView.then {
+            addSubview($0)
+            $0.set(style: .systemUltraThinMaterial)
+            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
+        }
     }
 
     private func setupAnimation() {
+        firstCircle.transform = .identity
+        secondCircle.transform = .identity
+        rectangle.transform = .identity
+
         UIView.animate(withDuration: 15 * Constants.durationMultiplier,
                        delay: 1,
                        options: [.allowUserInteraction, .autoreverse, .curveEaseInOut, .repeat]) { [self] in
@@ -180,16 +197,15 @@ extension BackgroundView {
     private func finish(durationMultiplier: TimeInterval, completion: @escaping () -> Void = { }) {
         UIView.animate(withDuration: 0.9 * durationMultiplier,
                        delay: .zero,
-                       options: [.curveEaseOut, .allowUserInteraction]) {
-            self.firstVisualEffect.effect = nil
-            self.secondVisualEffect.effect = nil
-            self.gradientLayer.opacity = .zero
+                       options: [.curveEaseOut, .allowUserInteraction]) { [self] in
+            visualEffectView.effect = nil
+            gradientLayer.opacity = .zero
         }
         // swiftlint:disable:next multiline_arguments
-        UIView.animate(withDuration: 1 * durationMultiplier, delay: 0.33, options: [.curveEaseIn]) {
-            self.firstCircle.transform = self.firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
-            self.secondCircle.transform = self.secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
-            self.rectangle.transform = self.rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))
+        UIView.animate(withDuration: 1 * durationMultiplier, delay: 0.33, options: [.curveEaseIn]) { [self] in
+            firstCircle.transform = firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
+            secondCircle.transform = secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
+            rectangle.transform = rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))
         } completion: { _ in
             completion()
         }

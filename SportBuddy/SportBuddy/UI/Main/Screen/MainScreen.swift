@@ -17,6 +17,10 @@ final class MainScreen: CustomTabbedTabScreen<MainViewModel, MainScreenTabs> {
             default: return .darkGray
             }
         }, unselectedColor: .systemGray)
+
+        toastHandlingService.showToast(with: .init(message: "Success Success Success Success Success", type: .success))
+        toastHandlingService.showToast(with: .init(message: "Warning Warning Warning Warning Warning ", type: .warning))
+        toastHandlingService.showToast(with: .init(message: "Error Error Error Error Error Error Error ", type: .error))
     }
 
     // MARK: - Overridden methods

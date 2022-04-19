@@ -14,11 +14,9 @@ class Cache<Item> {
         cache.value
     }
     private let cache = CurrentValueSubject<Item?, Never>(nil)
-}
 
-// MARK: Public methods
+    // MARK: Public methods
 
-extension Cache {
     func value() -> AnyPublisher<Item?, Never> {
         cache.eraseToAnyPublisher()
     }
@@ -28,8 +26,8 @@ extension Cache {
     }
 
     func saveWithPublisher(item: Item) -> AnyPublisher<Void, Never> {
-        Future { [weak cache] in
-            cache?.send(item)
+        Future { [weak self] in
+            self?.save(item: item)
             $0(.success(()))
         }.eraseToAnyPublisher()
     }

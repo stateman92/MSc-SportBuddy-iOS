@@ -28,8 +28,8 @@ extension LoginViewModel {
     func login(email: String, password: String) {
         userDomain
             .login(email: email, password: password)
-            .sink { error in
-                dump(error)
+            .sink { [unowned self] _ in
+                navigatorService.viewControllers = [MainScreen()]
             } receiveValue: { [unowned self] _ in
                 navigatorService.viewControllers = [MainScreen()]
             }

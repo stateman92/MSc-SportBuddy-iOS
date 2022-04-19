@@ -12,6 +12,7 @@ class BaseTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: UITabBarControl
     // MARK: Properties
 
     @LazyInjected var viewModel: ViewModel
+    @LazyInjected var toastHandlingService: ToastHandlingServiceProtocol
     @LazyInjected private var tabs: Tabs
     var cancellables = Cancellables()
 

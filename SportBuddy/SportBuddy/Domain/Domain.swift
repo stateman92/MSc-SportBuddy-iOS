@@ -5,7 +5,7 @@
 //  Created by Kristof Kalai on 2022. 04. 17..
 //
 
-class Domain<Cache> {
+class Domain {
     // MARK: Nested types
 
     private enum DomainError: Error {
@@ -16,7 +16,6 @@ class Domain<Cache> {
 
     @LazyInjected private var loggingService: LoggingServiceProtocol
     @LazyInjected var loadingService: LoadingServiceProtocol
-    @LazyInjected var cache: Cache
     var cancellables = Cancellables()
 }
 

@@ -31,3 +31,13 @@ func setAssociatedObject<T>(_ object: Any,
                             _ policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN) {
     objc_setAssociatedObject(object, key, value, policy)
 }
+
+func dispatchToMain(closure: @escaping () -> Void) {
+    if Thread.isMainThread {
+        closure()
+    } else {
+        DispatchQueue.main.async {
+            closure()
+        }
+    }
+}
