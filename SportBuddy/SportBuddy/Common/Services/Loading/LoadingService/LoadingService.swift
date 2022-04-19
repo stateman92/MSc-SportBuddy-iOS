@@ -15,6 +15,7 @@ final class LoadingService {
     private let isShowing: CurrentValueSubject<Bool, Never>
     private let triggerSameValue: Bool
     private var cancellables = Cancellables()
+    @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
 
     // MARK: Initialization
 
@@ -25,6 +26,7 @@ final class LoadingService {
     init(isShowing: Bool, triggerSameValue: Bool) {
         self.isShowing = .init(isShowing)
         self.triggerSameValue = triggerSameValue
+        bind(to: loadingOverlayService)
     }
 }
 

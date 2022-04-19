@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 /// A protocol for managing the loading states.
-protocol LoadingServiceProtocol: AutoMockable, Initable {
+protocol LoadingServiceProtocol: Initable, AutoMockable {
     /// Initialize the service.
     /// - Parameters:
     ///   - isShowing: whether the loading indicator should be shown or not.

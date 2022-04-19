@@ -16,7 +16,7 @@ enum ToastType {
         if case .error = self {
             return false
         }
-        return false
+        return true
     }
 
     var color: UIColor {

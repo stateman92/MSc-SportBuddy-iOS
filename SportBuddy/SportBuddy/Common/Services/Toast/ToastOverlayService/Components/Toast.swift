@@ -13,15 +13,16 @@ final class Toast: View {
     private enum Constant {
         static let defaultVisibility: TimeInterval = 4
         static let slideUpDuration: TimeInterval = 0.3
-        static let bottomPadding: CGFloat = 24
     }
 
     // MARK: Properties
 
+    private weak var parentView: UIView?
     private let message: String
     private let type: ToastType
+    private let dismiss: () -> Void
     private let didRemove: () -> Void
-    private weak var parentView: UIView?
+
     private var cancellables = Cancellables()
     private let imageView = ImageView()
     private let messageLabel = Label()
@@ -31,13 +32,15 @@ final class Toast: View {
 
     // MARK: Initialization
 
-    init(view: UIView,
+    init(on parentView: UIView,
          message: String,
          type: ToastType,
+         dismiss: @escaping () -> Void,
          didRemove: @escaping () -> Void = { }) {
+        self.parentView = parentView
         self.message = message
-        self.parentView = view
         self.type = type
+        self.dismiss = dismiss
         self.didRemove = didRemove
         super.init()
         setupView()
@@ -107,96 +110,8 @@ extension Toast {
             $0.setHeight(44)
             $0.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor).isActive = true
             $0.addAction(.init { [weak self] _ in
-                self?.slideDown()
+                self?.dismiss()
             }, for: .touchUpInside)
         }
-    }
-}
-
-// MARK: - Public methods
-
-extension Toast {
-    func show() {
-        guard let parentView = parentView else { return }
-
-        parentView.addSubview(self)
-
-        anchorToBottom(constant: -Constant.bottomPadding, safeArea: true)
-        anchorToLeading(constant: 16)
-        anchorToTrailing(constant: -16)
-
-            setSlippedDownState(parentView: parentView)
-        handleStates()
-    }
-}
-
-// MARK: - Private methods
-
-extension Toast {
-    private func handleStates() {
-        slideUp { [weak self] _ in
-            guard let self = self, self.type.shouldDismissAutomatically else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + Constant.defaultVisibility) {
-                self.slideDown()
-            }
-        }
-        var slippedDown = false
-        addPanGestureRecognizer { [weak self] gestureRecognizer in
-            guard let self = self, !slippedDown else { return }
-            let translation = gestureRecognizer.translation(in: self)
-            switch gestureRecognizer.state {
-            case .changed:
-                if translation.y.isPositive {
-                    self.transform = .init(translationX: translation.x / 5, y: translation.y)
-                } else {
-                    self.transform = .init(translationX: translation.x / 5, y: translation.y / 10)
-                }
-                if translation.y > 75 {
-                    slippedDown = true
-                    self.slideDown()
-                }
-            case .ended:
-                let velocity = gestureRecognizer.velocity(in: self).y
-                if velocity > 2, translation.y.isPositive {
-                    slippedDown = true
-                    self.slideDown()
-                } else {
-                    self.slideUp()
-                }
-            default: break
-            }
-        }
-    }
-
-    private func slideUp(completion: @escaping (Bool) -> Void = { _ in }) {
-        UIView.animate(withDuration: Constant.slideUpDuration,
-                       options: [.allowUserInteraction, .beginFromCurrentState],
-                       animations: { [self] in
-            setDefaultState()
-        }, completion: completion)
-    }
-
-    private func setDefaultState() {
-        transform = .identity
-        alpha = 1
-    }
-
-    private func slideDown() {
-        UIView.animate(withDuration: Constant.slideUpDuration,
-                       options: [.allowUserInteraction, .beginFromCurrentState],
-                       animations: { [self] in
-            guard let parentView = parentView else { return }
-            setSlippedDownState(parentView: parentView)
-        }, completion: { [self] _ in
-            removeFromSuperview()
-            didRemove()
-        })
-    }
-
-    private func setSlippedDownState(parentView: UIView) {
-        let height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        let yTransformationDistance = height + Constant.bottomPadding + parentView.safeAreaInsets.bottom
-        transform = CGAffineTransform(translationX: 0, y: yTransformationDistance)
-        alpha = 0
     }
 }

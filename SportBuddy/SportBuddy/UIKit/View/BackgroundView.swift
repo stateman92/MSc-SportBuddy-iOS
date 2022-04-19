@@ -201,13 +201,15 @@ extension BackgroundView {
             visualEffectView.effect = nil
             gradientLayer.opacity = .zero
         }
-        // swiftlint:disable:next multiline_arguments
-        UIView.animate(withDuration: 1 * durationMultiplier, delay: 0.33, options: [.curveEaseIn]) { [self] in
+        UIView.animate(withDuration: 1 * durationMultiplier,
+                       delay: 0.33,
+                       options: [.curveEaseIn, .beginFromCurrentState, .allowUserInteraction],
+                       animations: { [self] in
             firstCircle.transform = firstCircle.transform.concatenating(.init(translationX: 1000, y: 1000))
             secondCircle.transform = secondCircle.transform.concatenating(.init(translationX: 1000, y: -1000))
             rectangle.transform = rectangle.transform.concatenating(.init(translationX: -1000, y: -1000))
-        } completion: { _ in
+        }, completion: { _ in
             completion()
-        }
+        })
     }
 }

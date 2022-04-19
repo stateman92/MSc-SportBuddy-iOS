@@ -1,7 +1,8 @@
-// Generated using Sourcery 1.6.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 1.7.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 // swiftlint:disable all
 
+import AVFoundation
 import Combine
 import UIKit
 import SFSafeSymbols

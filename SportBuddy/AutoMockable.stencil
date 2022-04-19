@@ -102,6 +102,7 @@
 // sourcery:file:{{ type.name }}+AutoMockable
 // swiftlint:disable all
 
+import AVFoundation
 import Combine
 import UIKit
 import SFSafeSymbols

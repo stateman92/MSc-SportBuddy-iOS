@@ -8,7 +8,7 @@
 import Foundation
 
 /// A protocol for loading the animations.
-protocol AnimationServiceProtocol: AutoMockable, Initable {
+protocol AnimationServiceProtocol: Initable, AutoMockable {
     /// Load an image from an url.
     /// - Parameters:
     ///   - jsonName: the json name of the animation.

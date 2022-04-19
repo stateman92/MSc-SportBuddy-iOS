@@ -9,7 +9,7 @@ import SFSafeSymbols
 import UIKit
 
 /// A protocol for managing system images.
-protocol SystemImageServiceProtocol: AutoMockable, Initable {
+protocol SystemImageServiceProtocol: Initable, AutoMockable {
     /// Create an image based on a symbol.
     /// - Parameters:
     ///   - symbol: the symbol.

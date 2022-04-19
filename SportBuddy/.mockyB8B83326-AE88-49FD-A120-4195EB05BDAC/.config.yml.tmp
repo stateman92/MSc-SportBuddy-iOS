@@ -1,0 +1,11 @@
+sources:
+  include:
+  - ../MyApp
+  exclude: []
+templates:
+- /Users/kristofkalai/Documents/GitHub/MSc-SportBuddy-iOS/SportBuddy/.mockyB8B83326-AE88-49FD-A120-4195EB05BDAC/.template.swifttemplate
+output: /Users/kristofkalai/Documents/GitHub/MSc-SportBuddy-iOS/SportBuddy/.mockyB8B83326-AE88-49FD-A120-4195EB05BDAC/types.yaml
+args:
+  swiftyMocky:
+    import: []
+    testable: []

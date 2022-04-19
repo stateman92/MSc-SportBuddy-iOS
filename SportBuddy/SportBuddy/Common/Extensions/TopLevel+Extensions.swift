@@ -41,3 +41,39 @@ func dispatchToMain(closure: @escaping () -> Void) {
         }
     }
 }
+
+/// Run the closures depending on the device type.
+/// - Parameters:
+///   - real: run if the device is a real device.
+///   - simulator: run if the device is a simulator. By default does nothing.
+/// - Returns:
+///     Whether it runs on a real device.
+@discardableResult func runOnDevice(real: () -> Void, simulator: () -> Void = { }) -> Bool {
+#if targetEnvironment(simulator)
+    simulator()
+    return false
+#else
+    real()
+    return true
+#endif
+}
+
+func run(settingsService: SettingsServiceProtocol, key: Key, times: Int, closure: () -> Void, else: () -> Void) {
+    guard times > .zero else {
+        `else`()
+        return
+    }
+    let secure = false
+    let int: Int? = settingsService.retrieve(forKey: key, secure: secure)
+    if let int = int {
+        settingsService.save(object: int + 1, forKey: key, secure: secure)
+        if int < times {
+            closure()
+        } else {
+            `else`()
+        }
+    } else {
+        closure()
+        settingsService.save(object: 1, forKey: key, secure: secure)
+    }
+}

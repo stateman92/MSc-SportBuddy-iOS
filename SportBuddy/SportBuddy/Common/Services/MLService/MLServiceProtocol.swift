@@ -8,7 +8,7 @@
 import CoreGraphics
 
 /// A protocol for managing the body recognition.
-protocol MLServiceProtocol: AutoMockable, Initable {
+protocol MLServiceProtocol: Initable, AutoMockable {
     /// Initialize the service.
     /// - Parameters:
     ///   - from: the mode of the detector service.

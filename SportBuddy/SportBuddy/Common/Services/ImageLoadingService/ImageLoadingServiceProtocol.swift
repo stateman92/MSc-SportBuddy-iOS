@@ -8,7 +8,7 @@
 import Foundation
 
 /// A protocol for loading the images.
-protocol ImageLoadingServiceProtocol: AutoMockable, Initable {
+protocol ImageLoadingServiceProtocol: Initable, AutoMockable {
     /// Load an image from an url.
     /// - Parameters:
     ///   - url: the url from which the image will be loaded.

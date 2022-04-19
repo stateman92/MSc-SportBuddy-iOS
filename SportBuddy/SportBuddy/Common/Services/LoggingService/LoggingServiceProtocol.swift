@@ -8,7 +8,7 @@
 import Foundation
 
 /// A protocol for managing the logging.
-protocol LoggingServiceProtocol: Initable {
+protocol LoggingServiceProtocol: Initable, AutoMockable {
     /// Initialize the service.
     /// - Parameters:
     ///   - subsystem: the subsystem.

@@ -6,7 +6,7 @@
 //
 
 /// A protocol for showing the loading states.
-protocol LoadingOverlayServiceProtocol: AutoMockable, Initable {
+protocol LoadingOverlayServiceProtocol: Initable, AutoMockable {
     /// Initialize the service.
     /// - Parameter isShowing: whether the loading indicator should be shown or not.
     init(isShowing: Bool)

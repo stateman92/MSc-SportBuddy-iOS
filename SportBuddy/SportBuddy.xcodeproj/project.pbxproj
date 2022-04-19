@@ -40,7 +40,6 @@
 		580DF5E9280A0B4F00BE0493 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 580DF5E8280A0B4F00BE0493 /* SFSafeSymbols */; };
 		580DF5EC280A0BB000BE0493 /* SystemImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5EB280A0BB000BE0493 /* SystemImageService.swift */; };
 		580DF5EE280A0BB900BE0493 /* SystemImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5ED280A0BB900BE0493 /* SystemImageServiceProtocol.swift */; };
-		580DF5F0280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5EF280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift */; };
 		580DF5F6280A209C00BE0493 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5F5280A209C00BE0493 /* MainTabBar.swift */; };
 		580DF5F8280A219B00BE0493 /* TabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580DF5F7280A219B00BE0493 /* TabScreen.swift */; };
 		5828491F280BA3D800034010 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828491E280BA3D800034010 /* TableView.swift */; };
@@ -107,6 +106,17 @@
 		5862DE07280CE04300ABFD86 /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862DDED280CE04300ABFD86 /* SynchronizedDictionary.swift */; };
 		5862DE08280CE04300ABFD86 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862DDEE280CE04300ABFD86 /* Configuration.swift */; };
 		5862DE0A280CE45400ABFD86 /* UserDomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862DE09280CE45400ABFD86 /* UserDomainError.swift */; };
+		5866AFCA280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFBF280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFCB280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC0280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFCC280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC1280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFCD280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC2280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFCE280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC3280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFCF280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC4280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFD0280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC5280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFD1280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFD2280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFD3280F5690005E6DB1 /* NavigatorServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC8280F5690005E6DB1 /* NavigatorServiceProtocol+AutoMockable.generated.swift */; };
+		5866AFD4280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */; };
 		5877507E27FCA31D00D638A0 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */; };
 		5877508627FCA33D00D638A0 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877508027FCA33D00D638A0 /* BaseViewModel.swift */; };
 		5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877508527FCA33D00D638A0 /* BaseScreen.swift */; };
@@ -130,10 +140,10 @@
 		587F303C2809DF5300EFA7E9 /* UI+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587F303B2809DF5300EFA7E9 /* UI+DI.swift */; };
 		5882AD04280DC75100A09023 /* TokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD03280DC75100A09023 /* TokenCache.swift */; };
 		5882AD06280E39B200A09023 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD05280E39B200A09023 /* Queue.swift */; };
-		5882AD09280E3A2E00A09023 /* ToastHandlingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD08280E3A2E00A09023 /* ToastHandlingServiceProtocol.swift */; };
-		5882AD0B280E3A3700A09023 /* ToastHandlingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD0A280E3A3700A09023 /* ToastHandlingService.swift */; };
+		5882AD09280E3A2E00A09023 /* ToastServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD08280E3A2E00A09023 /* ToastServiceProtocol.swift */; };
+		5882AD0B280E3A3700A09023 /* ToastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD0A280E3A3700A09023 /* ToastService.swift */; };
 		5882AD0E280E3A5700A09023 /* ToastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD0D280E3A5700A09023 /* ToastItem.swift */; };
-		5882AD10280E3A6700A09023 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD0F280E3A6700A09023 /* Toast.swift */; };
+		5882AD10280E3A6700A09023 /* ToastOverlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD0F280E3A6700A09023 /* ToastOverlayService.swift */; };
 		5882AD12280E3A7A00A09023 /* ToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD11280E3A7A00A09023 /* ToastType.swift */; };
 		5882AD15280E45E400A09023 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD14280E45E400A09023 /* UIView+Constraints.swift */; };
 		588F475427FE34390062F838 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 588F475327FE34390062F838 /* GoogleSignIn */; };
@@ -185,10 +195,15 @@
 		58C1D44D27F51C7A005D13C4 /* TopLevel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44C27F51C7A005D13C4 /* TopLevel+Extensions.swift */; };
 		58C1D44F27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D44E27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift */; };
 		58D97DA4280A4978002FD22D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58D97DA3280A4978002FD22D /* Settings.bundle */; };
+		58DD920E280F27A7006544AE /* ToastOverlayServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD920D280F27A7006544AE /* ToastOverlayServiceProtocol.swift */; };
+		58DD9211280F2911006544AE /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD9210280F2911006544AE /* Toast.swift */; };
+		58DD9214280F2E22006544AE /* CameraServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD9213280F2E22006544AE /* CameraServiceProtocol.swift */; };
+		58DD9216280F2E28006544AE /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD9215280F2E28006544AE /* CameraService.swift */; };
+		58DD9218280F2FDE006544AE /* AVCaptureSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD9217280F2FDE006544AE /* AVCaptureSession+Extensions.swift */; };
+		58DD921A280F3097006544AE /* AVCaptureVideoDataOutput+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD9219280F3097006544AE /* AVCaptureVideoDataOutput+Extensions.swift */; };
+		58DD921C280F3155006544AE /* AVCaptureDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD921B280F3155006544AE /* AVCaptureDevice+Extensions.swift */; };
+		58DD921E280F3239006544AE /* AVCaptureDeviceInput+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD921D280F3239006544AE /* AVCaptureDeviceInput+Extensions.swift */; };
 		58E0A1602800C3CB000A81A5 /* NavigatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A15F2800C3CB000A81A5 /* NavigatorService.swift */; };
-		58E0A16E2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A16A2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift */; };
-		58E0A16F2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A16B2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift */; };
-		58E0A1702800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A16C2800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift */; };
 		58E0A1732800D918000A81A5 /* DefaultSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */; };
 		58E0A1752800D922000A81A5 /* DefaultSettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */; };
 		58E0A1782800D9B8000A81A5 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1772800D9B8000A81A5 /* Key.swift */; };
@@ -196,7 +211,6 @@
 		58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A17E28010A0A000A81A5 /* NavigationController.swift */; };
 		58E0A18228010CA5000A81A5 /* LoadingOverlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18128010CA5000A81A5 /* LoadingOverlayService.swift */; };
 		58E0A18428010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18328010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift */; };
-		58E0A187280110E7000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A186280110E6000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */; };
 		58EBF1E627FBB4E900BA81CB /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1E427FBB4E900BA81CB /* LoadingService.swift */; };
 		58EBF1E727FBB4E900BA81CB /* LoadingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1E527FBB4E900BA81CB /* LoadingServiceProtocol.swift */; };
 		58EBF1EA27FBB4F200BA81CB /* NavigatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1E927FBB4F200BA81CB /* NavigatorServiceProtocol.swift */; };
@@ -224,8 +238,6 @@
 		58FD650E2803135200FE6A51 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD650D2803135200FE6A51 /* ImageLoadingService.swift */; };
 		58FD65122803148800FE6A51 /* AnimationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD65112803148800FE6A51 /* AnimationServiceProtocol.swift */; };
 		58FD65152803151C00FE6A51 /* AnimationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD65142803151C00FE6A51 /* AnimationService.swift */; };
-		58FD65182803162000FE6A51 /* AnimationServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD65162803162000FE6A51 /* AnimationServiceProtocol+AutoMockable.generated.swift */; };
-		58FD65192803162000FE6A51 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD65172803162000FE6A51 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */; };
 		D9856A9472102F9D71B48BBD /* Pods_SportBuddy_SportBuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EA8EB9947442B20A48157 /* Pods_SportBuddy_SportBuddyUITests.framework */; };
 		E0B33A8EB5D0214174874C5F /* Pods_SportBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1471EC1610B623B3EA8427E8 /* Pods_SportBuddy.framework */; };
 /* End PBXBuildFile section */
@@ -283,7 +295,6 @@
 		580DF5E32809FA9600BE0493 /* ScreenTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTabs.swift; sourceTree = "<group>"; };
 		580DF5EB280A0BB000BE0493 /* SystemImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImageService.swift; sourceTree = "<group>"; };
 		580DF5ED280A0BB900BE0493 /* SystemImageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImageServiceProtocol.swift; sourceTree = "<group>"; };
-		580DF5EF280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SystemImageServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		580DF5F5280A209C00BE0493 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		580DF5F7280A219B00BE0493 /* TabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabScreen.swift; sourceTree = "<group>"; };
 		5828491E280BA3D800034010 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -354,6 +365,17 @@
 		5862DDED280CE04300ABFD86 /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
 		5862DDEE280CE04300ABFD86 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		5862DE09280CE45400ABFD86 /* UserDomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDomainError.swift; sourceTree = "<group>"; };
+		5866AFBF280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CameraServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC0280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoggingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC1280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SystemImageServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC2280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageLoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC3280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingOverlayServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC4280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastOverlayServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC5280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC8280F5690005E6DB1 /* NavigatorServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigatorServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		5877507C27FCA31D00D638A0 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		5877508027FCA33D00D638A0 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5877508527FCA33D00D638A0 /* BaseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
@@ -377,10 +399,10 @@
 		587F303B2809DF5300EFA7E9 /* UI+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+DI.swift"; sourceTree = "<group>"; };
 		5882AD03280DC75100A09023 /* TokenCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCache.swift; sourceTree = "<group>"; };
 		5882AD05280E39B200A09023 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		5882AD08280E3A2E00A09023 /* ToastHandlingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHandlingServiceProtocol.swift; sourceTree = "<group>"; };
-		5882AD0A280E3A3700A09023 /* ToastHandlingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHandlingService.swift; sourceTree = "<group>"; };
+		5882AD08280E3A2E00A09023 /* ToastServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastServiceProtocol.swift; sourceTree = "<group>"; };
+		5882AD0A280E3A3700A09023 /* ToastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastService.swift; sourceTree = "<group>"; };
 		5882AD0D280E3A5700A09023 /* ToastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastItem.swift; sourceTree = "<group>"; };
-		5882AD0F280E3A6700A09023 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		5882AD0F280E3A6700A09023 /* ToastOverlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastOverlayService.swift; sourceTree = "<group>"; };
 		5882AD11280E3A7A00A09023 /* ToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastType.swift; sourceTree = "<group>"; };
 		5882AD14280E45E400A09023 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		588F475527FE344B0062F838 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
@@ -428,10 +450,15 @@
 		58C1D44C27F51C7A005D13C4 /* TopLevel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopLevel+Extensions.swift"; sourceTree = "<group>"; };
 		58C1D44E27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		58D97DA3280A4978002FD22D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		58DD920D280F27A7006544AE /* ToastOverlayServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastOverlayServiceProtocol.swift; sourceTree = "<group>"; };
+		58DD9210280F2911006544AE /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		58DD9213280F2E22006544AE /* CameraServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraServiceProtocol.swift; sourceTree = "<group>"; };
+		58DD9215280F2E28006544AE /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		58DD9217280F2FDE006544AE /* AVCaptureSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Extensions.swift"; sourceTree = "<group>"; };
+		58DD9219280F3097006544AE /* AVCaptureVideoDataOutput+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoDataOutput+Extensions.swift"; sourceTree = "<group>"; };
+		58DD921B280F3155006544AE /* AVCaptureDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+Extensions.swift"; sourceTree = "<group>"; };
+		58DD921D280F3239006544AE /* AVCaptureDeviceInput+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDeviceInput+Extensions.swift"; sourceTree = "<group>"; };
 		58E0A15F2800C3CB000A81A5 /* NavigatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorService.swift; sourceTree = "<group>"; };
-		58E0A16A2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigatorServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		58E0A16B2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		58E0A16C2800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsService.swift; sourceTree = "<group>"; };
 		58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		58E0A1772800D9B8000A81A5 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -439,7 +466,6 @@
 		58E0A17E28010A0A000A81A5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		58E0A18128010CA5000A81A5 /* LoadingOverlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayService.swift; sourceTree = "<group>"; };
 		58E0A18328010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayServiceProtocol.swift; sourceTree = "<group>"; };
-		58E0A186280110E6000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingOverlayServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58EBF1E427FBB4E900BA81CB /* LoadingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
 		58EBF1E527FBB4E900BA81CB /* LoadingServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingServiceProtocol.swift; sourceTree = "<group>"; };
 		58EBF1E927FBB4F200BA81CB /* NavigatorServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorServiceProtocol.swift; sourceTree = "<group>"; };
@@ -467,8 +493,6 @@
 		58FD650D2803135200FE6A51 /* ImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingService.swift; sourceTree = "<group>"; };
 		58FD65112803148800FE6A51 /* AnimationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationServiceProtocol.swift; sourceTree = "<group>"; };
 		58FD65142803151C00FE6A51 /* AnimationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationService.swift; sourceTree = "<group>"; };
-		58FD65162803162000FE6A51 /* AnimationServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		58FD65172803162000FE6A51 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageLoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		63C5E1EA5269D6CED4326A70 /* Pods-SportBuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportBuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-SportBuddyUITests/Pods-SportBuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9C574F1E3772028392977C07 /* Pods-SportBuddyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportBuddyUITests.debug.xcconfig"; path = "Target Support Files/Pods-SportBuddyUITests/Pods-SportBuddyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF4E75F3A8FA37F4E771E02A /* Pods-SportBuddy-SportBuddyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportBuddy-SportBuddyTests.release.xcconfig"; path = "Target Support Files/Pods-SportBuddy-SportBuddyTests/Pods-SportBuddy-SportBuddyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -639,22 +663,20 @@
 		580521CF27EFB2AA00B3A8B1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				58DD920B280F275A006544AE /* Toast */,
+				58DD920A280F2737006544AE /* Settings */,
+				58DD9209280F2723006544AE /* Loading */,
 				58EBF1EB27FBB50000BA81CB /* AutoMockable.swift */,
 				584BC5F92802713C004582E9 /* Initable.swift */,
 				587F30392809DE8600EFA7E9 /* Services+DI.swift */,
 				58FD65102803147300FE6A51 /* AnimationService */,
+				58DD9212280F2E12006544AE /* CameraService */,
 				587F30342809DCE700EFA7E9 /* CoderService */,
-				58E0A1712800D906000A81A5 /* DefaultSettingsService */,
 				58FD650A280312D000FE6A51 /* ImageLoadingService */,
-				58E0A18028010C8C000A81A5 /* LoadingOverlayService */,
-				58EBF1E327FBB4E900BA81CB /* LoadingService */,
 				588F5E77280B305900947800 /* LoggingService */,
 				5832042527FE294B009A4644 /* MLService */,
 				58EBF1E827FBB4F200BA81CB /* NavigatorService */,
-				58AAEC30280BBC090054E2F0 /* SecureSettingsService */,
-				58AAEC35280BBE8A0054E2F0 /* SettingsService */,
 				580DF5EA280A0B7C00BE0493 /* SystemImageService */,
-				5882AD07280E3A1700A09023 /* ToastHandlingService */,
 				587F302F2809D92600EFA7E9 /* WebSocketService */,
 			);
 			path = Services;
@@ -1156,21 +1178,20 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
-		5882AD07280E3A1700A09023 /* ToastHandlingService */ = {
+		5882AD07280E3A1700A09023 /* ToastService */ = {
 			isa = PBXGroup;
 			children = (
 				5882AD0C280E3A5000A09023 /* Components */,
-				5882AD08280E3A2E00A09023 /* ToastHandlingServiceProtocol.swift */,
-				5882AD0A280E3A3700A09023 /* ToastHandlingService.swift */,
+				5882AD08280E3A2E00A09023 /* ToastServiceProtocol.swift */,
+				5882AD0A280E3A3700A09023 /* ToastService.swift */,
 			);
-			path = ToastHandlingService;
+			path = ToastService;
 			sourceTree = "<group>";
 		};
 		5882AD0C280E3A5000A09023 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				5882AD0D280E3A5700A09023 /* ToastItem.swift */,
-				5882AD0F280E3A6700A09023 /* Toast.swift */,
 				5882AD11280E3A7A00A09023 /* ToastType.swift */,
 			);
 			path = Components;
@@ -1346,6 +1367,10 @@
 			children = (
 				5882AD13280E45D700A09023 /* UIView+Extensions */,
 				589AA53D27FF05B90002C4D5 /* AnimationCurve+Extensions.swift */,
+				58DD921B280F3155006544AE /* AVCaptureDevice+Extensions.swift */,
+				58DD921D280F3239006544AE /* AVCaptureDeviceInput+Extensions.swift */,
+				58DD9217280F2FDE006544AE /* AVCaptureSession+Extensions.swift */,
+				58DD9219280F3097006544AE /* AVCaptureVideoDataOutput+Extensions.swift */,
 				589AA54327FF07120002C4D5 /* BinaryFloatingPoint+Extensions.swift */,
 				589AA54127FF06DE0002C4D5 /* CAMediaTimingFunction+Extensions.swift */,
 				589AA53B27FF058B0002C4D5 /* Notification+Extensions.swift */,
@@ -1358,6 +1383,61 @@
 				5877509027FCBAFA00D638A0 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		58DD9209280F2723006544AE /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				58E0A18028010C8C000A81A5 /* LoadingOverlayService */,
+				58EBF1E327FBB4E900BA81CB /* LoadingService */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		58DD920A280F2737006544AE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				58E0A1712800D906000A81A5 /* DefaultSettingsService */,
+				58AAEC30280BBC090054E2F0 /* SecureSettingsService */,
+				58AAEC35280BBE8A0054E2F0 /* SettingsService */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		58DD920B280F275A006544AE /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				58DD920C280F2766006544AE /* ToastOverlayService */,
+				5882AD07280E3A1700A09023 /* ToastService */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		58DD920C280F2766006544AE /* ToastOverlayService */ = {
+			isa = PBXGroup;
+			children = (
+				58DD920F280F2907006544AE /* Components */,
+				58DD920D280F27A7006544AE /* ToastOverlayServiceProtocol.swift */,
+				5882AD0F280E3A6700A09023 /* ToastOverlayService.swift */,
+			);
+			path = ToastOverlayService;
+			sourceTree = "<group>";
+		};
+		58DD920F280F2907006544AE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				58DD9210280F2911006544AE /* Toast.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		58DD9212280F2E12006544AE /* CameraService */ = {
+			isa = PBXGroup;
+			children = (
+				58DD9213280F2E22006544AE /* CameraServiceProtocol.swift */,
+				58DD9215280F2E28006544AE /* CameraService.swift */,
+			);
+			path = CameraService;
 			sourceTree = "<group>";
 		};
 		58E0A1712800D906000A81A5 /* DefaultSettingsService */ = {
@@ -1426,13 +1506,17 @@
 		58EBF1ED27FBB5F200BA81CB /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				58FD65162803162000FE6A51 /* AnimationServiceProtocol+AutoMockable.generated.swift */,
-				58FD65172803162000FE6A51 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */,
-				58E0A186280110E6000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */,
-				58E0A16C2800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift */,
-				58E0A16B2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift */,
-				58E0A16A2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift */,
-				580DF5EF280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */,
+				5866AFBF280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC2280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC3280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC0280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC8280F5690005E6DB1 /* NavigatorServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC1280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC4280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift */,
+				5866AFC5280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -1956,7 +2040,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5862DDF9280CE04300ABFD86 /* ExerciseTypeDTO.swift in Sources */,
-				5882AD10280E3A6700A09023 /* Toast.swift in Sources */,
+				5882AD10280E3A6700A09023 /* ToastOverlayService.swift in Sources */,
+				58DD920E280F27A7006544AE /* ToastOverlayServiceProtocol.swift in Sources */,
 				58FD650C280312E500FE6A51 /* ImageLoadingServiceProtocol.swift in Sources */,
 				5862DDBD280CBF5000ABFD86 /* GroupDomain.swift in Sources */,
 				5862DDF8280CE04300ABFD86 /* ExerciseFractionTimeUnitDTO.swift in Sources */,
@@ -1973,6 +2058,7 @@
 				580521C227EF70AD00B3A8B1 /* ButtonLabel.swift in Sources */,
 				58AAEC3B280BC0230054E2F0 /* Cache.swift in Sources */,
 				58B2E1CD27F3B5A3004135E2 /* Onboard.swift in Sources */,
+				58DD9211280F2911006544AE /* Toast.swift in Sources */,
 				58B2E1CF27F3B5B4004135E2 /* DefaultOnboardOverlay.swift in Sources */,
 				580521D327EFB2C900B3A8B1 /* ScrollView.swift in Sources */,
 				58E0A18228010CA5000A81A5 /* LoadingOverlayService.swift in Sources */,
@@ -1980,6 +2066,7 @@
 				5862DDB7280CBF3700ABFD86 /* UserDomainProtocol.swift in Sources */,
 				5862DDF1280CE04300ABFD86 /* ClientAPI.swift in Sources */,
 				587F302B2809D3C900EFA7E9 /* Chats+DI.swift in Sources */,
+				58DD921E280F3239006544AE /* AVCaptureDeviceInput+Extensions.swift in Sources */,
 				5862DDF7280CE04300ABFD86 /* SportTypeDTO.swift in Sources */,
 				5862DE01280CE04300ABFD86 /* ExerciseDTO.swift in Sources */,
 				589AA53527FF04400002C4D5 /* NotificationCenter+Extensions.swift in Sources */,
@@ -1987,8 +2074,9 @@
 				580190FE27F383AC00BB3E3E /* LazyInjected.swift in Sources */,
 				5862DDF3280CE04300ABFD86 /* AdminAPI.swift in Sources */,
 				5882AD12280E3A7A00A09023 /* ToastType.swift in Sources */,
+				58DD921C280F3155006544AE /* AVCaptureDevice+Extensions.swift in Sources */,
 				588F5E79280B306C00947800 /* LoggingServiceProtocol.swift in Sources */,
-				5882AD0B280E3A3700A09023 /* ToastHandlingService.swift in Sources */,
+				5882AD0B280E3A3700A09023 /* ToastService.swift in Sources */,
 				580521D927EFB36B00B3A8B1 /* CameraView.swift in Sources */,
 				580521CC27EFB24400B3A8B1 /* ImageView.swift in Sources */,
 				5832044927FE2959009A4644 /* PathComponent.swift in Sources */,
@@ -2005,8 +2093,9 @@
 				5862DE05280CE04300ABFD86 /* JSONEncodingHelper.swift in Sources */,
 				587F30332809D94F00EFA7E9 /* WebSocketService.swift in Sources */,
 				580190FC27F382F900BB3E3E /* AppLoader.swift in Sources */,
+				58DD9218280F2FDE006544AE /* AVCaptureSession+Extensions.swift in Sources */,
 				58B2E1E227F3BE46004135E2 /* OnboardingOverlay.swift in Sources */,
-				5882AD09280E3A2E00A09023 /* ToastHandlingServiceProtocol.swift in Sources */,
+				5882AD09280E3A2E00A09023 /* ToastServiceProtocol.swift in Sources */,
 				580521D127EFB2B700B3A8B1 /* Label.swift in Sources */,
 				580DF5E12809F92300BE0493 /* MainScreenTabs.swift in Sources */,
 				589AA53727FF04880002C4D5 /* Publisher+Extensions.swift in Sources */,
@@ -2078,6 +2167,7 @@
 				5862DDCD280CD29100ABFD86 /* ChatCache.swift in Sources */,
 				58EBF1E627FBB4E900BA81CB /* LoadingService.swift in Sources */,
 				587F30312809D94500EFA7E9 /* WebSocketServiceProtocol.swift in Sources */,
+				58DD9216280F2E28006544AE /* CameraService.swift in Sources */,
 				580521DE27EFB47C00B3A8B1 /* View.swift in Sources */,
 				589AA53327FF03500002C4D5 /* KeyboardObserver.swift in Sources */,
 				589AA53C27FF058B0002C4D5 /* Notification+Extensions.swift in Sources */,
@@ -2091,6 +2181,7 @@
 				58B2E1D627F3BABE004135E2 /* OnboardDelegate.swift in Sources */,
 				58AAEC37280BBEA80054E2F0 /* SettingsServiceProtocol.swift in Sources */,
 				589AA53A27FF055C0002C4D5 /* AnimatedKeyboardObserver.swift in Sources */,
+				58DD9214280F2E22006544AE /* CameraServiceProtocol.swift in Sources */,
 				588F5E80280B34EF00947800 /* LogPrivacy.swift in Sources */,
 				58F976DD27DE77BB00E74C5F /* Fonts.swift in Sources */,
 				58F976E127DE77CE00E74C5F /* Strings.swift in Sources */,
@@ -2134,6 +2225,7 @@
 				58FD65122803148800FE6A51 /* AnimationServiceProtocol.swift in Sources */,
 				58AAEC32280BBC4A0054E2F0 /* SecureSettingsServiceProtocol.swift in Sources */,
 				58B2E1E427F3C377004135E2 /* OnboardingPage.swift in Sources */,
+				58DD921A280F3097006544AE /* AVCaptureVideoDataOutput+Extensions.swift in Sources */,
 				5828491F280BA3D800034010 /* TableView.swift in Sources */,
 				5828B54927F4DF870079A727 /* LoginScreen.swift in Sources */,
 				5862DE0A280CE45400ABFD86 /* UserDomainError.swift in Sources */,
@@ -2147,17 +2239,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58FD65182803162000FE6A51 /* AnimationServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFCC280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58EBF1F427FBB66E00BA81CB /* BaseTestCase.swift in Sources */,
-				58E0A16F2800C6AB000A81A5 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */,
-				58E0A16E2800C6AB000A81A5 /* NavigatorServiceProtocol+AutoMockable.generated.swift in Sources */,
-				580DF5F0280A0CAA00BE0493 /* SystemImageServiceProtocol+AutoMockable.generated.swift in Sources */,
-				58FD65192803162000FE6A51 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFCF280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58EBF1F727FBB68700BA81CB /* Mock+DI.swift in Sources */,
+				5866AFD1280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFCA280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFD0280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58EBF20427FBB6B500BA81CB /* LoadingServiceTests.swift in Sources */,
-				58E0A1702800C6AB000A81A5 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */,
-				58E0A187280110E7000A81A5 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58EBF1FA27FBB69A00BA81CB /* XCTestCase+Extensions.swift in Sources */,
+				5866AFD2280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFCD280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFCE280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFCB280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFD4280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */,
+				5866AFD3280F5690005E6DB1 /* NavigatorServiceProtocol+AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
