@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import VisualEffectView
 
-final class VisualEffectView: UIVisualEffectView {
+final class EffectView: VisualEffectView {
     // MARK: Initialization
 
     override init(effect: UIVisualEffect? = nil) {
@@ -23,7 +24,7 @@ final class VisualEffectView: UIVisualEffectView {
 
 // MARK: - Setups
 
-extension VisualEffectView {
+extension EffectView {
     private func setupView() {
         usingAutoLayout()
     }
@@ -31,8 +32,18 @@ extension VisualEffectView {
 
 // MARK: - Public methods
 
-extension VisualEffectView {
-    func set(style: UIBlurEffect.Style) {
-        effect = UIBlurEffect(style: style)
+extension EffectView {
+    func set(style: UIBlurEffect.Style?) {
+        if let style = style {
+            effect = UIBlurEffect(style: style)
+        } else {
+            effect = nil
+        }
+    }
+
+    func set(tint: UIColor, alpha: CGFloat, blurRadius: CGFloat) {
+        colorTint = tint
+        colorTintAlpha = alpha
+        self.blurRadius = blurRadius
     }
 }

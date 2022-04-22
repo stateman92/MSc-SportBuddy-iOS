@@ -26,6 +26,7 @@ extension AppLoader {
         DependencyInjector.registerDependencies()
         OpenAPIClientAPI.basePath = "https://sportbuddy-backend.herokuapp.com"
         OpenAPIClientAPI.apiResponseQueue = .global(qos: .userInitiated)
+        OpenAPIClientAPI.requestBuilderFactory = TokenizableRequestBuilderFactory()
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
                 // Show the app's signed-out state.

@@ -21,7 +21,7 @@ final class ToastOverlayService {
     private weak var parentView: UIView?
     private let message: String
     private let type: ToastType
-    private let didRemove: () -> Void
+    private var didRemove: () -> Void
     private var toast: Toast?
 
     // MARK: Initialization
@@ -53,8 +53,7 @@ extension ToastOverlayService: ToastOverlayServiceProtocol {
         toast = Toast(on: parentView,
                       message: message,
                       type: type,
-                      dismiss: { [weak self] in self?.slideDown() },
-                      didRemove: didRemove).then {
+                      dismiss: { [weak self] in self?.slideDown(resetToDefaultState: false) }).then {
             parentView.addSubview($0)
             $0.anchorToBottom(constant: -24, safeArea: true)
             $0.anchorToLeading(constant: 16)
@@ -73,7 +72,7 @@ extension ToastOverlayService {
         slideUp { [weak self] _ in
             guard let self = self, self.type.shouldDismissAutomatically else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + Constant.defaultVisibility) {
-                self.slideDown()
+                self.slideDown(resetToDefaultState: true)
             }
         }
         var slippedDown = false
@@ -84,7 +83,7 @@ extension ToastOverlayService {
     }
 
     private func handle(_ panGestureRecognizer: UIPanGestureRecognizer, madeFinish: inout Bool) {
-        let translationX = panGestureRecognizer.translation(in: toast).y
+        let translationX = panGestureRecognizer.translation(in: toast).x
         let translationY = panGestureRecognizer.translation(in: toast).y
         switch panGestureRecognizer.state {
         case .changed:
@@ -92,13 +91,13 @@ extension ToastOverlayService {
                                      y: translationY.isPositive ? translationY : translationY / 10)
             if translationY > 75 {
                 madeFinish = true
-                slideDown()
+                slideDown(resetToDefaultState: false)
             }
         case .ended:
             let velocity = panGestureRecognizer.velocity(in: toast).y
             if velocity > 2, translationY.isPositive {
                 madeFinish = true
-                slideDown()
+                slideDown(resetToDefaultState: false)
             } else {
                 slideUp()
             }
@@ -119,16 +118,26 @@ extension ToastOverlayService {
         toast?.alpha = 1
     }
 
-    private func slideDown() {
-        UIView.animate(withDuration: Constant.slideUpDuration,
+    private func slideDown(resetToDefaultState: Bool) {
+        toast?.gestureRecognizers?.forEach { toast?.removeGestureRecognizer($0) }
+        UIView.animate(withDuration: resetToDefaultState ? 0.15 : .zero,
                        options: [.allowUserInteraction, .beginFromCurrentState],
                        animations: { [self] in
-            guard let parentView = parentView else { return }
-            setSlippedDownState(parentView: parentView)
-        }, completion: { [self] _ in
-            toast?.removeFromSuperview()
-            toast = nil
-            didRemove()
+            if resetToDefaultState {
+                toast?.transform = .identity
+            }
+        }, completion: { _ in
+            UIView.animate(withDuration: Constant.slideUpDuration,
+                           options: [.allowUserInteraction, .beginFromCurrentState],
+                           animations: { [self] in
+                guard let parentView = parentView else { return }
+                setSlippedDownState(parentView: parentView)
+            }, completion: { [self] _ in
+                toast?.removeFromSuperview()
+                toast = nil
+                didRemove()
+                didRemove = { }
+            })
         })
     }
 

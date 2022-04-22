@@ -172,6 +172,10 @@ name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: SFSafeSymbols, version
 
 name: Starscream, nameSpecified: Starscream, owner: daltoniam, version: 4.0.4, source: https://github.com/daltoniam/Starscream
 
+name: Valet, nameSpecified: Valet, owner: Square, version: 4.1.2, source: https://github.com/Square/Valet
+
+name: VisualEffectView, nameSpecified: VisualEffectView, owner: efremidze, version: 4.1.3, source: https://github.com/efremidze/VisualEffectView
+
 add-version-numbers: false
 
 LicensePlist Version: 3.21.1

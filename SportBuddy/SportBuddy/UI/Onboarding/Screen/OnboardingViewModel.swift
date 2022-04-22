@@ -6,9 +6,31 @@
 //
 
 final class OnboardingViewModel: BaseViewModel {
+    @LazyInjected private var tokenCache: TokenCache
+
     override init() {
         super.init()
-        run(settingsService: settingService, key: StringKey(keyName: "onboarding"), times: 3) { } else: {
+
+        if tokenCache.immediateValue != nil {
+            userAction
+                .refreshToken()
+                .sink(receiveError: { [unowned self] _ in
+                    showOnboarding()
+                }, receiveValue: { [unowned self] in
+                    navigatorService.present(DependencyInjector.resolve() as MainScreen,
+                                             type: .crossDissolve) { [weak self] in
+                        self?.navigatorService.viewControllers.removeFirst()
+                    }
+                })
+                .store(in: &cancellables)
+        } else {
+            showOnboarding()
+        }
+    }
+
+    private func showOnboarding() {
+        settingService.delete(forKey: .token, secure: true)
+        run(key: .onboarding, times: 3) { } else: {
             navigateNext()
         }
     }
@@ -18,6 +40,8 @@ final class OnboardingViewModel: BaseViewModel {
 
 extension OnboardingViewModel {
     func navigateNext() {
-        navigatorService.viewControllers = [DependencyInjector.resolve() as LoginScreen]
+        navigatorService.present(DependencyInjector.resolve() as LoginScreen, type: .crossDissolve) { [weak self] in
+            self?.navigatorService.viewControllers.removeFirst()
+        }
     }
 }

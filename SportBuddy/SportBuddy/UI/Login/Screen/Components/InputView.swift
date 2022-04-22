@@ -85,6 +85,9 @@ extension InputView {
 
     private func setupEmailTextField() {
         emailTextField.then {
+            $0.textField.autocorrectionType = .no
+            $0.textField.keyboardType = .emailAddress
+            $0.textField.autocapitalizationType = .none
             $0.textField.textContentType = .username
             $0.textField.clearButtonMode = .always
             $0.placeholder = "Type your email..."
@@ -95,6 +98,9 @@ extension InputView {
 
     private func setupPasswordTextField() {
         passwordTextField.then {
+            $0.textField.autocorrectionType = .no
+            $0.textField.autocapitalizationType = .none
+            $0.textField.textContentType = .password
             $0.textField.isSecureTextEntry = true
             $0.textField.clearButtonMode = .always
             $0.placeholder = "Type your password..."

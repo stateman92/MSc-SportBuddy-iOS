@@ -23,10 +23,32 @@ extension DependencyInjector {
     }
 
     private static func registerDomainClasses() {
-        register(domain: UserDomain(), implements: UserDomainProtocol.self)
-        register(domain: GroupDomain(), implements: GroupDomainProtocol.self)
-        register(domain: ChatDomain(), implements: ChatDomainProtocol.self)
-        register(domain: TrainingDomain(), implements: TrainingDomainProtocol.self)
+        registerUserDomain()
+        registerGroupDomain()
+        registerChatDomain()
+        registerTrainingDomain()
+    }
+}
+
+extension DependencyInjector {
+    private static func registerUserDomain() {
+        register(domain: UserStore(), implements: UserStoreProtocol.self)
+        register(domain: UserAction(), implements: UserActionProtocol.self)
+    }
+
+    private static func registerGroupDomain() {
+        register(domain: GroupStore(), implements: GroupStoreProtocol.self)
+        register(domain: GroupAction(), implements: GroupActionProtocol.self)
+    }
+
+    private static func registerChatDomain() {
+        register(domain: ChatStore(), implements: ChatStoreProtocol.self)
+        register(domain: ChatAction(), implements: ChatActionProtocol.self)
+    }
+
+    private static func registerTrainingDomain() {
+        register(domain: TrainingStore(), implements: TrainingStoreProtocol.self)
+        register(domain: TrainingAction(), implements: TrainingActionProtocol.self)
     }
 }
 

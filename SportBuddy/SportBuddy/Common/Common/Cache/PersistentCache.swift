@@ -19,11 +19,12 @@ class PersistentCache<Item: Codable>: Cache<Item> {
     init(key: Key, secure: Bool = true) {
         self.key = key
         self.secure = secure
+        super.init()
+        cache.send(settingsService.retrieve(forKey: key, secure: secure))
     }
 
-    init(key: String, secure: Bool = true) {
-        self.key = StringKey(keyName: key)
-        self.secure = secure
+    convenience init(key: String, secure: Bool = true) {
+        self.init(key: StringKey(keyName: key), secure: secure)
     }
 
     // MARK: - Overridden methods

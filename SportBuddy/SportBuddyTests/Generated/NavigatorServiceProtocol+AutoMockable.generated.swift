@@ -46,19 +46,19 @@ class NavigatorServiceProtocolMock: NavigatorServiceProtocol {
 
     //MARK: - present
 
-    var presentAnimatedCompletionCallsCount = 0
-    var presentAnimatedCompletionCalled: Bool {
-        return presentAnimatedCompletionCallsCount > 0
+    var presentTypeCompletionCallsCount = 0
+    var presentTypeCompletionCalled: Bool {
+        return presentTypeCompletionCallsCount > 0
     }
-    var presentAnimatedCompletionReceivedArguments: (viewControllerToPresent: UIViewController, flag: Bool, completion: (() -> Void)?)?
-    var presentAnimatedCompletionReceivedInvocations: [(viewControllerToPresent: UIViewController, flag: Bool, completion: (() -> Void)?)] = []
-    var presentAnimatedCompletionClosure: ((UIViewController, Bool, (() -> Void)?) -> Void)?
+    var presentTypeCompletionReceivedArguments: (screen: UIViewController, type: NavigationType, completion: () -> Void)?
+    var presentTypeCompletionReceivedInvocations: [(screen: UIViewController, type: NavigationType, completion: () -> Void)] = []
+    var presentTypeCompletionClosure: ((UIViewController, NavigationType, @escaping () -> Void) -> Void)?
 
-    func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-        presentAnimatedCompletionCallsCount += 1
-        presentAnimatedCompletionReceivedArguments = (viewControllerToPresent: viewControllerToPresent, flag: flag, completion: completion)
-        presentAnimatedCompletionReceivedInvocations.append((viewControllerToPresent: viewControllerToPresent, flag: flag, completion: completion))
-        presentAnimatedCompletionClosure?(viewControllerToPresent, flag, completion)
+    func present(_ screen: UIViewController, type: NavigationType, completion: @escaping () -> Void) {
+        presentTypeCompletionCallsCount += 1
+        presentTypeCompletionReceivedArguments = (screen: screen, type: type, completion: completion)
+        presentTypeCompletionReceivedInvocations.append((screen: screen, type: type, completion: completion))
+        presentTypeCompletionClosure?(screen, type, completion)
     }
 
 }

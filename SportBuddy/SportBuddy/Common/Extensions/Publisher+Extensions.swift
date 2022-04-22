@@ -33,3 +33,25 @@ extension Publisher where Failure == Never {
         forward(to: subject).store(in: &set)
     }
 }
+
+extension Publisher {
+    /// Sink the given publisher's values.
+    /// - Parameters:
+    ///   - receiveError: sink the errors.
+    ///   - receiveCompletion: sink the completion.
+    ///   - receiveValue: sink the success values.
+    /// - Returns:
+    ///     The `AnyCancellable`.
+    func sink(receiveError: @escaping (Error) -> Void = { _ in },
+              receiveCompletion: @escaping () -> Void = { },
+              receiveValue: @escaping (Output) -> Void = { _ in }) -> AnyCancellable {
+        sink { completion in
+            switch completion {
+            case let .failure(error): receiveError(error)
+            case .finished: receiveCompletion()
+            }
+        } receiveValue: {
+            receiveValue($0)
+        }
+    }
+}

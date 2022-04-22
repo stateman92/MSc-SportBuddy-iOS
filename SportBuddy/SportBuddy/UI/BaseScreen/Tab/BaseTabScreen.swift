@@ -12,7 +12,6 @@ class BaseTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: UITabBarControl
     // MARK: Properties
 
     @LazyInjected var viewModel: ViewModel
-    @LazyInjected var toastHandlingService: ToastServiceProtocol
     @LazyInjected private var tabs: Tabs
     var cancellables = Cancellables()
 
@@ -21,6 +20,7 @@ class BaseTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: UITabBarControl
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        _ = viewModel
     }
 
     // MARK: - UITabBarControllerDelegate
@@ -35,25 +35,12 @@ class BaseTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: UITabBarControl
         navigationItem.backBarButtonItem = viewController.navigationItem.backBarButtonItem
         navigationItem.hidesBackButton = viewController.navigationItem.hidesBackButton
     }
-
-    // MARK: - Overridable methods
-
-    func setupTabBarAppearance() { }
-}
-
-// MARK: - Public methods
-
-extension BaseTabScreen {
-    func setTabBar(tabBar: UITabBar) {
-        setValue(tabBar, forKey: "tabBar")
-    }
 }
 
 // MARK: - Setups
 
 extension BaseTabScreen {
     private func setupView() {
-        setupTabBarAppearance()
         delegate = self
         tabs.setup(on: self)
     }

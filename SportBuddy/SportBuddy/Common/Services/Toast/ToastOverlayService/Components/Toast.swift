@@ -21,13 +21,13 @@ final class Toast: View {
     private let message: String
     private let type: ToastType
     private let dismiss: () -> Void
-    private let didRemove: () -> Void
 
     private var cancellables = Cancellables()
+    private let visualEffectView = EffectView()
     private let imageView = ImageView()
     private let messageLabel = Label()
     private let closeButton = UIButton()
-    private let contentColor: UIColor = .systemBackground.withAlphaComponent(0.9)
+    private let contentColor: UIColor = .label
     @LazyInjected private var systemImageService: SystemImageServiceProtocol
 
     // MARK: Initialization
@@ -35,13 +35,11 @@ final class Toast: View {
     init(on parentView: UIView,
          message: String,
          type: ToastType,
-         dismiss: @escaping () -> Void,
-         didRemove: @escaping () -> Void = { }) {
+         dismiss: @escaping () -> Void) {
         self.parentView = parentView
         self.message = message
         self.type = type
         self.dismiss = dismiss
-        self.didRemove = didRemove
         super.init()
         setupView()
     }
@@ -52,13 +50,24 @@ final class Toast: View {
 extension Toast {
     private func setupView() {
         alpha = .zero
+        clipsToBounds = true
+        layer.masksToBounds = true
         layer.zPosition = CGFloat(MAXFLOAT)
         layer.cornerRadius = 24
-        backgroundColor = type.color.withAlphaComponent(0.5)
+//        backgroundColor = type.color
 
+        setupVisualEffectView()
         setupImageView()
         setupMessageLabel()
         setupCloseImageView()
+    }
+
+    private func setupVisualEffectView() {
+        visualEffectView.then {
+            addSubview($0)
+            $0.set(tint: type.color, alpha: 0.5, blurRadius: 8)
+            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
+        }
     }
 
     private func setupImageView() {
@@ -109,9 +118,7 @@ extension Toast {
             $0.setWidth(44)
             $0.setHeight(44)
             $0.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor).isActive = true
-            $0.addAction(.init { [weak self] _ in
-                self?.dismiss()
-            }, for: .touchUpInside)
+            $0.addAction(.init { [weak self] _ in self?.dismiss() }, for: .touchUpInside)
         }
     }
 }

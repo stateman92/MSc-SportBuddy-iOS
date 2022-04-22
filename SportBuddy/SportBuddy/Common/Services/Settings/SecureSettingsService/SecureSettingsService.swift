@@ -12,8 +12,8 @@ final class SecureSettingsService {
     // MARK: Nested types
 
     private enum Constants {
-        static var teamId: String { "bme.team.id" }
-        static var accessGroup: String { "hu.bme.aut.SportBuddy" }
+        static var teamId: String { "7KJTVFSV88" }
+        static var accessGroup: String { "hu.bme.aut.SportBuddy1" }
     }
 
     // MARK: Properties
@@ -44,6 +44,7 @@ extension SecureSettingsService: SecureSettingsServiceProtocol {
             try valet.setObject(data, forKey: key.keyName)
             return true
         } catch {
+            dump(error)
             return false
         }
     }

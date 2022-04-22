@@ -1,21 +1,21 @@
 //
-//  UserDomainProtocol.swift
+//  UserActionProtocol.swift
 //  SportBuddy
 //
-//  Created by Kristof Kalai on 2022. 04. 17..
+//  Created by Kristof Kalai on 2022. 04. 22..
 //
 
 import Combine
 
-protocol UserDomainProtocol {
-    /// The current user.
-    var currentUser: AnyPublisher<UserDTO, Never> { get }
-
+protocol UserActionProtocol {
     /// Call to login the user.
     /// - Parameters:
     ///   - email: the user's email.
     ///   - password: the user's password.
     func login(email: String, password: String) -> AnyPublisher<Void, UserDomainError>
+
+    /// Refresh the stored token.
+    func refreshToken() -> AnyPublisher<Void, UserDomainError>
 
     /// Call to sign up the user.
     /// - Parameters:

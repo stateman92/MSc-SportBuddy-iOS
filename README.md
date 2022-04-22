@@ -36,7 +36,7 @@ SportBuddy iOS client app
 
 #### Update mocks
 
-- Make sure you've installed [Sourcery](https://github.com/krzysztofzablocki/Sourcery) - if not use, e.g. `brew install sourcery` via [Homebrew](https://brew.sh/)
+- Make sure you've installed [Sourcery](https://github.com/krzysztofzablocki/Sourcery) - if not, use e.g. `brew install sourcery` via [Homebrew](https://brew.sh/)
 
 - Run `sh sourcery.sh` in the terminal in the SportBuddy directory
 
@@ -44,6 +44,6 @@ SportBuddy iOS client app
 
 #### Update openapi generated files
 
-- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) - if not use, e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
+- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) - if not, use e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
 
 - Run `openapi-generator generate -i /path/to/descriptor/swagger.yaml -g swift5 --additional-properties=responseAs=AsyncAwait -o /path/to/output` in the terminal

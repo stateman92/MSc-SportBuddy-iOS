@@ -12,7 +12,7 @@ final class TabBar: UIControl {
 
     @Published var selectedIndexSubject = 0
     private let stackView = StackView()
-    private let visualEffectView = VisualEffectView()
+    private let visualEffectView = EffectView()
     private var tabBarItems: [TabBarItem] = []
     private var cancellables = Cancellables()
 
@@ -50,12 +50,10 @@ extension TabBar {
         visualEffectView.then {
             let constant: CGFloat
             if hasNotch {
-                constant = 8
+                constant = 16
                 $0.layer.cornerRadius = 32
             } else {
                 constant = .zero
-                $0.layer.cornerRadius = 16
-                $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             }
             $0.clipsToBounds = true
             $0.set(style: .systemThinMaterial)

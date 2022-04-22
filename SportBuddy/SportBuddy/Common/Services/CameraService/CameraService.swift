@@ -106,7 +106,7 @@ extension CameraService {
         }
 
         videoSize = videoDeviceInput.size
-        videoDeviceInput.device.tryToSet(focusMode: .continuousAutoFocus)
+        videoDeviceInput.device.configure { $0.tryToSet(focusMode: .continuousAutoFocus) }
 
         dataOutput.connections.first?.isVideoMirrored = !isBackCameraInOperation
         dataOutput.setSampleBufferDelegate(on: dataOutputQueue) { [weak self] in

@@ -21,7 +21,7 @@ final class BackgroundView: View {
     private let firstCircle = RoundedView()
     private let secondCircle = RoundedView()
     private let rectangle = RoundedView()
-    private let visualEffectView = VisualEffectView()
+    private let visualEffectView = EffectView()
     private var cancellables = Cancellables()
     var isAnimating = true {
         didSet {

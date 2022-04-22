@@ -89,6 +89,26 @@ paths:
           description: Email sent or email not found
         "400":
           description: Bad request
+  /refreshToken:
+    post:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Refresh the stored token
+      description: Refresh the stored token
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Token refreshed
+        "400":
+          description: Bad request
   /logout:
     post:
       tags:

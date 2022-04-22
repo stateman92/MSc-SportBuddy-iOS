@@ -13,7 +13,7 @@ class Cache<Item> {
     var immediateValue: Item? {
         cache.value
     }
-    private let cache = CurrentValueSubject<Item?, Never>(nil)
+    let cache = CurrentValueSubject<Item?, Never>(nil)
 
     // MARK: Public methods
 

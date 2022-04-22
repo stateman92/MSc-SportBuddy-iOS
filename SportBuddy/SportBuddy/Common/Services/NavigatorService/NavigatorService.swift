@@ -51,11 +51,11 @@ extension NavigatorService: NavigatorServiceProtocol {
         navigationController.becameRoot(in: window)
     }
 
-    /// Presents a view controller modally.
-    /// - Parameter viewControllerToPresent: the view controller to display over the current view controller’s content.
-    /// - Parameter animated: `true` if you want to animate the presentation, otherwise `false`.
+    /// Presents a view controller.
+    /// - Parameter screen: the view controller to display over the current view controller’s content.
+    /// - Parameter type: the type of the animation.
     /// - Parameter completion: the completion block to execute after the presentation finished.
-    func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-        navigationController.present(viewControllerToPresent, animated: flag, completion: completion)
+    func present(_ screen: UIViewController, type: NavigationType, completion: @escaping () -> Void) {
+        navigationController.present(screen, type: type, completion: completion)
     }
 }

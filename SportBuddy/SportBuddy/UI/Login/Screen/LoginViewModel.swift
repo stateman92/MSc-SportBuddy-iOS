@@ -8,17 +8,19 @@
 import UIKit
 
 final class LoginViewModel: BaseViewModel {
-    @LazyInjected private var mainScreen: MainScreen
+    @LazyInjected private var tokenCache: TokenCache
 
     override init() {
         super.init()
 
-        userDomain
-            .currentUser
-            .sink { user in
-                dump(user)
-            }
-            .store(in: &cancellables)
+        if tokenCache.immediateValue != nil {
+            userAction
+                .refreshToken()
+                .sink(receiveValue: { [unowned self] in
+                    navigateNext()
+                })
+                .store(in: &cancellables)
+        }
     }
 }
 
@@ -26,38 +28,52 @@ final class LoginViewModel: BaseViewModel {
 
 extension LoginViewModel {
     func login(email: String, password: String) {
-        userDomain
+        userAction
             .login(email: email, password: password)
-            .sink { [unowned self] _ in
-                navigatorService.viewControllers = [MainScreen()]
-            } receiveValue: { [unowned self] _ in
-                navigatorService.viewControllers = [MainScreen()]
-            }
+            .sink(receiveError: { [unowned self] _ in
+                toastHandlingService.showToast(with: .init(message: "Login failed! Try again later.", type: .error))
+            }, receiveValue: { [unowned self] _ in
+                toastHandlingService.showToast(with: .init(message: "You've logged in successfully!", type: .success))
+                navigateNext()
+            })
             .store(in: &cancellables)
     }
 
     func signUp(name: String, email: String, password: String) {
-//        networkService.signUp(name: name, email: email, password: password) { [weak self] result in
-//            switch result {
-//            case .success:
-//                self?.navigatorService.viewControllers = [UIViewController()]
-//            case let .failure(error):
-//                dump(error)
-//            }
-//        }
+        userAction
+            .signUp(name: name, email: email, password: password)
+            .sink(receiveError: { [unowned self] _ in
+                toastHandlingService.showToast(with: .init(message: "Registration failed! Try again later.",
+                                                           type: .error))
+            }, receiveValue: { [unowned self] _ in
+                toastHandlingService.showToast(with: .init(message: "You've signed up successfully!", type: .success))
+                navigateNext()
+            })
+            .store(in: &cancellables)
     }
 
     func forgotPassword(email: String) {
-//        networkService.forgotPassword(email: email) { [weak self] result in
-//            switch result {
-//            case .success:
-//                self?.navigatorService.viewControllers = [UIViewController()]
-//            case let .failure(error):
-//                dump(error)
-//            }
-//        }
+        userAction
+            .forgotPassword(email: email)
+            .sink(receiveError: { [unowned self] _ in
+                toastHandlingService.showToast(
+                    with: .init(message: "Forgot password request failed! Try again later.", type: .warning))
+            }, receiveValue: { [unowned self] _ in
+                toastHandlingService.showToast(with: .init(
+                    message: "You've requested a password reset email successfully!",
+                    type: .success))
+            })
+            .store(in: &cancellables)
     }
 
     func googleLogin(token: String) {
+    }
+}
+
+extension LoginViewModel {
+    private func navigateNext() {
+        navigatorService.present(DependencyInjector.resolve() as MainScreen, type: .crossDissolve) { [weak self] in
+            self?.navigatorService.viewControllers.removeFirst()
+        }
     }
 }

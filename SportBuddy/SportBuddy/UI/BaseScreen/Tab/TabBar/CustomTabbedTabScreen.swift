@@ -34,8 +34,19 @@ class CustomTabbedTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: BaseTab
 
         tabBarView.$selectedIndexSubject
             .dropFirst(1)
-            .sink { [unowned self] in
-                selectedViewController = viewControllers?[$0]
+            .compactMap { [unowned self] in viewControllers?[$0] }
+            .sink { [unowned self] destinationViewController in
+                if let delegate = delegate {
+                    if let result = delegate.tabBarController?(self, shouldSelect: destinationViewController) {
+                        if result {
+                            selectedViewController = destinationViewController
+                        }
+                    } else {
+                        selectedViewController = destinationViewController
+                    }
+                } else {
+                    selectedViewController = destinationViewController
+                }
                 if let selectedViewController = selectedViewController {
                     delegate?.tabBarController?(self, didSelect: selectedViewController)
                 }

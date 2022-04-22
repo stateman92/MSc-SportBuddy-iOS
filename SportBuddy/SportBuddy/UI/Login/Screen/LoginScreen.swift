@@ -37,8 +37,6 @@ extension LoginScreen {
         setupInput()
         setupOrView()
         setupGoogleLoginButton()
-
-        setupInitialAnimation()
     }
 
     private func setupSegmentedControl() {
@@ -92,6 +90,12 @@ extension LoginScreen {
             $0.login = { [weak self] in
                 self?.viewModel.login(email: $0, password: $1)
             }
+            $0.signUp = { [weak self] in
+                self?.viewModel.signUp(name: $0, email: $1, password: $2)
+            }
+            $0.forgotPassword = { [weak self] in
+                self?.viewModel.forgotPassword(email: $0)
+            }
         }
     }
 
@@ -139,16 +143,6 @@ extension LoginScreen {
             $0.anchorToCenterX()
             $0.anchorToBottom()
             $0.topAnchor.constraint(equalTo: orView.bottomAnchor, constant: 32).isActive = true
-        }
-    }
-
-    private func setupInitialAnimation() {
-        view.subviews.forEach { view in
-            view.alpha = .zero
-
-            UIView.animate(withDuration: 0.75) {
-                view.alpha = 1
-            }
         }
     }
 }

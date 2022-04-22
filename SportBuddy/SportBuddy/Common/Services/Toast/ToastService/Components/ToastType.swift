@@ -21,9 +21,9 @@ enum ToastType {
 
     var color: UIColor {
         switch self {
-        case .success: return .green
-        case .warning: return .yellow
-        case .error: return .red
+        case .success: return .systemGreen
+        case .warning: return .systemOrange
+        case .error: return .systemRed
         }
     }
 }

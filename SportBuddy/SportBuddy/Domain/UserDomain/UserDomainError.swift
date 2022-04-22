@@ -7,6 +7,7 @@
 
 enum UserDomainError: Error {
     case loginError
+    case refreshTokenError
     case signUpError
     case forgotPasswordError
     case loginWithGoogleError

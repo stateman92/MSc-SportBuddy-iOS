@@ -9,3 +9,13 @@ protocol Key {
     /// The name of the key.
     var keyName: String { get }
 }
+
+extension Key where Self == StringKey {
+    static var token: Key {
+        StringKey(keyName: "token")
+    }
+
+    static var onboarding: Key {
+        StringKey(keyName: "onboarding")
+    }
+}

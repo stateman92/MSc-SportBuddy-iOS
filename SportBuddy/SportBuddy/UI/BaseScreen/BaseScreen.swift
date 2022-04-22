@@ -23,6 +23,7 @@ class BaseScreen<ViewModel: BaseViewModel>: UIViewController {
     @LazyInjected private var loadingService: LoadingServiceProtocol
     @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
     @LazyInjected private var systemImageService: SystemImageServiceProtocol
+    @LazyInjected var cameraService: CameraServiceProtocol
     @LazyInjected var viewModel: ViewModel
     var cancellables = Cancellables()
     var backgroundViewOptions = BackgroundViewOptions() {
