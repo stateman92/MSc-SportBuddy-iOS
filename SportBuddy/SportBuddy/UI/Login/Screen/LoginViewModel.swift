@@ -13,6 +13,10 @@ final class LoginViewModel: BaseViewModel {
     override init() {
         super.init()
 
+        toastHandlingService.showToast(with: .init(message: "abc", type: .warning))
+        toastHandlingService.showToast(with: .init(message: "abc", type: .error))
+        toastHandlingService.showToast(with: .init(message: "abc", type: .success))
+
         if tokenCache.immediateValue != nil {
             userAction
                 .refreshToken()

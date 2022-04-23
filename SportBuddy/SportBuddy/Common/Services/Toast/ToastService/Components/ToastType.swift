@@ -26,4 +26,11 @@ enum ToastType {
         case .error: return .systemRed
         }
     }
+
+    var shouldRemainBordered: Bool {
+        if case .error = self {
+            return true
+        }
+        return false
+    }
 }
