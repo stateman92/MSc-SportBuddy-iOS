@@ -10,7 +10,8 @@ import UIKit
 final class SettingsScreen: TabScreen<SettingsViewModel> {
     // MARK: Properties
 
-    private let tableView = FadingTableView(frame: .zero, style: .insetGrouped)
+    private let tableView = ReversedTableView<ReversedTableViewCell>(frame: .zero, style: .insetGrouped)
+    private let data = Array([1, 2, 3, 4, 5, 6].reversed())
 
     // MARK: Initialization
 
@@ -38,7 +39,6 @@ extension SettingsScreen {
 
     private func setupTableView() {
         tableView.then {
-            $0.register(UITableViewCell.self)
             $0.delegate = self
             $0.dataSource = self
             $0.showsVerticalScrollIndicator = false
@@ -53,16 +53,17 @@ extension SettingsScreen {
 
 extension SettingsScreen: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.textLabel?.text = "textLabel"
+        let cell: ReversedTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
+        let int = data[indexPath.section * 3 + indexPath.row]
+        cell.textLabel?.text = "\(indexPath.section). section, \(indexPath.row). row - \(int) data"
         cell.detailTextLabel?.text = "detailTextLabel"
         return cell
     }

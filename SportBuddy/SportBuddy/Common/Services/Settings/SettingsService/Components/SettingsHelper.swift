@@ -10,11 +10,11 @@ enum SettingsHelper {
 }
 
 extension SettingsHelper {
-    static func retrieve<T>(forKey key: Key, secure: Bool) -> T? where T: Codable {
-        settingsService.retrieve(forKey: key, secure: secure)
+    static func retrieve<T>(forKey key: SettingsKey) -> T? where T: Codable {
+        settingsService.retrieve(forKey: key)
     }
 
-    @discardableResult static func save<T>(object: T?, forKey key: Key, secure: Bool) -> Bool where T: Codable {
-        settingsService.save(object: object, forKey: key, secure: secure)
+    @discardableResult static func save<T>(object: T?, forKey key: SettingsKey) -> Bool where T: Codable {
+        settingsService.save(object: object, forKey: key)
     }
 }

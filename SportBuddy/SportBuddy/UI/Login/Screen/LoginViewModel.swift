@@ -76,8 +76,6 @@ extension LoginViewModel {
 
 extension LoginViewModel {
     private func navigateNext() {
-        navigatorService.present(DependencyInjector.resolve() as MainScreen, type: .crossDissolve) { [weak self] in
-            self?.navigatorService.viewControllers.removeFirst()
-        }
+        navigatorService.present(DependencyInjector.resolve() as MainScreen, type: .crossDissolve)
     }
 }

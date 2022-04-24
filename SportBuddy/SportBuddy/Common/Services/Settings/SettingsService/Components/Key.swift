@@ -10,12 +10,12 @@ protocol Key {
     var keyName: String { get }
 }
 
-extension Key where Self == StringKey {
-    static var token: Key {
-        StringKey(keyName: "token")
+extension Key where Self == SettingsKey {
+    static var token: SettingsKey {
+        SettingsKey(keyName: "token", secure: true)
     }
 
-    static var onboarding: Key {
-        StringKey(keyName: "onboarding")
+    static var onboarding: SettingsKey {
+        SettingsKey(keyName: "onboarding", secure: false)
     }
 }

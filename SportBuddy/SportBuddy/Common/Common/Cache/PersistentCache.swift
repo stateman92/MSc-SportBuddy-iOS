@@ -10,32 +10,32 @@ import Combine
 class PersistentCache<Item: Codable>: Cache<Item> {
     // MARK: Properties
 
-    private let key: Key
+    private let key: SettingsKey
     private let secure: Bool
     @LazyInjected private var settingsService: SettingsServiceProtocol
 
     // MARK: Initialization
 
-    init(key: Key, secure: Bool = true) {
+    init(key: SettingsKey, secure: Bool = true) {
         self.key = key
         self.secure = secure
         super.init()
-        cache.send(settingsService.retrieve(forKey: key, secure: secure))
+        cache.send(settingsService.retrieve(forKey: key))
     }
 
     convenience init(key: String, secure: Bool = true) {
-        self.init(key: StringKey(keyName: key), secure: secure)
+        self.init(key: SettingsKey(keyName: key, secure: secure), secure: secure)
     }
 
     // MARK: - Overridden methods
 
     override func save(item: Item) {
         super.save(item: item)
-        settingsService.save(object: item, forKey: key, secure: secure)
+        settingsService.save(object: item, forKey: key)
     }
 
     override func clear() {
         super.clear()
-        settingsService.delete(forKey: key, secure: secure)
+        settingsService.delete(forKey: key)
     }
 }

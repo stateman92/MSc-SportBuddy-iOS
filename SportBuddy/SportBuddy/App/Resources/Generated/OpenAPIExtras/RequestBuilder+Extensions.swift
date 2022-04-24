@@ -7,7 +7,7 @@
 
 extension RequestBuilder {
     @discardableResult func addToken() -> Self {
-        guard let token: String = SettingsHelper.retrieve(forKey: .token, secure: true) else {
+        guard let token: String = SettingsHelper.retrieve(forKey: .token) else {
             return self
         }
         return addHeader(name: "Authorization", value: "Bearer " + token)

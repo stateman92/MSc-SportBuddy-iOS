@@ -11,7 +11,7 @@ final class TokenCache: PersistentCache<UUID> {
     // MARK: Initialization
 
     init() {
-        super.init(key: StringKey(keyName: "token"), secure: true)
+        super.init(key: .token)
     }
 
     override func save(item: UUID) {

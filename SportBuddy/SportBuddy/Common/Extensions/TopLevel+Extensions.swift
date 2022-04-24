@@ -58,16 +58,15 @@ func dispatchToMain(closure: @escaping () -> Void) {
 #endif
 }
 
-func run(key: Key, times: Int, closure: () -> Void, else: () -> Void) {
+func run(key: SettingsKey, times: Int, closure: () -> Void, else: () -> Void) {
     guard times > .zero else {
         `else`()
         return
     }
     let helper = SettingsHelper.self
-    let secure = false
-    let int: Int? = helper.retrieve(forKey: key, secure: secure)
+    let int: Int? = helper.retrieve(forKey: key)
     if let int = int {
-        helper.save(object: int + 1, forKey: key, secure: secure)
+        helper.save(object: int + 1, forKey: key)
         if int < times {
             closure()
         } else {
@@ -75,6 +74,6 @@ func run(key: Key, times: Int, closure: () -> Void, else: () -> Void) {
         }
     } else {
         closure()
-        helper.save(object: 1, forKey: key, secure: secure)
+        helper.save(object: 1, forKey: key)
     }
 }

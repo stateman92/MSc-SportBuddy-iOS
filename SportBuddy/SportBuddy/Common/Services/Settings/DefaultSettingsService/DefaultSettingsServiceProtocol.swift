@@ -15,7 +15,7 @@ protocol DefaultSettingsServiceProtocol: Initable {
     ///   - forKey: the key with that will be associated.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func save<T>(object: T?, forKey key: Key) -> Bool where T: Codable
+    @discardableResult func save<T>(object: T?, forKey key: DefaultSettingsKey) -> Bool where T: Codable
 
     /// Retrieve a `Codable` from the device.
     /// - Parameters:
@@ -24,24 +24,24 @@ protocol DefaultSettingsServiceProtocol: Initable {
     /// If nothing is stored for the given key (or some error happened), return `nil`.
     /// - Returns:
     ///     The value for the given key.
-    func retrieve<T>(forKey key: Key) -> T? where T: Codable
+    func retrieve<T>(forKey key: DefaultSettingsKey) -> T? where T: Codable
 
     /// Check whether a value is saved to the given key.
     /// - Parameters:
     ///   - key: the key.
     /// - Returns:
     ///     Whether a stored value is found for the given key.
-    func has(key: Key) -> Bool
+    func has(key: DefaultSettingsKey) -> Bool
 
     /// Delete the stored value from the device.
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func delete<T>(forKey key: Key) -> T? where T: Codable
+    @discardableResult func delete<T>(forKey key: DefaultSettingsKey) -> T? where T: Codable
 
     /// Delete the stored value from the device.
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
-    func delete(forKey key: Key)
+    func delete(forKey key: DefaultSettingsKey)
 }

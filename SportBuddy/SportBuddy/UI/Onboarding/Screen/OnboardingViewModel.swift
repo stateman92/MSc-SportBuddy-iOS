@@ -29,7 +29,7 @@ final class OnboardingViewModel: BaseViewModel {
     }
 
     private func showOnboarding() {
-        settingService.delete(forKey: .token, secure: true)
+        settingService.delete(forKey: .token)
         run(key: .onboarding, times: 3) { } else: {
             navigateNext()
         }

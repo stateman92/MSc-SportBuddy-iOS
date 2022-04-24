@@ -31,7 +31,7 @@ extension DefaultSettingsService: DefaultSettingsServiceProtocol {
     ///   - forKey: the key with that will be associated.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func save<T>(object: T?, forKey key: Key) -> Bool where T: Codable {
+    @discardableResult func save<T>(object: T?, forKey key: DefaultSettingsKey) -> Bool where T: Codable {
         if let encoded = coderService.encode(object: object) {
             defaults.set(encoded, forKey: key.keyName)
             return true
@@ -46,7 +46,7 @@ extension DefaultSettingsService: DefaultSettingsServiceProtocol {
     /// If nothing is stored for the given key (or some error happened), return `nil`.
     /// - Returns:
     ///     The value for the given key.
-    func retrieve<T>(forKey key: Key) -> T? where T: Codable {
+    func retrieve<T>(forKey key: DefaultSettingsKey) -> T? where T: Codable {
         coderService.decode(data: defaults.object(forKey: key.keyName) as? Data)
     }
 
@@ -55,7 +55,7 @@ extension DefaultSettingsService: DefaultSettingsServiceProtocol {
     ///   - key: the key.
     /// - Returns:
     ///     Whether a stored value is found for the given key.
-    func has(key: Key) -> Bool {
+    func has(key: DefaultSettingsKey) -> Bool {
         defaults.object(forKey: key.keyName) != nil
     }
 
@@ -64,7 +64,7 @@ extension DefaultSettingsService: DefaultSettingsServiceProtocol {
     ///   - forKey: the value that is associated with this key will be deleted.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func delete<T>(forKey key: Key) -> T? where T: Codable {
+    @discardableResult func delete<T>(forKey key: DefaultSettingsKey) -> T? where T: Codable {
         let object: T? = retrieve(forKey: key)
         delete(forKey: key)
         return object
@@ -73,7 +73,7 @@ extension DefaultSettingsService: DefaultSettingsServiceProtocol {
     /// Delete the stored value from the device.
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
-    func delete(forKey key: Key) {
+    func delete(forKey key: DefaultSettingsKey) {
         defaults.removeObject(forKey: key.keyName)
     }
 }

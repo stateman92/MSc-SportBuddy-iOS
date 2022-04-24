@@ -127,6 +127,8 @@
 		5882AD10280E3A6700A09023 /* ToastOverlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD0F280E3A6700A09023 /* ToastOverlayService.swift */; };
 		5882AD12280E3A7A00A09023 /* ToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD11280E3A7A00A09023 /* ToastType.swift */; };
 		5882AD15280E45E400A09023 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882AD14280E45E400A09023 /* UIView+Constraints.swift */; };
+		5885941C2814E04400C6EFB3 /* DefaultSettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5885941B2814E04400C6EFB3 /* DefaultSettingsKey.swift */; };
+		5885941F2814E06800C6EFB3 /* SecureSettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5885941E2814E06800C6EFB3 /* SecureSettingsKey.swift */; };
 		588F475427FE34390062F838 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 588F475327FE34390062F838 /* GoogleSignIn */; };
 		588F475627FE344B0062F838 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F475527FE344B0062F838 /* GoogleLoginButton.swift */; };
 		588F475F27FE4FF60062F838 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F475E27FE4FF60062F838 /* NetworkError.swift */; };
@@ -206,6 +208,7 @@
 		58C27EF728113D1F000FC602 /* RequestBuilder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C27EF628113D1F000FC602 /* RequestBuilder+Extensions.swift */; };
 		58C27EF928114066000FC602 /* SettingsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C27EF828114066000FC602 /* SettingsHelper.swift */; };
 		58C27EFC281141B9000FC602 /* TokenizableRequestBuilderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C27EFB281141B9000FC602 /* TokenizableRequestBuilderFactory.swift */; };
+		58D6CD1B2814CB0E00727035 /* ReversedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6CD1A2814CB0E00727035 /* ReversedTableView.swift */; };
 		58D97DA4280A4978002FD22D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58D97DA3280A4978002FD22D /* Settings.bundle */; };
 		58DD920E280F27A7006544AE /* ToastOverlayServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD920D280F27A7006544AE /* ToastOverlayServiceProtocol.swift */; };
 		58DD9211280F2911006544AE /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD9210280F2911006544AE /* Toast.swift */; };
@@ -219,7 +222,7 @@
 		58E0A1732800D918000A81A5 /* DefaultSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */; };
 		58E0A1752800D922000A81A5 /* DefaultSettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */; };
 		58E0A1782800D9B8000A81A5 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1772800D9B8000A81A5 /* Key.swift */; };
-		58E0A17A2800D9CC000A81A5 /* StringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1792800D9CC000A81A5 /* StringKey.swift */; };
+		58E0A17A2800D9CC000A81A5 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A1792800D9CC000A81A5 /* SettingsKey.swift */; };
 		58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A17E28010A0A000A81A5 /* NavigationController.swift */; };
 		58E0A18228010CA5000A81A5 /* LoadingOverlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18128010CA5000A81A5 /* LoadingOverlayService.swift */; };
 		58E0A18428010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18328010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift */; };
@@ -399,6 +402,8 @@
 		5882AD0F280E3A6700A09023 /* ToastOverlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastOverlayService.swift; sourceTree = "<group>"; };
 		5882AD11280E3A7A00A09023 /* ToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastType.swift; sourceTree = "<group>"; };
 		5882AD14280E45E400A09023 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		5885941B2814E04400C6EFB3 /* DefaultSettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsKey.swift; sourceTree = "<group>"; };
+		5885941E2814E06800C6EFB3 /* SecureSettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureSettingsKey.swift; sourceTree = "<group>"; };
 		588F475527FE344B0062F838 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
 		588F475E27FE4FF60062F838 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		588F479727FE59F90062F838 /* ScrollingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingScreen.swift; sourceTree = "<group>"; };
@@ -473,6 +478,7 @@
 		58C27EF628113D1F000FC602 /* RequestBuilder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestBuilder+Extensions.swift"; sourceTree = "<group>"; };
 		58C27EF828114066000FC602 /* SettingsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelper.swift; sourceTree = "<group>"; };
 		58C27EFB281141B9000FC602 /* TokenizableRequestBuilderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizableRequestBuilderFactory.swift; sourceTree = "<group>"; };
+		58D6CD1A2814CB0E00727035 /* ReversedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReversedTableView.swift; sourceTree = "<group>"; };
 		58D97DA3280A4978002FD22D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		58DD920D280F27A7006544AE /* ToastOverlayServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastOverlayServiceProtocol.swift; sourceTree = "<group>"; };
 		58DD9210280F2911006544AE /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -486,7 +492,7 @@
 		58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsService.swift; sourceTree = "<group>"; };
 		58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		58E0A1772800D9B8000A81A5 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
-		58E0A1792800D9CC000A81A5 /* StringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKey.swift; sourceTree = "<group>"; };
+		58E0A1792800D9CC000A81A5 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		58E0A17E28010A0A000A81A5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		58E0A18128010CA5000A81A5 /* LoadingOverlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayService.swift; sourceTree = "<group>"; };
 		58E0A18328010CC1000A81A5 /* LoadingOverlayServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayServiceProtocol.swift; sourceTree = "<group>"; };
@@ -760,6 +766,7 @@
 			children = (
 				5828491E280BA3D800034010 /* TableView.swift */,
 				58284920280BA3DF00034010 /* FadingTableView.swift */,
+				58D6CD1A2814CB0E00727035 /* ReversedTableView.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -1255,6 +1262,22 @@
 			path = "UIView+Extensions";
 			sourceTree = "<group>";
 		};
+		5885941A2814E03900C6EFB3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5885941B2814E04400C6EFB3 /* DefaultSettingsKey.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5885941D2814E05500C6EFB3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5885941E2814E06800C6EFB3 /* SecureSettingsKey.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		588F475727FE38280062F838 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1295,6 +1318,7 @@
 		58AAEC30280BBC090054E2F0 /* SecureSettingsService */ = {
 			isa = PBXGroup;
 			children = (
+				5885941D2814E05500C6EFB3 /* Components */,
 				58AAEC31280BBC4A0054E2F0 /* SecureSettingsServiceProtocol.swift */,
 				58AAEC33280BBC660054E2F0 /* SecureSettingsService.swift */,
 			);
@@ -1550,6 +1574,7 @@
 		58E0A1712800D906000A81A5 /* DefaultSettingsService */ = {
 			isa = PBXGroup;
 			children = (
+				5885941A2814E03900C6EFB3 /* Components */,
 				58E0A1742800D922000A81A5 /* DefaultSettingsServiceProtocol.swift */,
 				58E0A1722800D918000A81A5 /* DefaultSettingsService.swift */,
 			);
@@ -1560,7 +1585,7 @@
 			isa = PBXGroup;
 			children = (
 				58E0A1772800D9B8000A81A5 /* Key.swift */,
-				58E0A1792800D9CC000A81A5 /* StringKey.swift */,
+				58E0A1792800D9CC000A81A5 /* SettingsKey.swift */,
 				58C27EF828114066000FC602 /* SettingsHelper.swift */,
 			);
 			path = Components;
@@ -2186,6 +2211,7 @@
 				588F5E79280B306C00947800 /* LoggingServiceProtocol.swift in Sources */,
 				58C27EEE28113C99000FC602 /* Extensions.swift in Sources */,
 				5882AD0B280E3A3700A09023 /* ToastService.swift in Sources */,
+				5885941F2814E06800C6EFB3 /* SecureSettingsKey.swift in Sources */,
 				580521D927EFB36B00B3A8B1 /* CameraView.swift in Sources */,
 				584061A128134CA600BF64CB /* GroupStoreProtocol.swift in Sources */,
 				580521CC27EFB24400B3A8B1 /* ImageView.swift in Sources */,
@@ -2202,6 +2228,8 @@
 				580190FC27F382F900BB3E3E /* AppLoader.swift in Sources */,
 				58DD9218280F2FDE006544AE /* AVCaptureSession+Extensions.swift in Sources */,
 				58C27EED28113C99000FC602 /* ExerciseFractionDTO.swift in Sources */,
+				58D6CD1B2814CB0E00727035 /* ReversedTableView.swift in Sources */,
+				5885941C2814E04400C6EFB3 /* DefaultSettingsKey.swift in Sources */,
 				58B2E1E227F3BE46004135E2 /* OnboardingOverlay.swift in Sources */,
 				5882AD09280E3A2E00A09023 /* ToastServiceProtocol.swift in Sources */,
 				580521D127EFB2B700B3A8B1 /* Label.swift in Sources */,
@@ -2307,7 +2335,7 @@
 				58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */,
 				588F5E7B280B307F00947800 /* LoggingService.swift in Sources */,
 				58C27EE528113C99000FC602 /* UserResponseDTO.swift in Sources */,
-				58E0A17A2800D9CC000A81A5 /* StringKey.swift in Sources */,
+				58E0A17A2800D9CC000A81A5 /* SettingsKey.swift in Sources */,
 				580DF5D92809EF8600BE0493 /* TrainingsViewModel.swift in Sources */,
 				580DF5DB2809EF8F00BE0493 /* Settings+DI.swift in Sources */,
 				580DF5DF2809EF9E00BE0493 /* SettingsViewModel.swift in Sources */,

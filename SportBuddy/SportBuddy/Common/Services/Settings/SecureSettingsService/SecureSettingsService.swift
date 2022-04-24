@@ -38,7 +38,7 @@ extension SecureSettingsService: SecureSettingsServiceProtocol {
     ///   - forKey: the key with that will be associated.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func save<T>(object: T?, forKey key: Key) -> Bool where T: Codable {
+    @discardableResult func save<T>(object: T?, forKey key: SecureSettingsKey) -> Bool where T: Codable {
         guard let data = coderService.encode(object: object) else { return false }
         do {
             try valet.setObject(data, forKey: key.keyName)
@@ -56,7 +56,7 @@ extension SecureSettingsService: SecureSettingsServiceProtocol {
     /// If nothing is stored for the given key (or some error happened), return `nil`.
     /// - Returns:
     ///     The value for the given key.
-    func retrieve<T>(forKey key: Key) -> T? where T: Codable {
+    func retrieve<T>(forKey key: SecureSettingsKey) -> T? where T: Codable {
         guard let data = try? valet.object(forKey: key.keyName) else { return nil }
         return coderService.decode(data: data)
     }
@@ -66,7 +66,7 @@ extension SecureSettingsService: SecureSettingsServiceProtocol {
     ///   - key: the key.
     /// - Returns:
     ///     Whether a stored value is found for the given key.
-    func has(key: Key) -> Bool {
+    func has(key: SecureSettingsKey) -> Bool {
         do {
             let result = try valet.containsObject(forKey: key.keyName)
             return result
@@ -80,7 +80,7 @@ extension SecureSettingsService: SecureSettingsServiceProtocol {
     ///   - forKey: the value that is associated with this key will be deleted.
     /// - Returns:
     ///     Whether the operation was successful.
-    @discardableResult func delete<T>(forKey key: Key) -> T? where T: Codable {
+    @discardableResult func delete<T>(forKey key: SecureSettingsKey) -> T? where T: Codable {
         let result: T? = retrieve(forKey: key)
         try? valet.removeObject(forKey: key.keyName)
         return result
@@ -89,7 +89,7 @@ extension SecureSettingsService: SecureSettingsServiceProtocol {
     /// Delete the stored value from the device.
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
-    func delete(forKey key: Key) {
+    func delete(forKey key: SecureSettingsKey) {
         try? valet.removeObject(forKey: key.keyName)
     }
 }
