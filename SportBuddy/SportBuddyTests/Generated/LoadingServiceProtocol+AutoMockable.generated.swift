@@ -9,55 +9,55 @@ import SFSafeSymbols
 @testable import SportBuddy
 
 class LoadingServiceProtocolMock: LoadingServiceProtocol {
-    var state: AnyPublisher<Bool, Never> {
+    var state: AnyPublisher<LoadingState, Never> {
         get { return underlyingState }
         set(value) { underlyingState = value }
     }
-    var underlyingState: AnyPublisher<Bool, Never>!
+    var underlyingState: AnyPublisher<LoadingState, Never>!
 
     //MARK: - init
 
-    var initIsShowingTriggerSameValueReceivedArguments: (isShowing: Bool, triggerSameValue: Bool)?
-    var initIsShowingTriggerSameValueReceivedInvocations: [(isShowing: Bool, triggerSameValue: Bool)] = []
-    var initIsShowingTriggerSameValueClosure: ((Bool, Bool) -> Void)?
+    var initStateTriggerSameValueReceivedArguments: (state: LoadingState, triggerSameValue: Bool)?
+    var initStateTriggerSameValueReceivedInvocations: [(state: LoadingState, triggerSameValue: Bool)] = []
+    var initStateTriggerSameValueClosure: ((LoadingState, Bool) -> Void)?
 
-    required init(isShowing: Bool, triggerSameValue: Bool) {
-        initIsShowingTriggerSameValueReceivedArguments = (isShowing: isShowing, triggerSameValue: triggerSameValue)
-        initIsShowingTriggerSameValueReceivedInvocations.append((isShowing: isShowing, triggerSameValue: triggerSameValue))
-        initIsShowingTriggerSameValueClosure?(isShowing, triggerSameValue)
+    required init(state: LoadingState, triggerSameValue: Bool) {
+        initStateTriggerSameValueReceivedArguments = (state: state, triggerSameValue: triggerSameValue)
+        initStateTriggerSameValueReceivedInvocations.append((state: state, triggerSameValue: triggerSameValue))
+        initStateTriggerSameValueClosure?(state, triggerSameValue)
     }
-    //MARK: - setState
+    //MARK: - set
 
-    var setStateIsShowingCallsCount = 0
-    var setStateIsShowingCalled: Bool {
-        return setStateIsShowingCallsCount > 0
+    var setStateCallsCount = 0
+    var setStateCalled: Bool {
+        return setStateCallsCount > 0
     }
-    var setStateIsShowingReceivedShowing: Bool?
-    var setStateIsShowingReceivedInvocations: [Bool] = []
-    var setStateIsShowingClosure: ((Bool) -> Void)?
+    var setStateReceivedState: LoadingState?
+    var setStateReceivedInvocations: [LoadingState] = []
+    var setStateClosure: ((LoadingState) -> Void)?
 
-    func setState(isShowing showing: Bool) {
-        setStateIsShowingCallsCount += 1
-        setStateIsShowingReceivedShowing = showing
-        setStateIsShowingReceivedInvocations.append(showing)
-        setStateIsShowingClosure?(showing)
+    func set(state: LoadingState) {
+        setStateCallsCount += 1
+        setStateReceivedState = state
+        setStateReceivedInvocations.append(state)
+        setStateClosure?(state)
     }
 
     //MARK: - loading
 
-    var loadingDuringCallsCount = 0
-    var loadingDuringCalled: Bool {
-        return loadingDuringCallsCount > 0
+    var loadingBlockingDuringCallsCount = 0
+    var loadingBlockingDuringCalled: Bool {
+        return loadingBlockingDuringCallsCount > 0
     }
-    var loadingDuringReceivedClosure: ((@escaping () -> Void) -> Void)?
-    var loadingDuringReceivedInvocations: [((@escaping () -> Void) -> Void)] = []
-    var loadingDuringClosure: ((@escaping (@escaping () -> Void) -> Void) -> Void)?
+    var loadingBlockingDuringReceivedArguments: (blocking: Bool, closure: (@escaping () -> Void) -> Void)?
+    var loadingBlockingDuringReceivedInvocations: [(blocking: Bool, closure: (@escaping () -> Void) -> Void)] = []
+    var loadingBlockingDuringClosure: ((Bool, @escaping (@escaping () -> Void) -> Void) -> Void)?
 
-    func loading(during closure: @escaping (@escaping () -> Void) -> Void) {
-        loadingDuringCallsCount += 1
-        loadingDuringReceivedClosure = closure
-        loadingDuringReceivedInvocations.append(closure)
-        loadingDuringClosure?(closure)
+    func loading(blocking: Bool, during closure: @escaping (@escaping () -> Void) -> Void) {
+        loadingBlockingDuringCallsCount += 1
+        loadingBlockingDuringReceivedArguments = (blocking: blocking, closure: closure)
+        loadingBlockingDuringReceivedInvocations.append((blocking: blocking, closure: closure))
+        loadingBlockingDuringClosure?(blocking, closure)
     }
 
     //MARK: - bind

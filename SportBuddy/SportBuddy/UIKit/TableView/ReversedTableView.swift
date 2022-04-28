@@ -41,7 +41,6 @@ class ReversedTableViewCell: UITableViewCell {
 
 extension ReversedTableViewCell {
     private func setupView() {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.transform = .init(rotationAngle: .pi)
     }
 }

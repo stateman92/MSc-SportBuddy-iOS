@@ -15,11 +15,16 @@ extension DependencyInjector {
 
 extension DependencyInjector {
     private static func registerCaches() {
-        resolver.register { UserCache() }
-        resolver.register { TokenCache() }
-        resolver.register { GroupCache() }
-        resolver.register { ChatCache() }
-        resolver.register { TrainingCache() }
+        resolver.register { UserCache(key: SettingsKey(keyName: "userCache", secure: false)) }.scope(.application)
+        resolver.register { TokenCache() }.scope(.application)
+        resolver.register { SearchedUsersCache() }.scope(.application)
+
+        resolver.register { GroupCache() }.scope(.application)
+
+        resolver.register { ChatCache() }.scope(.application)
+        resolver.register { CreatedChatCache() }.scope(.application)
+
+        resolver.register { TrainingCache() }.scope(.application)
     }
 
     private static func registerDomainClasses() {

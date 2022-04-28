@@ -6,8 +6,15 @@
 //
 
 import Combine
+import Foundation
 
 protocol UserStoreProtocol {
     /// The current user.
-    var currentUser: AnyPublisher<UserDTO, Never> { get }
+    var currentUser: DomainStorePublisher<UserDTO> { get }
+
+    /// The token.
+    var token: DomainStorePublisher<UUID?> { get }
+
+    /// The searched users.
+    var searchedUser: DomainStorePublisher<[UserDTO]> { get }
 }

@@ -7,7 +7,21 @@
 
 import UIKit
 
-final class NavigationController: UINavigationController { }
+final class NavigationController: UINavigationController {
+    // MARK: Initialization
+
+    override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+        navigationBar.tintColor = .label
+    }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - NavigatorServiceProtocol
 
 extension NavigationController: NavigatorServiceProtocol {
     /// Call to set the navigator as root in the given window.
@@ -20,7 +34,9 @@ extension NavigationController: NavigatorServiceProtocol {
     /// - Parameter screen: the view controller to display over the current view controller’s content.
     /// - Parameter type: the type of the animation.
     /// - Parameter completion: the completion block to execute after the presentation finished.
-    func present(_ screen: UIViewController, type: NavigationType, completion: @escaping () -> Void) {
+    @discardableResult func present<T: UIViewController>(_ screen: T,
+                                                         type: NavigationType,
+                                                         completion: @escaping () -> Void) -> T {
         switch type {
         case let .present(animated): present(screen, animated: animated, completion: completion)
         case let .push(animated):
@@ -40,6 +56,15 @@ extension NavigationController: NavigatorServiceProtocol {
                 }, completion: { _ in
                     completion()
                 })
+        }
+        return screen
+    }
+
+    func navigateBack(toViewController: UIViewController?, animated: Bool) {
+        if let toViewController = toViewController {
+            popToViewController(toViewController, animated: animated)
+        } else {
+            popViewController(animated: animated)
         }
     }
 }

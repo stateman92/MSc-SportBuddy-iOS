@@ -55,7 +55,13 @@ extension NavigatorService: NavigatorServiceProtocol {
     /// - Parameter screen: the view controller to display over the current view controller’s content.
     /// - Parameter type: the type of the animation.
     /// - Parameter completion: the completion block to execute after the presentation finished.
-    func present(_ screen: UIViewController, type: NavigationType, completion: @escaping () -> Void) {
+    @discardableResult func present<T: UIViewController>(_ screen: T,
+                                                         type: NavigationType,
+                                                         completion: @escaping () -> Void) -> T {
         navigationController.present(screen, type: type, completion: completion)
+    }
+
+    func navigateBack(toViewController: UIViewController?, animated: Bool) {
+        navigationController.navigateBack(toViewController: toViewController, animated: animated)
     }
 }

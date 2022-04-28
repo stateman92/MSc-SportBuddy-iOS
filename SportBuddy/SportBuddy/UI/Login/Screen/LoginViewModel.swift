@@ -8,14 +8,14 @@
 import UIKit
 
 final class LoginViewModel: BaseViewModel {
+    // MARK: Properties
+
     @LazyInjected private var tokenCache: TokenCache
+
+    // MARK: Initialization
 
     override init() {
         super.init()
-
-        toastHandlingService.showToast(with: .init(message: "abc", type: .warning))
-        toastHandlingService.showToast(with: .init(message: "abc", type: .error))
-        toastHandlingService.showToast(with: .init(message: "abc", type: .success))
 
         if tokenCache.immediateValue != nil {
             userAction
@@ -76,6 +76,6 @@ extension LoginViewModel {
 
 extension LoginViewModel {
     private func navigateNext() {
-        navigatorService.present(DependencyInjector.resolve() as MainScreen, type: .crossDissolve)
+        navigatorService.present(MainScreen.self, type: .crossDissolve)
     }
 }

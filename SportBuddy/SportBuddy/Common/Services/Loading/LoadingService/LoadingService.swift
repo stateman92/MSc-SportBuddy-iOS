@@ -12,7 +12,7 @@ import Foundation
 final class LoadingService {
     // MARK: Properties
 
-    private let isShowing: CurrentValueSubject<Bool, Never>
+    private let currentState: CurrentValueSubject<LoadingState, Never>
     private let triggerSameValue: Bool
     private var cancellables = Cancellables()
     @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
@@ -21,10 +21,10 @@ final class LoadingService {
 
     /// Initialize the service.
     /// - Parameters:
-    ///   - isShowing: whether the loading indicator should be shown or not.
+    ///   - state: whether a loading indicator should be shown.
     ///   - triggerSameValue: whether the service indicates value changes from the same value.
-    init(isShowing: Bool, triggerSameValue: Bool) {
-        self.isShowing = .init(isShowing)
+    init(state: LoadingState, triggerSameValue: Bool) {
+        self.currentState = .init(state)
         self.triggerSameValue = triggerSameValue
         bind(to: loadingOverlayService)
     }
@@ -34,26 +34,28 @@ final class LoadingService {
 
 extension LoadingService: LoadingServiceProtocol {
     /// A publisher which emits values when the application's loading state changes.
-    var state: AnyPublisher<Bool, Never> {
-        isShowing.eraseToAnyPublisher()
+    var state: AnyPublisher<LoadingState, Never> {
+        currentState.eraseToAnyPublisher()
     }
 
     /// Set the loading state of the application.
-    /// - Parameter showing: whether the loading should be shown.
-    func setState(isShowing showing: Bool) {
-        if isShowing.value != showing || (isShowing.value == showing && triggerSameValue) {
-            isShowing.send(showing)
+    /// - Parameter state: whether the loading should be shown.
+    func set(state: LoadingState) {
+        if currentState.value != state || (currentState.value == state && triggerSameValue) {
+            currentState.send(state)
         }
     }
 
     /// Set the loading state to true, do some work in the closure, and then call the parameter in the closure.
-    /// - Parameter during: the closure in which the work is being done.
+    /// - Parameters:
+    ///   - blocking: whether the loading should block the UI.
+    ///   - during: the closure in which the work is being done.
     /// - Note: the closure marked with @escaping (for mocking).
     /// But it's guaranteed that it will be called synchronously.
-    func loading(during closure: @escaping (@escaping () -> Void) -> Void) {
-        setState(isShowing: true)
+    func loading(blocking: Bool, during closure: @escaping (@escaping () -> Void) -> Void) {
+        set(state: blocking ? .fullScreenLoading : .nonBlockingLoading)
         closure { [weak self] in
-            self?.setState(isShowing: false)
+            self?.set(state: .notLoading)
         }
     }
 
@@ -61,7 +63,11 @@ extension LoadingService: LoadingServiceProtocol {
     /// - Parameter service: the view-handling service to bind the service
     func bind(to service: LoadingOverlayServiceProtocol) {
         state
-            .sink { service.set(isShowing: $0) }
+            .sink { service.set(state: $0) }
             .store(in: &cancellables)
     }
+}
+
+struct ABC {
+    let ac: () -> Void
 }

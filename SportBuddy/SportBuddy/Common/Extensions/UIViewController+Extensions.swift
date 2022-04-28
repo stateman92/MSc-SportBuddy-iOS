@@ -18,8 +18,12 @@ extension UIViewController {
             let warning = "The function hideKeyboardWhenTappedOutside() shouldn't be called from a UITabBarController!"
             preconditionFailure(warning)
         }
-        return view.addTapGestureRecognizer { [weak self] in
-            self?.view.endEditing(true)
-        }
+        return view
+            .addTapGestureRecognizer { [weak self] in
+                self?.view.endEditing(true)
+            }
+            .then {
+                $0.cancelsTouchesInView = false
+            }
     }
 }

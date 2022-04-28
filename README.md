@@ -13,6 +13,10 @@ SportBuddy iOS client app
 
 [SPM package with an embedded pod 3](https://stackoverflow.com/questions/68548647/xcframework-with-pod-dependencies)
 
+[Swift dependency visualizer Xcode 13+ issue](https://github.com/PaulTaykalo/objc-dependency-visualizer/issues/68#issuecomment-1100749090)
+
+Do not try to reach localhost (127.0.0.1) from a real device (when you build the mac app locally).
+
 ## Setup
 
 - Checkout repo

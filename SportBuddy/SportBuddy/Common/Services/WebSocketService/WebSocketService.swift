@@ -18,7 +18,8 @@ final class WebSocketService {
     // MARK: Initialization
 
     init(autoConnect: Bool) {
-        var request = URLRequest(url: URL(string: OpenAPIClientAPI.basePath)!)
+        let url = OpenAPIClientAPI.basePath.replacingOccurrences(of: "http", with: "ws")
+        var request = URLRequest(url: URL(string: url)!)
         request.timeoutInterval = 5
         socket = WebSocket(request: request)
         if autoConnect {

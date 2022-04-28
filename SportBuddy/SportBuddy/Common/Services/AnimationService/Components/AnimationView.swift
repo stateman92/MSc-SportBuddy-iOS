@@ -7,17 +7,21 @@
 
 import Lottie
 
-final class AnimationView: View {
+class AnimationView: View {
     // MARK: Properties
 
     private let animationView: Lottie.AnimationView
 
     // MARK: Initialization
 
-    init(jsonName: String) {
+    private init(jsonName: String) {
         animationView = .init(name: jsonName)
         super.init()
         setupView()
+    }
+
+    convenience init(animation: Animations) {
+        self.init(jsonName: animation.rawValue)
     }
 }
 

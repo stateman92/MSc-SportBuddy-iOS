@@ -10,5 +10,8 @@ extension DependencyInjector {
     static func registerChatsScreen() {
         resolver.register { ChatsScreen() }
         resolver.register { ChatsViewModel() }
+
+        registerAddNewChatScreen()
+        registerChatScreen()
     }
 }

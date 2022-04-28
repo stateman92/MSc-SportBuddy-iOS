@@ -12,19 +12,19 @@ class AnimationServiceProtocolMock: AnimationServiceProtocol {
 
     //MARK: - load
 
-    var loadJsonNameInCallsCount = 0
-    var loadJsonNameInCalled: Bool {
-        return loadJsonNameInCallsCount > 0
+    var loadAnimationInCallsCount = 0
+    var loadAnimationInCalled: Bool {
+        return loadAnimationInCallsCount > 0
     }
-    var loadJsonNameInReceivedArguments: (jsonName: String, view: View)?
-    var loadJsonNameInReceivedInvocations: [(jsonName: String, view: View)] = []
-    var loadJsonNameInClosure: ((String, View) -> Void)?
+    var loadAnimationInReceivedArguments: (animation: Animations, view: View)?
+    var loadAnimationInReceivedInvocations: [(animation: Animations, view: View)] = []
+    var loadAnimationInClosure: ((Animations, View) -> Void)?
 
-    func load(jsonName: String, in view: View) {
-        loadJsonNameInCallsCount += 1
-        loadJsonNameInReceivedArguments = (jsonName: jsonName, view: view)
-        loadJsonNameInReceivedInvocations.append((jsonName: jsonName, view: view))
-        loadJsonNameInClosure?(jsonName, view)
+    func load(animation: Animations, in view: View) {
+        loadAnimationInCallsCount += 1
+        loadAnimationInReceivedArguments = (animation: animation, view: view)
+        loadAnimationInReceivedInvocations.append((animation: animation, view: view))
+        loadAnimationInClosure?(animation, view)
     }
 
     //MARK: - play

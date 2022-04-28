@@ -24,7 +24,7 @@ struct AppLoader {
 extension AppLoader {
     static func setup() {
         DependencyInjector.registerDependencies()
-        OpenAPIClientAPI.basePath = "https://sportbuddy-backend.herokuapp.com"
+        OpenAPIClientAPI.basePath = "http://127.0.0.1:8080"
         OpenAPIClientAPI.apiResponseQueue = .global(qos: .userInitiated)
         OpenAPIClientAPI.requestBuilderFactory = TokenizableRequestBuilderFactory()
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in

@@ -9,7 +9,7 @@ import Combine
 @testable import SportBuddy
 import XCTest
 
-final class LoadingServiceTests: XCTestCase {
+final class LoadingServiceTests: BaseTestCase {
     // MARK: Properties
 
     private var sut: LoadingServiceProtocol!
@@ -35,14 +35,14 @@ extension LoadingServiceTests {
 
         // When
 
-        var receivedValues = [Bool]()
+        var receivedValues = [LoadingState]()
         sut.state
             .sink { receivedValues.append($0) }
             .store(in: &cancellables)
 
         // Then
 
-        XCTAssertEqual(receivedValues, [false])
+        XCTAssertEqual(receivedValues, [.notLoading])
     }
 }
 
@@ -53,55 +53,55 @@ extension LoadingServiceTests {
     func testSetLoading() {
         // Given
 
-        sut.setState(isShowing: true)
+        sut.set(state: .fullScreenLoading)
 
         // When
 
-        var receivedValues = [Bool]()
+        var receivedValues = [LoadingState]()
         sut.state
             .sink { receivedValues.append($0) }
             .store(in: &cancellables)
 
         // Then
 
-        XCTAssertEqual(receivedValues, [true])
+        XCTAssertEqual(receivedValues, [.fullScreenLoading])
     }
 
     /// Test the changes in the service's states if the user not wants it to be loading.
     func testSetNotLoading() {
         // Given
 
-        sut.setState(isShowing: false)
+        sut.set(state: .notLoading)
 
         // When
 
-        var receivedValues = [Bool]()
+        var receivedValues = [LoadingState]()
         sut.state
             .sink { receivedValues.append($0) }
             .store(in: &cancellables)
 
         // Then
 
-        XCTAssertEqual(receivedValues, [false])
+        XCTAssertEqual(receivedValues, [.notLoading])
     }
 
     /// Test the changes in the service's states if the user wants it to be loading multiple times.
     func testSetLoadingMultipleTimes() {
         // Given
 
-        sut.setState(isShowing: true)
-        sut.setState(isShowing: true)
+        sut.set(state: .fullScreenLoading)
+        sut.set(state: .fullScreenLoading)
 
         // When
 
-        var receivedValues = [Bool]()
+        var receivedValues = [LoadingState]()
         sut.state
             .sink { receivedValues.append($0) }
             .store(in: &cancellables)
 
         // Then
 
-        XCTAssertEqual(receivedValues, [true])
+        XCTAssertEqual(receivedValues, [.fullScreenLoading])
     }
 }
 
@@ -114,16 +114,16 @@ extension LoadingServiceTests {
 
         // When
 
-        var receivedValues = [Bool]()
+        var receivedValues = [LoadingState]()
         sut.state
             .sink { receivedValues.append($0) }
             .store(in: &cancellables)
-        sut.loading { closure in
+        sut.loading(blocking: true) { closure in
             closure()
         }
 
         // Then
 
-        XCTAssertEqual(receivedValues, [false, true, false])
+        XCTAssertEqual(receivedValues, [.notLoading, .fullScreenLoading, .notLoading])
     }
 }

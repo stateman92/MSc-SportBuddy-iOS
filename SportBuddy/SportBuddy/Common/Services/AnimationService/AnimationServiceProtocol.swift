@@ -11,9 +11,9 @@ import Foundation
 protocol AnimationServiceProtocol: Initable, AutoMockable {
     /// Load an image from an url.
     /// - Parameters:
-    ///   - jsonName: the json name of the animation.
+    ///   - animation: the animation.
     ///   - view: the view.
-    func load(jsonName: String, in view: View)
+    func load(animation: Animations, in view: View)
 
     /// Play the animation.
     /// - Parameter view: the view.

@@ -14,11 +14,11 @@ final class AnimationService {
 extension AnimationService: AnimationServiceProtocol {
     /// Load an image from an url.
     /// - Parameters:
-    ///   - jsonName: the json name of the animation.
+    ///   - animation: the animation.
     ///   - view: the view.
-    func load(jsonName: String, in view: View) {
+    func load(animation: Animations, in view: View) {
         view.subviews.forEach { $0.removeFromSuperview() }
-        AnimationView(jsonName: jsonName).then {
+        AnimationView(animation: animation).then {
             view.addSubview($0)
             $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
         }

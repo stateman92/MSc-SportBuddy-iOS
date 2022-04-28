@@ -69,6 +69,7 @@ extension BackgroundView {
 extension BackgroundView {
     private func setupView() {
         backgroundColor = Color.background.color
+        clipsToBounds = true
 
         setupGradientLayer()
         setupFirstCircle()

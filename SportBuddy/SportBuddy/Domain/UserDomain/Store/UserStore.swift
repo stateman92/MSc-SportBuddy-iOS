@@ -11,11 +11,22 @@ import Foundation
 final class UserStore: Domain {
     @LazyInjected private var userCache: UserCache
     @LazyInjected private var tokenCache: TokenCache
+    @LazyInjected private var searchedUsersCache: SearchedUsersCache
 }
 
 extension UserStore: UserStoreProtocol {
     /// The current user.
-    var currentUser: AnyPublisher<UserDTO, Never> {
-        userCache.value().compactMap { $0 }.eraseToAnyPublisher()
+    var currentUser: DomainStorePublisher<UserDTO> {
+        userCache.autoEraseOnMain()
+    }
+
+    /// The token.
+    var token: DomainStorePublisher<UUID?> {
+        tokenCache.autoEraseOnMain()
+    }
+
+    /// The searched users.
+    var searchedUser: DomainStorePublisher<[UserDTO]> {
+        searchedUsersCache.autoEraseOnMain()
     }
 }

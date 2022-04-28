@@ -12,30 +12,30 @@ class LoadingOverlayServiceProtocolMock: LoadingOverlayServiceProtocol {
 
     //MARK: - init
 
-    var initIsShowingReceivedIsShowing: Bool?
-    var initIsShowingReceivedInvocations: [Bool] = []
-    var initIsShowingClosure: ((Bool) -> Void)?
+    var initStateReceivedState: LoadingState?
+    var initStateReceivedInvocations: [LoadingState] = []
+    var initStateClosure: ((LoadingState) -> Void)?
 
-    required init(isShowing: Bool) {
-        initIsShowingReceivedIsShowing = isShowing
-        initIsShowingReceivedInvocations.append(isShowing)
-        initIsShowingClosure?(isShowing)
+    required init(state: LoadingState) {
+        initStateReceivedState = state
+        initStateReceivedInvocations.append(state)
+        initStateClosure?(state)
     }
     //MARK: - set
 
-    var setIsShowingCallsCount = 0
-    var setIsShowingCalled: Bool {
-        return setIsShowingCallsCount > 0
+    var setStateCallsCount = 0
+    var setStateCalled: Bool {
+        return setStateCallsCount > 0
     }
-    var setIsShowingReceivedIsShowing: Bool?
-    var setIsShowingReceivedInvocations: [Bool] = []
-    var setIsShowingClosure: ((Bool) -> Void)?
+    var setStateReceivedState: LoadingState?
+    var setStateReceivedInvocations: [LoadingState] = []
+    var setStateClosure: ((LoadingState) -> Void)?
 
-    func set(isShowing: Bool) {
-        setIsShowingCallsCount += 1
-        setIsShowingReceivedIsShowing = isShowing
-        setIsShowingReceivedInvocations.append(isShowing)
-        setIsShowingClosure?(isShowing)
+    func set(state: LoadingState) {
+        setStateCallsCount += 1
+        setStateReceivedState = state
+        setStateReceivedInvocations.append(state)
+        setStateClosure?(state)
     }
 
     //MARK: - init

@@ -17,8 +17,7 @@ final class OnboardingViewModel: BaseViewModel {
                 .sink(receiveError: { [unowned self] _ in
                     showOnboarding()
                 }, receiveValue: { [unowned self] in
-                    navigatorService.present(DependencyInjector.resolve() as MainScreen,
-                                             type: .crossDissolve) { [weak self] in
+                    navigatorService.present(MainScreen.self, type: .crossDissolve) { [weak self] in
                         self?.navigatorService.viewControllers.removeFirst()
                     }
                 })
@@ -40,7 +39,7 @@ final class OnboardingViewModel: BaseViewModel {
 
 extension OnboardingViewModel {
     func navigateNext() {
-        navigatorService.present(DependencyInjector.resolve() as LoginScreen, type: .crossDissolve) { [weak self] in
+        navigatorService.present(LoginScreen.self, type: .crossDissolve) { [weak self] in
             self?.navigatorService.viewControllers.removeFirst()
         }
     }

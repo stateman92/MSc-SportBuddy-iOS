@@ -12,23 +12,29 @@ protocol UserActionProtocol {
     /// - Parameters:
     ///   - email: the user's email.
     ///   - password: the user's password.
-    func login(email: String, password: String) -> AnyPublisher<Void, UserDomainError>
+    func login(email: String, password: String) -> DomainActionPublisher
 
     /// Refresh the stored token.
-    func refreshToken() -> AnyPublisher<Void, UserDomainError>
+    func refreshToken() -> DomainActionPublisher
+
+    /// Search the registered users.
+    func searchUsers(searchTerm: String) -> DomainActionPublisher
+
+    /// Clear the searched users
+    func clearSearchedUser() -> DomainActionPublisher
 
     /// Call to sign up the user.
     /// - Parameters:
     ///   - name: the user's name.
     ///   - email: the user's email.
     ///   - password: the user's password.
-    func signUp(name: String, email: String, password: String) -> AnyPublisher<Void, UserDomainError>
+    func signUp(name: String, email: String, password: String) -> DomainActionPublisher
 
     /// Call to sign that the user forgot the password.
     /// - Parameters:
     ///   - email: the user's email.
-    func forgotPassword(email: String) -> AnyPublisher<Void, UserDomainError>
+    func forgotPassword(email: String) -> DomainActionPublisher
 
     /// Call to login the user with google services.
-    func loginWithGoogle() -> AnyPublisher<Void, UserDomainError>
+    func loginWithGoogle() -> DomainActionPublisher
 }

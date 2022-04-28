@@ -12,22 +12,24 @@ import Foundation
 protocol LoadingServiceProtocol: Initable, AutoMockable {
     /// Initialize the service.
     /// - Parameters:
-    ///   - isShowing: whether the loading indicator should be shown or not.
+    ///   - state: whether a loading indicator should be shown.
     ///   - triggerSameValue: whether the service indicates value changes from the same value.
-    init(isShowing: Bool, triggerSameValue: Bool)
+    init(state: LoadingState, triggerSameValue: Bool)
 
     /// A publisher which emits values when the application's loading state changes.
-    var state: AnyPublisher<Bool, Never> { get }
+    var state: AnyPublisher<LoadingState, Never> { get }
 
     /// Set the loading state of the application.
-    /// - Parameter showing: whether the loading should be shown.
-    func setState(isShowing showing: Bool)
+    /// - Parameter state: whether the loading should be shown.
+    func set(state: LoadingState)
 
     /// Set the loading state to true, do some work in the closure, and then call the parameter in the closure.
-    /// - Parameter during: the closure in which the work is being done.
+    /// - Parameters:
+    ///   - blocking: whether the loading should block the UI.
+    ///   - during: the closure in which the work is being done.
     /// - Note: the closure marked with @escaping (for mocking).
     /// But it's guaranteed that it will be called synchronously.
-    func loading(during closure: @escaping (@escaping () -> Void) -> Void)
+    func loading(blocking: Bool, during closure: @escaping (@escaping () -> Void) -> Void)
 
     /// Bind the state-handling to the view-handing.
     /// - Parameter service: the view-handling service to bind the service
@@ -35,15 +37,17 @@ protocol LoadingServiceProtocol: Initable, AutoMockable {
 }
 
 extension LoadingServiceProtocol {
-    /// Initialize the service. By default `isShowing` is `false` and `triggerSameValue` is `true`.
+    /// Initialize the service. By default `state` is `.notLoading` and `triggerSameValue` is `true`.
     init() {
-        self.init(isShowing: false, triggerSameValue: true)
+        self.init(state: .notLoading, triggerSameValue: true)
     }
 
     /// Set the loading state to `true`, do some work in the closure, and then call the parameter in the closure.
-    /// - Parameter during: the closure in which the work is being done.
-    func loading(during closure: @escaping () async -> Void) {
-        loading { finished in
+    /// - Parameters:
+    ///   - blocking: whether the loading should block the UI. By default `true`.
+    ///   - during: the closure in which the work is being done.
+    func loading(blocking: Bool = true, during closure: @escaping () async -> Void) {
+        loading(blocking: blocking) { finished in
             Task {
                 await closure()
                 dispatchToMain {

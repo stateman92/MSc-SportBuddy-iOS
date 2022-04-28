@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 extension Publisher where Failure == Never {
     /// Sink the given publisher's values.
@@ -53,5 +54,25 @@ extension Publisher {
         } receiveValue: {
             receiveValue($0)
         }
+    }
+
+    func eraseOnMain() -> AnyPublisher<Output, Failure> {
+        receive(on: DispatchQueue.main).eraseToAnyPublisher()
+    }
+
+    func unwrap<T>() -> Publishers.CompactMap<Self, T> where Output == T? {
+        compactMap { $0 }
+    }
+
+    func unwrapEraseOnMain<T>() -> AnyPublisher<T, Failure> where Output == T? {
+        unwrap().eraseOnMain()
+    }
+
+    func autoEraseOnMain() -> AnyPublisher<Output, Failure> {
+        eraseOnMain()
+    }
+
+    func autoEraseOnMain<T>() -> AnyPublisher<T, Failure> where Output == T? {
+        unwrapEraseOnMain()
     }
 }

@@ -11,16 +11,16 @@ import UIKit
 final class LoadingOverlayService {
     // MARK: Properties
 
-    private var isShowing = false
+    private var state: LoadingState = .notLoading
     private let animationDuration = 0.25
     private let loadingOverlayView = LoadingOverlayView()
 
     // MARK: Initialization
 
     /// Initialize the service.
-    /// - Parameter isShowing: whether the loading indicator should be shown or not.
-    init(isShowing: Bool) {
-        set(isShowing: isShowing)
+    /// - Parameter state: whether the loading indicator should be shown.
+    init(state: LoadingState) {
+        set(state: state)
     }
 }
 
@@ -28,11 +28,11 @@ final class LoadingOverlayService {
 
 extension LoadingOverlayService: LoadingOverlayServiceProtocol {
     /// Set the loading state.
-    /// - Parameter isShowing: whether the loading indicator should be shown or not.
-    func set(isShowing: Bool) {
-        UIApplication.shared.setNetworkIndicator(isVisible: isShowing)
-        UIApplication.shared.isIdleTimerDisabled = isShowing
-        if isShowing {
+    /// - Parameter state: whether the loading indicator should be shown.
+    func set(state: LoadingState) {
+        UIApplication.shared.setNetworkIndicator(isVisible: state.loading)
+        UIApplication.shared.isIdleTimerDisabled = state.loading
+        if state == .fullScreenLoading {
             show(on: UIApplication.keyWindow)
         } else {
             hide()
@@ -44,8 +44,8 @@ extension LoadingOverlayService: LoadingOverlayServiceProtocol {
 
 extension LoadingOverlayService {
     private func show(on view: UIView?) {
-        guard let view = view, !isShowing else { return }
-        isShowing = true
+        guard let view = view, !state.loading else { return }
+        state = .fullScreenLoading
 
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 
@@ -62,8 +62,8 @@ extension LoadingOverlayService {
     }
 
     private func hide() {
-        guard isShowing else { return }
-        isShowing = false
+        guard state.loading else { return }
+        state = .notLoading
 
         UIView.animate(withDuration: animationDuration,
                        animations: { [self] in loadingOverlayView.alpha = .zero },

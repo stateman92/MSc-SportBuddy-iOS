@@ -26,13 +26,39 @@ class Cache<Item> {
     }
 
     func saveWithPublisher(item: Item) -> AnyPublisher<Void, Never> {
-        Future { [weak self] in
-            self?.save(item: item)
-            $0(.success(()))
+        Deferred { [weak self] in
+            Future {
+                self?.save(item: item)
+                $0(.success(()))
+            }
         }.eraseToAnyPublisher()
     }
 
     func save(item: Item) {
         cache.send(item)
+    }
+
+    func modify(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
+        Deferred { [weak self] in
+            Future {
+                if let self = self {
+                    if var copy = self.cache.value {
+                        block(&copy)
+                        self.save(item: copy)
+                    }
+                }
+                $0(.success(()))
+            }
+        }.eraseToAnyPublisher()
+    }
+}
+
+extension Cache {
+    func autoEraseOnMain() -> DomainStorePublisher<Item> {
+        value().autoEraseOnMain()
+    }
+
+    func autoEraseOnMain() -> DomainStorePublisher<Item?> {
+        value().autoEraseOnMain()
     }
 }

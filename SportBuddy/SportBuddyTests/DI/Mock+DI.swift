@@ -42,11 +42,6 @@ extension DependencyInjector {
             .scope(.unique)
 
         resolver
-            .register { NavigatorServiceProtocolMock(rootViewController: .init()) }
-            .implements(NavigatorServiceProtocol.self)
-            .scope(.unique)
-
-        resolver
             .register { SystemImageService() }
             .implements(SystemImageServiceProtocol.self)
             .scope(.unique)

@@ -5,6 +5,9 @@
 //  Created by Kristof Kalai on 2022. 04. 17..
 //
 
+import Combine
+import Foundation
+
 class Domain {
     // MARK: Nested types
 
@@ -34,10 +37,41 @@ extension Domain {
         let message = "APISuccess: \(any)\(log(file: file, function: function, line: line))"
         loggingService.debug(message: message)
     }
+
+    func deferredFutureOnMainLoading<T, S>(blocking: Bool = true,
+                                           task: @escaping () async -> Result<S, T>) -> AnyPublisher<Void, T> {
+        deferredFutureOnMain { [unowned self] finish in
+            loadingService.loading(blocking: blocking) {
+                finish(await task())
+            }
+        }
+    }
 }
 
 extension Domain {
     private func log(file: String, function: String, line: Int) -> String {
         " in \(file), in \(function) at \(line)"
+    }
+
+    private func deferredFutureOnMain<T, S>(
+        task: @escaping (@escaping (Result<S, T>) -> Void) -> Void) -> AnyPublisher<Void, T> {
+            Deferred { [unowned self] in
+                Future { future in
+                    task {
+                        handle(result: $0, future: future)
+                    }
+                }
+            }.eraseOnMain()
+        }
+
+    private func handle<T, S>(result: Result<S, T>, future: (Result<Void, T>) -> Void) {
+        switch result {
+        case let .success(success):
+            log(success)
+            future(.success(()))
+        case let .failure(error):
+            log(error)
+            future(.failure(error))
+        }
     }
 }

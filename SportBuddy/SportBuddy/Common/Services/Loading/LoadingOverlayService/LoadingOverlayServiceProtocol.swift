@@ -8,17 +8,17 @@
 /// A protocol for showing the loading states.
 protocol LoadingOverlayServiceProtocol: Initable, AutoMockable {
     /// Initialize the service.
-    /// - Parameter isShowing: whether the loading indicator should be shown or not.
-    init(isShowing: Bool)
+    /// - Parameter state: whether the loading indicator should be shown.
+    init(state: LoadingState)
 
     /// Set the loading state.
-    /// - Parameter isShowing: whether the loading indicator should be shown or not.
-    func set(isShowing: Bool)
+    /// - Parameter state: whether the loading indicator should be shown.
+    func set(state: LoadingState)
 }
 
 extension LoadingOverlayServiceProtocol {
-    /// Initialize the service. By default `isShowing` is `false`.
+    /// Initialize the service. By default `state` is `.notLoading`.
     init() {
-        self.init(isShowing: false)
+        self.init(state: .notLoading)
     }
 }
