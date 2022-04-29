@@ -22,6 +22,8 @@ class Domain {
     var cancellables = Cancellables()
 }
 
+// MARK: - Public methods
+
 extension Domain {
     func log(_ message: String?, file: String = #file, function: String = #function, line: Int = #line) {
         let message = "APISuccess: \(message ?? "unknown")\(log(file: file, function: function, line: line))"
@@ -48,6 +50,8 @@ extension Domain {
     }
 }
 
+// MARK: - Private methods
+
 extension Domain {
     private func log(file: String, function: String, line: Int) -> String {
         " in \(file), in \(function) at \(line)"
@@ -55,11 +59,9 @@ extension Domain {
 
     private func deferredFutureOnMain<T, S>(
         task: @escaping (@escaping (Result<S, T>) -> Void) -> Void) -> AnyPublisher<Void, T> {
-            Deferred { [unowned self] in
-                Future { future in
-                    task {
-                        handle(result: $0, future: future)
-                    }
+            DeferredFuture { [unowned self] future in
+                task {
+                    handle(result: $0, future: future)
                 }
             }.eraseOnMain()
         }

@@ -102,13 +102,13 @@ extension Onboard {
             overlay.page(count: dataSource.onboardNumberOfPages(self))
             addSubview(overlay)
             overlay.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
-            overlay.pageControl.addAction(.init { [weak self] _ in
+            overlay.pageControl.addAction(for: .touchUpInside) { [weak self] in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
                     let page = overlay.pageControl.currentPage
                     self.goToPage(index: page, animated: true)
                 }
-            }, for: .touchUpInside)
+            }
             self.overlay = overlay
         }
     }

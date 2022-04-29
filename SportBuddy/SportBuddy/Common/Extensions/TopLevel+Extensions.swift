@@ -58,6 +58,12 @@ func dispatchToMain(closure: @escaping () -> Void) {
 #endif
 }
 
+/// Run the closures a few times.
+/// - Parameters:
+///   - key: the associated persistently stored value's key.
+///   - times: how many times should the closure run (across method invocations).
+///   - closure: this closure will be called the given number of times.
+///   - else: after the given times passed, this closure will be called.
 func run(key: SettingsKey, times: Int, closure: () -> Void, else: () -> Void) {
     guard times > .zero else {
         `else`()

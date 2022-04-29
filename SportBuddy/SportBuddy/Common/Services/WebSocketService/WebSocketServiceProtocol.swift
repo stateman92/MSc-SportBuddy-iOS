@@ -10,7 +10,8 @@ protocol WebSocketServiceProtocol: Initable {
     /// Initialize the service.
     /// - Parameters:
     ///   - autoConnect: whether to connect automatically on the service creation.
-    init(autoConnect: Bool)
+    ///   - autoReconnect: whether to connect automatically on disconnection.
+    init(autoConnect: Bool, autoReconnect: Bool)
 
     /// Connect to the remote service.
     func connect()
@@ -27,11 +28,16 @@ protocol WebSocketServiceProtocol: Initable {
     /// - Parameters:
     ///   - completion: the completion handler to the messages.
     func onReceive(completion: @escaping (String) -> Void)
+
+    /// Notify if a connection is established.
+    /// - Parameters:
+    ///   - completion: the completion handler to the connection.
+    func onReconnected(completion: @escaping () -> Void)
 }
 
 extension WebSocketServiceProtocol {
-    /// Initialize the service. By default `autoConnect` is `true`.
+    /// Initialize the service. By default `autoConnect` is `true`, `autoReconnect` is `true`.
     init() {
-        self.init(autoConnect: true)
+        self.init(autoConnect: true, autoReconnect: true)
     }
 }

@@ -13,6 +13,7 @@ final class ChatScreen: BaseScreen<ChatViewModel> {
     private let tableView = TableView(frame: .zero, style: .grouped)
     private var chat: ChatDTO? {
         didSet {
+            title = chat?.primaryId.uuidString ?? .init()
             tableView.reloadData()
         }
     }

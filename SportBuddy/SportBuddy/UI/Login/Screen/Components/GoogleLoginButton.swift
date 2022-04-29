@@ -31,7 +31,7 @@ extension GoogleLoginButton {
         googleSignInButton.then {
             $0.colorScheme = traitCollection.userInterfaceStyle == .dark ? .dark : .light
             $0.style = .wide
-            $0.addAction(.init { _ in
+            $0.addAction(for: .touchUpInside) {
                 GIDSignIn.sharedInstance.signIn(with: AppLoader.signInConfig, presenting: viewController) { user, err in
                     guard err == nil else { return }
                     user?.authentication.do { authentication, error in
@@ -39,7 +39,7 @@ extension GoogleLoginButton {
                         successfulLogin(idToken)
                     }
                 }
-            }, for: .touchUpInside)
+            }
 
             addSubview($0)
 

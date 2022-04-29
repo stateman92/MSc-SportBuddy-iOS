@@ -28,11 +28,12 @@ extension ChatsViewModel {
 
     func navigateToAddNewChatScreen() {
         navigatorService.present(AddNewChatScreen.self, type: .push).viewModel.didSelectRecipient = { [weak self] in
-            self?.navigatorService.present(ChatScreen.self, type: .push).viewModel.recipientId = $0
+            self?.navigatorService.present(ChatScreen.self, type: .push).viewModel.chatType = .new(chatId: .init(),
+                                                                                                   recipientId: $0)
         }
     }
 
     func didSelect(chatDto: ChatDTO) {
-        navigatorService.present(ChatScreen.self, type: .push).viewModel.chatId = chatDto.primaryId
+        navigatorService.present(ChatScreen.self, type: .push).viewModel.chatType = .existing(chatDto)
     }
 }

@@ -64,7 +64,7 @@ extension OnboardingScreen: OnboardDataSource {
 
     func onboardViewForOverlay(_ onboard: Onboard) -> OnboardOverlay? {
         let overlay = OnboardingOverlay()
-        overlay.continueButton.addAction(.init { [weak self] _ in
+        overlay.continueButton.addAction(for: .touchUpInside) { [weak self] in
             if overlay.continueButton.tag < 2 {
                 onboard.goToPage(index: overlay.continueButton.tag + 1, animated: true)
             } else {
@@ -79,10 +79,10 @@ extension OnboardingScreen: OnboardDataSource {
                     self?.viewModel.navigateNext()
                 }
             }
-        }, for: .touchUpInside)
-        overlay.skipButton.addAction(.init { _ in
+        }
+        overlay.skipButton.addAction(for: .touchUpInside) {
             onboard.goToPage(index: 2, animated: true)
-        }, for: .touchUpInside)
+        }
         return overlay
     }
 

@@ -34,7 +34,6 @@ extension AppLoader {
                 // Show the app's signed-in state.
             }
         }
-        _ = AnimatedKeyboardObserver.shared
         IQKeyboardManager.shared.enable = true
     }
 

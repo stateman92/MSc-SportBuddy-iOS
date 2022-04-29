@@ -64,10 +64,10 @@ extension LoginScreen {
                            .indicatorViewInset(2),
                            .cornerRadius(21)])
 
-            $0.addAction(.init { [weak self] _ in
+            $0.addAction(for: .valueChanged) { [weak self] in
                 guard let self = self else { return }
-                self.input.state = self.segmentedControl.index == 0 ? .login : .signUp
-            }, for: .valueChanged)
+                self.input.state = self.segmentedControl.index == .zero ? .login : .signUp
+            }
 
             $0.anchorToCenterX()
             $0.anchorToTop(constant: 64)

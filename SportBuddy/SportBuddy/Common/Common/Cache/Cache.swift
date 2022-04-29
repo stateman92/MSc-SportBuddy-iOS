@@ -26,12 +26,11 @@ class Cache<Item> {
     }
 
     func saveWithPublisher(item: Item) -> AnyPublisher<Void, Never> {
-        Deferred { [weak self] in
-            Future {
-                self?.save(item: item)
-                $0(.success(()))
-            }
-        }.eraseToAnyPublisher()
+        DeferredFuture { [unowned self] in
+            save(item: item)
+            $0(.success(()))
+        }
+        .eraseToAnyPublisher()
     }
 
     func save(item: Item) {
@@ -39,17 +38,14 @@ class Cache<Item> {
     }
 
     func modify(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
-        Deferred { [weak self] in
-            Future {
-                if let self = self {
-                    if var copy = self.cache.value {
-                        block(&copy)
-                        self.save(item: copy)
-                    }
-                }
-                $0(.success(()))
+        DeferredFuture { [unowned self] in
+            if var copy = cache.value {
+                block(&copy)
+                save(item: copy)
             }
-        }.eraseToAnyPublisher()
+            $0(.success(()))
+        }
+        .eraseToAnyPublisher()
     }
 }
 

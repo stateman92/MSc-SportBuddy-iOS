@@ -13,18 +13,27 @@ final class WebSocketService {
     // MARK: Properties
 
     private let socket: WebSocket
+    private let autoReconnect: Bool
     @LazyInjected private var coderService: CoderServiceProtocol
+    private var receiveText: (String) -> Void = { _ in }
+    private var reconnected: () -> Void = { }
 
     // MARK: Initialization
 
-    init(autoConnect: Bool) {
+    /// Initialize the service.
+    /// - Parameters:
+    ///   - autoConnect: whether to connect automatically on the service creation.
+    ///   - autoReconnect: whether to connect automatically on disconnection.
+    init(autoConnect: Bool, autoReconnect: Bool) {
         let url = OpenAPIClientAPI.basePath.replacingOccurrences(of: "http", with: "ws")
         var request = URLRequest(url: URL(string: url)!)
         request.timeoutInterval = 5
         socket = WebSocket(request: request)
+        self.autoReconnect = autoReconnect
         if autoConnect {
             connect()
         }
+        socket.delegate = self
     }
 }
 
@@ -53,11 +62,30 @@ extension WebSocketService: WebSocketServiceProtocol {
     /// - Parameters:
     ///   - completion: the completion handler to the messages.
     func onReceive(completion: @escaping (String) -> Void) {
-        socket.onEvent = { event in
-            switch event {
-            case let .text(text): completion(text)
-            default: break
+        receiveText = completion
+    }
+
+    /// Notify if a connection is established.
+    /// - Parameters:
+    ///   - completion: the completion handler to the connection.
+    func onReconnected(completion: @escaping () -> Void) {
+        reconnected = completion
+    }
+}
+
+// MARK: - WebSocketDelegate
+
+extension WebSocketService: WebSocketDelegate {
+    func didReceive(event: WebSocketEvent, client: WebSocket) {
+        switch event {
+        case let .text(text): receiveText(text)
+        case .disconnected, .cancelled:
+            if autoReconnect {
+                connect()
             }
+        case .connected:
+            reconnected()
+        default: break
         }
     }
 }

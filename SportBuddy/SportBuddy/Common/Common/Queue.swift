@@ -7,13 +7,19 @@
 
 /// Queue (FIFO) data structure.
 struct Queue<Item> {
+    // MARK: Properties
+
     private var items: [Item]
+
+    // MARK: Initialization
 
     /// Create a `Queue` data structure.
     init() {
         items = []
     }
 }
+
+// MARK: - Public methods
 
 extension Queue {
     /// The number of the stored items.
@@ -43,14 +49,18 @@ extension Queue {
     }
 }
 
+// MARK: - CustomStringConvertible
+
 extension Queue: CustomStringConvertible {
     var description: String {
         items.description
     }
 }
 
+// MARK: - Equatable
+
 extension Queue: Equatable where Item: Equatable {
-    static func == (lhs: Queue, rhs: Queue) -> Bool {
+    static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.items == rhs.items
     }
 }

@@ -22,7 +22,6 @@ extension DependencyInjector {
         resolver.register { GroupCache() }.scope(.application)
 
         resolver.register { ChatCache() }.scope(.application)
-        resolver.register { CreatedChatCache() }.scope(.application)
 
         resolver.register { TrainingCache() }.scope(.application)
     }

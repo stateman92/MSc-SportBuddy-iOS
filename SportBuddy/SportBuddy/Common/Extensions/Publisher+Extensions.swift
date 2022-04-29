@@ -56,22 +56,39 @@ extension Publisher {
         }
     }
 
+    /// Erase the publisher on the main thread.
+    /// - Returns:
+    ///     The `AnyPublisher`.
     func eraseOnMain() -> AnyPublisher<Output, Failure> {
         receive(on: DispatchQueue.main).eraseToAnyPublisher()
     }
 
+    /// Let through only the non-nil values.
+    /// - Returns:
+    ///     The publisher.
     func unwrap<T>() -> Publishers.CompactMap<Self, T> where Output == T? {
         compactMap { $0 }
     }
 
+    /// Erase the publisher on the main thread that lets through only the non-nil values.
+    /// - Returns:
+    ///     The `AnyPublisher`.
     func unwrapEraseOnMain<T>() -> AnyPublisher<T, Failure> where Output == T? {
         unwrap().eraseOnMain()
     }
 
+    /// Erase the publisher on the main thread.
+    /// - Note: Auto means it can implicitly infer that it should pass through nil values or not.
+    /// - Returns:
+    ///     The `AnyPublisher`.
     func autoEraseOnMain() -> AnyPublisher<Output, Failure> {
         eraseOnMain()
     }
 
+    /// Erase the publisher on the main thread that lets through only the non-nil values.
+    /// - Note: Auto means it can implicitly infer that it should pass through nil values or not.
+    /// - Returns:
+    ///     The `AnyPublisher`.
     func autoEraseOnMain<T>() -> AnyPublisher<T, Failure> where Output == T? {
         unwrapEraseOnMain()
     }

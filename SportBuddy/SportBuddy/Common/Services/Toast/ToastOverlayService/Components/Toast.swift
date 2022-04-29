@@ -54,7 +54,6 @@ extension Toast {
         layer.masksToBounds = true
         layer.zPosition = CGFloat(MAXFLOAT)
         layer.cornerRadius = 24
-//        backgroundColor = type.color
 
         setupVisualEffectView()
         setupImageView()
@@ -118,7 +117,7 @@ extension Toast {
             $0.setWidth(44)
             $0.setHeight(44)
             $0.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor).isActive = true
-            $0.addAction(.init { [weak self] _ in self?.dismiss() }, for: .touchUpInside)
+            $0.addAction(for: .touchUpInside) { [weak self] in self?.dismiss() }
         }
     }
 }

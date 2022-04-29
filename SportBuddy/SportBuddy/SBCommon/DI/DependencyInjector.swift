@@ -6,11 +6,14 @@
 //
 
 import Resolver
-import UIKit
 
 /// A thin layer between the application and the DI library (Resolver).
 public struct DependencyInjector {
+    // MARK: Properties
+
     static let resolver = Resolver()
+
+    // MARK: Initialization
 
     private init() { }
 }
@@ -18,13 +21,6 @@ public struct DependencyInjector {
 // MARK: - Public methods
 
 extension DependencyInjector {
-    /// Register all the dependencies of the application.
-    static func registerDependencies() {
-        registerServices()
-        registerDomains()
-        registerUI()
-    }
-
     /// Resolve a given type of dependency.
     static func resolve<Service>() -> Service {
         resolver.resolve()
