@@ -31,8 +31,7 @@ Do not try to reach localhost (127.0.0.1) from a real device (when you build the
 
 #### Update licences
 
-- Make sure you've installed [LicensePlist](https://github.com/mono0926/LicensePlist) - if not, use e.g. `brew install mono0926/license-plist/license-plist via [Homebrew](https://brew.sh/)
-`
+- Make sure you've installed [LicensePlist](https://github.com/mono0926/LicensePlist) - if not, use e.g. `brew install mono0926/license-plist/license-plist` via [Homebrew](https://brew.sh/)
 
 - Run `license-plist` in the terminal in the SportBuddy directory
 
@@ -51,3 +50,15 @@ Do not try to reach localhost (127.0.0.1) from a real device (when you build the
 - Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) - if not, use e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
 
 - Run `openapi-generator generate -i /path/to/descriptor/swagger.yaml -g swift5 --additional-properties=responseAs=AsyncAwait -o /path/to/output` in the terminal
+
+#### Visualize the dependencies between classes ([Issue](https://github.com/PaulTaykalo/objc-dependency-visualizer/issues/68#issuecomment-1113864431) with Xcode 13.0+)
+
+- Clone Objective-C And Swift Dependencies Visualizer - use e.g. `git clone https://github.com/PaulTaykalo/objc-dependency-visualizer.git` in the terminal (you can change directory before this step: `cd /Users/<yourName>/Downloads`)
+
+- Change directory to the cloned repo - use e.g. `cd objc-dependency-visualizer`
+
+- Create the visualization - use e.g. `./generate-objc-dependencies-to-json.rb -d -p/Users/<myName>/Library/Developer/Xcode/DerivedData/<myProject>-randomcharacters/Build/Intermediates.noindex/<myProject>.build/<schemeName>-<targetName>/<myProject>.build/Objects-normal/x86_64 > origin.js`
+
+- See the results - use e.g. `open index.html`
+
+- Or use it as a one-liner: `cd /Users/<yourName>/Downloads ; git clone https://github.com/PaulTaykalo/objc-dependency-visualizer.git ; cd objc-dependency-visualizer ; ./generate-objc-dependencies-to-json.rb -d -p/Users/<myName>/Library/Developer/Xcode/DerivedData/<myProject>-randomcharacters/Build/Intermediates.noindex/<myProject>.build/<schemeName>-<targetName>/<myProject>.build/Objects-normal/x86_64 > origin.js ; open index.html`
