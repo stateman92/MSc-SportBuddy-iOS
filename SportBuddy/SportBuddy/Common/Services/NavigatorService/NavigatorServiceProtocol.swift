@@ -36,23 +36,28 @@ protocol NavigatorServiceProtocol: AnyObject {
 
 extension NavigatorServiceProtocol {
     /// Presents a view controller.
-    /// - Parameter screen: the view controller to display over the current view controller’s content.
-    /// - Parameter type: the type of the animation.
-    @discardableResult func present<T: UIViewController>(_ screen: T, type: NavigationType) -> T {
-        present(screen, type: type, completion: { })
-    }
-
-    /// Presents a view controller.
     /// - Parameter screen: the view controller's type to display over the current view controller’s content.
-    /// - Parameter type: the type of the animation.
+    /// - Parameter type: the type of the animation. By default `.push`.
     /// - Parameter completion: the completion block to execute after the presentation finished. By default does nothing.
     @discardableResult func present<T: UIViewController>(_ screen: T.Type,
-                                                         type: NavigationType,
+                                                         type: NavigationType = .push,
                                                          completion: @escaping () -> Void = { }) -> T {
         present(DependencyInjector.resolve() as T, type: type, completion: completion)
     }
 
     func navigateBack(toViewController: UIViewController? = nil, animated: Bool = true) {
         navigateBack(toViewController: toViewController, animated: animated)
+    }
+
+    func pop(reverseIndex: Int) {
+        guard viewControllers.count > reverseIndex else { return }
+        let index = viewControllers.count - reverseIndex - 1
+        guard viewControllers.indices.contains(index) else { return }
+        viewControllers.remove(at: index)
+    }
+
+    func resetToDefault() {
+        isNavigationBarHidden = true
+        viewControllers = [DependencyInjector.resolve() as OnboardingScreen]
     }
 }

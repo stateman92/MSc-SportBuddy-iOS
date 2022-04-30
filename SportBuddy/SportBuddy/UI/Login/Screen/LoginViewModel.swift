@@ -7,31 +7,42 @@
 
 import UIKit
 
-final class LoginViewModel: BaseViewModel {
+final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewModelAction> {
     // MARK: Properties
 
     @LazyInjected private var tokenCache: TokenCache
 
-    // MARK: Initialization
+    // MARK: - Action
 
-    override init() {
-        super.init()
+    override func receiveAction(_ action: LoadingViewModelAction) {
+        super.receiveAction(action)
+        switch action {
+        case let .login(email, password): login(email: email, password: password)
+        case let .signUp(name, email, password): signUp(name: name, email: email, password: password)
+        case let .forgotPassword(email): forgotPassword(email: email)
+        case let .googleLogin(token): googleLogin(token: token)
+        }
+    }
+}
 
+// MARK: - Setup
+
+extension LoginViewModel {
+    override func setup() {
+        super.setup()
         if tokenCache.immediateValue != nil {
             userAction
                 .refreshToken()
-                .sink(receiveValue: { [unowned self] in
-                    navigateNext()
-                })
+                .sink(receiveValue: { [unowned self] in navigateNext() })
                 .store(in: &cancellables)
         }
     }
 }
 
-// MARK: - Public methods
+// MARK: - Actions
 
 extension LoginViewModel {
-    func login(email: String, password: String) {
+    private func login(email: String, password: String) {
         userAction
             .login(email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
@@ -43,7 +54,7 @@ extension LoginViewModel {
             .store(in: &cancellables)
     }
 
-    func signUp(name: String, email: String, password: String) {
+    private func signUp(name: String, email: String, password: String) {
         userAction
             .signUp(name: name, email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
@@ -56,7 +67,7 @@ extension LoginViewModel {
             .store(in: &cancellables)
     }
 
-    func forgotPassword(email: String) {
+    private func forgotPassword(email: String) {
         userAction
             .forgotPassword(email: email)
             .sink(receiveError: { [unowned self] _ in
@@ -70,9 +81,11 @@ extension LoginViewModel {
             .store(in: &cancellables)
     }
 
-    func googleLogin(token: String) {
+    private func googleLogin(token: String) {
     }
 }
+
+// MARK: - Private methods
 
 extension LoginViewModel {
     private func navigateNext() {

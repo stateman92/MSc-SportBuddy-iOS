@@ -8,40 +8,38 @@
 import Combine
 import UIKit
 
-class BaseTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: UITabBarController, UITabBarControllerDelegate {
+// swiftlint:disable:next operator_usage_whitespace
+class BaseTabScreen<ViewModelState,
+                    ViewModelAction,
+                    ViewModel: BaseViewModel<ViewModelState, ViewModelAction>,
+                    Tabs: ScreenTabs>: TabBarController {
     // MARK: Properties
 
-    @LazyInjected var viewModel: ViewModel
+    @LazyInjected private var viewModel: ViewModel
     @LazyInjected private var tabs: Tabs
     var cancellables = Cancellables()
 
-    // MARK: - Lifecycle
+    // MARK: - Setups
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        _ = viewModel
-    }
-
-    // MARK: - UITabBarControllerDelegate
-
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        navigationItem.title = viewController.title
-        navigationItem.titleView = viewController.navigationItem.titleView
-        navigationItem.rightBarButtonItems = viewController.navigationItem.rightBarButtonItems
-        navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem
-        navigationItem.leftBarButtonItems = viewController.navigationItem.leftBarButtonItems
-        navigationItem.leftBarButtonItem = viewController.navigationItem.leftBarButtonItem
-        navigationItem.backBarButtonItem = viewController.navigationItem.backBarButtonItem
-        navigationItem.hidesBackButton = viewController.navigationItem.hidesBackButton
-    }
-}
-
-// MARK: - Setups
-
-extension BaseTabScreen {
-    private func setupView() {
-        delegate = self
+    override func setupView() {
+        super.setupView()
         tabs.setup(on: self)
+    }
+
+    override func setupBindings() {
+        super.setupBindings()
+        viewModel.viewState
+            .sink { [unowned self] in receiveState($0) }
+            .store(in: &cancellables)
+    }
+
+    // MARK: - State
+
+    func receiveState(_ state: ViewModelState) { }
+
+    // MARK: - Action
+
+    final func sendAction(_ action: ViewModelAction) {
+        viewModel.receiveAction(action)
     }
 }

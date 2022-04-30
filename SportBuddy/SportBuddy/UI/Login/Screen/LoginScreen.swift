@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginScreen: ScrollingScreen<LoginViewModel> {
+final class LoginScreen: ScrollingScreen<LoadingViewModelState, LoadingViewModelAction, LoginViewModel> {
     // MARK: Properties
 
     private let segmentedControl = SwipingSegmentedControl()
@@ -15,30 +15,26 @@ final class LoginScreen: ScrollingScreen<LoginViewModel> {
     private let input = InputView()
     private let orView = View()
     private lazy var googleLoginButton = GoogleLoginButton(viewController: self) { [weak self] token in
-        self?.viewModel.googleLogin(token: token)
+        self?.sendAction(.googleLogin(token: token))
     }
 }
 
 // MARK: - Lifecycle
 
 extension LoginScreen {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-    }
-}
-
-// MARK: - Setups
-
-extension LoginScreen {
-    private func setupView() {
+    override func setupView() {
+        super.setupView()
         setupSegmentedControl()
         setupCardView()
         setupInput()
         setupOrView()
         setupGoogleLoginButton()
     }
+}
 
+// MARK: - Setups
+
+extension LoginScreen {
     private func setupSegmentedControl() {
         segmentedControl.then {
             scrollView.addSubview($0)
@@ -88,13 +84,13 @@ extension LoginScreen {
         input.then {
             cardView.add(view: $0, padding: 15)
             $0.login = { [weak self] in
-                self?.viewModel.login(email: $0, password: $1)
+                self?.sendAction(.login(email: $0, password: $1))
             }
             $0.signUp = { [weak self] in
-                self?.viewModel.signUp(name: $0, email: $1, password: $2)
+                self?.sendAction(.signUp(name: $0, email: $1, password: $2))
             }
             $0.forgotPassword = { [weak self] in
-                self?.viewModel.forgotPassword(email: $0)
+                self?.sendAction(.forgotPassword(email: $0))
             }
         }
     }

@@ -34,11 +34,13 @@ extension UserAction: UserActionProtocol {
 
     /// Refresh the stored token.
     func refreshToken() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
+        deferredFutureOnMainLoading { [weak self] () -> DomainActionResult<Void> in
             do {
                 try await ClientAPI.refreshTokenPost()
                 return .success(())
             } catch {
+                self?.userCache.clear()
+                self?.tokenCache.clear()
                 return .failure(error)
             }
         }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainScreen: CustomTabbedTabScreen<MainViewModel, MainScreenTabs> {
+final class MainScreen: CustomTabbedTabScreen<MainViewModelState, MainViewModelAction, MainViewModel, MainScreenTabs> {
     // MARK: Initialization
 
     init() {

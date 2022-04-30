@@ -5,9 +5,10 @@
 //  Created by Kristof Kalai on 2022. 04. 02..
 //
 
-import UIKit
+import Combine
+import Foundation
 
-class BaseViewModel {
+class BaseViewModel<State, Action> {
     // MARK: Properties
 
     @LazyInjected var loggingService: LoggingServiceProtocol
@@ -27,4 +28,37 @@ class BaseViewModel {
     @LazyInjected var trainingStore: TrainingStoreProtocol
 
     var cancellables = Cancellables()
+
+    @ViewModelState private var state: State
+    var viewState: AnyPublisher<State, Never> {
+        $state.subject
+    }
+
+    // MARK: Initialization
+
+    init(state: State) {
+        _state = .init(state)
+        setup()
+    }
+
+    convenience init() where State: Initable {
+        self.init(state: .init())
+    }
+
+    // MARK: - Setup
+
+    @objc dynamic func setup() { }
+
+    // MARK: - State
+
+    final func sendState(_ state: State) {
+        print("ViewModel ---state---> View: \(String(describing: self)) sends \(state) state.")
+        self.state = state
+    }
+
+    // MARK: - Action
+
+    func receiveAction(_ action: Action) {
+        print("View ---action---> ViewModel: \(String(describing: self)) receives \(action) action.")
+    }
 }

@@ -8,81 +8,38 @@
 import Combine
 import UIKit
 
-class BaseScreen<ViewModel: BaseViewModel>: UIViewController {
-    // MARK: Nested types
-
-    struct BackgroundViewOptions {
-        var showing = true
-        var animating = true
-    }
-
+// swiftlint:disable:next operator_usage_whitespace
+class BaseScreen<ViewModelState,
+                 ViewModelAction,
+                 ViewModel: BaseViewModel<ViewModelState, ViewModelAction>>: ViewController {
     // MARK: Properties
 
-    @LazyInjected private var animationService: AnimationServiceProtocol
-    @LazyInjected private var imageLoadingService: ImageLoadingServiceProtocol
     @LazyInjected private var loadingService: LoadingServiceProtocol
     @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
-    @LazyInjected private var systemImageService: SystemImageServiceProtocol
-    @LazyInjected var cameraService: CameraServiceProtocol
-    @LazyInjected var viewModel: ViewModel
+    @LazyInjected private var viewModel: ViewModel
     var cancellables = Cancellables()
-    var backgroundViewOptions = BackgroundViewOptions() {
-        didSet {
-            updateBackgroundView()
-        }
-    }
-    let backgroundView = BackgroundView()
-    override var title: String? {
-        didSet {
-            tabBarItem.title = title
-        }
-    }
-
-    // MARK: - Initialization
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     // MARK: - Lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        _ = viewModel
-    }
-}
-
-// MARK: - Setups
-
-extension BaseScreen {
-    private func setupView() {
-        view.backgroundColor = Color.background.color
+    override func setupView() {
+        super.setupView()
         loadingService.bind(to: loadingOverlayService)
-        hideKeyboardWhenTappedOutside()
-        updateBackgroundView()
     }
-}
 
-// MARK: - Private methods
+    override func setupBindings() {
+        super.setupBindings()
+        viewModel.viewState
+            .sink { [unowned self] in receiveState($0) }
+            .store(in: &cancellables)
+    }
 
-extension BaseScreen {
-    private func updateBackgroundView() {
-        if backgroundViewOptions.showing, backgroundView.superview == nil {
-            backgroundView.then {
-                view.addSubview($0)
-                view.sendSubviewToBack($0)
-                $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
-            }
-        } else if !backgroundViewOptions.showing, backgroundView.superview != nil {
-            backgroundView.removeFromSuperview()
-        }
+    // MARK: - State
 
-        backgroundView.isAnimating = backgroundViewOptions.animating
+    func receiveState(_ state: ViewModelState) { }
+
+    // MARK: - Action
+
+    final func sendAction(_ action: ViewModelAction) {
+        viewModel.receiveAction(action)
     }
 }

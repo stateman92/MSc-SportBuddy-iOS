@@ -7,7 +7,11 @@
 
 import UIKit
 
-class CustomTabbedTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: BaseTabScreen<ViewModel, Tabs> {
+// swiftlint:disable:next operator_usage_whitespace
+class CustomTabbedTabScreen<ViewModelState,
+                            ViewModelAction,
+                            ViewModel: BaseViewModel<ViewModelState, ViewModelAction>,
+                            Tabs: ScreenTabs>: BaseTabScreen<ViewModelState, ViewModelAction, ViewModel, Tabs> {
     // MARK: Properties
 
     let tabBarView: TabBar
@@ -17,21 +21,19 @@ class CustomTabbedTabScreen<ViewModel: BaseViewModel, Tabs: ScreenTabs>: BaseTab
 
     init(selectedColor: UIColor, unselectedColor: UIColor) {
         tabBarView = .init(selectedColor: selectedColor, unselectedColor: unselectedColor)
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
 
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - Setups
 
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupView() {
+        super.setupView()
         setupTabBar()
         setupBottom()
+    }
 
+    override func setupBindings() {
+        super.setupBindings()
         tabBarView.$selectedIndexSubject
             .dropFirst(1)
             .compactMap { [unowned self] in viewControllers?[$0] }

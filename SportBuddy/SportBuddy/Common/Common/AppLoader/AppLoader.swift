@@ -8,15 +8,17 @@
 import GoogleSignIn
 import IQKeyboardManagerSwift
 
-struct AppLoader {
+final class AppLoader {
     // MARK: Properties
+
+    @LazyInjected private static var userAction: UserActionProtocol
+    @LazyInjected private static var navigatorService: NavigatorServiceProtocol
+    private static var cancellables = Cancellables()
 
     static var signInConfig: GIDConfiguration {
         let id = ""
         return GIDConfiguration(clientID: id)
     }
-
-    private init() { }
 }
 
 // MARK: - Public methods
@@ -35,11 +37,18 @@ extension AppLoader {
             }
         }
         IQKeyboardManager.shared.enable = true
+        NotificationCenter.addObserver(forName: .name(UIApplication.willEnterForegroundNotification)) {
+            userAction
+                .refreshToken()
+                .sink(receiveError: { _ in
+                    navigatorService.resetToDefault()
+                })
+                .store(in: &cancellables)
+        }
     }
 
     static func setupUI(windowScene: UIWindowScene) -> UIWindow {
-        let navigatorService: NavigatorServiceProtocol = DependencyInjector.resolve()
-        navigatorService.isNavigationBarHidden = true
+        navigatorService.resetToDefault()
         return UIWindow(windowScene: windowScene).then {
             navigatorService.becameRoot(in: $0)
             $0.makeKeyAndVisible()

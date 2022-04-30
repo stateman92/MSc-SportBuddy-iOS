@@ -8,23 +8,24 @@
 import Combine
 import UIKit
 
-class ScrollingScreen<ViewModel: BaseViewModel>: BaseScreen<ViewModel> {
+class ScrollingScreen<ViewModelState, ViewModelAction, ViewModel: BaseViewModel<ViewModelState, ViewModelAction>>:
+    BaseScreen<ViewModelState, ViewModelAction, ViewModel> {
     // MARK: Properties
 
     let scrollView = ScrollView()
 
-    // MARK: - Lifecycle
+    // MARK: - Setups
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
+    override func setupView() {
+        super.setupView()
+        setupScrollView()
     }
 }
 
-// MARK: - Setups
+// MARK: - Private methods
 
 extension ScrollingScreen {
-    private func setupView() {
+    private func setupScrollView() {
         scrollView.then {
             view.addSubview($0)
             $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero, safeArea: true)

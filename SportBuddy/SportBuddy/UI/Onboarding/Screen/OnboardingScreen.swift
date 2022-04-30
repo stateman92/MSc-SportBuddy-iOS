@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OnboardingScreen: BaseScreen<OnboardingViewModel> {
+final class OnboardingScreen: BaseScreen<OnboardingViewModelState, OnboardingViewModelAction, OnboardingViewModel> {
     // MARK: Properties
 
     let onboard = Onboard()
@@ -16,19 +16,15 @@ final class OnboardingScreen: BaseScreen<OnboardingViewModel> {
 // MARK: - Lifecycle
 
 extension OnboardingScreen {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
+    override func setupView() {
+        super.setupView()
+        setupOnboard()
     }
 }
 
 // MARK: - Setups
 
 extension OnboardingScreen {
-    private func setupView() {
-        setupOnboard()
-    }
-
     private func setupOnboard() {
         onboard.then {
             view.addSubview($0)
@@ -76,7 +72,7 @@ extension OnboardingScreen: OnboardDataSource {
                 }
                 self?.backgroundView.finish {
                     self?.backgroundView.removeFromSuperview()
-                    self?.viewModel.navigateNext()
+                    self?.sendAction(.navigateNext)
                 }
             }
         }
