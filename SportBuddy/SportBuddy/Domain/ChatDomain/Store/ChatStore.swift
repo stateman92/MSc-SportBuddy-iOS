@@ -9,15 +9,16 @@ import Combine
 import Foundation
 
 final class ChatStore: Domain {
-    @LazyInjected private var chatCache: ChatCache
+    @LazyInjected private var chatsCache: ChatsCache
+    @LazyInjected private var tokenCache: TokenCache
 }
 
 extension ChatStore: ChatStoreProtocol {
-    func getChats() -> DomainStorePublisher<[ChatDTO]> {
-        chatCache.value().autoEraseOnMain()
+    func getChat(id: UUID) -> DomainStorePublisher<ChatDTO> {
+        chatsCache.value().map { $0?.first { $0.primaryId == id } }.autoEraseOnMain()
     }
 
-    func getChat(id: UUID) -> DomainStorePublisher<ChatDTO> {
-        chatCache.value().map { $0?.first { $0.primaryId == id } }.autoEraseOnMain()
+    var immediateToken: UUID? {
+        tokenCache.immediateValue
     }
 }

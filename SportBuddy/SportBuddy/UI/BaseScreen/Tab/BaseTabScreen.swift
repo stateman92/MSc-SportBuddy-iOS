@@ -9,9 +9,10 @@ import Combine
 import UIKit
 
 // swiftlint:disable:next operator_usage_whitespace
-class BaseTabScreen<ViewModelState,
-                    ViewModelAction,
-                    ViewModel: BaseViewModel<ViewModelState, ViewModelAction>,
+class BaseTabScreen<State,
+                    Action,
+                    Domain,
+                    ViewModel: BaseViewModel<State, Action, Domain>,
                     Tabs: ScreenTabs>: TabBarController {
     // MARK: Properties
 
@@ -35,11 +36,11 @@ class BaseTabScreen<ViewModelState,
 
     // MARK: - State
 
-    func receiveState(_ state: ViewModelState) { }
+    func receiveState(_ state: State) { }
 
     // MARK: - Action
 
-    final func sendAction(_ action: ViewModelAction) {
+    final func sendAction(_ action: Action) {
         viewModel.receiveAction(action)
     }
 }

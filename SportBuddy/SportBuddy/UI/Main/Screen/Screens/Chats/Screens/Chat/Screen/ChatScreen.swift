@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelAction, ChatViewModel> {
+final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelAction, ChatDomain, ChatViewModel> {
     // MARK: Properties
 
     private let tableView = TableView(frame: .zero, style: .grouped)

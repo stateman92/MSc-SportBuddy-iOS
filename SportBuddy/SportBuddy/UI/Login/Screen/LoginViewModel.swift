@@ -7,11 +7,7 @@
 
 import UIKit
 
-final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewModelAction> {
-    // MARK: Properties
-
-    @LazyInjected private var tokenCache: TokenCache
-
+final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewModelAction, LoginDomain> {
     // MARK: - Action
 
     override func receiveAction(_ action: LoadingViewModelAction) {
@@ -30,8 +26,8 @@ final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewMode
 extension LoginViewModel {
     override func setup() {
         super.setup()
-        if tokenCache.immediateValue != nil {
-            userAction
+        if store.immediateToken != nil {
+            action
                 .refreshToken()
                 .sink(receiveValue: { [unowned self] in navigateNext() })
                 .store(in: &cancellables)
@@ -43,7 +39,7 @@ extension LoginViewModel {
 
 extension LoginViewModel {
     private func login(email: String, password: String) {
-        userAction
+        action
             .login(email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
                 toastHandlingService.showToast(with: .init(message: "Login failed! Try again later.", type: .error))
@@ -55,7 +51,7 @@ extension LoginViewModel {
     }
 
     private func signUp(name: String, email: String, password: String) {
-        userAction
+        action
             .signUp(name: name, email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
                 toastHandlingService.showToast(with: .init(message: "Registration failed! Try again later.",
@@ -68,7 +64,7 @@ extension LoginViewModel {
     }
 
     private func forgotPassword(email: String) {
-        userAction
+        action
             .forgotPassword(email: email)
             .sink(receiveError: { [unowned self] _ in
                 toastHandlingService.showToast(

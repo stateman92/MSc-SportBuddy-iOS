@@ -7,7 +7,7 @@
 
 import Combine
 
-final class ChatsViewModel: BaseViewModel<ChatsViewModelState, ChatsViewModelAction> {
+final class ChatsViewModel: BaseViewModel<ChatsViewModelState, ChatsViewModelAction, ChatsDomain> {
     // MARK: - Action
 
     override func receiveAction(_ action: ChatsViewModelAction) {
@@ -26,7 +26,8 @@ extension ChatsViewModel {
     override func setup() {
         super.setup()
 
-        chatStore.getChats()
+        store
+            .getChats()
             .sink { [unowned self] in sendState(.init(chats: $0)) }
             .store(in: &cancellables)
     }
@@ -36,7 +37,8 @@ extension ChatsViewModel {
 
 extension ChatsViewModel {
     private func viewWillAppear() {
-        chatAction.getChats()
+        action
+            .getChats()
             .sink()
             .store(in: &cancellables)
     }

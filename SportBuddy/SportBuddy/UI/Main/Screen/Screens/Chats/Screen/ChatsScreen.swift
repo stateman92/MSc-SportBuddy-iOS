@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ChatsScreen: TabScreen<ChatsViewModelState, ChatsViewModelAction, ChatsViewModel> {
+final class ChatsScreen: TabScreen<ChatsViewModelState, ChatsViewModelAction, ChatsDomain, ChatsViewModel> {
     // MARK: Properties
 
     private let emptyStateView = AnimationView(animation: .searching)

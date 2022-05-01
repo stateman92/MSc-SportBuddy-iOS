@@ -5,6 +5,6 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-import Foundation
-
-final class SettingsViewModel: BaseViewModel<SettingsViewModelState, SettingsViewModelAction> { }
+// swiftlint:disable:next colon
+final class SettingsViewModel:
+    BaseViewModel<SettingsViewModelState, SettingsViewModelAction, SettingsDomain> { }

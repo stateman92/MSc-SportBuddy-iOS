@@ -5,4 +5,6 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-final class TrainingsViewModel: BaseViewModel<TrainingsViewModelState, TrainingsViewModelAction> { }
+// swiftlint:disable:next colon
+final class TrainingsViewModel:
+    BaseViewModel<TrainingsViewModelState, TrainingsViewModelAction, TrainingsDomain> { }

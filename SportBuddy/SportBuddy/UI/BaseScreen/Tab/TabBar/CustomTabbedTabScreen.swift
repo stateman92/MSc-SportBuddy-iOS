@@ -8,10 +8,11 @@
 import UIKit
 
 // swiftlint:disable:next operator_usage_whitespace
-class CustomTabbedTabScreen<ViewModelState,
-                            ViewModelAction,
-                            ViewModel: BaseViewModel<ViewModelState, ViewModelAction>,
-                            Tabs: ScreenTabs>: BaseTabScreen<ViewModelState, ViewModelAction, ViewModel, Tabs> {
+class CustomTabbedTabScreen<State,
+                            Action,
+                            Domain,
+                            ViewModel: BaseViewModel<State, Action, Domain>,
+                            Tabs: ScreenTabs>: BaseTabScreen<State, Action, Domain, ViewModel, Tabs> {
     // MARK: Properties
 
     let tabBarView: TabBar

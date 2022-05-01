@@ -5,4 +5,4 @@
 //  Created by Kristof Kalai on 2022. 04. 18..
 //
 
-final class ChatCache: Cache<[ChatDTO]> { }
+final class ChatCache: Cache<Void> { }

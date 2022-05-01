@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class AddNewChatScreen: BaseScreen<AddNewChatViewModelState, AddNewChatViewModelAction, AddNewChatViewModel> {
+// swiftlint:disable:next colon
+final class AddNewChatScreen:
+    BaseScreen<AddNewChatViewModelState, AddNewChatViewModelAction, AddNewChatDomain, AddNewChatViewModel> {
     // MARK: Properties
 
     private let emptyStateView = AnimationView(animation: .searching)

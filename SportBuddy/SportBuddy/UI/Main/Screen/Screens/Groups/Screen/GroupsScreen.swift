@@ -5,7 +5,9 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-final class GroupsScreen: TabScreen<GroupsViewModelState, GroupsViewModelAction, GroupsViewModel> {
+// swiftlint:disable:next colon
+final class GroupsScreen:
+    TabScreen<GroupsViewModelState, GroupsViewModelAction, GroupsDomain, GroupsViewModel> {
     // MARK: Initialization
 
     init() {

@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class LoginScreen: ScrollingScreen<LoadingViewModelState, LoadingViewModelAction, LoginViewModel> {
+// swiftlint:disable:next colon
+final class LoginScreen:
+    ScrollingScreen<LoadingViewModelState, LoadingViewModelAction, LoginDomain, LoginViewModel> {
     // MARK: Properties
 
     private let segmentedControl = SwipingSegmentedControl()

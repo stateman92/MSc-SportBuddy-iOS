@@ -7,15 +7,14 @@
 
 import Foundation
 
-final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelAction> {
+final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelAction, ChatDomain> {
     // MARK: Properties
 
-    @LazyInjected private var userCache: UserCache
     private var chatType: ChatType? {
         didSet {
             guard let id = chatType?.id else { return }
 
-            chatStore
+            store
                 .getChat(id: id)
                 .sink { [unowned self] in sendState(.init(chat: $0)) }
                 .store(in: &cancellables)
@@ -39,9 +38,9 @@ extension ChatViewModel {
         super.setup()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             guard let self = self else { return }
-            self.chatAction
+            self.action
                 .sendText(toChat: self.chatType?.id ?? .init(),
-                          toRecipient: self.chatType?.recipient(self.userCache) ?? .init(),
+                          toRecipient: self.chatType?.recipient(self.store.immediateToken ?? .init()) ?? .init(),
                           message: self.chatType?.text ?? "UNKNOWN")
                 .sink()
                 .store(in: &self.cancellables)

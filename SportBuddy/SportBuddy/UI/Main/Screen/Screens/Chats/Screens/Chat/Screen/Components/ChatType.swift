@@ -33,11 +33,7 @@ extension ChatType {
 // MARK: - Public methods
 
 extension ChatType {
-    func recipient(_ userCache: UserCache) -> UUID? {
-        guard let userId = userCache.immediateValue?.primaryId else {
-            assertionFailure("User's id didn't find!")
-            return nil
-        }
+    func recipient(_ userId: UUID) -> UUID? {
         switch self {
         case let .existing(chatDto): return chatDto.users.first { $0 != userId }
         case let .new(_, recipientId): return recipientId

@@ -8,30 +8,25 @@
 import Combine
 import Foundation
 
-class BaseViewModel<State, Action> {
+class BaseViewModel<State, Action, Domain: DomainProtocol> {
     // MARK: Properties
 
-    @LazyInjected var loggingService: LoggingServiceProtocol
-    @LazyInjected var mlService: MLServiceProtocol
     @LazyInjected var navigatorService: NavigatorServiceProtocol
     @LazyInjected var settingService: SettingsServiceProtocol
     @LazyInjected var toastHandlingService: ToastServiceProtocol
-    @LazyInjected var webSocketService: WebSocketServiceProtocol
-
-    @LazyInjected var userAction: UserActionProtocol
-    @LazyInjected var userStore: UserStoreProtocol
-    @LazyInjected var groupAction: GroupActionProtocol
-    @LazyInjected var groupStore: GroupStoreProtocol
-    @LazyInjected var chatAction: ChatActionProtocol
-    @LazyInjected var chatStore: ChatStoreProtocol
-    @LazyInjected var trainingAction: TrainingActionProtocol
-    @LazyInjected var trainingStore: TrainingStoreProtocol
+    @LazyInjected private var domain: Domain
 
     var cancellables = Cancellables()
 
     @ViewModelState private var state: State
     var viewState: AnyPublisher<State, Never> {
         $state.subject
+    }
+    var action: Domain.Action {
+        domain.action
+    }
+    var store: Domain.Store {
+        domain.store
     }
 
     // MARK: Initialization

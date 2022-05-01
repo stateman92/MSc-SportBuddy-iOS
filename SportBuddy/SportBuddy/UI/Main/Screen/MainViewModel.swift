@@ -5,7 +5,7 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-final class MainViewModel: BaseViewModel<MainViewModelState, MainViewModelAction> {}
+final class MainViewModel: BaseViewModel<MainViewModelState, MainViewModelAction, MainDomain> {}
 
 // MARK: - Setup
 

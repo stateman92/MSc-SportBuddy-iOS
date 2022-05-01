@@ -8,6 +8,5 @@
 import Foundation
 
 protocol ChatActionProtocol {
-    func getChats() -> DomainActionPublisher
     func sendText(toChat: UUID, toRecipient: UUID, message: String) -> DomainActionPublisher
 }

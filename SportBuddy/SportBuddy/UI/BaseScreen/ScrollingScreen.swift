@@ -8,8 +8,8 @@
 import Combine
 import UIKit
 
-class ScrollingScreen<ViewModelState, ViewModelAction, ViewModel: BaseViewModel<ViewModelState, ViewModelAction>>:
-    BaseScreen<ViewModelState, ViewModelAction, ViewModel> {
+class ScrollingScreen<State, Action, Domain, ViewModel: BaseViewModel<State, Action, Domain>>:
+    BaseScreen<State, Action, Domain, ViewModel> {
     // MARK: Properties
 
     let scrollView = ScrollView()

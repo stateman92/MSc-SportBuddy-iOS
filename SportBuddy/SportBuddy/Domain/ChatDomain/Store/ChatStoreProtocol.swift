@@ -5,11 +5,9 @@
 //  Created by Kristof Kalai on 2022. 04. 22..
 //
 
-import Combine
 import Foundation
 
 protocol ChatStoreProtocol {
-    func getChats() -> DomainStorePublisher<[ChatDTO]>
-
     func getChat(id: UUID) -> DomainStorePublisher<ChatDTO>
+    var immediateToken: UUID? { get }
 }

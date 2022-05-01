@@ -5,8 +5,8 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-class TabScreen<ViewModelStore, ViewModelAction, ViewModel: BaseViewModel<ViewModelStore, ViewModelAction>>:
-    BaseScreen<ViewModelStore, ViewModelAction, ViewModel> {
+class TabScreen<Store, Action, Domain, ViewModel: BaseViewModel<Store, Action, Domain>>:
+    BaseScreen<Store, Action, Domain, ViewModel> {
     // MARK: Initialization
 
     init(title: String) {

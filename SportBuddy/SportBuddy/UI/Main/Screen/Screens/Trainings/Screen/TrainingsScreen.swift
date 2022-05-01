@@ -5,7 +5,9 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-final class TrainingsScreen: TabScreen<TrainingsViewModelState, TrainingsViewModelAction, TrainingsViewModel> {
+// swiftlint:disable:next colon
+final class TrainingsScreen:
+    TabScreen<TrainingsViewModelState, TrainingsViewModelAction, TrainingsDomain, TrainingsViewModel> {
     @LazyInjected var cameraService: CameraServiceProtocol
 
     // MARK: Initialization

@@ -8,10 +8,10 @@
 import GoogleSignIn
 import IQKeyboardManagerSwift
 
-final class AppLoader {
+enum AppLoader {
     // MARK: Properties
 
-    @LazyInjected private static var userAction: UserActionProtocol
+    @LazyInjected private static var loginDomain: LoginDomain
     @LazyInjected private static var navigatorService: NavigatorServiceProtocol
     private static var cancellables = Cancellables()
 
@@ -38,7 +38,8 @@ extension AppLoader {
         }
         IQKeyboardManager.shared.enable = true
         NotificationCenter.addObserver(forName: .name(UIApplication.willEnterForegroundNotification)) {
-            userAction
+            loginDomain
+                .action
                 .refreshToken()
                 .sink(receiveError: { _ in
                     navigatorService.resetToDefault()

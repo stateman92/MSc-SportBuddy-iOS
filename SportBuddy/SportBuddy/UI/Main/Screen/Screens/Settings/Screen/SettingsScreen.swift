@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class SettingsScreen: TabScreen<SettingsViewModelState, SettingsViewModelAction, SettingsViewModel> {
+// swiftlint:disable:next colon
+final class SettingsScreen:
+    TabScreen<SettingsViewModelState, SettingsViewModelAction, SettingsDomain, SettingsViewModel> {
     // MARK: Properties
 
     private let tableView = ReversedTableView<ReversedTableViewCell>(frame: .zero, style: .insetGrouped)

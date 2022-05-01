@@ -5,11 +5,9 @@
 //  Created by Kristof Kalai on 2022. 03. 29..
 //
 
-final class OnboardingViewModel: BaseViewModel<OnboardingViewModelState, OnboardingViewModelAction> {
-    // MARK: Properties
-
-    @LazyInjected private var tokenCache: TokenCache
-
+// swiftlint:disable:next colon
+final class OnboardingViewModel:
+    BaseViewModel<OnboardingViewModelState, OnboardingViewModelAction, OnboardingDomain> {
     // MARK: - Action
 
     override func receiveAction(_ action: OnboardingViewModelAction) {
@@ -25,8 +23,8 @@ final class OnboardingViewModel: BaseViewModel<OnboardingViewModelState, Onboard
 extension OnboardingViewModel {
     override func setup() {
         super.setup()
-        if tokenCache.immediateValue != nil {
-            userAction
+        if store.immediateToken != nil {
+            action
                 .refreshToken()
                 .sink(receiveError: { [unowned self] _ in
                     showOnboarding()

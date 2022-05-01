@@ -7,7 +7,9 @@
 
 import Foundation
 
-final class AddNewChatViewModel: BaseViewModel<AddNewChatViewModelState, AddNewChatViewModelAction> {
+// swiftlint:disable:next colon
+final class AddNewChatViewModel:
+    BaseViewModel<AddNewChatViewModelState, AddNewChatViewModelAction, AddNewChatDomain> {
     // MARK: Properties
 
     @Throttling(wrappedValue: .init(), seconds: 0.66) private var searchTerm: String
@@ -29,14 +31,14 @@ final class AddNewChatViewModel: BaseViewModel<AddNewChatViewModelState, AddNewC
 extension AddNewChatViewModel {
     override func setup() {
         super.setup()
-        userStore
+        store
             .searchedUser
             .sink { [unowned self] in sendState(.init(users: $0)) }
             .store(in: &cancellables)
 
         $searchTerm.on { [weak self] in
             guard let self = self else { return }
-            self.userAction.searchUsers(searchTerm: $0).sink().store(in: &self.cancellables)
+            self.action.searchUsers(searchTerm: $0).sink().store(in: &self.cancellables)
         }
     }
 }
@@ -58,6 +60,6 @@ extension AddNewChatViewModel {
                 self?.navigatorService.pop(reverseIndex: 1)
             }
             .sendAction(.setChatType(.new(chatId: .init(), recipientId: id)))
-        userAction.clearSearchedUser().sink().store(in: &cancellables)
+        action.clearSearchedUser().sink().store(in: &cancellables)
     }
 }
