@@ -8,7 +8,6 @@
 import Foundation
 
 final class OnboardingStore: Domain {
-    @LazyInjected private var onboardingCache: OnboardingCache
     @LazyInjected private var tokenCache: TokenCache
 }
 

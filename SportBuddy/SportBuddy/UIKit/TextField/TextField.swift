@@ -8,6 +8,14 @@
 import UIKit
 
 class TextField: UITextField {
+    // MARK: Properties
+
+    override var tintColor: UIColor! {
+        didSet {
+            layoutSubviews()
+        }
+    }
+
     // MARK: Initialization
 
     init() {

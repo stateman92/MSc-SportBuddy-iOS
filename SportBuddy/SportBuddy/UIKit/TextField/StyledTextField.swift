@@ -71,7 +71,7 @@ extension StyledTextField {
             $0.delegate = self
 
             contentView.addSubview($0)
-            $0.anchorToSuperview(top: 15, bottom: -15, leading: 15, trailing: -15)
+            $0.anchorToSuperview(top: 8, bottom: -8, leading: 16, trailing: -16)
         }
     }
 

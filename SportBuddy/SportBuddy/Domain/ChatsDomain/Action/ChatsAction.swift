@@ -8,23 +8,22 @@
 final class ChatsAction: Domain {
     @LazyInjected private var chatsCache: ChatsCache
     @LazyInjected private var webSocketService: WebSocketServiceProtocol
-    @LazyInjected private var loginCache: LoginCache
+    @LazyInjected private var userCache: UserCache
     @LazyInjected private var coderService: CoderServiceProtocol
 
     override init() {
         super.init()
-        webSocketService.onReconnected { [weak self] in
-            if let userId = self?.loginCache.immediateValue?.primaryId {
-                self?.webSocketService.send(WSConnectionDTO(clientIdentifier: userId))
+        webSocketService.onReconnected { [unowned self] in
+            if let userId = userCache.immediateValue?.primaryId {
+                webSocketService.send(WSConnectionDTO(clientIdentifier: userId))
             }
         }
-        webSocketService.onReceive { [weak self] text in
-            guard let self = self else { return }
-            if let chat: ChatDTO = self.coderService.decode(string: text) {
-                var chats = self.chatsCache.immediateValue ?? .init()
+        webSocketService.onReceive { [unowned self] text in
+            if let chat: ChatDTO = coderService.decode(string: text) {
+                var chats = chatsCache.immediateValue ?? .init()
                 chats.removeAll { $0.primaryId == chat.primaryId }
                 chats.append(chat)
-                self.chatsCache.save(item: chats)
+                chatsCache.save(item: chats)
             }
         }
     }

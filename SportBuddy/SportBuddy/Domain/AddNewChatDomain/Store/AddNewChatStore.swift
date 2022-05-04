@@ -6,12 +6,13 @@
 //
 
 final class AddNewChatStore: Domain {
-    @LazyInjected private var addNewChatCache: AddNewChatCache
+    @LazyInjected private var searchedUsersCache: SearchedUsersCache
 }
 
 extension AddNewChatStore: AddNewChatStoreProtocol {
     /// The searched users.
-    var searchedUser: DomainStorePublisher<[UserDTO]> {
-        addNewChatCache.autoEraseOnMain()
+    var searchedUsers: DomainStorePublisher<[UserDTO]> {
+        searchedUsersCache.clear()
+        return searchedUsersCache.autoEraseOnMain()
     }
 }

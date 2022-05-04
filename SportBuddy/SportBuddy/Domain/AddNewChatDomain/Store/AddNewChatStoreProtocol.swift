@@ -7,5 +7,5 @@
 
 protocol AddNewChatStoreProtocol {
     /// The searched users.
-    var searchedUser: DomainStorePublisher<[UserDTO]> { get }
+    var searchedUsers: DomainStorePublisher<[UserDTO]> { get }
 }

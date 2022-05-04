@@ -32,7 +32,7 @@ extension AddNewChatViewModel {
     override func setup() {
         super.setup()
         store
-            .searchedUser
+            .searchedUsers
             .sink { [unowned self] in sendState(.init(users: $0)) }
             .store(in: &cancellables)
 

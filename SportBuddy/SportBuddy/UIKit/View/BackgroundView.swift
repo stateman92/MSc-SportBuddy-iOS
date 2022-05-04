@@ -136,7 +136,7 @@ extension BackgroundView {
     }
 
     private func setupRectangle() {
-        rectangle.multiplier = 0.25
+        rectangle.multiplier = .multiplier(0.25)
         rectangle.transform = .init(rotationAngle: -.pi / 4)
         addSubview(rectangle)
 

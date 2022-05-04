@@ -5,8 +5,6 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class TrainingsAction: Domain {
-    @LazyInjected private var trainingsCache: TrainingsCache
-}
+final class TrainingsAction: Domain { }
 
 extension TrainingsAction: TrainingsActionProtocol { }

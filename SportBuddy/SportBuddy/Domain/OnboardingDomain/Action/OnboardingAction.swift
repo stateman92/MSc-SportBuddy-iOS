@@ -6,20 +6,21 @@
 //
 
 final class OnboardingAction: Domain {
-    @LazyInjected private var onboardingCache: OnboardingCache
-    @LazyInjected private var loginCache: LoginCache
+    @LazyInjected private var userCache: UserCache
     @LazyInjected private var tokenCache: TokenCache
 }
 
 extension OnboardingAction: OnboardingActionProtocol {
     /// Refresh the stored token.
     func refreshToken() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [weak self] () -> DomainActionResult<Void> in
+        deferredFutureOnMainLoading(
+            showUnauthenticatedToast: tokenCache.immediateValue != nil
+        ) { [weak self] () -> DomainActionResult<Void> in
             do {
                 try await ClientAPI.refreshTokenPost()
                 return .success(())
             } catch {
-                self?.loginCache.clear()
+                self?.userCache.clear()
                 self?.tokenCache.clear()
                 return .failure(error)
             }

@@ -83,3 +83,11 @@ func run(key: SettingsKey, times: Int, closure: () -> Void, else: () -> Void) {
         helper.save(object: 1, forKey: key)
     }
 }
+
+func wait(seconds: TimeInterval = 0.33) async {
+    await withCheckedContinuation { continuation in
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            continuation.resume()
+        }
+    }
+}

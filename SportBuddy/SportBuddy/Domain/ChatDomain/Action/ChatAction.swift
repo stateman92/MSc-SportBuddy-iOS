@@ -10,14 +10,14 @@ import Foundation
 
 final class ChatAction: Domain {
     @LazyInjected private var chatsCache: ChatsCache
-    @LazyInjected private var loginCache: LoginCache
+    @LazyInjected private var userCache: UserCache
     @LazyInjected private var webSocketService: WebSocketServiceProtocol
 }
 
 extension ChatAction: ChatActionProtocol {
     func sendText(toChat: UUID, toRecipient: UUID, message: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
-            guard let userId = loginCache.immediateValue?.primaryId else {
+            guard let userId = userCache.immediateValue?.primaryId else {
                 assertionFailure("User's id didn't find!")
                 return .success(())
             }

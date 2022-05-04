@@ -8,14 +8,14 @@
 import Foundation
 
 final class LoginStore: Domain {
-    @LazyInjected private var loginCache: LoginCache
+    @LazyInjected private var userCache: UserCache
     @LazyInjected private var tokenCache: TokenCache
 }
 
 extension LoginStore: LoginStoreProtocol {
     /// The current user.
     var currentUser: DomainStorePublisher<UserDTO> {
-        loginCache.autoEraseOnMain()
+        userCache.autoEraseOnMain()
     }
 
     /// The token.

@@ -6,7 +6,7 @@
 //
 
 enum ChatsViewModelAction {
-    case viewWillAppear
+    case viewDidAppear
     case navigateToAddNewChatScreen
     case didSelect(chatDto: ChatDTO)
 }

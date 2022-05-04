@@ -13,7 +13,7 @@ final class ChatsViewModel: BaseViewModel<ChatsViewModelState, ChatsViewModelAct
     override func receiveAction(_ action: ChatsViewModelAction) {
         super.receiveAction(action)
         switch action {
-        case .viewWillAppear: viewWillAppear()
+        case .viewDidAppear: viewDidAppear()
         case .navigateToAddNewChatScreen: navigateToAddNewChatScreen()
         case let .didSelect(chatDto): didSelect(chatDto: chatDto)
         }
@@ -36,7 +36,7 @@ extension ChatsViewModel {
 // MARK: - Actions
 
 extension ChatsViewModel {
-    private func viewWillAppear() {
+    private func viewDidAppear() {
         action
             .getChats()
             .sink()

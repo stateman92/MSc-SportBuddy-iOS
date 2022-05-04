@@ -17,7 +17,7 @@ final class ButtonLabel: UIButton {
         case label(textColor: UIColor)
 
         static var label: Self {
-            .label(textColor: Assets.Colors.primary.color)
+            .label(textColor: Color.primary.color)
         }
 
         fileprivate var configuration: Configuration {
@@ -25,14 +25,14 @@ final class ButtonLabel: UIButton {
             switch self {
             case .primary:
                 configuration = .filled()
-                configuration.baseBackgroundColor = Assets.Colors.primary.color
+                configuration.baseBackgroundColor = Color.primary.color
             case .secondary:
                 configuration = .borderedProminent()
                 configuration.baseBackgroundColor = .white.withAlphaComponent(0.5)
-                configuration.baseForegroundColor = Assets.Colors.primary.color
+                configuration.baseForegroundColor = Color.primary.color
             case .tertiary:
                 configuration = .borderless()
-                configuration.baseForegroundColor = Assets.Colors.primary.color
+                configuration.baseForegroundColor = Color.primary.color
             case let .label(textColor):
                 configuration = .plain()
                 configuration.baseForegroundColor = textColor

@@ -7,4 +7,5 @@
 
 enum ChatViewModelAction {
     case setChatType(ChatType)
+    case sendMessage(String)
 }

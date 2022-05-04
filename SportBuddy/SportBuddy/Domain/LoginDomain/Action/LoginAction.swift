@@ -6,7 +6,7 @@
 //
 
 final class LoginAction: Domain {
-    @LazyInjected private var loginCache: LoginCache
+    @LazyInjected private var userCache: UserCache
     @LazyInjected private var tokenCache: TokenCache
 }
 
@@ -16,11 +16,11 @@ extension LoginAction: LoginActionProtocol {
     ///   - email: the user's email.
     ///   - password: the user's password.
     func login(email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [weak self] () -> DomainActionResult<UserResponseDTO> in
+        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
             do {
                 let result = try await ClientAPI.loginPost(email: email, password: password)
-                self?.loginCache.save(item: result.user)
-                self?.tokenCache.save(item: result.token)
+                userCache.save(item: result.user)
+                tokenCache.save(item: result.token)
                 return .success(result)
             } catch {
                 return .failure(error)
@@ -30,13 +30,15 @@ extension LoginAction: LoginActionProtocol {
 
     /// Refresh the stored token.
     func refreshToken() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [weak self] () -> DomainActionResult<Void> in
+        deferredFutureOnMainLoading(
+            showUnauthenticatedToast: tokenCache.immediateValue != nil
+        ) { [unowned self] () -> DomainActionResult<Void> in
             do {
                 try await ClientAPI.refreshTokenPost()
                 return .success(())
             } catch {
-                self?.loginCache.clear()
-                self?.tokenCache.clear()
+                userCache.clear()
+                tokenCache.clear()
                 return .failure(error)
             }
         }
@@ -48,11 +50,11 @@ extension LoginAction: LoginActionProtocol {
     ///   - email: the user's email.
     ///   - password: the user's password.
     func signUp(name: String, email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [weak self] () -> DomainActionResult<UserResponseDTO> in
+        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
             do {
                 let result = try await ClientAPI.registerPost(name: name, email: email, password: password)
-                self?.loginCache.save(item: result.user)
-                self?.tokenCache.save(item: result.token)
+                userCache.save(item: result.user)
+                tokenCache.save(item: result.token)
                 return .success(result)
             } catch {
                 return .failure(error)

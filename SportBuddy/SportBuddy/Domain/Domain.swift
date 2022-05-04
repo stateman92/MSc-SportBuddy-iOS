@@ -18,7 +18,9 @@ class Domain {
     // MARK: Properties
 
     @LazyInjected private var loggingService: LoggingServiceProtocol
-    @LazyInjected var loadingService: LoadingServiceProtocol
+    @LazyInjected private var loadingService: LoadingServiceProtocol
+    @LazyInjected private var toastService: ToastServiceProtocol
+    @LazyInjected private var navigatorService: NavigatorServiceProtocol
     var cancellables = Cancellables()
 }
 
@@ -41,8 +43,9 @@ extension Domain {
     }
 
     func deferredFutureOnMainLoading<T, S>(blocking: Bool = true,
+                                           showUnauthenticatedToast: Bool = true,
                                            task: @escaping () async -> Result<S, T>) -> AnyPublisher<Void, T> {
-        deferredFutureOnMain { [unowned self] finish in
+        deferredFutureOnMain(showUnauthenticatedToast: showUnauthenticatedToast) { [unowned self] finish in
             loadingService.loading(blocking: blocking) {
                 finish(await task())
             }
@@ -58,22 +61,36 @@ extension Domain {
     }
 
     private func deferredFutureOnMain<T, S>(
+        showUnauthenticatedToast: Bool,
         task: @escaping (@escaping (Result<S, T>) -> Void) -> Void) -> AnyPublisher<Void, T> {
             DeferredFuture { [unowned self] future in
                 task {
-                    handle(result: $0, future: future)
+                    handle(result: $0, showUnauthenticatedToast: showUnauthenticatedToast, future: future)
                 }
             }.eraseOnMain()
         }
 
-    private func handle<T, S>(result: Result<S, T>, future: (Result<Void, T>) -> Void) {
+    private func handle<T, S>(result: Result<S, T>, showUnauthenticatedToast: Bool, future: (Result<Void, T>) -> Void) {
         switch result {
         case let .success(success):
             log(success)
             future(.success(()))
         case let .failure(error):
             log(error)
+            if (error as? ErrorResponse)?.isUnauthenticated == true {
+                forceLoggingOutUser(showUnauthenticatedToast: showUnauthenticatedToast)
+            }
             future(.failure(error))
+        }
+    }
+
+    private func forceLoggingOutUser(showUnauthenticatedToast: Bool) {
+        dispatchToMain { [self] in
+            navigatorService.resetToDefault()
+            if showUnauthenticatedToast {
+                toastService.showToast(with: .init(message: "Your session has expired. Login again to continue.",
+                                                   type: .error))
+            }
         }
     }
 }

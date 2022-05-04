@@ -44,9 +44,9 @@ extension ChatsScreen {
         setupTableView()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        sendAction(.viewWillAppear)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        sendAction(.viewDidAppear)
     }
 }
 

@@ -6,6 +6,11 @@
 //
 
 import Combine
+import Foundation
+
+typealias DomainActionPublisher = AnyPublisher<Void, Error>
+typealias DomainStorePublisher<T> = AnyPublisher<T, Never>
+typealias DomainActionResult<T> = Result<T, Error>
 
 typealias Color = Assets.Colors
 typealias Images = Assets.Images
