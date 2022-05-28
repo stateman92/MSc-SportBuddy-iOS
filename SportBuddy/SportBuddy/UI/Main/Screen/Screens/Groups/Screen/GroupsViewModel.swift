@@ -5,4 +5,4 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-final class GroupsViewModel: BaseViewModel<GroupsViewModelState, GroupsViewModelAction, GroupsDomain> { }
+final class GroupsViewModel: BaseViewModel<GroupsViewModelState, GroupsViewModelCommand, GroupsDomain> { }

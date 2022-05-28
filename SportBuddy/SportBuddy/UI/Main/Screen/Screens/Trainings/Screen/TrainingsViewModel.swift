@@ -7,4 +7,4 @@
 
 // swiftlint:disable:next colon
 final class TrainingsViewModel:
-    BaseViewModel<TrainingsViewModelState, TrainingsViewModelAction, TrainingsDomain> { }
+    BaseViewModel<TrainingsViewModelState, TrainingsViewModelCommand, TrainingsDomain> { }

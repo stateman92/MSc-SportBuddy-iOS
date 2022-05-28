@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ChatsScreen: TabScreen<ChatsViewModelState, ChatsViewModelAction, ChatsDomain, ChatsViewModel> {
+final class ChatsScreen: TabScreen<ChatsViewModelState, ChatsViewModelCommand, ChatsDomain, ChatsViewModel> {
     // MARK: Properties
 
     private let emptyStateView = AnimationView(animation: .searching)
@@ -46,7 +46,7 @@ extension ChatsScreen {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        sendAction(.viewDidAppear)
+        sendCommand(.viewDidAppear)
     }
 }
 
@@ -88,7 +88,7 @@ extension ChatsScreen {
 
 extension ChatsScreen {
     @objc private func addBarButtonItemDidTap(_ sender: UIBarButtonItem) {
-        sendAction(.navigateToAddNewChatScreen)
+        sendCommand(.navigateToAddNewChatScreen)
     }
 }
 
@@ -110,6 +110,6 @@ extension ChatsScreen: UITableViewDataSource {
 
 extension ChatsScreen: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sendAction(.didSelect(chatDto: chats[indexPath.row]))
+        sendCommand(.didSelect(chatDto: chats[indexPath.row]))
     }
 }

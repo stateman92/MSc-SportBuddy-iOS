@@ -7,12 +7,12 @@
 
 import Combine
 
-final class ChatsViewModel: BaseViewModel<ChatsViewModelState, ChatsViewModelAction, ChatsDomain> {
-    // MARK: - Action
+final class ChatsViewModel: BaseViewModel<ChatsViewModelState, ChatsViewModelCommand, ChatsDomain> {
+    // MARK: - Command
 
-    override func receiveAction(_ action: ChatsViewModelAction) {
-        super.receiveAction(action)
-        switch action {
+    override func receiveCommand(_ command: ChatsViewModelCommand) {
+        super.receiveCommand(command)
+        switch command {
         case .viewDidAppear: viewDidAppear()
         case .navigateToAddNewChatScreen: navigateToAddNewChatScreen()
         case let .didSelect(chatDto): didSelect(chatDto: chatDto)
@@ -33,7 +33,7 @@ extension ChatsViewModel {
     }
 }
 
-// MARK: - Actions
+// MARK: - Commands
 
 extension ChatsViewModel {
     private func viewDidAppear() {
@@ -50,6 +50,6 @@ extension ChatsViewModel {
     private func didSelect(chatDto: ChatDTO) {
         navigatorService
             .present(ChatScreen.self, type: .push)
-            .sendAction(.setChatType(.existing(chatDto)))
+            .sendCommand(.setChatType(.existing(chatDto)))
     }
 }

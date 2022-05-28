@@ -61,4 +61,8 @@ extension AutoReversedTableView {
         self.data = data.reversed().map { $0.reversed() }
         super.reloadData()
     }
+
+    func data(for indexPath: IndexPath) -> Data {
+        data[indexPath.section][indexPath.row]
+    }
 }

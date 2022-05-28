@@ -22,6 +22,11 @@ final class CameraService {
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var skeletonShouldUpdated: ([BoneEndpoint]) -> Void = { _ in }
     @LazyInjected private var mlService: MLServiceProtocol
+
+    // MARK: Initialization
+
+    /// Initialize the service.
+    init() { }
 }
 
 // MARK: - CameraServiceProtocol

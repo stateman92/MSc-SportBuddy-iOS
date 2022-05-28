@@ -61,6 +61,9 @@ extension NavigatorService: NavigatorServiceProtocol {
         navigationController.present(screen, type: type, completion: completion)
     }
 
+    /// Pop some view controllers.
+    /// - Parameter toViewController: until this view controller all view controllers will be popped. If `nil`, it pops the latest view controller.
+    /// - Parameter animated: whether to use animation or not.
     func navigateBack(toViewController: UIViewController?, animated: Bool) {
         navigationController.navigateBack(toViewController: toViewController, animated: animated)
     }

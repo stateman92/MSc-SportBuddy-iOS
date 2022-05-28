@@ -11,7 +11,7 @@ final class ChatTableViewCell: ReversedTableViewCell {
     // MARK: Properties
 
     private let userImageView = LoadableImageView()
-    private let labelContentView = RoundedView()
+    let labelContentView = RoundedView()
     private let label = Label()
 
     // MARK: Initializations

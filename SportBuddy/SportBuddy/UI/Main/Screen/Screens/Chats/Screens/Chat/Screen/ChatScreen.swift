@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelAction, ChatDomain, ChatViewModel> {
+final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelCommand, ChatDomain, ChatViewModel> {
     // MARK: Properties
 
     private let tableView = AutoReversedTableView<ChatTableViewCell, ChatEntryDTO>(style: .grouped) { cell, data in
@@ -15,6 +15,8 @@ final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelAction, Chat
     }
     private let inputField = ChatInputField()
     private var bottomAnchor: NSLayoutConstraint?
+    @LazyInjected private var systemImageService: SystemImageServiceProtocol
+    @LazyInjected private var toastService: ToastServiceProtocol
 
     // MARK: - State
 
@@ -60,7 +62,7 @@ extension ChatScreen {
                 $0.isActive = true
             }
             $0.sendText = { [weak self] in
-                self?.sendAction(.sendMessage($0))
+                self?.sendCommand(.sendMessage($0))
             }
         }
     }
@@ -107,4 +109,76 @@ extension ChatScreen {
 
 // MARK: - UITableViewDelegate
 
-extension ChatScreen: UITableViewDelegate { }
+extension ChatScreen: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
+        let message = self.tableView.data(for: indexPath).message
+        return UIContextMenuConfiguration(identifier: indexPath as NSCopying,
+                                          previewProvider: nil) { [weak self] _ in
+            guard let self = self else { return nil }
+            return UIMenu(title: .init(), children: [self.shareAction(message: message),
+                                                     self.copyAction(message: message),
+                                                     self.deleteAction])
+        }
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration
+    ) -> UITargetedPreview? {
+        getTargetedPreview(for: configuration.identifier as? IndexPath)
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration
+    ) -> UITargetedPreview? {
+        getTargetedPreview(for: configuration.identifier as? IndexPath)
+    }
+}
+
+// MARK: - Private methods
+
+extension ChatScreen {
+    private func getTargetedPreview(for indexPath: IndexPath?) -> UITargetedPreview? {
+        guard let indexPath = indexPath,
+              let cell = tableView.cellForRow(at: indexPath) as? ChatTableViewCell else { return nil }
+
+        return UITargetedPreview(view: cell.labelContentView,
+                                 parameters: UIPreviewParameters().then { $0.backgroundColor = .clear })
+    }
+
+    private func shareAction(message: String) -> UIAction {
+        .init(title: "Share",
+              image: systemImageService.image(symbol: .squareAndArrowUp),
+              handler: { [weak self] _ in self?.share(message: message) })
+    }
+
+    private func copyAction(message: String) -> UIAction {
+        .init(title: "Copy",
+              image: systemImageService.image(symbol: .docOnDoc),
+              handler: { [weak self] _ in self?.sendCommand(.copy(message)) })
+    }
+
+    private var deleteAction: UIAction {
+        .init(title: "Delete",
+              image: systemImageService.image(symbol: .trash),
+              attributes: .destructive,
+              handler: { _ in })
+    }
+
+    private func share(message: String) {
+        let activityViewController = UIActivityViewController(activityItems: [message],
+                                                              applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
+            if completed {
+                self?.toastService.showToast(with: .init(message: "Message shared!", type: .success))
+            } else {
+                self?.toastService.showToast(with: .init(message: "Message cannot be shared!", type: .error))
+            }
+        }
+        activityViewController.popoverPresentationController?.sourceView = view
+        present(activityViewController, animated: true)
+    }
+}

@@ -9,7 +9,7 @@ import UIKit
 
 // swiftlint:disable:next colon
 final class LoginScreen:
-    ScrollingScreen<LoadingViewModelState, LoadingViewModelAction, LoginDomain, LoginViewModel> {
+    ScrollingScreen<LoadingViewModelState, LoadingViewModelCommand, LoginDomain, LoginViewModel> {
     // MARK: Properties
 
     private let segmentedControl = SwipingSegmentedControl()
@@ -17,7 +17,7 @@ final class LoginScreen:
     private let input = InputView()
     private let orView = View()
     private lazy var googleLoginButton = GoogleLoginButton(viewController: self) { [weak self] token in
-        self?.sendAction(.googleLogin(token: token))
+        self?.sendCommand(.googleLogin(token: token))
     }
 }
 
@@ -86,13 +86,13 @@ extension LoginScreen {
         input.then {
             cardView.add(view: $0, padding: 15)
             $0.login = { [weak self] in
-                self?.sendAction(.login(email: $0, password: $1))
+                self?.sendCommand(.login(email: $0, password: $1))
             }
             $0.signUp = { [weak self] in
-                self?.sendAction(.signUp(name: $0, email: $1, password: $2))
+                self?.sendCommand(.signUp(name: $0, email: $1, password: $2))
             }
             $0.forgotPassword = { [weak self] in
-                self?.sendAction(.forgotPassword(email: $0))
+                self?.sendCommand(.forgotPassword(email: $0))
             }
         }
     }

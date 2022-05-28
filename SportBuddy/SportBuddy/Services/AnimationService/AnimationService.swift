@@ -7,9 +7,13 @@
 
 /// A class for loading the images.
 final class AnimationService {
+    // MARK: Initialization
+
     /// Initialize the service.
     init() { }
 }
+
+// MARK: - AnimationServiceProtocol
 
 extension AnimationService: AnimationServiceProtocol {
     /// Load an image from an url.

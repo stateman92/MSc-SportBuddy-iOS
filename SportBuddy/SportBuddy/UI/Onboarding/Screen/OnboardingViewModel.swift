@@ -7,12 +7,12 @@
 
 // swiftlint:disable:next colon
 final class OnboardingViewModel:
-    BaseViewModel<OnboardingViewModelState, OnboardingViewModelAction, OnboardingDomain> {
-    // MARK: - Action
+    BaseViewModel<OnboardingViewModelState, OnboardingViewModelCommand, OnboardingDomain> {
+    // MARK: - Command
 
-    override func receiveAction(_ action: OnboardingViewModelAction) {
-        super.receiveAction(action)
-        switch action {
+    override func receiveCommand(_ command: OnboardingViewModelCommand) {
+        super.receiveCommand(command)
+        switch command {
         case .navigateNext: navigateNext()
         }
     }
@@ -40,7 +40,7 @@ extension OnboardingViewModel {
     }
 }
 
-// MARK: - Actions
+// MARK: - Commands
 
 extension OnboardingViewModel {
     private func navigateNext() {

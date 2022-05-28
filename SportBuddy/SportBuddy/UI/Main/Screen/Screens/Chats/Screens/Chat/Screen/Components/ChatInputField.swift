@@ -12,7 +12,7 @@ final class ChatInputField: View {
 
     private let backgroundView = View()
     private let textField = StyledTextView()
-    private let button = ButtonLabel(text: "Send", style: .tertiary, size: .small)
+    private let button = ButtonLabel(text: "Send", style: .tertiary, size: .normal)
 
     var sendText: (String) -> Void = { _ in } {
         didSet {

@@ -9,7 +9,13 @@ import SFSafeSymbols
 import UIKit
 
 /// A class for managing system images.
-final class SystemImageService { }
+final class SystemImageService {
+
+    // MARK: Initialization
+
+    /// Initialize the service.
+    init() { }
+}
 
 // MARK: - SystemImageServiceProtocol
 

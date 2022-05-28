@@ -8,12 +8,13 @@
 import Combine
 import Foundation
 
-class BaseViewModel<State, Action, Domain: DomainProtocol> {
+class BaseViewModel<State, Command, Domain: DomainProtocol> {
     // MARK: Properties
 
     @LazyInjected var navigatorService: NavigatorServiceProtocol
     @LazyInjected var settingService: SettingsServiceProtocol
-    @LazyInjected var toastHandlingService: ToastServiceProtocol
+    @LazyInjected var toastService: ToastServiceProtocol
+    @LazyInjected var copyService: CopyServiceProtocol
     @LazyInjected private var domain: Domain
 
     var cancellables = Cancellables()
@@ -47,13 +48,13 @@ class BaseViewModel<State, Action, Domain: DomainProtocol> {
     // MARK: - State
 
     final func sendState(_ state: State) {
-        print("ViewModel ---state---> View: \(String(describing: self)) sends \(state) state.")
+        print("ViewModel ---state---> View: \(className(target: self)) sends \(state) state.")
         self.state = state
     }
 
-    // MARK: - Action
+    // MARK: - Command
 
-    func receiveAction(_ action: Action) {
-        print("View ---action---> ViewModel: \(String(describing: self)) receives \(action) action.")
+    func receiveCommand(_ command: Command) {
+        print("View ---command---> ViewModel: \(className(target: self)) receives \(command) command.")
     }
 }

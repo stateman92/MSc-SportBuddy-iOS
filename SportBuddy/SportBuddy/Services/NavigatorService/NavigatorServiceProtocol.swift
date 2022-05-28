@@ -31,6 +31,9 @@ protocol NavigatorServiceProtocol: AnyObject {
                                                          type: NavigationType,
                                                          completion: @escaping () -> Void) -> T
 
+    /// Pop some view controllers.
+    /// - Parameter toViewController: until this view controller all view controllers will be popped. If `nil`, it pops the latest view controller.
+    /// - Parameter animated: whether to use animation or not.
     func navigateBack(toViewController: UIViewController?, animated: Bool)
 }
 
@@ -45,10 +48,15 @@ extension NavigatorServiceProtocol {
         present(DependencyInjector.resolve() as T, type: type, completion: completion)
     }
 
+    /// Pop some view controllers.
+    /// - Parameter toViewController: until this view controller all view controllers will be popped. If `nil`, it pops the latest view controller. By default `nil`.
+    /// - Parameter animated: whether to use animation or not. By default `true`.
     func navigateBack(toViewController: UIViewController? = nil, animated: Bool = true) {
         navigateBack(toViewController: toViewController, animated: animated)
     }
 
+    /// Pop the view controller with the given index counted from the topmost view controller.
+    /// - Parameter reverseIndex: the index of the view controller.
     func pop(reverseIndex: Int) {
         guard viewControllers.count > reverseIndex else { return }
         let index = viewControllers.count - reverseIndex - 1
@@ -56,6 +64,7 @@ extension NavigatorServiceProtocol {
         viewControllers.remove(at: index)
     }
 
+    /// Reset the service to its default state.
     func resetToDefault() {
         isNavigationBarHidden = true
         viewControllers = [DependencyInjector.resolve() as OnboardingScreen]

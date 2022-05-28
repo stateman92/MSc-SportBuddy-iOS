@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewModelAction, LoginDomain> {
-    // MARK: - Action
+final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewModelCommand, LoginDomain> {
+    // MARK: - Command
 
-    override func receiveAction(_ action: LoadingViewModelAction) {
-        super.receiveAction(action)
-        switch action {
+    override func receiveCommand(_ command: LoadingViewModelCommand) {
+        super.receiveCommand(command)
+        switch command {
         case let .login(email, password): login(email: email, password: password)
         case let .signUp(name, email, password): signUp(name: name, email: email, password: password)
         case let .forgotPassword(email): forgotPassword(email: email)
@@ -35,16 +35,16 @@ extension LoginViewModel {
     }
 }
 
-// MARK: - Actions
+// MARK: - Commands
 
 extension LoginViewModel {
     private func login(email: String, password: String) {
         action
             .login(email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
-                toastHandlingService.showToast(with: .init(message: "Login failed! Try again later.", type: .error))
+                toastService.showToast(with: .init(message: "Login failed! Try again later.", type: .error))
             }, receiveValue: { [unowned self] _ in
-                toastHandlingService.showToast(with: .init(message: "You've logged in successfully!", type: .success))
+                toastService.showToast(with: .init(message: "You've logged in successfully!", type: .success))
                 navigateNext()
             })
             .store(in: &cancellables)
@@ -54,10 +54,10 @@ extension LoginViewModel {
         action
             .signUp(name: name, email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
-                toastHandlingService.showToast(with: .init(message: "Registration failed! Try again later.",
-                                                           type: .error))
+                toastService.showToast(with: .init(message: "Registration failed! Try again later.",
+                                                   type: .error))
             }, receiveValue: { [unowned self] _ in
-                toastHandlingService.showToast(with: .init(message: "You've signed up successfully!", type: .success))
+                toastService.showToast(with: .init(message: "You've signed up successfully!", type: .success))
                 navigateNext()
             })
             .store(in: &cancellables)
@@ -67,12 +67,11 @@ extension LoginViewModel {
         action
             .forgotPassword(email: email)
             .sink(receiveError: { [unowned self] _ in
-                toastHandlingService.showToast(
+                toastService.showToast(
                     with: .init(message: "Forgot password request failed! Try again later.", type: .warning))
             }, receiveValue: { [unowned self] _ in
-                toastHandlingService.showToast(with: .init(
-                    message: "You've requested a password reset email successfully!",
-                    type: .success))
+                toastService.showToast(with: .init(message: "You've requested a password reset email successfully!",
+                                                   type: .success))
             })
             .store(in: &cancellables)
     }

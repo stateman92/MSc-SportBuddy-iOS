@@ -9,7 +9,7 @@ import UIKit
 
 // swiftlint:disable:next colon
 final class OnboardingScreen:
-    BaseScreen<OnboardingViewModelState, OnboardingViewModelAction, OnboardingDomain, OnboardingViewModel> {
+    BaseScreen<OnboardingViewModelState, OnboardingViewModelCommand, OnboardingDomain, OnboardingViewModel> {
     // MARK: Properties
 
     let onboard = Onboard()
@@ -74,7 +74,7 @@ extension OnboardingScreen: OnboardDataSource {
                 }
                 self?.backgroundView.finish {
                     self?.backgroundView.removeFromSuperview()
-                    self?.sendAction(.navigateNext)
+                    self?.sendCommand(.navigateNext)
                 }
             }
         }

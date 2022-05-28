@@ -9,9 +9,13 @@ import Foundation
 
 /// A protocol for managing all types of key-value pairs persistently.
 final class SettingsService {
+    // MARK: Properties
+
     @LazyInjected private var defaultSettingsService: DefaultSettingsServiceProtocol
     @LazyInjected private var secureSettingsService: SecureSettingsServiceProtocol
 }
+
+// MARK: - SettingsServiceProtocol
 
 extension SettingsService: SettingsServiceProtocol {
     /// Save a `Codable` value to the device.

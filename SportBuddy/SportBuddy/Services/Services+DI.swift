@@ -17,6 +17,7 @@ extension DependencyInjector {
         register(service: AnimationService(), implements: AnimationServiceProtocol.self)
         register(service: CameraService(), implements: CameraServiceProtocol.self)
         register(service: CoderService(), implements: CoderServiceProtocol.self)
+        register(service: CopyService(), implements: CopyServiceProtocol.self)
         register(service: ImageLoadingService(), implements: ImageLoadingServiceProtocol.self)
         register(service: LoggingService(), implements: LoggingServiceProtocol.self)
         register(service: MLService(), implements: MLServiceProtocol.self)

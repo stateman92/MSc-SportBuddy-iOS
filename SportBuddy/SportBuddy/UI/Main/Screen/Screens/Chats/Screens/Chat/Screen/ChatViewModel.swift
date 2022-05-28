@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelAction, ChatDomain> {
+final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelCommand, ChatDomain> {
     // MARK: Properties
 
     private var chatType: ChatType! {
@@ -19,18 +19,19 @@ final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelAction
         }
     }
 
-    // MARK: - Action
+    // MARK: - Command
 
-    override func receiveAction(_ action: ChatViewModelAction) {
-        super.receiveAction(action)
-        switch action {
+    override func receiveCommand(_ command: ChatViewModelCommand) {
+        super.receiveCommand(command)
+        switch command {
         case let .setChatType(chatType): setChatType(chatType)
         case let .sendMessage(message): sendMessage(message)
+        case let .copy(message): copy(message)
         }
     }
 }
 
-// MARK: - Actions
+// MARK: - Commands
 
 extension ChatViewModel {
     private func setChatType(_ chatType: ChatType) {
@@ -46,5 +47,10 @@ extension ChatViewModel {
                       message: message)
             .sink()
             .store(in: &cancellables)
+    }
+
+    private func copy(_ message: String) {
+        copyService.copy(string: message)
+        toastService.showToast(with: .init(message: "Message copied!", type: .success))
     }
 }

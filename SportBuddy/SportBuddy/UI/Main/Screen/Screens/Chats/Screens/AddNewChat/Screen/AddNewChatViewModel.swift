@@ -9,16 +9,16 @@ import Foundation
 
 // swiftlint:disable:next colon
 final class AddNewChatViewModel:
-    BaseViewModel<AddNewChatViewModelState, AddNewChatViewModelAction, AddNewChatDomain> {
+    BaseViewModel<AddNewChatViewModelState, AddNewChatViewModelCommand, AddNewChatDomain> {
     // MARK: Properties
 
     @Throttling(wrappedValue: .init(), seconds: 0.66) private var searchTerm: String
 
-    // MARK: - Action
+    // MARK: - Command
 
-    override func receiveAction(_ action: AddNewChatViewModelAction) {
-        super.receiveAction(action)
-        switch action {
+    override func receiveCommand(_ command: AddNewChatViewModelCommand) {
+        super.receiveCommand(command)
+        switch command {
         case let .searchTermDidChange(string): searchTermDidChange(string)
         case let .forceSearchTermDidChange(string): forceSearchTermDidChange(string)
         case let .didSelect(id): didSelect(id: id)
@@ -43,7 +43,7 @@ extension AddNewChatViewModel {
     }
 }
 
-// MARK: - Actions
+// MARK: - Commands
 
 extension AddNewChatViewModel {
     private func searchTermDidChange(_ string: String) {
@@ -59,7 +59,7 @@ extension AddNewChatViewModel {
             .present(ChatScreen.self, type: .push) { [weak self] in
                 self?.navigatorService.pop(reverseIndex: 1)
             }
-            .sendAction(.setChatType(.new(chatId: .init(), recipientId: id)))
+            .sendCommand(.setChatType(.new(chatId: .init(), recipientId: id)))
         action.clearSearchedUser().sink().store(in: &cancellables)
     }
 }

@@ -10,9 +10,9 @@ import UIKit
 
 // swiftlint:disable:next operator_usage_whitespace
 class BaseScreen<State,
-                 Action,
+                 Command,
                  Domain,
-                 ViewModel: BaseViewModel<State, Action, Domain>>: ViewController {
+                 ViewModel: BaseViewModel<State, Command, Domain>>: ViewController {
     // MARK: Properties
 
     @LazyInjected private var loadingService: LoadingServiceProtocol
@@ -38,9 +38,9 @@ class BaseScreen<State,
 
     func receiveState(_ state: State) { }
 
-    // MARK: - Action
+    // MARK: - Command
 
-    final func sendAction(_ action: Action) {
-        viewModel.receiveAction(action)
+    final func sendCommand(_ command: Command) {
+        viewModel.receiveCommand(command)
     }
 }

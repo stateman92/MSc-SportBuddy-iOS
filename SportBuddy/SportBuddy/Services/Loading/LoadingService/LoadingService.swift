@@ -67,7 +67,3 @@ extension LoadingService: LoadingServiceProtocol {
             .store(in: &cancellables)
     }
 }
-
-struct ABC {
-    let ac: () -> Void
-}

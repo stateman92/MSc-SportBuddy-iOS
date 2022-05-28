@@ -7,4 +7,4 @@
 
 // swiftlint:disable:next colon
 final class SettingsViewModel:
-    BaseViewModel<SettingsViewModelState, SettingsViewModelAction, SettingsDomain> { }
+    BaseViewModel<SettingsViewModelState, SettingsViewModelCommand, SettingsDomain> { }

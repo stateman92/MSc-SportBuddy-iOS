@@ -10,9 +10,13 @@ import Kingfisher
 
 /// A class for loading the images.
 final class ImageLoadingService {
+    // MARK: Initialization
+
     /// Initialize the service.
     init() { }
 }
+
+// MARK: - ImageLoadingServiceProtocol
 
 extension ImageLoadingService: ImageLoadingServiceProtocol {
     /// Load an image from an url.

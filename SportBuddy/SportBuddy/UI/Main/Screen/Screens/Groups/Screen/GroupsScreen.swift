@@ -7,7 +7,7 @@
 
 // swiftlint:disable:next colon
 final class GroupsScreen:
-    TabScreen<GroupsViewModelState, GroupsViewModelAction, GroupsDomain, GroupsViewModel> {
+    TabScreen<GroupsViewModelState, GroupsViewModelCommand, GroupsDomain, GroupsViewModel> {
     // MARK: Initialization
 
     init() {

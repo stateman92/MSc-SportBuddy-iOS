@@ -9,7 +9,7 @@ import UIKit
 
 // swiftlint:disable:next colon
 final class AddNewChatScreen:
-    BaseScreen<AddNewChatViewModelState, AddNewChatViewModelAction, AddNewChatDomain, AddNewChatViewModel> {
+    BaseScreen<AddNewChatViewModelState, AddNewChatViewModelCommand, AddNewChatDomain, AddNewChatViewModel> {
     // MARK: Properties
 
     private let emptyStateView = AnimationView(animation: .searching)
@@ -83,12 +83,12 @@ extension AddNewChatScreen {
 
 extension AddNewChatScreen: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        sendAction(.searchTermDidChange(searchText))
+        sendCommand(.searchTermDidChange(searchText))
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        sendAction(.forceSearchTermDidChange(searchText))
+        sendCommand(.forceSearchTermDidChange(searchText))
     }
 }
 
@@ -110,6 +110,6 @@ extension AddNewChatScreen: UITableViewDataSource {
 
 extension AddNewChatScreen: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sendAction(.didSelect(id: users[indexPath.row].primaryId))
+        sendCommand(.didSelect(id: users[indexPath.row].primaryId))
     }
 }
