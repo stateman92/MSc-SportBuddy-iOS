@@ -30,8 +30,8 @@ final class AnimatedKeyboardObserver {
                       let curve = notification.keyboardAnimationCurve?.asAnimationOptions,
                       let beginFrame = notification.keyboardFrameBegin,
                       let endFrame = notification.keyboardFrameEnd else {
-                          return
-                      }
+                    return
+                }
 
                 UIView.animate(
                     duration: duration,
@@ -39,9 +39,9 @@ final class AnimatedKeyboardObserver {
                     before: {
                         beforeShowKeyboard.send((beginFrame, endFrame))
                     }, animations: {
-                        showingKeyboard.send((beginFrame, endFrame))
+                        self.showingKeyboard.send((beginFrame, endFrame))
                     }, completion: { _ in
-                        afterShowingKeyboard.send((beginFrame, endFrame))
+                        self.afterShowingKeyboard.send((beginFrame, endFrame))
                     })
             }
             .store(in: &cancellables)
@@ -52,8 +52,8 @@ final class AnimatedKeyboardObserver {
                       let curve = notification.keyboardAnimationCurve?.asAnimationOptions,
                       let beginFrame = notification.keyboardFrameBegin,
                       let endFrame = notification.keyboardFrameEnd else {
-                          return
-                      }
+                    return
+                }
 
                 UIView.animate(
                     duration: duration,
@@ -61,9 +61,9 @@ final class AnimatedKeyboardObserver {
                     before: {
                         beforeHideKeyboard.send((beginFrame, endFrame))
                     }, animations: {
-                        hidingKeyboard.send((beginFrame, endFrame))
+                        self.hidingKeyboard.send((beginFrame, endFrame))
                     }, completion: { _ in
-                        afterHidingKeyboard.send((beginFrame, endFrame))
+                        self.afterHidingKeyboard.send((beginFrame, endFrame))
                     })
             }
             .store(in: &cancellables)

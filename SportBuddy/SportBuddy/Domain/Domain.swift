@@ -64,8 +64,8 @@ extension Domain {
         showUnauthenticatedToast: Bool,
         task: @escaping (@escaping (Result<S, T>) -> Void) -> Void) -> AnyPublisher<Void, T> {
             DeferredFuture { [unowned self] future in
-                task {
-                    handle(result: $0, showUnauthenticatedToast: showUnauthenticatedToast, future: future)
+                task { [weak self] in
+                    self?.handle(result: $0, showUnauthenticatedToast: showUnauthenticatedToast, future: future)
                 }
             }.eraseOnMain()
         }
