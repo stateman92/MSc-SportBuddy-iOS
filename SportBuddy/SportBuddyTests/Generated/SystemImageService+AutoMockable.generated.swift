@@ -8,7 +8,7 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class SystemImageServiceProtocolMock: SystemImageServiceProtocol {
+class SystemImageServiceMock: SystemImageService {
 
     //MARK: - image
 

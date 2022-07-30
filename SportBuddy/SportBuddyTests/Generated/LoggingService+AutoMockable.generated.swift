@@ -8,7 +8,7 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class LoggingServiceProtocolMock: LoggingServiceProtocol {
+class LoggingServiceMock: LoggingService {
 
     //MARK: - init
 

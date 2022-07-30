@@ -8,7 +8,7 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class LoadingServiceProtocolMock: LoadingServiceProtocol {
+class LoadingServiceMock: LoadingService {
     var state: AnyPublisher<LoadingState, Never> {
         get { return underlyingState }
         set(value) { underlyingState = value }
@@ -66,11 +66,11 @@ class LoadingServiceProtocolMock: LoadingServiceProtocol {
     var bindToCalled: Bool {
         return bindToCallsCount > 0
     }
-    var bindToReceivedService: LoadingOverlayServiceProtocol?
-    var bindToReceivedInvocations: [LoadingOverlayServiceProtocol] = []
-    var bindToClosure: ((LoadingOverlayServiceProtocol) -> Void)?
+    var bindToReceivedService: LoadingOverlayService?
+    var bindToReceivedInvocations: [LoadingOverlayService] = []
+    var bindToClosure: ((LoadingOverlayService) -> Void)?
 
-    func bind(to service: LoadingOverlayServiceProtocol) {
+    func bind(to service: LoadingOverlayService) {
         bindToCallsCount += 1
         bindToReceivedService = service
         bindToReceivedInvocations.append(service)

@@ -91,16 +91,6 @@
 		5854420F282310260078E772 /* MockLoginAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5854420E282310260078E772 /* MockLoginAction.swift */; };
 		58544211282310770078E772 /* Mockables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58544210282310770078E772 /* Mockables.swift */; };
 		5862DDC7280CC03000ABFD86 /* Domain+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862DDC6280CC03000ABFD86 /* Domain+DI.swift */; };
-		5866AFCA280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFBF280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFCB280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC0280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFCC280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC1280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFCD280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC2280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFCE280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC3280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFCF280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC4280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFD0280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC5280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFD1280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFD2280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */; };
-		5866AFD4280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */; };
 		586CB04B281D7B0600D753FB /* OnboardingViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04A281D7B0600D753FB /* OnboardingViewModelState.swift */; };
 		586CB04D281D7D3D00D753FB /* LoadingViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04C281D7D3D00D753FB /* LoadingViewModelState.swift */; };
 		586CB04F281D7E0D00D753FB /* MainViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04E281D7E0D00D753FB /* MainViewModelState.swift */; };
@@ -341,6 +331,18 @@
 		58EBF20427FBB6B500BA81CB /* LoadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1FF27FBB6B500BA81CB /* LoadingServiceTests.swift */; };
 		58EBF20727FBB76100BA81CB /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF20627FBB76000BA81CB /* UIApplication+Extensions.swift */; };
 		58EBF20927FBB76500BA81CB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF20827FBB76500BA81CB /* UITableView+Extensions.swift */; };
+		58EE7E4528956D5000478CDA /* LoadingOverlayService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E3928956D4F00478CDA /* LoadingOverlayService+AutoMockable.generated.swift */; };
+		58EE7E4628956D5000478CDA /* ImageLoadingService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E3A28956D4F00478CDA /* ImageLoadingService+AutoMockable.generated.swift */; };
+		58EE7E4728956D5000478CDA /* LoadingService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E3B28956D4F00478CDA /* LoadingService+AutoMockable.generated.swift */; };
+		58EE7E4828956D5000478CDA /* CopyService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E3C28956D4F00478CDA /* CopyService+AutoMockable.generated.swift */; };
+		58EE7E4928956D5000478CDA /* LoggingService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E3D28956D4F00478CDA /* LoggingService+AutoMockable.generated.swift */; };
+		58EE7E4A28956D5000478CDA /* MLService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E3E28956D4F00478CDA /* MLService+AutoMockable.generated.swift */; };
+		58EE7E4B28956D5000478CDA /* AnimationService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E3F28956D5000478CDA /* AnimationService+AutoMockable.generated.swift */; };
+		58EE7E4C28956D5000478CDA /* SystemImageService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E4028956D5000478CDA /* SystemImageService+AutoMockable.generated.swift */; };
+		58EE7E4D28956D5000478CDA /* ToastOverlayService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E4128956D5000478CDA /* ToastOverlayService+AutoMockable.generated.swift */; };
+		58EE7E4E28956D5000478CDA /* ToastService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E4228956D5000478CDA /* ToastService+AutoMockable.generated.swift */; };
+		58EE7E4F28956D5000478CDA /* CameraService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E4328956D5000478CDA /* CameraService+AutoMockable.generated.swift */; };
+		58EE7E5028956D5000478CDA /* ConnectivityService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EE7E4428956D5000478CDA /* ConnectivityService+AutoMockable.generated.swift */; };
 		58F208A32854EA9300401DBB /* GeneralCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F208A22854EA9300401DBB /* GeneralCache.swift */; };
 		58F274352812090900251284 /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F274342812090900251284 /* NavigationType.swift */; };
 		58F976D827DE76CB00E74C5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F976DA27DE76CB00E74C5F /* Localizable.strings */; };
@@ -471,16 +473,6 @@
 		5854420E282310260078E772 /* MockLoginAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginAction.swift; sourceTree = "<group>"; };
 		58544210282310770078E772 /* Mockables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockables.swift; sourceTree = "<group>"; };
 		5862DDC6280CC03000ABFD86 /* Domain+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Domain+DI.swift"; sourceTree = "<group>"; };
-		5866AFBF280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CameraServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC0280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoggingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC1280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SystemImageServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC2280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageLoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC3280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingOverlayServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC4280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastOverlayServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC5280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		586CB04A281D7B0600D753FB /* OnboardingViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelState.swift; sourceTree = "<group>"; };
 		586CB04C281D7D3D00D753FB /* LoadingViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModelState.swift; sourceTree = "<group>"; };
 		586CB04E281D7E0D00D753FB /* MainViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelState.swift; sourceTree = "<group>"; };
@@ -717,6 +709,18 @@
 		58EBF1FF27FBB6B500BA81CB /* LoadingServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingServiceTests.swift; sourceTree = "<group>"; };
 		58EBF20627FBB76000BA81CB /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		58EBF20827FBB76500BA81CB /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		58EE7E3928956D4F00478CDA /* LoadingOverlayService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingOverlayService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E3A28956D4F00478CDA /* ImageLoadingService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageLoadingService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E3B28956D4F00478CDA /* LoadingService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E3C28956D4F00478CDA /* CopyService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CopyService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E3D28956D4F00478CDA /* LoggingService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoggingService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E3E28956D4F00478CDA /* MLService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E3F28956D5000478CDA /* AnimationService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E4028956D5000478CDA /* SystemImageService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SystemImageService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E4128956D5000478CDA /* ToastOverlayService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastOverlayService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E4228956D5000478CDA /* ToastService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E4328956D5000478CDA /* CameraService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CameraService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		58EE7E4428956D5000478CDA /* ConnectivityService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectivityService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58F208A22854EA9300401DBB /* GeneralCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCache.swift; sourceTree = "<group>"; };
 		58F274342812090900251284 /* NavigationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationType.swift; sourceTree = "<group>"; };
 		58F976D427DE76A600E74C5F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -2362,16 +2366,18 @@
 		58EBF1ED27FBB5F200BA81CB /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */,
-				5866AFBF280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC2280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC3280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC0280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC1280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC4280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift */,
-				5866AFC5280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift */,
+				58EE7E3F28956D5000478CDA /* AnimationService+AutoMockable.generated.swift */,
+				58EE7E4328956D5000478CDA /* CameraService+AutoMockable.generated.swift */,
+				58EE7E4428956D5000478CDA /* ConnectivityService+AutoMockable.generated.swift */,
+				58EE7E3C28956D4F00478CDA /* CopyService+AutoMockable.generated.swift */,
+				58EE7E3A28956D4F00478CDA /* ImageLoadingService+AutoMockable.generated.swift */,
+				58EE7E3928956D4F00478CDA /* LoadingOverlayService+AutoMockable.generated.swift */,
+				58EE7E3B28956D4F00478CDA /* LoadingService+AutoMockable.generated.swift */,
+				58EE7E3D28956D4F00478CDA /* LoggingService+AutoMockable.generated.swift */,
+				58EE7E3E28956D4F00478CDA /* MLService+AutoMockable.generated.swift */,
+				58EE7E4028956D5000478CDA /* SystemImageService+AutoMockable.generated.swift */,
+				58EE7E4128956D5000478CDA /* ToastOverlayService+AutoMockable.generated.swift */,
+				58EE7E4228956D5000478CDA /* ToastService+AutoMockable.generated.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -3225,21 +3231,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5866AFCC280F5690005E6DB1 /* SystemImageServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58C3ECC0281AAE7600DBD5BB /* ThrottlingTests.swift in Sources */,
+				58EE7E4E28956D5000478CDA /* ToastService+AutoMockable.generated.swift in Sources */,
+				58EE7E4928956D5000478CDA /* LoggingService+AutoMockable.generated.swift in Sources */,
+				58EE7E4A28956D5000478CDA /* MLService+AutoMockable.generated.swift in Sources */,
+				58EE7E4528956D5000478CDA /* LoadingOverlayService+AutoMockable.generated.swift in Sources */,
+				58EE7E4D28956D5000478CDA /* ToastOverlayService+AutoMockable.generated.swift in Sources */,
+				58EE7E4B28956D5000478CDA /* AnimationService+AutoMockable.generated.swift in Sources */,
 				58EBF1F427FBB66E00BA81CB /* BaseTestCase.swift in Sources */,
-				5866AFCF280F5690005E6DB1 /* ToastOverlayServiceProtocol+AutoMockable.generated.swift in Sources */,
+				58EE7E4628956D5000478CDA /* ImageLoadingService+AutoMockable.generated.swift in Sources */,
+				58EE7E4828956D5000478CDA /* CopyService+AutoMockable.generated.swift in Sources */,
+				58EE7E5028956D5000478CDA /* ConnectivityService+AutoMockable.generated.swift in Sources */,
+				58EE7E4C28956D5000478CDA /* SystemImageService+AutoMockable.generated.swift in Sources */,
+				58EE7E4728956D5000478CDA /* LoadingService+AutoMockable.generated.swift in Sources */,
 				58EBF1F727FBB68700BA81CB /* Mock+DI.swift in Sources */,
-				5866AFD1280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */,
-				5866AFCA280F5690005E6DB1 /* CameraServiceProtocol+AutoMockable.generated.swift in Sources */,
-				5866AFD0280F5690005E6DB1 /* ToastServiceProtocol+AutoMockable.generated.swift in Sources */,
 				58EBF20427FBB6B500BA81CB /* LoadingServiceTests.swift in Sources */,
+				58EE7E4F28956D5000478CDA /* CameraService+AutoMockable.generated.swift in Sources */,
 				58EBF1FA27FBB69A00BA81CB /* XCTestCase+Extensions.swift in Sources */,
-				5866AFD2280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift in Sources */,
-				5866AFCD280F5690005E6DB1 /* ImageLoadingServiceProtocol+AutoMockable.generated.swift in Sources */,
-				5866AFCE280F5690005E6DB1 /* LoadingOverlayServiceProtocol+AutoMockable.generated.swift in Sources */,
-				5866AFCB280F5690005E6DB1 /* LoggingServiceProtocol+AutoMockable.generated.swift in Sources */,
-				5866AFD4280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3481,6 +3489,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -3501,6 +3510,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -3520,6 +3530,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
@@ -3538,6 +3549,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
@@ -3652,6 +3664,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -3671,6 +3684,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;

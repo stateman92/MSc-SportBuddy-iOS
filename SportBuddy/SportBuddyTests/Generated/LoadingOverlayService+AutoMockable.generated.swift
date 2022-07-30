@@ -8,7 +8,7 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class LoadingOverlayServiceProtocolMock: LoadingOverlayServiceProtocol {
+class LoadingOverlayServiceMock: LoadingOverlayService {
 
     //MARK: - init
 

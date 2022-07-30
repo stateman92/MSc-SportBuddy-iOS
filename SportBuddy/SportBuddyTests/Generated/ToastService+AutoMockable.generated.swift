@@ -8,15 +8,15 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class ToastServiceProtocolMock: ToastServiceProtocol {
+class ToastServiceMock: ToastService {
 
     //MARK: - init
 
-    var initOnOverlayServiceTypeReceivedArguments: (view: UIView?, overlayServiceType: ToastOverlayServiceProtocol.Type)?
-    var initOnOverlayServiceTypeReceivedInvocations: [(view: UIView?, overlayServiceType: ToastOverlayServiceProtocol.Type)] = []
-    var initOnOverlayServiceTypeClosure: ((UIView?, ToastOverlayServiceProtocol.Type) -> Void)?
+    var initOnOverlayServiceTypeReceivedArguments: (view: UIView?, overlayServiceType: ToastOverlayService.Type)?
+    var initOnOverlayServiceTypeReceivedInvocations: [(view: UIView?, overlayServiceType: ToastOverlayService.Type)] = []
+    var initOnOverlayServiceTypeClosure: ((UIView?, ToastOverlayService.Type) -> Void)?
 
-    required init(on view: UIView?, overlayServiceType: ToastOverlayServiceProtocol.Type) {
+    required init(on view: UIView?, overlayServiceType: ToastOverlayService.Type) {
         initOnOverlayServiceTypeReceivedArguments = (view: view, overlayServiceType: overlayServiceType)
         initOnOverlayServiceTypeReceivedInvocations.append((view: view, overlayServiceType: overlayServiceType))
         initOnOverlayServiceTypeClosure?(view, overlayServiceType)

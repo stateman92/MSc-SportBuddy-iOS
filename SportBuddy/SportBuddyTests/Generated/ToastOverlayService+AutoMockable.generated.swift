@@ -8,7 +8,7 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class ToastOverlayServiceProtocolMock: ToastOverlayServiceProtocol {
+class ToastOverlayServiceMock: ToastOverlayService {
 
     //MARK: - init
 

@@ -8,7 +8,7 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class ImageLoadingServiceProtocolMock: ImageLoadingServiceProtocol {
+class ImageLoadingServiceMock: ImageLoadingService {
 
     //MARK: - load
 

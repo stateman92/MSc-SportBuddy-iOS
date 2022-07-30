@@ -8,7 +8,7 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class CameraServiceProtocolMock: CameraServiceProtocol {
+class CameraServiceMock: CameraService {
 
     //MARK: - set
 
