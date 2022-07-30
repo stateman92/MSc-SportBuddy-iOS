@@ -8,3 +8,5 @@
 struct MainViewModelState { }
 
 extension MainViewModelState: Initable { }
+
+extension MainViewModelState: Equatable { }

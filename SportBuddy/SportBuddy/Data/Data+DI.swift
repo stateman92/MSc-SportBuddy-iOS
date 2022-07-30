@@ -20,7 +20,7 @@ extension DependencyInjector {
         register(cache: TokenCache())
     }
 
-    private static func register<T, S>(cache: T) where T: Cache<S> {
+    private static func register<T, S>(cache: T) where T: GeneralCache<S> {
         resolver.register { cache }.scope(.application)
     }
 }

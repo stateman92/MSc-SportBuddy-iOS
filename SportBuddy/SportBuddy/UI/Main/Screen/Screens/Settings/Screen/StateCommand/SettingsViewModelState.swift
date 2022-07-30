@@ -8,3 +8,5 @@
 struct SettingsViewModelState { }
 
 extension SettingsViewModelState: Initable { }
+
+extension SettingsViewModelState: Equatable { }

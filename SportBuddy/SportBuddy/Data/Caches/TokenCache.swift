@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class TokenCache: PersistentCache<UUID> {
+final class TokenCache: GeneralCache<UUID> {
     // MARK: Initialization
 
-    required init() {
-        super.init(key: .token)
+    init() {
+        super.init(cacheType: .persistent(key: .token))
     }
 }

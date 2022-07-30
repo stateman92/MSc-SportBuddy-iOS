@@ -8,3 +8,5 @@
 struct LoadingViewModelState { }
 
 extension LoadingViewModelState: Initable { }
+
+extension LoadingViewModelState: Equatable { }

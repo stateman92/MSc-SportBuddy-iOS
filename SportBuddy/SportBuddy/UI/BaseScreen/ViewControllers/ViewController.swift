@@ -22,6 +22,7 @@ class ViewController: UIViewController {
             updateBackgroundView()
         }
     }
+    var isVisible = false
     let backgroundView = BackgroundView()
     override var title: String? {
         didSet {
@@ -48,6 +49,16 @@ extension ViewController {
         super.viewDidLoad()
         setupView()
         setupBindings()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isVisible = true
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isVisible = false
     }
 
     @objc dynamic func setupView() {

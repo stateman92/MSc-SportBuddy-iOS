@@ -102,7 +102,6 @@
 		5866AFD1280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */; };
 		5866AFD2280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */; };
 		5866AFD4280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */; };
-		586CB049281D763000D753FB /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB048281D763000D753FB /* ViewModelState.swift */; };
 		586CB04B281D7B0600D753FB /* OnboardingViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04A281D7B0600D753FB /* OnboardingViewModelState.swift */; };
 		586CB04D281D7D3D00D753FB /* LoadingViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04C281D7D3D00D753FB /* LoadingViewModelState.swift */; };
 		586CB04F281D7E0D00D753FB /* MainViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04E281D7E0D00D753FB /* MainViewModelState.swift */; };
@@ -339,6 +338,7 @@
 		58EBF20427FBB6B500BA81CB /* LoadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF1FF27FBB6B500BA81CB /* LoadingServiceTests.swift */; };
 		58EBF20727FBB76100BA81CB /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF20627FBB76000BA81CB /* UIApplication+Extensions.swift */; };
 		58EBF20927FBB76500BA81CB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EBF20827FBB76500BA81CB /* UITableView+Extensions.swift */; };
+		58F208A32854EA9300401DBB /* GeneralCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F208A22854EA9300401DBB /* GeneralCache.swift */; };
 		58F274352812090900251284 /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F274342812090900251284 /* NavigationType.swift */; };
 		58F976D827DE76CB00E74C5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F976DA27DE76CB00E74C5F /* Localizable.strings */; };
 		58F976DD27DE77BB00E74C5F /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F976DC27DE77BB00E74C5F /* Fonts.swift */; };
@@ -479,7 +479,6 @@
 		5866AFC6280F5690005E6DB1 /* MLServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		5866AFC7280F5690005E6DB1 /* AnimationServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		5866AFC9280F5690005E6DB1 /* LoadingServiceProtocol+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingServiceProtocol+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		586CB048281D763000D753FB /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		586CB04A281D7B0600D753FB /* OnboardingViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelState.swift; sourceTree = "<group>"; };
 		586CB04C281D7D3D00D753FB /* LoadingViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModelState.swift; sourceTree = "<group>"; };
 		586CB04E281D7E0D00D753FB /* MainViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelState.swift; sourceTree = "<group>"; };
@@ -712,6 +711,7 @@
 		58EBF1FF27FBB6B500BA81CB /* LoadingServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingServiceTests.swift; sourceTree = "<group>"; };
 		58EBF20627FBB76000BA81CB /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		58EBF20827FBB76500BA81CB /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		58F208A22854EA9300401DBB /* GeneralCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCache.swift; sourceTree = "<group>"; };
 		58F274342812090900251284 /* NavigationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationType.swift; sourceTree = "<group>"; };
 		58F976D427DE76A600E74C5F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		58F976D927DE76CB00E74C5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1691,6 +1691,7 @@
 			children = (
 				58AAEC3A280BC0230054E2F0 /* Cache.swift */,
 				58AAEC40280BC1EE0054E2F0 /* PersistentCache.swift */,
+				58F208A22854EA9300401DBB /* GeneralCache.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -2404,7 +2405,6 @@
 				58A199D1281C8FE800140140 /* DeferredFuture.swift */,
 				580B0EC2281935DF00E14F8B /* Throttling.swift */,
 				5882AD05280E39B200A09023 /* Queue.swift */,
-				586CB048281D763000D753FB /* ViewModelState.swift */,
 				58C1D44927F51BED005D13C4 /* Extensions */,
 			);
 			path = Common;
@@ -3152,6 +3152,7 @@
 				58DCE6D9281EE0EA00BCB07C /* UserCache.swift in Sources */,
 				58DCE708281EE25D00BCB07C /* SettingsActionProtocol.swift in Sources */,
 				58C27EDB28113C99000FC602 /* URLSessionImplementations.swift in Sources */,
+				58F208A32854EA9300401DBB /* GeneralCache.swift in Sources */,
 				587F30382809DCFE00EFA7E9 /* CoderService.swift in Sources */,
 				58731E602823132E008A7562 /* MockTrainingsAction.swift in Sources */,
 				58731E7028231712008A7562 /* MockChatAction.swift in Sources */,
@@ -3169,7 +3170,6 @@
 				58B2E1E427F3C377004135E2 /* OnboardingPage.swift in Sources */,
 				58DCE745281EE7E700BCB07C /* GroupsStoreProtocol.swift in Sources */,
 				58DD921A280F3097006544AE /* AVCaptureVideoDataOutput+Extensions.swift in Sources */,
-				586CB049281D763000D753FB /* ViewModelState.swift in Sources */,
 				58DCE6BC281EDFBA00BCB07C /* OnboardingStoreProtocol.swift in Sources */,
 				5828491F280BA3D800034010 /* TableView.swift in Sources */,
 				586CB06B281D90B100D753FB /* SettingsViewModelCommand.swift in Sources */,

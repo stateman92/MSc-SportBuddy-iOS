@@ -14,3 +14,5 @@ extension ChatViewModelState: Initable {
         self.init(chat: .init(primaryId: .init(), users: .init(), chatEntries: .init(), image: .init()))
     }
 }
+
+extension ChatViewModelState: Equatable { }

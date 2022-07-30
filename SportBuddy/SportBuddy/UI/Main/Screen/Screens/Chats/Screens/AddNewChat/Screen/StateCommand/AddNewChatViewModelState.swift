@@ -14,3 +14,5 @@ extension AddNewChatViewModelState: Initable {
         self.init(users: .init())
     }
 }
+
+extension AddNewChatViewModelState: Equatable { }

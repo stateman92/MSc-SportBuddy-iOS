@@ -10,3 +10,5 @@ import Combine
 struct OnboardingViewModelState { }
 
 extension OnboardingViewModelState: Initable { }
+
+extension OnboardingViewModelState: Equatable { }

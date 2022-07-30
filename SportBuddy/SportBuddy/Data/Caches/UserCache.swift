@@ -5,10 +5,10 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class UserCache: PersistentCache<UserDTO> {
+final class UserCache: GeneralCache<UserDTO> {
     // MARK: Initialization
 
-    required init() {
-        super.init(key: .user)
+    init() {
+        super.init(cacheType: .persistent(key: .user))
     }
 }

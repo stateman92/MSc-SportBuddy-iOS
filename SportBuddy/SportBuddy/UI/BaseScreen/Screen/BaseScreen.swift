@@ -18,6 +18,13 @@ class BaseScreen<State,
     @LazyInjected private var loadingService: LoadingServiceProtocol
     @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
     @LazyInjected private var viewModel: ViewModel
+    override var isVisible: Bool {
+        didSet {
+            if !oldValue, isVisible {
+                receiveState(viewModel.viewState.value)
+            }
+        }
+    }
     var cancellables = Cancellables()
 
     // MARK: - Lifecycle
@@ -30,6 +37,7 @@ class BaseScreen<State,
     override func setupBindings() {
         super.setupBindings()
         viewModel.viewState
+            .filter { [unowned self] _ in isVisible }
             .sink { [unowned self] in receiveState($0) }
             .store(in: &cancellables)
     }

@@ -21,12 +21,20 @@ class Cache<Item> {
 
     // MARK: Overridable methods
 
-    func value() -> AnyPublisher<Item?, Never> {
-        cache.eraseToAnyPublisher()
-    }
-
     func clear() {
         cache.send(nil)
+    }
+
+    func save(item: Item) {
+        cache.send(item)
+    }
+}
+
+// MARK: - Public methods
+
+extension Cache {
+    func value() -> AnyPublisher<Item?, Never> {
+        cache.eraseToAnyPublisher()
     }
 
     func saveWithPublisher(item: Item) -> AnyPublisher<Void, Never> {
@@ -35,10 +43,6 @@ class Cache<Item> {
             $0(.success(()))
         }
         .eraseToAnyPublisher()
-    }
-
-    func save(item: Item) {
-        cache.send(item)
     }
 
     func modify(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
@@ -51,11 +55,7 @@ class Cache<Item> {
         }
         .eraseToAnyPublisher()
     }
-}
 
-// MARK: - Public methods
-
-extension Cache {
     func autoEraseOnMain() -> DomainStorePublisher<Item> {
         value().autoEraseOnMain()
     }

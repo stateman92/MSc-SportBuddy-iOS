@@ -8,3 +8,5 @@
 struct GroupsViewModelState { }
 
 extension GroupsViewModelState: Initable { }
+
+extension GroupsViewModelState: Equatable { }

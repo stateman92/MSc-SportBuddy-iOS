@@ -8,3 +8,5 @@
 struct TrainingsViewModelState { }
 
 extension TrainingsViewModelState: Initable { }
+
+extension TrainingsViewModelState: Equatable { }
