@@ -5,6 +5,8 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockMainAction: Domain { }
+final class MockMainAction: DomainImpl { }
 
-extension MockMainAction: MainActionProtocol { }
+// MARK: - MainAction
+
+extension MockMainAction: MainAction { }

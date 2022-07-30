@@ -7,9 +7,11 @@
 
 import Combine
 
-final class MockAddNewChatStore: Domain { }
+final class MockAddNewChatStore: DomainImpl { }
 
-extension MockAddNewChatStore: AddNewChatStoreProtocol {
+// MARK: - AddNewChatStore
+
+extension MockAddNewChatStore: AddNewChatStore {
     /// The searched users.
     var searchedUsers: DomainStorePublisher<[UserDTO]> {
         Just(.mock).autoEraseOnMain()

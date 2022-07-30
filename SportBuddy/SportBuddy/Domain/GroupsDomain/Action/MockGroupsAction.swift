@@ -5,6 +5,8 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockGroupsAction: Domain { }
+final class MockGroupsAction: DomainImpl { }
 
-extension MockGroupsAction: GroupsActionProtocol { }
+// MARK: - GroupsAction
+
+extension MockGroupsAction: GroupsAction { }

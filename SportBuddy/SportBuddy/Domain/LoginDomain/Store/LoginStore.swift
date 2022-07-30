@@ -7,23 +7,12 @@
 
 import Foundation
 
-final class LoginStore: Domain {
-    @LazyInjected private var userCache: UserCache
-    @LazyInjected private var tokenCache: TokenCache
-}
-
-extension LoginStore: LoginStoreProtocol {
+protocol LoginStore {
     /// The current user.
-    var currentUser: DomainStorePublisher<UserDTO> {
-        userCache.autoEraseOnMain()
-    }
+    var currentUser: DomainStorePublisher<UserDTO> { get }
 
     /// The token.
-    var token: DomainStorePublisher<UUID?> {
-        tokenCache.autoEraseOnMain()
-    }
+    var token: DomainStorePublisher<UUID?> { get }
 
-    var immediateToken: UUID? {
-        tokenCache.immediateValue
-    }
+    var immediateToken: UUID? { get }
 }

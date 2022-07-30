@@ -8,9 +8,11 @@
 import Combine
 import Foundation
 
-final class MockLoginStore: Domain { }
+final class MockLoginStore: DomainImpl { }
 
-extension MockLoginStore: LoginStoreProtocol {
+// MARK: - LoginStore
+
+extension MockLoginStore: LoginStore {
     /// The current user.
     var currentUser: DomainStorePublisher<UserDTO> {
         Just(.mock).autoEraseOnMain()

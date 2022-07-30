@@ -5,9 +5,7 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class ChatsDomain {
-    @LazyInjected var store: ChatsStoreProtocol
-    @LazyInjected var action: ChatsActionProtocol
+protocol ChatsDomain: Domain {
+    var store: ChatsStore { get }
+    var action: ChatsAction { get }
 }
-
-extension ChatsDomain: ChatsDomainProtocol { }

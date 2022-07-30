@@ -8,24 +8,12 @@
 import SFSafeSymbols
 import UIKit
 
-/// A class for managing system images.
-final class SystemImageService {
-
-    // MARK: Initialization
-
-    /// Initialize the service.
-    init() { }
-}
-
-// MARK: - SystemImageServiceProtocol
-
-extension SystemImageService: SystemImageServiceProtocol {
+/// A protocol for managing system images.
+protocol SystemImageService: Initable, AutoMockable {
     /// Create an image based on a symbol.
     /// - Parameters:
     ///   - symbol: the symbol.
     /// - Returns:
     ///     The image.
-    func image(symbol: SFSymbol) -> UIImage {
-        UIImage(systemSymbol: symbol)
-    }
+    func image(symbol: SFSymbol) -> UIImage
 }

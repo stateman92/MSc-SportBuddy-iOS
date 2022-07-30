@@ -5,7 +5,18 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
-final class MainViewModel: BaseViewModel<MainViewModelState, MainViewModelCommand, MainDomain> { }
+final class MainViewModel: BaseViewModel<MainViewModelState, MainViewModelCommand, MainDomainImpl> {
+    // MARK: Properties
+
+    @LazyInjected private var connectivityListener: ConnectivityListener
+
+    // MARK: Initialization
+
+    init() {
+        super.init(state: .init())
+        connectivityListener.start()
+    }
+}
 
 // MARK: - Setup
 

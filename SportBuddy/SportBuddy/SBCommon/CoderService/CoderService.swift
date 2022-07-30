@@ -7,12 +7,8 @@
 
 import Foundation
 
-/// A class for coding (encoding and decoding) objects.
-final class CoderService { }
-
-// MARK: - CoderServiceProtocol
-
-extension CoderService: CoderServiceProtocol {
+/// A protocol for coding (encoding and decoding) objects.
+protocol CoderService: Initable {
     /// Encode the given object.
     /// - Parameters:
     ///   - object: the object.
@@ -20,12 +16,7 @@ extension CoderService: CoderServiceProtocol {
     /// This method gives a unified method to encode objects.
     /// - Returns:
     ///     The encoded `Data?`.
-    func encode<T>(object: T?) -> Data? where T: Codable {
-        guard let object = object else { return nil }
-        let jsonEncoder = JSONEncoder()
-        jsonEncoder.dateEncodingStrategy = .iso8601
-        return try? jsonEncoder.encode(object)
-    }
+    func encode<T>(object: T?) -> Data? where T: Codable
 
     /// Decode the given data.
     /// - Parameters:
@@ -34,10 +25,30 @@ extension CoderService: CoderServiceProtocol {
     /// This method gives a unified method to decode objects.
     /// - Returns:
     ///     The decoded object.
-    func decode<T>(data: Data?) -> T? where T: Codable {
-        guard let data = data else { return nil }
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.dateDecodingStrategy = .iso8601
-        return try? jsonDecoder.decode(T.self, from: data)
+    func decode<T>(data: Data?) -> T? where T: Codable
+}
+
+extension CoderService {
+    /// Encode the given object.
+    /// - Parameters:
+    ///   - object: the object.
+    /// - Note:
+    /// This method gives a unified method to encode objects.
+    /// - Returns:
+    ///     The encoded `String?`.
+    func encode<T>(object: T?) -> String? where T: Codable {
+        guard let data = encode(object: object) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+
+    /// Decode the given string.
+    /// - Parameters:
+    ///   - string: the string.
+    /// - Note:
+    /// This method gives a unified method to decode objects.
+    /// - Returns:
+    ///     The decoded object.
+    func decode<T>(string: String?) -> T? where T: Codable {
+        decode(data: string?.data(using: .utf8))
     }
 }

@@ -7,12 +7,6 @@
 
 import Foundation
 
-final class OnboardingStore: Domain {
-    @LazyInjected private var tokenCache: TokenCache
-}
-
-extension OnboardingStore: OnboardingStoreProtocol {
-    var immediateToken: UUID? {
-        tokenCache.immediateValue
-    }
+protocol OnboardingStore {
+    var immediateToken: UUID? { get }
 }

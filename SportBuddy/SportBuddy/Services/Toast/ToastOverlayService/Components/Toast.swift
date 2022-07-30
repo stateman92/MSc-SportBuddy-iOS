@@ -28,7 +28,7 @@ final class Toast: View {
     private let messageLabel = Label()
     private let closeButton = UIButton()
     private let contentColor: UIColor = .label
-    @LazyInjected private var systemImageService: SystemImageServiceProtocol
+    @LazyInjected private var systemImageService: SystemImageService
 
     // MARK: Initialization
 

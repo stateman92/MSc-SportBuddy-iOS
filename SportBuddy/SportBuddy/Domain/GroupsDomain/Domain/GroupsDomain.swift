@@ -5,9 +5,7 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class GroupsDomain {
-    @LazyInjected var store: GroupsStoreProtocol
-    @LazyInjected var action: GroupsActionProtocol
+protocol GroupsDomain: Domain {
+    var store: GroupsStore { get }
+    var action: GroupsAction { get }
 }
-
-extension GroupsDomain: GroupsDomainProtocol { }

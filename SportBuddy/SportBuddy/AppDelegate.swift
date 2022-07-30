@@ -8,10 +8,12 @@
 import UIKit
 
 @main
-final class AppDelegate: UIResponder {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        AppLoader.setup()
+        AppLoader.setup(window: window)
         return true
     }
 
@@ -20,16 +22,4 @@ final class AppDelegate: UIResponder {
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         AppLoader.application(app, open: url, options: options)
     }
-}
-
-// MARK: UISceneSession Lifecycle
-
-extension AppDelegate: UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     configurationForConnecting connectingSceneSession: UISceneSession,
-                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) { }
 }

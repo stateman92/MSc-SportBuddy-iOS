@@ -8,15 +8,14 @@
 import Combine
 import UIKit
 
-// swiftlint:disable:next operator_usage_whitespace
 class BaseScreen<State,
                  Command,
                  Domain,
                  ViewModel: BaseViewModel<State, Command, Domain>>: ViewController {
     // MARK: Properties
 
-    @LazyInjected private var loadingService: LoadingServiceProtocol
-    @LazyInjected private var loadingOverlayService: LoadingOverlayServiceProtocol
+    @LazyInjected private var loadingService: LoadingService
+    @LazyInjected private var loadingOverlayService: LoadingOverlayService
     @LazyInjected private var viewModel: ViewModel
     override var isVisible: Bool {
         didSet {

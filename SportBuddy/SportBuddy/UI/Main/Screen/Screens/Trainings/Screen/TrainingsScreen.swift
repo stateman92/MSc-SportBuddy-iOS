@@ -7,8 +7,8 @@
 
 // swiftlint:disable:next colon
 final class TrainingsScreen:
-    TabScreen<TrainingsViewModelState, TrainingsViewModelCommand, TrainingsDomain, TrainingsViewModel> {
-    @LazyInjected var cameraService: CameraServiceProtocol
+    TabScreen<TrainingsViewModelState, TrainingsViewModelCommand, TrainingsDomainImpl, TrainingsViewModel> {
+    @LazyInjected var cameraService: CameraService
 
     // MARK: Initialization
 

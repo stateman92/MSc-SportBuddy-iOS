@@ -5,9 +5,11 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockChatsAction: Domain { }
+final class MockChatsAction: DomainImpl { }
 
-extension MockChatsAction: ChatsActionProtocol {
+// MARK: - ChatsAction
+
+extension MockChatsAction: ChatsAction {
     func getChats() -> DomainActionPublisher {
         deferredFutureOnMainLoading { () -> DomainActionResult<[ChatDTO]> in
             await wait()

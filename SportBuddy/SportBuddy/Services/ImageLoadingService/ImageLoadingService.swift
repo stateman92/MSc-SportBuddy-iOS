@@ -6,31 +6,27 @@
 //
 
 import Foundation
-import Kingfisher
 
-/// A class for loading the images.
-final class ImageLoadingService {
-    // MARK: Initialization
-
-    /// Initialize the service.
-    init() { }
-}
-
-// MARK: - ImageLoadingServiceProtocol
-
-extension ImageLoadingService: ImageLoadingServiceProtocol {
+/// A protocol for loading the images.
+protocol ImageLoadingService: Initable, AutoMockable {
     /// Load an image from an url.
     /// - Parameters:
     ///   - url: the url from which the image will be loaded.
     ///   - view: the image view.
-    func load(url: URL, in view: ImageView) {
-        view.kf.setImage(with: ImageResource(downloadURL: url),
-                         options: [.transition(.fade(0.25)), .cacheMemoryOnly])
-    }
+    func load(url: URL, in view: ImageView)
 
     /// Cancel the image loading on this image view.
     /// - Parameter view: the image view.
-    func cancelImageLoading(in view: ImageView) {
-        view.kf.cancelDownloadTask()
+    func cancelImageLoading(in view: ImageView)
+}
+
+extension ImageLoadingService {
+    /// Load an image from an url.
+    /// - Parameters:
+    ///   - url: the url from which the image will be loaded.
+    ///   - view: the image view.
+    func load(url: String, in view: ImageView) {
+        guard let url = URL(string: url) else { return }
+        load(url: url, in: view)
     }
 }

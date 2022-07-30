@@ -5,9 +5,11 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockLoginAction: Domain { }
+final class MockLoginAction: DomainImpl { }
 
-extension MockLoginAction: LoginActionProtocol {
+// MARK: - LoginAction
+
+extension MockLoginAction: LoginAction {
     /// Call to login the user.
     /// - Parameters:
     ///   - email: the user's email.

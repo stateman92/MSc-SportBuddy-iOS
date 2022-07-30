@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelCommand, ChatDomain> {
+final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelCommand, ChatDomainImpl> {
     // MARK: Properties
 
     private var chatType: ChatType! {

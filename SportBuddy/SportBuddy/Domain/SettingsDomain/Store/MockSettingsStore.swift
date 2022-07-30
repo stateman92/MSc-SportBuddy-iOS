@@ -5,6 +5,8 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockSettingsStore: Domain { }
+final class MockSettingsStore: DomainImpl { }
 
-extension MockSettingsStore: SettingsStoreProtocol { }
+// MARK: - SettingsStore
+
+extension MockSettingsStore: SettingsStore { }

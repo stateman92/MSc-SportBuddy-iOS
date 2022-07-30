@@ -7,7 +7,7 @@
 
 // swiftlint:disable:next colon
 final class OnboardingViewModel:
-    BaseViewModel<OnboardingViewModelState, OnboardingViewModelCommand, OnboardingDomain> {
+    BaseViewModel<OnboardingViewModelState, OnboardingViewModelCommand, OnboardingDomainImpl> {
     // MARK: - Command
 
     override func receiveCommand(_ command: OnboardingViewModelCommand) {

@@ -7,9 +7,11 @@
 
 import Foundation
 
-final class MockOnboardingStore: Domain { }
+final class MockOnboardingStore: DomainImpl { }
 
-extension MockOnboardingStore: OnboardingStoreProtocol {
+// MARK: - OnboardingStore
+
+extension MockOnboardingStore: OnboardingStore {
     var immediateToken: UUID? {
         nil
     }

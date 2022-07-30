@@ -8,7 +8,6 @@
 import Combine
 import UIKit
 
-// swiftlint:disable:next operator_usage_whitespace
 class BaseTabScreen<State,
                     Command,
                     Domain,

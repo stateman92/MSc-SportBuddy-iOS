@@ -8,9 +8,11 @@
 import Combine
 import Foundation
 
-final class MockChatStore: Domain { }
+final class MockChatStore: DomainImpl { }
 
-extension MockChatStore: ChatStoreProtocol {
+// MARK: - ChatStore
+
+extension MockChatStore: ChatStore {
     func getChat(id: UUID) -> DomainStorePublisher<ChatDTO> {
         Just(.mock).autoEraseOnMain()
     }

@@ -5,86 +5,78 @@
 //  Created by Kristof Kalai on 2022. 04. 16..
 //
 
-import os
+import Foundation
 
-/// A class for managing the logging.
-final class LoggingService {
-    // MARK: Properties
+/// A protocol for managing the logging.
+protocol LoggingService: Initable, AutoMockable {
+    /// Initialize the service.
+    /// - Parameters:
+    ///   - subsystem: the subsystem.
+    ///   - category: the category.
+    init(subsystem: String, category: String)
 
-    private let logger: Logger
-
-    // MARK: Initialization
-
-    init(subsystem: String, category: String) {
-        logger = Logger(subsystem: subsystem, category: category)
-    }
+    /// Log.
+    /// - Parameters:
+    ///   - logType: the type of the log.
+    ///   - message: the message of the log.
+    func log(_ logType: LogType, message: String)
 }
-
-// MARK: - LoggingServiceProtocol
-
-extension LoggingService: LoggingServiceProtocol {
-    func log(_ logType: LogType, message: String) {
-        switch logType {
-        case let .default(privacy): `default`(message: message, privacy: privacy)
-        case let .info(privacy): info(message: message, privacy: privacy)
-        case let .debug(privacy): debug(message: message, privacy: privacy)
-        case let .error(privacy): error(message: message, privacy: privacy)
-        case let .fault(privacy): fault(message: message, privacy: privacy)
-        case .critical: critical(message: message)
-        }
-        dump("Logged: type: \(logType), message: \(message)")
-    }
-}
-
-// MARK: - Helpers
 
 extension LoggingService {
-    private func `default`(message: String, privacy: LogPrivacy) {
-        switch privacy {
-        case .private: logger.log(level: .default, "\(message, privacy: .public)")
-        case .public: logger.log(level: .default, "\(message, privacy: .private)")
-        case .sensitive: logger.log(level: .default, "\(message, privacy: .sensitive)")
-        case .auto: logger.log(level: .default, "\(message, privacy: .auto)")
-        }
+    /// Initialize the service. By default `subsystem` is `Bundle.main.bundleIdentifier ?? .init()` and `category` is `.init()`.
+    init() {
+        self.init(subsystem: Bundle.main.bundleIdentifier ?? .init(), category: .init())
     }
 
-    private func info(message: String, privacy: LogPrivacy) {
-        switch privacy {
-        case .private: logger.log(level: .info, "\(message, privacy: .public)")
-        case .public: logger.log(level: .info, "\(message, privacy: .private)")
-        case .sensitive: logger.log(level: .info, "\(message, privacy: .sensitive)")
-        case .auto: logger.log(level: .info, "\(message, privacy: .auto)")
-        }
+    /// Log.
+    /// - Parameters:
+    ///   - logType: the type of the log. By default `.debug`.
+    ///   - message: the message of the log.
+    func log(_ logType: LogType = .debug, message: String) {
+        log(logType, message: message)
+    }
+}
+
+extension LoggingService {
+    /// Log with the default type.
+    /// - Parameters:
+    ///   - message: the message of the log.
+    func `default`(message: String) {
+        log(.default, message: message)
     }
 
-    private func debug(message: String, privacy: LogPrivacy) {
-        switch privacy {
-        case .private: logger.log(level: .debug, "\(message, privacy: .public)")
-        case .public: logger.log(level: .debug, "\(message, privacy: .private)")
-        case .sensitive: logger.log(level: .debug, "\(message, privacy: .sensitive)")
-        case .auto: logger.log(level: .debug, "\(message, privacy: .auto)")
-        }
+    /// Log with the info type.
+    /// - Parameters:
+    ///   - message: the message of the log.
+    func info(message: String) {
+        log(.info, message: message)
     }
 
-    private func error(message: String, privacy: LogPrivacy) {
-        switch privacy {
-        case .private: logger.log(level: .error, "\(message, privacy: .public)")
-        case .public: logger.log(level: .error, "\(message, privacy: .private)")
-        case .sensitive: logger.log(level: .error, "\(message, privacy: .sensitive)")
-        case .auto: logger.log(level: .error, "\(message, privacy: .auto)")
-        }
+    /// Log with the debug type.
+    /// - Parameters:
+    ///   - message: the message of the log.
+    func debug(message: String) {
+        log(.debug, message: message)
     }
 
-    private func fault(message: String, privacy: LogPrivacy) {
-        switch privacy {
-        case .private: logger.log(level: .fault, "\(message, privacy: .public)")
-        case .public: logger.log(level: .fault, "\(message, privacy: .private)")
-        case .sensitive: logger.log(level: .fault, "\(message, privacy: .sensitive)")
-        case .auto: logger.log(level: .fault, "\(message, privacy: .auto)")
-        }
+    /// Log with the error type.
+    /// - Parameters:
+    ///   - message: the message of the log.
+    func error(message: String) {
+        log(.error, message: message)
     }
 
-    private func critical(message: String) {
-        logger.critical("\(message)")
+    /// Log with the fault type.
+    /// - Parameters:
+    ///   - message: the message of the log.
+    func fault(message: String) {
+        log(.fault, message: message)
+    }
+
+    /// Log with the critical type.
+    /// - Parameters:
+    ///   - message: the message of the log.
+    func critical(message: String) {
+        log(.critical, message: message)
     }
 }

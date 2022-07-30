@@ -5,9 +5,7 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class OnboardingDomain {
-    @LazyInjected var store: OnboardingStoreProtocol
-    @LazyInjected var action: OnboardingActionProtocol
+protocol OnboardingDomain: Domain {
+    var store: OnboardingStore { get }
+    var action: OnboardingAction { get }
 }
-
-extension OnboardingDomain: OnboardingDomainProtocol { }

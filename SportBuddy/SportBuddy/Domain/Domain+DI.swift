@@ -28,77 +28,77 @@ extension DependencyInjector {
 
 extension DependencyInjector {
     private static func registerChatDomain() {
-        register(domain: ChatStore(), mock: MockChatStore(), implements: ChatStoreProtocol.self)
-        register(domain: ChatAction(), mock: MockChatAction(), implements: ChatActionProtocol.self)
+        register(domain: ChatStoreImpl(), mock: MockChatStore(), implements: ChatStore.self)
+        register(domain: ChatActionImpl(), mock: MockChatAction(), implements: ChatAction.self)
 
-        resolver.register { ChatDomain() }
+        resolver.register { ChatDomainImpl() }
     }
 
     private static func registerAddNewChatDomain() {
-        register(domain: AddNewChatStore(), mock: MockAddNewChatStore(), implements: AddNewChatStoreProtocol.self)
-        register(domain: AddNewChatAction(), mock: MockAddNewChatAction(), implements: AddNewChatActionProtocol.self)
+        register(domain: AddNewChatStoreImpl(), mock: MockAddNewChatStore(), implements: AddNewChatStore.self)
+        register(domain: AddNewChatActionImpl(), mock: MockAddNewChatAction(), implements: AddNewChatAction.self)
 
-        resolver.register { AddNewChatDomain() }
+        resolver.register { AddNewChatDomainImpl() }
     }
 
     private static func registerGroupsDomain() {
-        register(domain: GroupsStore(), mock: MockGroupsStore(), implements: GroupsStoreProtocol.self)
-        register(domain: GroupsAction(), mock: MockGroupsAction(), implements: GroupsActionProtocol.self)
+        register(domain: GroupsStoreImpl(), mock: MockGroupsStore(), implements: GroupsStore.self)
+        register(domain: GroupsActionImpl(), mock: MockGroupsAction(), implements: GroupsAction.self)
 
-        resolver.register { GroupsDomain() }
+        resolver.register { GroupsDomainImpl() }
     }
 
     private static func registerChatsDomain() {
-        register(domain: ChatsStore(), mock: MockChatsStore(), implements: ChatsStoreProtocol.self)
-        register(domain: ChatsAction(), mock: MockChatsAction(), implements: ChatsActionProtocol.self)
+        register(domain: ChatsStoreImpl(), mock: MockChatsStore(), implements: ChatsStore.self)
+        register(domain: ChatsActionImpl(), mock: MockChatsAction(), implements: ChatsAction.self)
 
-        resolver.register { ChatsDomain() }
+        resolver.register { ChatsDomainImpl() }
     }
 
     private static func registerTrainingsDomain() {
-        register(domain: TrainingsStore(), mock: MockTrainingsStore(), implements: TrainingsStoreProtocol.self)
-        register(domain: TrainingsAction(), mock: MockTrainingsAction(), implements: TrainingsActionProtocol.self)
+        register(domain: TrainingsStoreImpl(), mock: MockTrainingsStore(), implements: TrainingsStore.self)
+        register(domain: TrainingsActionImpl(), mock: MockTrainingsAction(), implements: TrainingsAction.self)
 
-        resolver.register { TrainingsDomain() }
+        resolver.register { TrainingsDomainImpl() }
     }
 
     private static func registerSettingsDomain() {
-        register(domain: SettingsStore(), mock: MockSettingsStore(), implements: SettingsStoreProtocol.self)
-        register(domain: SettingsAction(), mock: MockSettingsAction(), implements: SettingsActionProtocol.self)
+        register(domain: SettingsStoreImpl(), mock: MockSettingsStore(), implements: SettingsStore.self)
+        register(domain: SettingsActionImpl(), mock: MockSettingsAction(), implements: SettingsAction.self)
 
-        resolver.register { SettingsDomain() }
+        resolver.register { SettingsDomainImpl() }
     }
 
     private static func registerMainDomain() {
-        register(domain: MainStore(), mock: MockMainStore(), implements: MainStoreProtocol.self)
-        register(domain: MainAction(), mock: MockMainAction(), implements: MainActionProtocol.self)
+        register(domain: MainStoreImpl(), mock: MockMainStore(), implements: MainStore.self)
+        register(domain: MainActionImpl(), mock: MockMainAction(), implements: MainAction.self)
 
-        resolver.register { MainDomain() }
+        resolver.register { MainDomainImpl() }
     }
 
     private static func registerLoginDomain() {
-        register(domain: LoginStore(), mock: MockLoginStore(), implements: LoginStoreProtocol.self)
-        register(domain: LoginAction(), mock: MockLoginAction(), implements: LoginActionProtocol.self)
+        register(domain: LoginStoreImpl(), mock: MockLoginStore(), implements: LoginStore.self)
+        register(domain: LoginActionImpl(), mock: MockLoginAction(), implements: LoginAction.self)
 
-        resolver.register { LoginDomain() }
+        resolver.register { LoginDomainImpl() }
     }
 
     private static func registerOnboardingDomain() {
-        register(domain: OnboardingStore(), mock: MockOnboardingStore(), implements: OnboardingStoreProtocol.self)
-        register(domain: OnboardingAction(), mock: MockOnboardingAction(), implements: OnboardingActionProtocol.self)
+        register(domain: OnboardingStoreImpl(), mock: MockOnboardingStore(), implements: OnboardingStore.self)
+        register(domain: OnboardingActionImpl(), mock: MockOnboardingAction(), implements: OnboardingAction.self)
 
-        resolver.register { OnboardingDomain() }
+        resolver.register { OnboardingDomainImpl() }
     }
 }
 
 extension DependencyInjector {
-    private static func register<Domain, MockDomain, DomainProtocol>(domain: @autoclosure @escaping () -> Domain,
-                                                                     mock: @autoclosure @escaping () -> MockDomain,
-                                                                     implements implemented: DomainProtocol.Type) {
-        #if MOCK
+    private static func register<DomainImpl, MockDomain, Domain>(domain: @autoclosure @escaping () -> DomainImpl,
+                                                                 mock: @autoclosure @escaping () -> MockDomain,
+                                                                 implements implemented: Domain.Type) {
+#if MOCK
         resolver.register { mock() }.implements(implemented)
-        #else
+#else
         resolver.register { domain() }.implements(implemented)
-        #endif
+#endif
     }
 }

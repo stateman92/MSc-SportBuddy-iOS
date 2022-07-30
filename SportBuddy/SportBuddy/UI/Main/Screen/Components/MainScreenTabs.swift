@@ -14,7 +14,7 @@ final class MainScreenTabs {
     @LazyInjected private var chatsScreen: ChatsScreen
     @LazyInjected private var trainingsScreen: TrainingsScreen
     @LazyInjected private var settingsScreen: SettingsScreen
-    @LazyInjected private var systemImageService: SystemImageServiceProtocol
+    @LazyInjected private var systemImageService: SystemImageService
 
     // MARK: Initialization
 

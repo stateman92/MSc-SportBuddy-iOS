@@ -7,7 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable:next operator_usage_whitespace
 class CustomTabbedTabScreen<State,
                             Action,
                             Domain,

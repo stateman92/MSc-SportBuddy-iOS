@@ -5,81 +5,28 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class LoginAction: Domain {
-    @LazyInjected private var userCache: UserCache
-    @LazyInjected private var tokenCache: TokenCache
-}
-
-extension LoginAction: LoginActionProtocol {
+protocol LoginAction {
     /// Call to login the user.
     /// - Parameters:
     ///   - email: the user's email.
     ///   - password: the user's password.
-    func login(email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
-            do {
-                let result = try await ClientAPI.loginPost(email: email, password: password)
-                userCache.save(item: result.user)
-                tokenCache.save(item: result.token)
-                return .success(result)
-            } catch {
-                return .failure(error)
-            }
-        }
-    }
+    func login(email: String, password: String) -> DomainActionPublisher
 
     /// Refresh the stored token.
-    func refreshToken() -> DomainActionPublisher {
-        deferredFutureOnMainLoading(
-            showUnauthenticatedToast: tokenCache.immediateValue != nil
-        ) { [unowned self] () -> DomainActionResult<Void> in
-            do {
-                try await ClientAPI.refreshTokenPost()
-                return .success(())
-            } catch {
-                userCache.clear()
-                tokenCache.clear()
-                return .failure(error)
-            }
-        }
-    }
+    func refreshToken() -> DomainActionPublisher
 
     /// Call to sign up the user.
     /// - Parameters:
     ///   - name: the user's name.
     ///   - email: the user's email.
     ///   - password: the user's password.
-    func signUp(name: String, email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
-            do {
-                let result = try await ClientAPI.registerPost(name: name, email: email, password: password)
-                userCache.save(item: result.user)
-                tokenCache.save(item: result.token)
-                return .success(result)
-            } catch {
-                return .failure(error)
-            }
-        }
-    }
+    func signUp(name: String, email: String, password: String) -> DomainActionPublisher
 
     /// Call to sign that the user forgot the password.
     /// - Parameters:
     ///   - email: the user's email.
-    func forgotPassword(email: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
-            do {
-                try await ClientAPI.forgotPasswordPost(email: email)
-                return .success(())
-            } catch {
-                return .failure(error)
-            }
-        }
-    }
+    func forgotPassword(email: String) -> DomainActionPublisher
 
     /// Call to login the user with google services.
-    func loginWithGoogle() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
-                .success(())
-        }
-    }
+    func loginWithGoogle() -> DomainActionPublisher
 }

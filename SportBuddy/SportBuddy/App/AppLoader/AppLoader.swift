@@ -10,8 +10,9 @@ import GoogleSignIn
 enum AppLoader {
     // MARK: Properties
 
-    @LazyInjected private static var loginDomain: LoginDomain
-    @LazyInjected private static var navigatorService: NavigatorServiceProtocol
+    @LazyInjected private static var loginDomain: LoginDomainImpl
+    @LazyInjected private static var navigatorService: NavigatorService
+    private static var window: UIWindow?
     private static var cancellables = Cancellables()
 
     static var signInConfig: GIDConfiguration {
@@ -23,7 +24,40 @@ enum AppLoader {
 // MARK: - Public methods
 
 extension AppLoader {
-    static func setup() {
+    static func setup(window: UIWindow?) {
+        self.window = window
+        setup()
+        navigatorService.resetToDefault()
+        setupWindow()
+    }
+
+    static func application(_ app: UIApplication,
+                            open url: URL,
+                            options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        var handled: Bool
+        handled = GIDSignIn.sharedInstance.handle(url)
+        if handled {
+            return true
+        }
+        return false
+    }
+}
+
+// MARK: - Setups
+
+extension AppLoader {
+    private static func setupWindow() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        guard let window = window else { return }
+        navigatorService.becameRoot(in: window)
+        window.makeKeyAndVisible()
+    }
+}
+
+// MARK: - Helpers
+
+extension AppLoader {
+    private static func setup() {
         DependencyInjector.registerDependencies()
 
         OpenAPIClientAPI.basePath = "http://127.0.0.1:8080"
@@ -45,24 +79,5 @@ extension AppLoader {
                 })
                 .store(in: &cancellables)
         }
-    }
-
-    static func setupUI(windowScene: UIWindowScene) -> UIWindow {
-        navigatorService.resetToDefault()
-        return UIWindow(windowScene: windowScene).then {
-            navigatorService.becameRoot(in: $0)
-            $0.makeKeyAndVisible()
-        }
-    }
-
-    static func application(_ app: UIApplication,
-                            open url: URL,
-                            options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        var handled: Bool
-        handled = GIDSignIn.sharedInstance.handle(url)
-        if handled {
-            return true
-        }
-        return false
     }
 }

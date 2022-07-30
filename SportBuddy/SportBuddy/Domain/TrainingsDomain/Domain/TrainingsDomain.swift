@@ -5,9 +5,7 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class TrainingsDomain {
-    @LazyInjected var store: TrainingsStoreProtocol
-    @LazyInjected var action: TrainingsActionProtocol
+protocol TrainingsDomain: Domain {
+    var store: TrainingsStore { get }
+    var action: TrainingsAction { get }
 }
-
-extension TrainingsDomain: TrainingsDomainProtocol { }

@@ -96,7 +96,11 @@ extension StyledTextField: UITextFieldDelegate {
                    replacementString string: String) -> Bool {
         if let text = textField.text, let textRange = Range(range, in: text) {
             let desiredText = text.replacingCharacters(in: textRange, with: string)
-            desiredText.isEmpty ? showPlaceholder() : hidePlaceholder()
+            if desiredText.isEmpty {
+                showPlaceholder()
+            } else {
+                hidePlaceholder()
+            }
         }
         return true
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewModelCommand, LoginDomain> {
+final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewModelCommand, LoginDomainImpl> {
     // MARK: - Command
 
     override func receiveCommand(_ command: LoadingViewModelCommand) {

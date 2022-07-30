@@ -5,9 +5,7 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class LoginDomain {
-    @LazyInjected var store: LoginStoreProtocol
-    @LazyInjected var action: LoginActionProtocol
+protocol LoginDomain: Domain {
+    var store: LoginStore { get }
+    var action: LoginAction { get }
 }
-
-extension LoginDomain: LoginDomainProtocol { }

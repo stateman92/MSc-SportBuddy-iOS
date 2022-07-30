@@ -21,9 +21,9 @@ final class NavigationController: UINavigationController {
     }
 }
 
-// MARK: - NavigatorServiceProtocol
+// MARK: - NavigatorService
 
-extension NavigationController: NavigatorServiceProtocol {
+extension NavigationController: NavigatorService {
     /// Call to set the navigator as root in the given window.
     /// - Parameter window: the given window.
     func becameRoot(in window: UIWindow) {

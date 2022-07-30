@@ -8,8 +8,8 @@ target 'SportBuddy' do
   use_frameworks!
 
   pod 'SwiftGen', '6.5.1'
-  pod 'SwiftLint', '0.46.1'
-  pod 'GoogleMLKit/PoseDetectionAccurate', '2.6.0'
+  pod 'SwiftLint', '0.48.0'
+  pod 'GoogleMLKit/PoseDetectionAccurate', '3.1.0'
 
   # Pods for SportBuddy
 

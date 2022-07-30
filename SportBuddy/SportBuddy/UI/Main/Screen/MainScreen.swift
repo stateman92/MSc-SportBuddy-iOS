@@ -9,7 +9,7 @@ import UIKit
 
 // swiftlint:disable:next colon
 final class MainScreen:
-    CustomTabbedTabScreen<MainViewModelState, MainViewModelCommand, MainDomain, MainViewModel, MainScreenTabs> {
+    CustomTabbedTabScreen<MainViewModelState, MainViewModelCommand, MainDomainImpl, MainViewModel, MainScreenTabs> {
     // MARK: Initialization
 
     init() {

@@ -5,9 +5,11 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockOnboardingAction: Domain { }
+final class MockOnboardingAction: DomainImpl { }
 
-extension MockOnboardingAction: OnboardingActionProtocol {
+// MARK: - OnboardingAction
+
+extension MockOnboardingAction: OnboardingAction {
     /// Refresh the stored token.
     func refreshToken() -> DomainActionPublisher {
         deferredFutureOnMainLoading { () -> DomainActionResult<Void> in

@@ -1,13 +1,13 @@
 PODS:
-  - GoogleDataTransport (9.1.2):
-    - GoogleUtilities/Environment (~> 7.2)
-    - nanopb (~> 2.30908.0)
+  - GoogleDataTransport (9.2.0):
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMLKit/MLKitCore (2.6.0):
-    - MLKitCommon (~> 5.0.0)
-  - GoogleMLKit/PoseDetectionAccurate (2.6.0):
+  - GoogleMLKit/MLKitCore (3.1.0):
+    - MLKitCommon (~> 7.0.0)
+  - GoogleMLKit/PoseDetectionAccurate (3.1.0):
     - GoogleMLKit/MLKitCore
-    - MLKitPoseDetectionAccurate (~> 1.0.0-beta7)
+    - MLKitPoseDetectionAccurate (~> 1.0.0-beta9)
   - GoogleToolboxForMac/DebugUtils (2.3.2):
     - GoogleToolboxForMac/Defines (= 2.3.2)
   - GoogleToolboxForMac/Defines (2.3.2)
@@ -28,9 +28,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilitiesComponents (1.1.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.7.1)
-  - MLImage (1.0.0-beta2)
-  - MLKitCommon (5.0.0):
+  - GTMSessionFetcher/Core (1.7.2)
+  - MLImage (1.0.0-beta3)
+  - MLKitCommon (7.0.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
@@ -39,40 +39,40 @@ PODS:
     - GoogleUtilitiesComponents (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
     - Protobuf (~> 3.12)
-  - MLKitPoseDetectionAccurate (1.0.0-beta7):
-    - MLKitCommon (~> 5.0)
-    - MLKitPoseDetectionCommon (= 1.0.0-beta7)
-    - MLKitXenoCommon (= 1.0.0-beta7)
-  - MLKitPoseDetectionCommon (1.0.0-beta7):
-    - MLKitCommon (~> 5.0)
-    - MLKitXenoCommon (= 1.0.0-beta7)
-  - MLKitVision (3.0.0):
+  - MLKitPoseDetectionAccurate (1.0.0-beta9):
+    - MLKitCommon (~> 7.0)
+    - MLKitPoseDetectionCommon (= 1.0.0-beta9)
+    - MLKitXenoCommon (= 1.0.0-beta9)
+  - MLKitPoseDetectionCommon (1.0.0-beta9):
+    - MLKitCommon (~> 7.0)
+    - MLKitXenoCommon (= 1.0.0-beta9)
+  - MLKitVision (4.1.0):
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - GTMSessionFetcher/Core (~> 1.1)
-    - MLImage (= 1.0.0-beta2)
-    - MLKitCommon (~> 5.0)
+    - MLImage (= 1.0.0-beta3)
+    - MLKitCommon (~> 7.0)
     - Protobuf (~> 3.12)
-  - MLKitXenoCommon (1.0.0-beta7):
-    - MLKitCommon (~> 5.0)
-    - MLKitVision (~> 3.0)
-  - nanopb (2.30908.0):
-    - nanopb/decode (= 2.30908.0)
-    - nanopb/encode (= 2.30908.0)
-  - nanopb/decode (2.30908.0)
-  - nanopb/encode (2.30908.0)
-  - PromisesObjC (2.0.0)
-  - Protobuf (3.20.0)
+  - MLKitXenoCommon (1.0.0-beta9):
+    - MLKitCommon (~> 7.0)
+    - MLKitVision (~> 4.1)
+  - nanopb (2.30909.0):
+    - nanopb/decode (= 2.30909.0)
+    - nanopb/encode (= 2.30909.0)
+  - nanopb/decode (2.30909.0)
+  - nanopb/encode (2.30909.0)
+  - PromisesObjC (2.1.1)
+  - Protobuf (3.21.4)
   - SwiftGen (6.5.1)
-  - SwiftLint (0.46.1)
+  - SwiftLint (0.48.0)
 
 DEPENDENCIES:
-  - GoogleMLKit/PoseDetectionAccurate (= 2.6.0)
+  - GoogleMLKit/PoseDetectionAccurate (= 3.1.0)
   - SwiftGen (= 6.5.1)
-  - SwiftLint (= 0.46.1)
+  - SwiftLint (= 0.48.0)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - GoogleDataTransport
     - GoogleMLKit
     - GoogleToolboxForMac
@@ -88,28 +88,29 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
-    - SwiftGen
     - SwiftLint
+  trunk:
+    - SwiftGen
 
 SPEC CHECKSUMS:
-  GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
-  GoogleMLKit: 755661c46990a85e42278015f26400286d98ad95
+  GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
+  GoogleMLKit: 9d072522949ff0ef4dae5359feaf3db2ef2fa658
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
-  GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
-  MLImage: a454f9f8ecfd537783a12f9488f5be1a68820829
-  MLKitCommon: 3bc17c6f7d25ce3660f030350b46ae7ec9ebca6e
-  MLKitPoseDetectionAccurate: d796e67a98dc2bfd24f029d3b551929b2874bdf3
-  MLKitPoseDetectionCommon: 7049a27c6c3054cedf5e18d3bd6901d0c9c2b4b3
-  MLKitVision: e87dc3f2e456a6ab32361ebd985e078dd2746143
-  MLKitXenoCommon: 849f10d93d3fda1ee034cab23863e4abb4c24f10
-  nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Protobuf: 66e2f3b26a35e4cc379831f4ced538274ee4b923
+  GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  MLImage: 489dfec109f21da8621b28d476401aaf7a0d4ff4
+  MLKitCommon: 20f4aca0ec2bb37cef2b9c211b50586817bac5d3
+  MLKitPoseDetectionAccurate: 8e84f8fee3e77a47830adf8252fcf9b5c39c1825
+  MLKitPoseDetectionCommon: 46537ed5597b359f496470a7e5cc3bf5db4f55db
+  MLKitVision: 639a171d937241f3fcf92bc1b3ef8f179f49916c
+  MLKitXenoCommon: 319d30f77375ba4ff66279917b9657578f530bd6
+  nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  Protobuf: 85a48c73d708782e2869564c0438e211aae98e7a
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
-  SwiftLint: aaa29a9f649316095a9079595cb60906bd899353
+  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: 91bca0347839558f30fd729a8521f0fdecd61e76
+PODFILE CHECKSUM: 16fdcb4244b8a259488a0ec91b365c5420a8aae6
 
 COCOAPODS: 1.11.2

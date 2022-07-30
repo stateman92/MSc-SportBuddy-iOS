@@ -5,9 +5,11 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockAddNewChatAction: Domain { }
+final class MockAddNewChatAction: DomainImpl { }
 
-extension MockAddNewChatAction: AddNewChatActionProtocol {
+// MARK: - AddNewChatAction
+
+extension MockAddNewChatAction: AddNewChatAction {
     /// Search the registered users.
     func searchUsers(searchTerm: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading { () -> DomainActionResult<[UserDTO]> in

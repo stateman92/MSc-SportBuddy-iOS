@@ -7,7 +7,7 @@
 
 import Combine
 
-final class ChatsViewModel: BaseViewModel<ChatsViewModelState, ChatsViewModelCommand, ChatsDomain> {
+final class ChatsViewModel: BaseViewModel<ChatsViewModelState, ChatsViewModelCommand, ChatsDomainImpl> {
     // MARK: - Command
 
     override func receiveCommand(_ command: ChatsViewModelCommand) {

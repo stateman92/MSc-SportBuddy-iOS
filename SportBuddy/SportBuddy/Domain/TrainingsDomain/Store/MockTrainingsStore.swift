@@ -5,6 +5,8 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockTrainingsStore: Domain { }
+final class MockTrainingsStore: DomainImpl { }
 
-extension MockTrainingsStore: TrainingsStoreProtocol { }
+// MARK: - TrainingsStore
+
+extension MockTrainingsStore: TrainingsStore { }

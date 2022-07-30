@@ -9,7 +9,7 @@ import UIKit
 
 // swiftlint:disable:next colon
 final class OnboardingScreen:
-    BaseScreen<OnboardingViewModelState, OnboardingViewModelCommand, OnboardingDomain, OnboardingViewModel> {
+    BaseScreen<OnboardingViewModelState, OnboardingViewModelCommand, OnboardingDomainImpl, OnboardingViewModel> {
     // MARK: Properties
 
     let onboard = Onboard()

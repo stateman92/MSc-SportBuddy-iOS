@@ -9,7 +9,7 @@ import Foundation
 
 // swiftlint:disable:next colon
 final class AddNewChatViewModel:
-    BaseViewModel<AddNewChatViewModelState, AddNewChatViewModelCommand, AddNewChatDomain> {
+    BaseViewModel<AddNewChatViewModelState, AddNewChatViewModelCommand, AddNewChatDomainImpl> {
     // MARK: Properties
 
     @Throttling(wrappedValue: .init(), seconds: 0.66) private var searchTerm: String

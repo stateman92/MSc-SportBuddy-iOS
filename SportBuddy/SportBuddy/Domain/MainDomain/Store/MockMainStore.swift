@@ -5,6 +5,8 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockMainStore: Domain { }
+final class MockMainStore: DomainImpl { }
 
-extension MockMainStore: MainStoreProtocol { }
+// MARK: - MainStore
+
+extension MockMainStore: MainStore { }

@@ -5,9 +5,7 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class SettingsDomain {
-    @LazyInjected var store: SettingsStoreProtocol
-    @LazyInjected var action: SettingsActionProtocol
+protocol SettingsDomain: Domain {
+    var store: SettingsStore { get }
+    var action: SettingsAction { get }
 }
-
-extension SettingsDomain: SettingsDomainProtocol { }

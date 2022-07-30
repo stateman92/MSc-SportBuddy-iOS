@@ -12,7 +12,7 @@ class PersistentCache<Item: Codable>: Cache<Item> {
 
     private let key: SettingsKey
     private let secure: Bool
-    @LazyInjected private var settingsService: SettingsServiceProtocol
+    @LazyInjected private var settingsService: SettingsService
 
     // MARK: Initialization
 

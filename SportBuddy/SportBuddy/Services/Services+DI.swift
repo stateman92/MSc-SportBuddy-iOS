@@ -14,34 +14,35 @@ extension DependencyInjector {
         registerSettings()
         registerLoading()
 
-        register(service: AnimationService(), implements: AnimationServiceProtocol.self)
-        register(service: CameraService(), implements: CameraServiceProtocol.self)
-        register(service: CoderService(), implements: CoderServiceProtocol.self)
-        register(service: CopyService(), implements: CopyServiceProtocol.self)
-        register(service: ImageLoadingService(), implements: ImageLoadingServiceProtocol.self)
-        register(service: LoggingService(), implements: LoggingServiceProtocol.self)
-        register(service: MLService(), implements: MLServiceProtocol.self)
-        register(service: NavigatorService(rootViewController: resolve() as OnboardingScreen),
-                 implements: NavigatorServiceProtocol.self)
-        register(service: SystemImageService(), implements: SystemImageServiceProtocol.self)
-        register(service: WebSocketService(), implements: WebSocketServiceProtocol.self)
+        register(service: AnimationServiceImpl(), implements: AnimationService.self)
+        register(service: CameraServiceImpl(), implements: CameraService.self)
+        register(service: CoderServiceImpl(), implements: CoderService.self)
+        register(service: ConnectivityServiceImpl(), implements: ConnectivityService.self)
+        register(service: CopyServiceImpl(), implements: CopyService.self)
+        register(service: ImageLoadingServiceImpl(), implements: ImageLoadingService.self)
+        register(service: LoggingServiceImpl(), implements: LoggingService.self)
+        register(service: MLServiceImpl(), implements: MLService.self)
+        register(service: NavigatorServiceImpl(rootViewController: resolve() as OnboardingScreen),
+                 implements: NavigatorService.self)
+        register(service: SystemImageServiceImpl(), implements: SystemImageService.self)
+        register(service: WebSocketServiceImpl(), implements: WebSocketService.self)
     }
 }
 
 extension DependencyInjector {
     private static func registerToast() {
-        register(service: ToastService(on: UIApplication.keyWindow), implements: ToastServiceProtocol.self)
+        register(service: ToastServiceImpl(on: UIApplication.keyWindow), implements: ToastService.self)
     }
 
     private static func registerSettings() {
-        register(service: DefaultSettingsService(), implements: DefaultSettingsServiceProtocol.self)
-        register(service: SecureSettingsService(), implements: SecureSettingsServiceProtocol.self)
-        register(service: SettingsService(), implements: SettingsServiceProtocol.self)
+        register(service: DefaultSettingsServiceImpl(), implements: DefaultSettingsService.self)
+        register(service: SecureSettingsServiceImpl(), implements: SecureSettingsService.self)
+        register(service: SettingsServiceImpl(), implements: SettingsService.self)
     }
 
     private static func registerLoading() {
-        register(service: LoadingOverlayService(), implements: LoadingOverlayServiceProtocol.self)
-        register(service: LoadingService(), implements: LoadingServiceProtocol.self)
+        register(service: LoadingOverlayServiceImpl(), implements: LoadingOverlayService.self)
+        register(service: LoadingServiceImpl(), implements: LoadingService.self)
     }
 
     private static func register<T, S>(service: @autoclosure @escaping () -> T, implements implemented: S.Type) {

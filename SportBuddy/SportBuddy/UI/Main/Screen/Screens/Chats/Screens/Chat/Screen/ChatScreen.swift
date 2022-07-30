@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelCommand, ChatDomain, ChatViewModel> {
+final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelCommand, ChatDomainImpl, ChatViewModel> {
     // MARK: Properties
 
     private let tableView = AutoReversedTableView<ChatTableViewCell, ChatEntryDTO>(style: .grouped) { cell, data in
@@ -15,8 +15,8 @@ final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelCommand, Cha
     }
     private let inputField = ChatInputField()
     private var bottomAnchor: NSLayoutConstraint?
-    @LazyInjected private var systemImageService: SystemImageServiceProtocol
-    @LazyInjected private var toastService: ToastServiceProtocol
+    @LazyInjected private var systemImageService: SystemImageService
+    @LazyInjected private var toastService: ToastService
 
     // MARK: - State
 

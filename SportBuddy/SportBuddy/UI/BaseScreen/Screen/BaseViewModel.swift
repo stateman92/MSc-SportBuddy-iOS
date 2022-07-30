@@ -8,13 +8,13 @@
 import Combine
 import Foundation
 
-class BaseViewModel<State: Equatable, Command, Domain: DomainProtocol> {
+class BaseViewModel<State: Equatable, Command, Domain: SportBuddy.Domain> {
     // MARK: Properties
 
-    @LazyInjected var navigatorService: NavigatorServiceProtocol
-    @LazyInjected var settingService: SettingsServiceProtocol
-    @LazyInjected var toastService: ToastServiceProtocol
-    @LazyInjected var copyService: CopyServiceProtocol
+    @LazyInjected var navigatorService: NavigatorService
+    @LazyInjected var settingService: SettingsService
+    @LazyInjected var toastService: ToastService
+    @LazyInjected var copyService: CopyService
     @LazyInjected private var domain: Domain
     private let _stateSubject: PassthroughSubject<State, Never> = .init()
     private let stateSubject: CurrentValueSubject<State, Never>

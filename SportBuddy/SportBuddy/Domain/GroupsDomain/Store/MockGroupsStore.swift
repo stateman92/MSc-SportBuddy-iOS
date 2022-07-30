@@ -5,6 +5,8 @@
 //  Created by Kristof Kalai on 2022. 05. 04..
 //
 
-final class MockGroupsStore: Domain { }
+final class MockGroupsStore: DomainImpl { }
 
-extension MockGroupsStore: GroupsStoreProtocol { }
+// MARK: - GroupsStore
+
+extension MockGroupsStore: GroupsStore { }
