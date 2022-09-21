@@ -13,7 +13,7 @@ jobs:
       run:
         working-directory: SportBuddy
     name: Build and Test default scheme using any available iPhone simulator
-    runs-on: macos-latest
+    runs-on: '13.4.1'
 
     steps:
       - name: Checkout
