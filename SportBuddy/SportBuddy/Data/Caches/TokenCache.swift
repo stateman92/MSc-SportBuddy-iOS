@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class TokenCache: GeneralCache<UUID> {
+final class TokenCache: GeneralCache<TokenCache.Object> {
+    // MARK: Nested types
+
+    struct Object: Codable {
+        let token: UUID
+    }
+
     // MARK: Initialization
 
     init() {

@@ -31,8 +31,8 @@ final class InputView: View {
     private let nameTextField = StyledTextField()
     private let emailTextField = StyledTextField()
     private let passwordTextField = StyledTextField()
-    private let loginRegistrationButton = ButtonLabel(text: "Login")
-    private let forgotPasswordButton = ButtonLabel(text: "Forgot password?", style: .tertiary)
+    private let loginRegistrationButton = ButtonLabel(text: L10n.Login.login)
+    private let forgotPasswordButton = ButtonLabel(text: L10n.Login.Forgot.password, style: .tertiary)
 
     // MARK: Initialization
 
@@ -75,7 +75,7 @@ extension InputView {
         nameTextField.then {
             $0.textField.textContentType = .name
             $0.textField.clearButtonMode = .always
-            $0.placeholder = "Type your name..."
+            $0.placeholder = L10n.Login.Name.placeholder
             $0.isHidden = true
             $0.alpha = .zero
 
@@ -90,7 +90,7 @@ extension InputView {
             $0.textField.autocapitalizationType = .none
             $0.textField.textContentType = .username
             $0.textField.clearButtonMode = .always
-            $0.placeholder = "Type your email..."
+            $0.placeholder = L10n.Login.Email.placeholder
 
             $0.widthAnchor.constraint(equalTo: inputStackView.widthAnchor).isActive = true
         }
@@ -103,7 +103,7 @@ extension InputView {
             $0.textField.textContentType = .password
             $0.textField.isSecureTextEntry = true
             $0.textField.clearButtonMode = .always
-            $0.placeholder = "Type your password..."
+            $0.placeholder = L10n.Login.Password.placeholder
 
             $0.widthAnchor.constraint(equalTo: inputStackView.widthAnchor).isActive = true
         }
@@ -146,11 +146,11 @@ extension InputView {
             if state == .login {
                 nameTextField.isHidden = true
                 nameTextField.alpha = .zero
-                loginRegistrationButton.setup(text: "Login")
+                loginRegistrationButton.setup(text: L10n.Login.login)
             } else {
                 nameTextField.isHidden = false
                 nameTextField.alpha = 1
-                loginRegistrationButton.setup(text: "Sign up")
+                loginRegistrationButton.setup(text: L10n.Login.Sign.up)
             }
         }
     }

@@ -10,7 +10,7 @@ import UIKit
 final class DefaultOnboardPage: View {
     let title: UILabel = {
         let label = UILabel()
-        label.text = "Title"
+        label.text = L10n.Onboarding.title
         label.textAlignment = .center
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -20,7 +20,7 @@ final class DefaultOnboardPage: View {
 
     let subTitle: UILabel = {
         let label = UILabel()
-        label.text = "Sub Title"
+        label.text = L10n.Onboarding.subtitle
         label.textAlignment = .center
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping

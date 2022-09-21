@@ -9,13 +9,7 @@ final class MainViewModel: BaseViewModel<MainViewModelState, MainViewModelComman
     // MARK: Properties
 
     @LazyInjected private var connectivityListener: ConnectivityListener
-
-    // MARK: Initialization
-
-    init() {
-        super.init(state: .init())
-        connectivityListener.start()
-    }
+    @LazyInjected private var webSocketListener: WebSocketListener
 }
 
 // MARK: - Setup
@@ -23,6 +17,12 @@ final class MainViewModel: BaseViewModel<MainViewModelState, MainViewModelComman
 extension MainViewModel {
     override func setup() {
         super.setup()
+        setupListeners()
         navigatorService.isNavigationBarHidden = false
+    }
+
+    private func setupListeners() {
+        connectivityListener.start()
+        webSocketListener.start()
     }
 }

@@ -24,8 +24,8 @@ extension ChatType {
 
     var text: String {
         switch self {
-        case .existing: return "Existing chat!"
-        case .new: return "New chat!"
+        case .existing: return L10n.Chat.Types.new
+        case .new: return L10n.Chat.Types.existing
         }
     }
 }

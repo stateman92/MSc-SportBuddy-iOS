@@ -9,6 +9,7 @@ extension DependencyInjector {
     /// Register all the dependencies of the application.
     static func registerDependencies() {
         registerServices()
+        registerListeners()
         registerData()
         registerDomain()
         registerUI()

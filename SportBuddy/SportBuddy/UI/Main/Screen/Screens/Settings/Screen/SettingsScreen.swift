@@ -12,14 +12,20 @@ final class SettingsScreen:
     TabScreen<SettingsViewModelState, SettingsViewModelCommand, SettingsDomainImpl, SettingsViewModel> {
     // MARK: Properties
 
-    private let tableView = AutoReversedTableView<ReversedTableViewCell, Int>(style: .insetGrouped) { cell, data in
-        cell.textLabel?.text = "\(data)"
+    private let tableView = AutoReversedTableView<SettingsTableViewCell, SettingsItem>(
+        style: .insetGrouped, reversed: false) { cell, data in
+        cell.setup(with: data)
     }
 
     // MARK: Initialization
 
     init() {
-        super.init(title: "Settings")
+        super.init(title: L10n.Settings.title)
+    }
+
+    override func receiveState(_ state: SettingsViewModelState) {
+        super.receiveState(state)
+        tableView.reloadData([state.items])
     }
 }
 
@@ -42,11 +48,18 @@ extension SettingsScreen {
             $0.backgroundColor = .clear
             view.addSubview($0)
             $0.anchorToSuperview(top: 8, bottom: -8, leading: 8, trailing: -8, safeArea: true)
-            $0.reloadData([[1, 2], [3, 4]])
         }
     }
 }
 
 // MARK: - UITableViewDelegate
 
-extension SettingsScreen: UITableViewDelegate { }
+extension SettingsScreen: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.tableView.data(for: indexPath)
+        if model.toggle == .none {
+            model.action()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}

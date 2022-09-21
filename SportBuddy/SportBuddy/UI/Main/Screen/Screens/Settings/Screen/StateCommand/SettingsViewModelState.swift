@@ -5,8 +5,14 @@
 //  Created by Kristof Kalai on 2022. 04. 30..
 //
 
-struct SettingsViewModelState { }
+struct SettingsViewModelState {
+    let items: [SettingsItem]
+}
 
-extension SettingsViewModelState: Initable { }
+extension SettingsViewModelState: Initable {
+    init() {
+        self.init(items: .init())
+    }
+}
 
 extension SettingsViewModelState: Equatable { }

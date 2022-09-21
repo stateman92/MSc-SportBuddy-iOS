@@ -18,7 +18,7 @@ extension AddNewChatActionImpl: AddNewChatAction {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<[UserDTO]> in
             do {
                 let results = try await ClientAPI.searchUserPost(name: searchTerm)
-                searchedUsersCache.save(item: results)
+                searchedUsersCache.save(item: .init(users: results))
                 return .success(results)
             } catch {
                 return .failure(error)
@@ -29,7 +29,7 @@ extension AddNewChatActionImpl: AddNewChatAction {
     /// Clear the searched users
     func clearSearchedUser() -> DomainActionPublisher {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<Void> in
-            searchedUsersCache.save(item: [])
+            searchedUsersCache.save(item: .init(users: []))
             return .success(())
         }
     }

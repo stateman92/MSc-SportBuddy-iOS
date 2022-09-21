@@ -15,10 +15,6 @@ final class LoginScreen:
     private let segmentedControl = SwipingSegmentedControl()
     private let cardView = CardView()
     private let input = InputView()
-    private let orView = View()
-    private lazy var googleLoginButton = GoogleLoginButton(viewController: self) { [weak self] token in
-        self?.sendCommand(.googleLogin(token: token))
-    }
 }
 
 // MARK: - Lifecycle
@@ -29,8 +25,6 @@ extension LoginScreen {
         setupSegmentedControl()
         setupCardView()
         setupInput()
-        setupOrView()
-        setupGoogleLoginButton()
     }
 }
 
@@ -42,7 +36,7 @@ extension LoginScreen {
             scrollView.addSubview($0)
 
             $0.segments.append(LabelSegment(
-                text: "Log in",
+                text: L10n.Login.Segmented.Control.login,
                 normalBackgroundColor: .clear,
                 normalFont: Fonts.Fredoka.light.font(size: 21),
                 normalTextColor: .white,
@@ -50,7 +44,7 @@ extension LoginScreen {
                 selectedTextColor: Color.primary.color,
                 selectedBackgroundColor: .white))
             $0.segments.append(LabelSegment(
-                text: "Sign up",
+                text: L10n.Login.Segmented.Control.Sign.up,
                 normalBackgroundColor: .clear,
                 normalFont: Fonts.Fredoka.light.font(size: 21),
                 normalTextColor: .white,
@@ -94,53 +88,6 @@ extension LoginScreen {
             $0.forgotPassword = { [weak self] in
                 self?.sendCommand(.forgotPassword(email: $0))
             }
-        }
-    }
-
-    private func setupOrView() {
-        let stackView = StackView().then {
-            let firstDash = View().then {
-                $0.backgroundColor = .white
-                $0.setHeight(2)
-                $0.setWidth(45)
-                $0.layer.cornerRadius = 1
-            }
-            let orLabel = Label().then {
-                $0.text = "OR"
-                $0.textColor = .white
-            }
-            let secondDash = View().then {
-                $0.backgroundColor = .white
-                $0.setHeight(2)
-                $0.setWidth(45)
-                $0.layer.cornerRadius = 1
-            }
-            $0.addArrangedSubview(firstDash)
-            $0.addArrangedSubview(orLabel)
-            $0.addArrangedSubview(secondDash)
-
-            $0.spacing = 8
-            $0.alignment = .center
-        }
-
-        orView.then {
-            scrollView.addSubview($0)
-
-            $0.anchorToCenterX()
-            $0.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 32).isActive = true
-
-            $0.addSubview(stackView)
-            stackView.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
-        }
-    }
-
-    private func setupGoogleLoginButton() {
-        googleLoginButton.then {
-            scrollView.addSubview($0)
-
-            $0.anchorToCenterX()
-            $0.anchorToBottom()
-            $0.topAnchor.constraint(equalTo: orView.bottomAnchor, constant: 32).isActive = true
         }
     }
 }

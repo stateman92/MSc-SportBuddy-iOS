@@ -7,11 +7,12 @@
 
 import UIKit
 
-class AutoReversedTableView<Cell: ReversedTableViewCell, Data>: ReversedTableView, UITableViewDataSource {
+final class AutoReversedTableView<Cell: ReversedTableViewCell, Data>: ReversedTableView, UITableViewDataSource {
     // MARK: Properties
 
     private var data: [[Data]] = .init()
     private let cellConfig: (Cell, Data) -> Void
+    private let reversed: Bool
     override var dataSource: UITableViewDataSource? {
         didSet {
             if dataSource !== self {
@@ -22,8 +23,9 @@ class AutoReversedTableView<Cell: ReversedTableViewCell, Data>: ReversedTableVie
 
     // MARK: Initialization
 
-    init(style: Style, cellConfig: @escaping (Cell, Data) -> Void) {
+    init(style: Style, reversed: Bool = true, cellConfig: @escaping (Cell, Data) -> Void) {
         self.cellConfig = cellConfig
+        self.reversed = reversed
         super.init(style: style)
         setupView()
     }
@@ -40,6 +42,7 @@ class AutoReversedTableView<Cell: ReversedTableViewCell, Data>: ReversedTableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: Cell = dequeueReusableCell(indexPath: indexPath)
+        cell.set(reversed: reversed)
         cellConfig(cell, data[indexPath.section][indexPath.row])
         return cell
     }
@@ -51,6 +54,7 @@ extension AutoReversedTableView {
     private func setupView() {
         register(Cell.self)
         dataSource = self
+        transform = .init(rotationAngle: reversed ? .pi : .zero)
     }
 }
 
@@ -58,7 +62,7 @@ extension AutoReversedTableView {
 
 extension AutoReversedTableView {
     func reloadData(_ data: [[Data]]) {
-        self.data = data.reversed().map { $0.reversed() }
+        self.data = reversed ? data.reversed().map { $0.reversed() } : data
         super.reloadData()
     }
 

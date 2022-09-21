@@ -24,7 +24,11 @@ final class RoundedView: View {
 
     // MARK: Properties
 
-    var multiplier: Roundness = .multiplier(1)
+    var multiplier: Roundness = .multiplier(1) {
+        didSet {
+            refreshCorners()
+        }
+    }
 }
 
 // MARK: - Overridden methods
@@ -32,7 +36,15 @@ final class RoundedView: View {
 extension RoundedView {
     override var bounds: CGRect {
         didSet {
-            layer.cornerRadius = multiplier.radius(minDimension: min(bounds.height, bounds.width))
+            refreshCorners()
         }
+    }
+}
+
+// MARK: - Private methods
+
+extension RoundedView {
+    private func refreshCorners() {
+        layer.cornerRadius = multiplier.radius(minDimension: min(bounds.height, bounds.width))
     }
 }

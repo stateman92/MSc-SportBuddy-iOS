@@ -19,7 +19,7 @@ extension DependencyInjector {
 extension DependencyInjector {
     /// Register the tabs of the main module.
     private static func registerTabs() {
-        registerGroupsScreen()
+        registerLiveFeedScreen()
         registerChatsScreen()
         registerTrainingsScreen()
         registerSettingsScreen()

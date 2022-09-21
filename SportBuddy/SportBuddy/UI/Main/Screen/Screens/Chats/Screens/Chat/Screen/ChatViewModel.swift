@@ -51,6 +51,6 @@ extension ChatViewModel {
 
     private func copy(_ message: String) {
         copyService.copy(string: message)
-        toastService.showToast(with: .init(message: "Message copied!", type: .success))
+        toastService.showToast(with: .init(message: L10n.Chat.Copy.success, type: .success))
     }
 }

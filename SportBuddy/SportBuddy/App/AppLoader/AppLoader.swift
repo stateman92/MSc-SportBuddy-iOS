@@ -5,7 +5,7 @@
 //  Created by Kristof Kalai on 2022. 03. 29..
 //
 
-import GoogleSignIn
+import UIKit
 
 enum AppLoader {
     // MARK: Properties
@@ -14,11 +14,6 @@ enum AppLoader {
     @LazyInjected private static var navigatorService: NavigatorService
     private static var window: UIWindow?
     private static var cancellables = Cancellables()
-
-    static var signInConfig: GIDConfiguration {
-        let id = ""
-        return GIDConfiguration(clientID: id)
-    }
 }
 
 // MARK: - Public methods
@@ -29,17 +24,6 @@ extension AppLoader {
         setup()
         navigatorService.resetToDefault()
         setupWindow()
-    }
-
-    static func application(_ app: UIApplication,
-                            open url: URL,
-                            options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        var handled: Bool
-        handled = GIDSignIn.sharedInstance.handle(url)
-        if handled {
-            return true
-        }
-        return false
     }
 }
 
@@ -63,13 +47,6 @@ extension AppLoader {
         OpenAPIClientAPI.basePath = "http://127.0.0.1:8080"
         OpenAPIClientAPI.apiResponseQueue = .global(qos: .userInitiated)
         OpenAPIClientAPI.requestBuilderFactory = TokenizableRequestBuilderFactory()
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if error != nil || user == nil {
-                // Show the app's signed-out state.
-            } else {
-                // Show the app's signed-in state.
-            }
-        }
         NotificationCenter.addObserver(forName: .name(UIApplication.willEnterForegroundNotification)) {
             loginDomain
                 .action

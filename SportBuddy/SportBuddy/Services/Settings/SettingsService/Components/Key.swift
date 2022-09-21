@@ -14,6 +14,7 @@ private enum Keys: String {
     case token
     case user
     case onboarding
+    case settings
 }
 
 extension Key where Self == SettingsKey {
@@ -27,5 +28,9 @@ extension Key where Self == SettingsKey {
 
     static var onboarding: SettingsKey {
         SettingsKey(keyName: Keys.onboarding, secure: false)
+    }
+
+    static var settings: SettingsKey {
+        SettingsKey(keyName: Keys.settings, secure: false)
     }
 }

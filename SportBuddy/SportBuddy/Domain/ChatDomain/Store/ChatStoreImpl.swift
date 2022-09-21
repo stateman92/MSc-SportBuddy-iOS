@@ -17,10 +17,10 @@ final class ChatStoreImpl: DomainImpl {
 
 extension ChatStoreImpl: ChatStore {
     func getChat(id: UUID) -> DomainStorePublisher<ChatDTO> {
-        chatsCache.value().map { $0?.first { $0.primaryId == id } }.autoEraseOnMain()
+        chatsCache.value().map(\.?.chats).map { $0?.first { $0.primaryId == id } }.autoEraseOnMain()
     }
 
     var immediateToken: UUID? {
-        tokenCache.immediateValue
+        tokenCache.immediateValue?.token
     }
 }

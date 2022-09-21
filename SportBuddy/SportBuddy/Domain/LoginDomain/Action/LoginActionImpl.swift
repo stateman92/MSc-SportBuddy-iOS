@@ -21,8 +21,8 @@ extension LoginActionImpl: LoginAction {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
             do {
                 let result = try await ClientAPI.loginPost(email: email, password: password)
-                userCache.save(item: result.user)
-                tokenCache.save(item: result.token)
+                userCache.save(item: .init(user: result.user))
+                tokenCache.save(item: .init(token: result.token))
                 return .success(result)
             } catch {
                 return .failure(error)
@@ -55,8 +55,8 @@ extension LoginActionImpl: LoginAction {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
             do {
                 let result = try await ClientAPI.registerPost(name: name, email: email, password: password)
-                userCache.save(item: result.user)
-                tokenCache.save(item: result.token)
+                userCache.save(item: .init(user: result.user))
+                tokenCache.save(item: .init(token: result.token))
                 return .success(result)
             } catch {
                 return .failure(error)

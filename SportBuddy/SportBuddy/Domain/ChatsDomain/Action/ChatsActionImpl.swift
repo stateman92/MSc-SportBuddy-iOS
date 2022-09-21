@@ -13,19 +13,15 @@ final class ChatsActionImpl: DomainImpl {
 
     override init() {
         super.init()
-        webSocketService.onReconnected { [unowned self] in
-            if let userId = userCache.immediateValue?.primaryId {
-                webSocketService.send(WSConnectionDTO(clientIdentifier: userId))
-            }
-        }
-        webSocketService.onReceive { [unowned self] text in
-            if let chat: ChatDTO = coderService.decode(string: text) {
-                var chats = chatsCache.immediateValue ?? .init()
+        webSocketService.receivedText
+            .compactMap { [unowned self] text -> ChatDTO? in coderService.decode(string: text) }
+            .sink { [unowned self] chat in
+                var chats = (chatsCache.immediateValue ?? .init(chats: [])).chats
                 chats.removeAll { $0.primaryId == chat.primaryId }
                 chats.append(chat)
-                chatsCache.save(item: chats)
+                chatsCache.save(item: .init(chats: chats))
             }
-        }
+            .store(in: &cancellables)
     }
 }
 
@@ -36,7 +32,7 @@ extension ChatsActionImpl: ChatsAction {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<[ChatDTO]> in
             do {
                 let results = try await ClientAPI.chatEntriesGet()
-                chatsCache.save(item: results)
+                chatsCache.save(item: .init(chats: results))
                 return .success(results)
             } catch {
                 return .failure(error)

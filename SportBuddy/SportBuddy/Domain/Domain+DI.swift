@@ -16,7 +16,7 @@ extension DependencyInjector {
     private static func registerDomains() {
         registerChatDomain()
         registerAddNewChatDomain()
-        registerGroupsDomain()
+        registerLiveFeedDomain()
         registerChatsDomain()
         registerTrainingsDomain()
         registerSettingsDomain()
@@ -41,11 +41,11 @@ extension DependencyInjector {
         resolver.register { AddNewChatDomainImpl() }
     }
 
-    private static func registerGroupsDomain() {
-        register(domain: GroupsStoreImpl(), mock: MockGroupsStore(), implements: GroupsStore.self)
-        register(domain: GroupsActionImpl(), mock: MockGroupsAction(), implements: GroupsAction.self)
+    private static func registerLiveFeedDomain() {
+        register(domain: LiveFeedStoreImpl(), mock: MockLiveFeedStore(), implements: LiveFeedStore.self)
+        register(domain: LiveFeedActionImpl(), mock: MockLiveFeedAction(), implements: LiveFeedAction.self)
 
-        resolver.register { GroupsDomainImpl() }
+        resolver.register { LiveFeedDomainImpl() }
     }
 
     private static func registerChatsDomain() {

@@ -16,8 +16,8 @@ final class OnboardingOverlay: View {
         pageControl.pageIndicatorTintColor = .lightGray
         return pageControl
     }()
-    let continueButton: UIButton = ButtonLabel(text: "Continue")
-    let skipButton: UIButton = ButtonLabel(text: "Skip", style: .secondary)
+    let continueButton: UIButton = ButtonLabel(text: L10n.Onboarding.continue)
+    let skipButton: UIButton = ButtonLabel(text: L10n.Onboarding.skip, style: .secondary)
 
     // MARK: - Initialization
 

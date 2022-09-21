@@ -23,3 +23,11 @@ extension ReversedTableViewCell {
         contentView.transform = .init(rotationAngle: .pi)
     }
 }
+
+// MARK: - Public methods
+
+extension ReversedTableViewCell {
+    func set(reversed: Bool) {
+        contentView.transform = .init(rotationAngle: reversed ? .pi : .zero)
+    }
+}

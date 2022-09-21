@@ -5,8 +5,16 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
+import Combine
+
 /// A protocol for managing the socket calls.
 protocol WebSocketService: Initable {
+    /// Notify if a message arrived.
+    var receivedText: PassthroughSubject<String, Never> { get }
+
+    /// Notify if a connection is established.
+    var reconnected: PassthroughSubject<Void, Never> { get }
+
     /// Initialize the service.
     /// - Parameters:
     ///   - autoConnect: whether to connect automatically on the service creation.
@@ -23,16 +31,6 @@ protocol WebSocketService: Initable {
     /// - Parameters:
     ///   - object: the object.
     func send<T>(_ object: T) where T: Codable
-
-    /// Notify if a message arrived.
-    /// - Parameters:
-    ///   - completion: the completion handler to the messages.
-    func onReceive(completion: @escaping (String) -> Void)
-
-    /// Notify if a connection is established.
-    /// - Parameters:
-    ///   - completion: the completion handler to the connection.
-    func onReconnected(completion: @escaping () -> Void)
 }
 
 extension WebSocketService {

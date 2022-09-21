@@ -19,7 +19,7 @@ final class ChatActionImpl: DomainImpl {
 extension ChatActionImpl: ChatAction {
     func sendText(toChat: UUID, toRecipient: UUID, message: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
-            guard let userId = userCache.immediateValue?.primaryId else {
+            guard let userId = userCache.immediateValue?.user.primaryId else {
                 assertionFailure("User's id didn't find!")
                 return .success(())
             }

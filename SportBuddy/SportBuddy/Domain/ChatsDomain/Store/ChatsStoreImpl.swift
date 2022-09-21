@@ -13,6 +13,6 @@ final class ChatsStoreImpl: DomainImpl {
 
 extension ChatsStoreImpl: ChatsStore {
     func getChats() -> DomainStorePublisher<[ChatDTO]> {
-        chatsCache.value().autoEraseOnMain()
+        chatsCache.value().map(\.?.chats).autoEraseOnMain()
     }
 }

@@ -112,3 +112,21 @@ extension ExerciseFractionDTO: Mockable {
         .init(time: .mock, motionType: .mock)
     }
 }
+
+extension LiveFeedDTO: Mockable {
+    static var mock: Self {
+        .init(sender: .mock, message: .mock, date: .mock)
+    }
+}
+
+extension LiveFeedResponseDTO: Mockable {
+    static var mock: Self {
+        .init(image: .mock, message: .mock, date: .mock)
+    }
+}
+
+extension Date: Mockable {
+    static var mock: Self {
+        .init(secondsSince1970: 32000)
+    }
+}

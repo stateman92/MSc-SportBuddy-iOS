@@ -18,6 +18,8 @@ extension DependencyInjector {
         register(cache: ChatsCache())
         register(cache: UserCache())
         register(cache: TokenCache())
+        register(cache: LiveFeedCache())
+        register(cache: SettingsCache())
     }
 
     private static func register<T, S>(cache: T) where T: GeneralCache<S> {

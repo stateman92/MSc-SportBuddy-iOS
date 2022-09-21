@@ -39,6 +39,15 @@ protocol NavigatorService: AnyObject {
 
 extension NavigatorService {
     /// Presents a view controller.
+    /// - Parameter screen: the view controller to display over the current view controller’s content.
+    /// - Parameter type: the type of the animation. By default `.push`.
+    /// - Parameter completion: the completion block to execute after the presentation finished. By default does nothing.
+    @discardableResult func present<T: UIViewController>(_ screen: T,
+                                                         type: NavigationType = .push,
+                                                         completion: @escaping () -> Void = { }) -> T {
+        present(screen, type: type, completion: completion)
+    }
+    /// Presents a view controller.
     /// - Parameter screen: the view controller's type to display over the current view controller’s content.
     /// - Parameter type: the type of the animation. By default `.push`.
     /// - Parameter completion: the completion block to execute after the presentation finished. By default does nothing.

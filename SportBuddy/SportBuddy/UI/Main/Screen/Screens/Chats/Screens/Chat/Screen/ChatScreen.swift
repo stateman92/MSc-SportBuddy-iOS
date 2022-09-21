@@ -145,24 +145,24 @@ extension ChatScreen {
         guard let indexPath = indexPath,
               let cell = tableView.cellForRow(at: indexPath) as? ChatTableViewCell else { return nil }
 
-        return UITargetedPreview(view: cell.labelContentView,
+        return UITargetedPreview(view: cell.targetedPreview,
                                  parameters: UIPreviewParameters().then { $0.backgroundColor = .clear })
     }
 
     private func shareAction(message: String) -> UIAction {
-        .init(title: "Share",
+        .init(title: L10n.Chat.share,
               image: systemImageService.image(symbol: .squareAndArrowUp),
               handler: { [weak self] _ in self?.share(message: message) })
     }
 
     private func copyAction(message: String) -> UIAction {
-        .init(title: "Copy",
+        .init(title: L10n.Chat.copy,
               image: systemImageService.image(symbol: .docOnDoc),
               handler: { [weak self] _ in self?.sendCommand(.copy(message)) })
     }
 
     private var deleteAction: UIAction {
-        .init(title: "Delete",
+        .init(title: L10n.Chat.delete,
               image: systemImageService.image(symbol: .trash),
               attributes: .destructive,
               handler: { _ in })
@@ -171,11 +171,11 @@ extension ChatScreen {
     private func share(message: String) {
         let activityViewController = UIActivityViewController(activityItems: [message],
                                                               applicationActivities: nil)
-        activityViewController.completionWithItemsHandler = { [weak self] _, completed, _, _ in
+        activityViewController.completionWithItemsHandler = { [weak self] _, completed, _, error in
             if completed {
-                self?.toastService.showToast(with: .init(message: "Message shared!", type: .success))
-            } else {
-                self?.toastService.showToast(with: .init(message: "Message cannot be shared!", type: .error))
+                self?.toastService.showToast(with: .init(message: L10n.Chat.Share.success, type: .success))
+            } else if let error = error {
+                self?.toastService.showToast(with: .init(message: L10n.Chat.Share.error(error), type: .error))
             }
         }
         activityViewController.popoverPresentationController?.sourceView = view

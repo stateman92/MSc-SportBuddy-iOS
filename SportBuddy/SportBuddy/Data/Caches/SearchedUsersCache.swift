@@ -5,10 +5,10 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class SearchedUsersCache: GeneralCache<[UserDTO]> {
-    // MARK: Initialization
+final class SearchedUsersCache: GeneralCache<SearchedUsersCache.Object> {
+    // MARK: Nested types
 
-    init() {
-        super.init(cacheType: .default)
+    struct Object: Codable {
+        let users: [UserDTO]
     }
 }

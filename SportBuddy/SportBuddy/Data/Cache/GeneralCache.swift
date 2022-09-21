@@ -9,7 +9,7 @@ import Combine
 
 enum CacheType {
     case `default`
-    case persistent(key: SettingsKey, secure: Bool = true)
+    case persistent(key: SettingsKey)
 }
 
 private enum CacheHolder<Item: Codable> {
@@ -100,8 +100,8 @@ class GeneralCache<Item: Codable> {
         switch cacheType {
         case .default:
             cacheHolder = .default(cache: Cache())
-        case let .persistent(key: key, secure: secure):
-            cacheHolder = .persistent(persistentCache: PersistentCache(key: key, secure: secure))
+        case let .persistent(key: key):
+            cacheHolder = .persistent(persistentCache: PersistentCache(key: key))
         }
     }
 

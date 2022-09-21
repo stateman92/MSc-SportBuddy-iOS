@@ -5,6 +5,7 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
+import Combine
 import Foundation
 import Starscream
 
@@ -15,8 +16,8 @@ final class WebSocketServiceImpl {
     private let socket: WebSocket
     private let autoReconnect: Bool
     @LazyInjected private var coderService: CoderService
-    private var receiveText: (String) -> Void = { _ in }
-    private var reconnected: () -> Void = { }
+    let receivedText = PassthroughSubject<String, Never>()
+    let reconnected = PassthroughSubject<Void, Never>()
 
     // MARK: Initialization
 
@@ -57,20 +58,6 @@ extension WebSocketServiceImpl: WebSocketService {
         guard let string: String = coderService.encode(object: object) else { return }
         socket.write(string: string)
     }
-
-    /// Notify if a message arrived.
-    /// - Parameters:
-    ///   - completion: the completion handler to the messages.
-    func onReceive(completion: @escaping (String) -> Void) {
-        receiveText = completion
-    }
-
-    /// Notify if a connection is established.
-    /// - Parameters:
-    ///   - completion: the completion handler to the connection.
-    func onReconnected(completion: @escaping () -> Void) {
-        reconnected = completion
-    }
 }
 
 // MARK: - WebSocketDelegate
@@ -78,13 +65,12 @@ extension WebSocketServiceImpl: WebSocketService {
 extension WebSocketServiceImpl: WebSocketDelegate {
     func didReceive(event: WebSocketEvent, client: WebSocket) {
         switch event {
-        case let .text(text): receiveText(text)
+        case let .text(text): receivedText.send(text)
         case .disconnected, .cancelled:
             if autoReconnect {
                 connect()
             }
-        case .connected:
-            reconnected()
+        case .connected: reconnected.send(())
         default: break
         }
     }

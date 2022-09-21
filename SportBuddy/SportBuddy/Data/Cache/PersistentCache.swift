@@ -11,20 +11,18 @@ class PersistentCache<Item: Codable>: Cache<Item> {
     // MARK: Properties
 
     private let key: SettingsKey
-    private let secure: Bool
     @LazyInjected private var settingsService: SettingsService
 
     // MARK: Initialization
 
-    init(key: SettingsKey, secure: Bool = true) {
+    init(key: SettingsKey) {
         self.key = key
-        self.secure = secure
         super.init()
         cache.send(settingsService.retrieve(forKey: key))
     }
 
     convenience init(key: String, secure: Bool = true) {
-        self.init(key: SettingsKey(keyName: key, secure: secure), secure: secure)
+        self.init(key: SettingsKey(keyName: key, secure: secure))
     }
 
     @available(*, unavailable)

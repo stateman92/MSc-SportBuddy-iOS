@@ -15,6 +15,6 @@ final class OnboardingStoreImpl: DomainImpl {
 
 extension OnboardingStoreImpl: OnboardingStore {
     var immediateToken: UUID? {
-        tokenCache.immediateValue
+        tokenCache.immediateValue?.token
     }
 }

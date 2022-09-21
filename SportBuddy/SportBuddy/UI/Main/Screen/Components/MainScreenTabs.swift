@@ -10,7 +10,7 @@ import UIKit
 final class MainScreenTabs {
     // MARK: Properties
 
-    @LazyInjected private var groupsScreen: GroupsScreen
+    @LazyInjected private var liveFeedScreen: LiveFeedScreen
     @LazyInjected private var chatsScreen: ChatsScreen
     @LazyInjected private var trainingsScreen: TrainingsScreen
     @LazyInjected private var settingsScreen: SettingsScreen
@@ -19,8 +19,8 @@ final class MainScreenTabs {
     // MARK: Initialization
 
     init() {
-        groupsScreen.tabBarItem.image = systemImageService.image(symbol: .person3)
-        groupsScreen.tabBarItem.selectedImage = systemImageService.image(symbol: .person3Fill)
+        liveFeedScreen.tabBarItem.image = systemImageService.image(symbol: .person3)
+        liveFeedScreen.tabBarItem.selectedImage = systemImageService.image(symbol: .person3Fill)
 
         chatsScreen.tabBarItem.image = systemImageService.image(symbol: .rectangle3GroupBubbleLeft)
         chatsScreen.tabBarItem.selectedImage = systemImageService.image(symbol: .rectangle3GroupBubbleLeftFill)
@@ -38,7 +38,7 @@ final class MainScreenTabs {
 extension MainScreenTabs: ScreenTabs {
     var viewControllers: [UIViewController] {
         [
-            groupsScreen,
+            liveFeedScreen,
             chatsScreen,
             trainingsScreen,
             settingsScreen

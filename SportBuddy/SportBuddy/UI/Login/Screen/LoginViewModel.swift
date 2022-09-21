@@ -42,9 +42,9 @@ extension LoginViewModel {
         action
             .login(email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
-                toastService.showToast(with: .init(message: "Login failed! Try again later.", type: .error))
+                toastService.showToast(with: .init(message: L10n.Login.Login.error, type: .error))
             }, receiveValue: { [unowned self] _ in
-                toastService.showToast(with: .init(message: "You've logged in successfully!", type: .success))
+                toastService.showToast(with: .init(message: L10n.Login.Login.success, type: .success))
                 navigateNext()
             })
             .store(in: &cancellables)
@@ -54,10 +54,9 @@ extension LoginViewModel {
         action
             .signUp(name: name, email: email, password: password)
             .sink(receiveError: { [unowned self] _ in
-                toastService.showToast(with: .init(message: "Registration failed! Try again later.",
-                                                   type: .error))
+                toastService.showToast(with: .init(message: L10n.Login.Sign.Up.error, type: .error))
             }, receiveValue: { [unowned self] _ in
-                toastService.showToast(with: .init(message: "You've signed up successfully!", type: .success))
+                toastService.showToast(with: .init(message: L10n.Login.Sign.Up.success, type: .success))
                 navigateNext()
             })
             .store(in: &cancellables)
@@ -67,11 +66,9 @@ extension LoginViewModel {
         action
             .forgotPassword(email: email)
             .sink(receiveError: { [unowned self] _ in
-                toastService.showToast(
-                    with: .init(message: "Forgot password request failed! Try again later.", type: .warning))
+                toastService.showToast(with: .init(message: L10n.Login.Forgot.Password.error, type: .warning))
             }, receiveValue: { [unowned self] _ in
-                toastService.showToast(with: .init(message: "You've requested a password reset email successfully!",
-                                                   type: .success))
+                toastService.showToast(with: .init(message: L10n.Login.Forgot.Password.success, type: .success))
             })
             .store(in: &cancellables)
     }

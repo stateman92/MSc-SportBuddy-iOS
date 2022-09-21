@@ -17,15 +17,15 @@ final class LoginStoreImpl: DomainImpl {
 extension LoginStoreImpl: LoginStore {
     /// The current user.
     var currentUser: DomainStorePublisher<UserDTO> {
-        userCache.autoEraseOnMain()
+        userCache.value().map(\.?.user).autoEraseOnMain()
     }
 
     /// The token.
     var token: DomainStorePublisher<UUID?> {
-        tokenCache.autoEraseOnMain()
+        tokenCache.value().map(\.?.token).autoEraseOnMain()
     }
 
     var immediateToken: UUID? {
-        tokenCache.immediateValue
+        tokenCache.immediateValue?.token
     }
 }

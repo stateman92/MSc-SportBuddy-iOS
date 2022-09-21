@@ -5,10 +5,10 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-final class ChatsCache: GeneralCache<[ChatDTO]> {
-    // MARK: Initialization
+final class ChatsCache: GeneralCache<ChatsCache.Object> {
+    // MARK: Nested types
 
-    init() {
-        super.init(cacheType: .default)
+    struct Object: Codable {
+        let chats: [ChatDTO]
     }
 }

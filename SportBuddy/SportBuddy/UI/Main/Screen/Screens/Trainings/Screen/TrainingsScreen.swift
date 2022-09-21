@@ -13,7 +13,7 @@ final class TrainingsScreen:
     // MARK: Initialization
 
     init() {
-        super.init(title: "Trainings")
+        super.init(title: L10n.Trainings.title)
     }
 }
 

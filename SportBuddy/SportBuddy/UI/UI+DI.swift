@@ -11,13 +11,5 @@ extension DependencyInjector {
         registerOnboardingScreen()
         registerLoginScreen()
         registerMainScreen()
-
-        registerListeners()
-    }
-}
-
-extension DependencyInjector {
-    private static func registerListeners() {
-        resolver.register { ConnectivityListenerImpl() }.implements(ConnectivityListener.self)
     }
 }

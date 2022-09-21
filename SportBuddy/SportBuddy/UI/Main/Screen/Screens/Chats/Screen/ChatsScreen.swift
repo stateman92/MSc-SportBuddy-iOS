@@ -23,7 +23,7 @@ final class ChatsScreen: TabScreen<ChatsViewModelState, ChatsViewModelCommand, C
     // MARK: Initialization
 
     init() {
-        super.init(title: "Chats")
+        super.init(title: L10n.Chats.title)
     }
 
     // MARK: - State

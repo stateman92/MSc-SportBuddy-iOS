@@ -88,8 +88,7 @@ extension DomainImpl {
         dispatchToMain { [self] in
             navigatorService.resetToDefault()
             if showUnauthenticatedToast {
-                toastService.showToast(with: .init(message: "Your session has expired. Login again to continue.",
-                                                   type: .error))
+                toastService.showToast(with: .init(message: L10n.General.Session.expired, type: .error))
             }
         }
     }

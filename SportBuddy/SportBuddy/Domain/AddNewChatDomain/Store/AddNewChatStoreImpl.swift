@@ -15,6 +15,6 @@ extension AddNewChatStoreImpl: AddNewChatStore {
     /// The searched users.
     var searchedUsers: DomainStorePublisher<[UserDTO]> {
         searchedUsersCache.clear()
-        return searchedUsersCache.autoEraseOnMain()
+        return searchedUsersCache.value().map(\.?.users).autoEraseOnMain()
     }
 }

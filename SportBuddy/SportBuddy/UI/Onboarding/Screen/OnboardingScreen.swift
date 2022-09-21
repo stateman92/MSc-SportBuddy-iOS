@@ -53,10 +53,10 @@ extension OnboardingScreen: OnboardDataSource {
         overlay.continueButton.tag = Int(position)
 
         if currentPage < 2 {
-            continueButton.setup(text: "Continue")
-            skipButton.setup(text: "Skip")
+            continueButton.setup(text: L10n.Onboarding.continue)
+            skipButton.setup(text: L10n.Onboarding.skip)
         } else {
-            continueButton.setup(text: "Get Started!")
+            continueButton.setup(text: L10n.Onboarding.Get.started)
         }
     }
 
@@ -86,8 +86,8 @@ extension OnboardingScreen: OnboardDataSource {
 
     func onboardPageForIndex(_ onboard: Onboard, index: Int) -> OnboardPage? {
         let page = OnboardingPage()
-        page.title.setup(text: "TITLE")
-        page.subTitle.setup(text: "SUBTITLE")
+        page.title.setup(text: L10n.Onboarding.title)
+        page.subTitle.setup(text: L10n.Onboarding.subtitle)
         switch index {
         case 0: page.imageView.image = Images.firstOnboarding.image
         case 1: page.imageView.image = Images.secondOnboarding.image

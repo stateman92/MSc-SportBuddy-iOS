@@ -36,7 +36,7 @@ final class AddNewChatScreen:
 extension AddNewChatScreen {
     override func setupView() {
         super.setupView()
-        title = "Add new chat"
+        title = L10n.Add.New.Chat.title
         setupSearchController()
         setupTableView()
         setupEmptyStateView()
