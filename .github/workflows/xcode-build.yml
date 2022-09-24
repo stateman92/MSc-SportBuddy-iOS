@@ -9,9 +9,6 @@ on:
 
 jobs:
   build:
-    defaults:
-      run:
-        working-directory: SportBuddy
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-12
 
@@ -21,16 +18,20 @@ jobs:
       - name: Select Xcode version
         run: sudo xcode-select -s '/Applications/Xcode_14.0.app/Contents/Developer'
       - name: Checkout
+        working-directory: SportBuddy
         uses: actions/checkout@v3
       - name: Pod install
+        working-directory: SportBuddy
         run: pod install
       - name: Set Default Scheme
+        working-directory: SportBuddy
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
           default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
           echo $default | cat >default
           echo Using default scheme: $default
       - name: Build
+        working-directory: SportBuddy
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
@@ -42,6 +43,7 @@ jobs:
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
           xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
       - name: Test
+        working-directory: SportBuddy
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
