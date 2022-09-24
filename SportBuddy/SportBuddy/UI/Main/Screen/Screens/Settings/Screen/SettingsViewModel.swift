@@ -36,7 +36,7 @@ extension SettingsViewModel {
         imagePickerController.set(didTapCancel: { _ in
             imagePickerController.dismiss(animated: true)
         }, didFinish: { [weak self] _, result in
-            guard let self = self,
+            guard let self,
                   let image = result[.editedImage] as? UIImage,
                   let base64 = image.jpegData(compressionQuality: 1)?.base64EncodedString() else { return }
             self.action.set(image: base64).sink().store(in: &self.cancellables)

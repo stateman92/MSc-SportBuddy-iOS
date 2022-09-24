@@ -41,10 +41,10 @@ extension UIView {
         tapGestureRecognizerAction = action
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
 
-        if let numberOfTapsRequired = numberOfTapsRequired {
+        if let numberOfTapsRequired {
             tapGestureRecognizer.numberOfTapsRequired = numberOfTapsRequired
         }
-        if let numberOfTouchesRequired = numberOfTouchesRequired {
+        if let numberOfTouchesRequired {
             tapGestureRecognizer.numberOfTouchesRequired = numberOfTouchesRequired
         }
 
@@ -102,10 +102,10 @@ extension UIView {
         panGestureRecognizerAction = action
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
 
-        if let minimumNumberOfTouches = minimumNumberOfTouches {
+        if let minimumNumberOfTouches {
             panGestureRecognizer.minimumNumberOfTouches = minimumNumberOfTouches
         }
-        if let maximumNumberOfTouches = maximumNumberOfTouches {
+        if let maximumNumberOfTouches {
             panGestureRecognizer.maximumNumberOfTouches = maximumNumberOfTouches
         }
 

@@ -91,7 +91,7 @@ extension TabBar {
 
         tabBarItems.forEach { button in
             button.tapped = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 let index = self.tabBarItems.firstIndex(of: button) ?? .zero
                 self.sendActions(for: .valueChanged)
                 self.selectedIndexSubject = index

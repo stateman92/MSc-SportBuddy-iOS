@@ -44,7 +44,7 @@ extension LoadingOverlayServiceImpl: LoadingOverlayService {
 
 extension LoadingOverlayServiceImpl {
     private func show(on view: UIView?) {
-        guard let view = view, !state.loading else { return }
+        guard let view, !state.loading else { return }
         state = .fullScreenLoading
 
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

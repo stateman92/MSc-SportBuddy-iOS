@@ -50,7 +50,7 @@ extension ToastServiceImpl: ToastService {
 
 extension ToastServiceImpl {
     private func showToast(with message: String, type: ToastType) {
-        guard let view = view else { return }
+        guard let view else { return }
         overlayService = overlayServiceType.init(on: view, message: message, type: type) { [weak self] in
             self?.toastQueue.dequeue()
             if let lastItem = self?.toastQueue.peek() {

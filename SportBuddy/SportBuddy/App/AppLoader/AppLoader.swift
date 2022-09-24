@@ -32,7 +32,7 @@ extension AppLoader {
 extension AppLoader {
     private static func setupWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        guard let window = window else { return }
+        guard let window else { return }
         navigatorService.becameRoot(in: window)
         window.makeKeyAndVisible()
     }

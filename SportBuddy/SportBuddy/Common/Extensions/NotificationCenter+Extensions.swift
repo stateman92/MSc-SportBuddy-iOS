@@ -94,7 +94,7 @@ extension NotificationCenter {
 
     /// Remove a notification observer.
     class func remove(observer: NSObjectProtocol?) {
-        guard let observer = observer else { return }
+        guard let observer else { return }
         `default`.removeObserver(observer)
     }
 

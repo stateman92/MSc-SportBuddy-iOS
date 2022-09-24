@@ -22,7 +22,7 @@ final class ConnectivityServiceImpl {
     /// Initialize the service.
     init() {
         monitor.pathUpdateHandler = { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.isReachableSubject.send($0.status == .satisfied)
         }
         monitor.start(queue: queue)

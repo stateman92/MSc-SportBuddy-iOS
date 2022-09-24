@@ -20,7 +20,7 @@ extension UIView {
     ///   - constant: the constant of the constraint. By default `.zero`.
     ///   - safeArea: whether to use the safe area or not. By default `false`.
     func anchorToLeading(constant: CGFloat = .zero, safeArea: Bool = false) {
-        guard let superview = superview else { return }
+        guard let superview else { return }
         usingAutoLayout()
         let anchor = safeArea ? superview.safeAreaLayoutGuide.leadingAnchor : superview.leadingAnchor
         leadingAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
@@ -31,7 +31,7 @@ extension UIView {
     ///   - constant: the constant of the constraint. By default `.zero`.
     ///   - safeArea: whether to use the safe area or not. By default `false`.
     func anchorToTrailing(constant: CGFloat = .zero, safeArea: Bool = false) {
-        guard let superview = superview else { return }
+        guard let superview else { return }
         usingAutoLayout()
         let anchor = safeArea ? superview.safeAreaLayoutGuide.trailingAnchor : superview.trailingAnchor
         trailingAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
@@ -42,7 +42,7 @@ extension UIView {
     ///   - constant: the constant of the constraint. By default `.zero`.
     ///   - safeArea: whether to use the safe area or not. By default `false`.
     func anchorToBottom(constant: CGFloat = .zero, safeArea: Bool = false) {
-        guard let superview = superview else { return }
+        guard let superview else { return }
         usingAutoLayout()
         let anchor = safeArea ? superview.safeAreaLayoutGuide.bottomAnchor : superview.bottomAnchor
         bottomAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
@@ -53,7 +53,7 @@ extension UIView {
     ///   - constant: the constant of the constraint. By default `.zero`.
     ///   - safeArea: whether to use the safe area or not. By default `false`.
     func anchorToTop(constant: CGFloat = .zero, safeArea: Bool = false) {
-        guard let superview = superview else { return }
+        guard let superview else { return }
         usingAutoLayout()
         let anchor = safeArea ? superview.safeAreaLayoutGuide.topAnchor : superview.topAnchor
         topAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
@@ -62,7 +62,7 @@ extension UIView {
     /// Constraint the center y anchor to the superview's center y anchor.
     /// - Parameter constant: the constant of the constraint. By default `.zero`.
     func anchorToCenterY(constant: CGFloat = .zero) {
-        guard let superview = superview else { return }
+        guard let superview else { return }
         usingAutoLayout()
         centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant).isActive = true
     }
@@ -70,7 +70,7 @@ extension UIView {
     /// Constraint the center x anchor to the superview's center x anchor.
     /// - Parameter constant: the constant of the constraint. By default `.zero`.
     func anchorToCenterX(constant: CGFloat = .zero) {
-        guard let superview = superview else { return }
+        guard let superview else { return }
         usingAutoLayout()
         centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant).isActive = true
     }
@@ -144,16 +144,16 @@ extension UIView {
                            leadingSafeArea: Bool = false,
                            trailing: CGFloat? = nil,
                            trailingSafeArea: Bool = false) {
-        if let top = top {
+        if let top {
             anchorToTop(constant: top, safeArea: topSafeArea)
         }
-        if let bottom = bottom {
+        if let bottom {
             anchorToBottom(constant: bottom, safeArea: bottomSafeArea)
         }
-        if let leading = leading {
+        if let leading {
             anchorToLeading(constant: leading, safeArea: leadingSafeArea)
         }
-        if let trailing = trailing {
+        if let trailing {
             anchorToTrailing(constant: trailing, safeArea: trailingSafeArea)
         }
     }

@@ -115,7 +115,7 @@ extension CameraServiceImpl {
 
         dataOutput.connections.first?.isVideoMirrored = !isBackCameraInOperation
         dataOutput.setSampleBufferDelegate(on: dataOutputQueue) { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.skeletonShouldUpdated(self.getBoneEndpoints(from: .buffer($0)))
         }
     }

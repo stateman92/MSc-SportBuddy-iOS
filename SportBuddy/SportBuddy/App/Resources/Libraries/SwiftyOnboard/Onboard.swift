@@ -98,12 +98,12 @@ extension Onboard {
     }
 
     private func setupOverlayView() {
-        if let dataSource = dataSource, let overlay = dataSource.onboardViewForOverlay(self) {
+        if let dataSource, let overlay = dataSource.onboardViewForOverlay(self) {
             overlay.page(count: dataSource.onboardNumberOfPages(self))
             addSubview(overlay)
             overlay.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
             overlay.pageControl.addAction(for: .touchUpInside) { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 DispatchQueue.main.async {
                     let page = overlay.pageControl.currentPage
                     self.goToPage(index: page, animated: true)
@@ -119,7 +119,7 @@ extension Onboard {
     }
 
     private func colorForPosition(_ pos: CGFloat) -> UIColor? {
-        guard let dataSource = dataSource else { return nil }
+        guard let dataSource else { return nil }
         let percentage: CGFloat = pos - CGFloat(Int(pos))
 
         let currentIndex = Int(pos - percentage)
@@ -128,7 +128,7 @@ extension Onboard {
             let color1 = dataSource.onboardBackgroundColorFor(self, atIndex: currentIndex)
             let color2 = dataSource.onboardBackgroundColorFor(self, atIndex: currentIndex + 1)
 
-            if let color1 = color1, let color2 = color2 {
+            if let color1, let color2 {
                 return colorFrom(start: color1, end: color2, percent: percentage)
             }
         }
@@ -197,7 +197,7 @@ extension Onboard {
     }
 
     func goToPage(index: Int, animated: Bool) {
-        guard let dataSource = dataSource else { return }
+        guard let dataSource else { return }
         if index < dataSource.onboardNumberOfPages(self) {
             containerView.setContentOffset(CGPoint(x: CGFloat(index) * bounds.width, y: .zero), animated: animated)
         }

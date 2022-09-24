@@ -71,7 +71,7 @@ func run(key: SettingsKey, times: Int, closure: () -> Void, else: () -> Void) {
     }
     let helper = SettingsHelper.self
     let int: Int? = helper.retrieve(forKey: key)
-    if let int = int {
+    if let int {
         helper.save(object: int + 1, forKey: key)
         if int < times {
             closure()

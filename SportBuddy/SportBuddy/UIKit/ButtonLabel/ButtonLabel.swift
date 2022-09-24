@@ -164,7 +164,7 @@ extension ButtonLabel {
         setup(style: style)
         setup(size: size)
         setup(image: image)
-        if let tapped = tapped {
+        if let tapped {
             self.tapped(tapped: tapped)
         }
     }

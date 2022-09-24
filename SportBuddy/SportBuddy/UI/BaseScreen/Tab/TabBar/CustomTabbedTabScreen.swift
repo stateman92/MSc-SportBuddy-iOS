@@ -38,7 +38,7 @@ class CustomTabbedTabScreen<State,
             .dropFirst(1)
             .compactMap { [unowned self] in viewControllers?[$0] }
             .sink { [unowned self] destinationViewController in
-                if let delegate = delegate {
+                if let delegate {
                     if let result = delegate.tabBarController?(self, shouldSelect: destinationViewController) {
                         if result {
                             selectedViewController = destinationViewController
@@ -49,7 +49,7 @@ class CustomTabbedTabScreen<State,
                 } else {
                     selectedViewController = destinationViewController
                 }
-                if let selectedViewController = selectedViewController {
+                if let selectedViewController {
                     delegate?.tabBarController?(self, didSelect: selectedViewController)
                 }
             }

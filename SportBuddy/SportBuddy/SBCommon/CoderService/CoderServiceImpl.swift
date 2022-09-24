@@ -21,7 +21,7 @@ extension CoderServiceImpl: CoderService {
     /// - Returns:
     ///     The encoded `Data?`.
     func encode<T>(object: T?) -> Data? where T: Codable {
-        guard let object = object else { return nil }
+        guard let object else { return nil }
         let jsonEncoder = JSONEncoder()
         jsonEncoder.dateEncodingStrategy = .iso8601
         return try? jsonEncoder.encode(object)
@@ -35,7 +35,7 @@ extension CoderServiceImpl: CoderService {
     /// - Returns:
     ///     The decoded object.
     func decode<T>(data: Data?) -> T? where T: Codable {
-        guard let data = data else { return nil }
+        guard let data else { return nil }
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .iso8601
         return try? jsonDecoder.decode(T.self, from: data)

@@ -14,7 +14,7 @@ extension AVCaptureDeviceInput {
     /// - Note:
     /// It deals with `Optional`s too.
     convenience init?(device: AVCaptureDevice?) {
-        guard let device = device else { return nil }
+        guard let device else { return nil }
         try? self.init(device: device)
     }
 

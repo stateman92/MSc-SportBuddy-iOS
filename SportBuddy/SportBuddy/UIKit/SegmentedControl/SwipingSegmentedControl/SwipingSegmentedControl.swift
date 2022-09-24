@@ -125,13 +125,13 @@ final class SwipingSegmentedControl: UIControl {
         addSubview(pointerInteractionViewsContainerView)
 
         addTapGestureRecognizer { [weak self] gestureRecognizer in
-            guard let self = self else { return }
+            guard let self else { return }
             self.set(index: self.closestIndex(toPoint: gestureRecognizer.location(in: self)),
                      shouldSendValueChangedEvent: true)
         }
 
         addPanGestureRecognizer { [weak self] gestureRecognizer in
-            guard let self = self else { return }
+            guard let self else { return }
             switch gestureRecognizer.state {
             case .began:
                 self.initialIndicatorViewFrame = self.indicatorView.frame

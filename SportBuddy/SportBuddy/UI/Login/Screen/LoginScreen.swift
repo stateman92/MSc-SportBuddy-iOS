@@ -57,7 +57,7 @@ extension LoginScreen {
                            .cornerRadius(21)])
 
             $0.addAction(for: .valueChanged) { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.input.state = self.segmentedControl.index == .zero ? .login : .signUp
             }
 

@@ -143,7 +143,7 @@ extension LiveFeedScreen: UITableViewDelegate {
         let message = self.tableView.data(for: indexPath).message
         return UIContextMenuConfiguration(identifier: indexPath as NSCopying,
                                           previewProvider: nil) { [weak self] _ in
-            guard let self = self else { return nil }
+            guard let self else { return nil }
             return UIMenu(title: .init(), children: [self.shareAction(message: message),
                                                      self.copyAction(message: message)])
         }
@@ -168,7 +168,7 @@ extension LiveFeedScreen: UITableViewDelegate {
 
 extension LiveFeedScreen {
     private func getTargetedPreview(for indexPath: IndexPath?) -> UITargetedPreview? {
-        guard let indexPath = indexPath,
+        guard let indexPath,
               let cell = tableView.cellForRow(at: indexPath) as? LiveFeedTableViewCell else { return nil }
 
         return UITargetedPreview(view: cell.targetedPreview,
@@ -193,7 +193,7 @@ extension LiveFeedScreen {
         activityViewController.completionWithItemsHandler = { [weak self] _, completed, _, error in
             if completed {
                 self?.toastService.showToast(with: .init(message: L10n.Live.Feed.Share.success, type: .success))
-            } else if let error = error {
+            } else if let error {
                 self?.toastService.showToast(with: .init(message: L10n.Live.Feed.Share.error(error),
                                                          type: .error))
             }

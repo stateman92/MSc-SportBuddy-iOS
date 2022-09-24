@@ -228,8 +228,8 @@ extension UIView {
                        animations: @escaping () -> Void,
                        completion: @escaping (Bool) -> Void = { _ in }) {
         before()
-        if let duration = duration, duration > .zero {
-            if let spring = spring {
+        if let duration, duration > .zero {
+            if let spring {
                 UIView.animate(withDuration: duration,
                                usingSpringWithDamping: spring.damping,
                                initialSpringVelocity: spring.velocity,

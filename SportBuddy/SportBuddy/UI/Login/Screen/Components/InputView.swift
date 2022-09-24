@@ -113,7 +113,7 @@ extension InputView {
         loginRegistrationButton.then {
             $0.setWidth(175)
             $0.addAction(for: .touchUpInside) { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 if self.state == .login {
                     self.login(self.emailTextField.text,
                                self.passwordTextField.text)
@@ -129,7 +129,7 @@ extension InputView {
     private func setupForgotPasswordButton() {
         forgotPasswordButton.then {
             $0.addAction(for: .touchUpInside) { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.forgotPassword(self.emailTextField.text)
             }
         }

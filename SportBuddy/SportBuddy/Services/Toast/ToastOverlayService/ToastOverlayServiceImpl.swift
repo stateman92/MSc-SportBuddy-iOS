@@ -49,7 +49,7 @@ final class ToastOverlayServiceImpl {
 extension ToastOverlayServiceImpl: ToastOverlayService {
     /// Call to show the toast.
     func show() {
-        guard let parentView = parentView else { return }
+        guard let parentView else { return }
 
         toast = Toast(on: parentView,
                       message: message,
@@ -71,7 +71,7 @@ extension ToastOverlayServiceImpl: ToastOverlayService {
 extension ToastOverlayServiceImpl {
     private func handleStates() {
         slideUp(animateBorder: true) { [weak self] in
-            guard let self = self, self.type.shouldDismissAutomatically else { return }
+            guard let self, self.type.shouldDismissAutomatically else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.defaultVisibility) { [self] in
                 let translation = self.toast?
                                     .gestureRecognizers?
@@ -146,7 +146,7 @@ extension ToastOverlayServiceImpl {
     }
 
     private func slideDown(resetToDefaultState: Bool, velocity: CGFloat? = nil) {
-        guard let parentView = parentView else { return }
+        guard let parentView else { return }
         toast?.gestureRecognizers?.forEach { toast?.removeGestureRecognizer($0) }
         let springVelocity = velocity ?? .zero / yTransformToSlippedDownState(parentView: parentView)
         UIView.animate(withDuration: resetToDefaultState ? 0.15 : .zero,

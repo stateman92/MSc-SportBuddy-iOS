@@ -34,7 +34,7 @@ extension EffectView {
 
 extension EffectView {
     func set(style: UIBlurEffect.Style?) {
-        if let style = style {
+        if let style {
             effect = UIBlurEffect(style: style)
         } else {
             effect = nil
