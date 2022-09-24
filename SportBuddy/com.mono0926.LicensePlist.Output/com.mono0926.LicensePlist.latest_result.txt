@@ -1,20 +1,20 @@
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 9.1.2
+version: 9.2.0
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 9.1.2
+version: 9.2.0
 
 name: GoogleMLKit, nameSpecified: 
 body: Copyright 2022 Googl…
-version: 2.6.0
+version: 3.2.0
 
 name: GoogleMLKit, nameSpecified: 
 body: Copyright 2022 Googl…
-version: 2.6.0
+version: 3.2.0
 
 name: GoogleToolboxForMac, nameSpecified: 
 body: 
@@ -29,12 +29,12 @@ version: 2.3.2
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 7.7.0
+version: 7.8.0
 
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 7.7.0
+version: 7.8.0
 
 name: GoogleUtilitiesComponents, nameSpecified: 
 body: 
@@ -49,118 +49,108 @@ version: 1.1.0
 name: GTMSessionFetcher, nameSpecified: 
 body: 
                    …
-version: 1.7.1
+version: 1.7.2
 
 name: GTMSessionFetcher, nameSpecified: 
 body: 
                    …
-version: 1.7.1
+version: 1.7.2
 
 name: MLImage, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: MLImage, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: MLKitCommon, nameSpecified: 
-body: Copyright 2021 Googl…
-version: 5.0.0
+body: Copyright 2022 Googl…
+version: 8.0.0
 
 name: MLKitCommon, nameSpecified: 
-body: Copyright 2021 Googl…
-version: 5.0.0
+body: Copyright 2022 Googl…
+version: 8.0.0
 
 name: MLKitPoseDetectionAccurate, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: MLKitPoseDetectionAccurate, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: MLKitPoseDetectionCommon, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: MLKitPoseDetectionCommon, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: MLKitVision, nameSpecified: 
-body: Copyright 2021 Googl…
-version: 3.0.0
+body: Copyright 2022 Googl…
+version: 4.2.0
 
 name: MLKitVision, nameSpecified: 
-body: Copyright 2021 Googl…
-version: 3.0.0
+body: Copyright 2022 Googl…
+version: 4.2.0
 
 name: MLKitXenoCommon, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: MLKitXenoCommon, nameSpecified: 
-body: Copyright 2021 Googl…
+body: Copyright 2022 Googl…
 version: 
 
 name: nanopb, nameSpecified: 
 body: Copyright (c) 2011 P…
-version: 2.30908.0
+version: 2.30909.0
 
 name: nanopb, nameSpecified: 
 body: Copyright (c) 2011 P…
-version: 2.30908.0
+version: 2.30909.0
 
 name: PromisesObjC, nameSpecified: 
 body: 
                    …
-version: 2.0.0
+version: 2.1.1
 
 name: PromisesObjC, nameSpecified: 
 body: 
                    …
-version: 2.0.0
+version: 2.1.1
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.20.0
+version: 3.21.6
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.20.0
+version: 3.21.6
 
 name: SwiftGen, nameSpecified: 
 body: MIT Licence
 
 Copyrig…
-version: 6.5.1
+version: 6.6.2
 
 name: SwiftGen, nameSpecified: 
 body: MIT Licence
 
 Copyrig…
-version: 6.5.1
+version: 6.6.2
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.46.1
+version: 0.49.1
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.46.1
+version: 0.49.1
 
 name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 4.9.1, source: https://github.com/Alamofire/Alamofire
-
-name: AppAuth-iOS, nameSpecified: AppAuth, owner: openid, version: 1.5.0, source: https://github.com/openid/AppAuth-iOS
-
-name: GoogleSignIn-iOS, nameSpecified: GoogleSignIn, owner: google, version: 6.1.0, source: https://github.com/google/GoogleSignIn-iOS
-
-name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, version: 1.7.1, source: https://github.com/google/gtm-session-fetcher
-
-name: GTMAppAuth, nameSpecified: GTMAppAuth, owner: google, version: 1.2.3, source: https://github.com/google/GTMAppAuth
-
-name: IQKeyboardManager, nameSpecified: IQKeyboardManagerSwift, owner: hackiftekhar, version: 6.5.0, source: https://github.com/hackiftekhar/IQKeyboardManager
 
 name: Kingfisher, nameSpecified: Kingfisher, owner: onevcat, version: 7.2.0, source: https://github.com/onevcat/Kingfisher
 
@@ -178,4 +168,4 @@ name: VisualEffectView, nameSpecified: VisualEffectView, owner: efremidze, versi
 
 add-version-numbers: false
 
-LicensePlist Version: 3.21.1
+LicensePlist Version: 3.22.4

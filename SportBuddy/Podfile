@@ -7,9 +7,9 @@ target 'SportBuddy' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'SwiftGen', '6.5.1'
-  pod 'SwiftLint', '0.48.0'
-  pod 'GoogleMLKit/PoseDetectionAccurate', '3.1.0'
+  pod 'SwiftGen', '6.6.2'
+  pod 'SwiftLint', '0.49.1'
+  pod 'GoogleMLKit/PoseDetectionAccurate', '3.2.0'
 
   # Pods for SportBuddy
 
