@@ -21,8 +21,11 @@ final class SettingsActionImpl: DomainImpl {
 extension SettingsActionImpl: SettingsAction {
     func set(image: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
-            // TODO
-            return .success(())
+            do {
+                try await ClientAPI.imagePost(image: image)
+                try await ClientAPI.user
+                return .success(())
+            }
         }
     }
 

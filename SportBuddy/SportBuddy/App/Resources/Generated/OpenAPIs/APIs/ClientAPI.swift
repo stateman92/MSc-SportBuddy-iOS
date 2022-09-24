@@ -1083,6 +1083,66 @@ open class ClientAPI {
     }
 
     /**
+     Upload an image
+     
+     - parameter image: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: UserDTO
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func imagePost(image: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws -> UserDTO {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = imagePostWithRequestBuilder(image: image).execute(apiResponseQueue) { result in
+                    switch result {
+                    case let .success(response):
+                        continuation.resume(returning: response.body)
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Upload an image
+     - POST /image
+     - Upload an image of the user
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter image: (body)  (optional)
+     - returns: RequestBuilder<UserDTO> 
+     */
+    open class func imagePostWithRequestBuilder(image: String? = nil) -> RequestBuilder<UserDTO> {
+        let localVariablePath = "/image"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: image)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UserDTO>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Login an existing user
      
      - parameter email: (query)  

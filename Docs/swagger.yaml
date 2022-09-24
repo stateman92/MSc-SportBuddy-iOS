@@ -160,6 +160,32 @@ paths:
             $ref: '#/definitions/UserResponseDTO'
         "400":
           description: Invalid input, bad request
+  /image:
+    post:
+      tags:
+      - Client
+      - Backend
+      summary: Upload an image
+      description: Upload an image of the user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: image
+        required: false
+        schema:
+          type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Image uploaded
+          schema:
+            $ref: '#/definitions/UserDTO'
+        "400":
+          description: Invalid input, bad request
   /searchUser:
     post:
       tags:
