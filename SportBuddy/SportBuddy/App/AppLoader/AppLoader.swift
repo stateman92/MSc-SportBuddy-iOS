@@ -8,10 +8,29 @@
 import UIKit
 
 enum AppLoader {
+    // MARK: Nested types
+
+    enum Environment: String {
+        case mock
+        case prod
+    }
+
+    struct AppConfig: Decodable {
+        // MARK: Properties
+
+        let serverUrl: String
+    }
+
     // MARK: Properties
 
     @LazyInjected private static var loginDomain: LoginDomainImpl
     @LazyInjected private static var navigatorService: NavigatorService
+    private static let appConfig: AppConfig = {
+        guard let appConfig = appConfigs.first(where: { $0.key == environment.rawValue })?.value else {
+            preconditionFailure("AppConfig cannot load for environment \(environment.rawValue)!")
+        }
+        return appConfig
+    }()
     private static var window: UIWindow?
     private static var cancellables = Cancellables()
 }
@@ -21,18 +40,26 @@ enum AppLoader {
 extension AppLoader {
     static func setup(window: UIWindow?) {
         self.window = window
-        setup()
-        navigatorService.resetToDefault()
-        setupWindow()
+        setupLogics()
+        setupUI()
+
+        DeferredFuture { (promise: @escaping (Result<Void, Never>) -> Void) -> Void in
+            // if needed, here can be done some heavy work before the app starts while the users is watching the splash
+            navigatorService.reset(to: OnboardingScreen.self)
+            promise(.success(()))
+        }
+        .sink()
+        .store(in: &cancellables)
     }
 }
 
 // MARK: - Setups
 
 extension AppLoader {
-    private static func setupWindow() {
+    private static func setupUI() {
         window = UIWindow(frame: UIScreen.main.bounds)
         guard let window else { return }
+        navigatorService.reset(to: StartupScreen.self)
         navigatorService.becameRoot(in: window)
         window.makeKeyAndVisible()
     }
@@ -41,20 +68,50 @@ extension AppLoader {
 // MARK: - Helpers
 
 extension AppLoader {
-    private static func setup() {
-        DependencyInjector.registerDependencies()
+    private static func setupLogics() {
+        setupDependencies()
+        setupAPI()
+        setupTokenObservation()
+    }
 
-        OpenAPIClientAPI.basePath = "http://127.0.0.1:8080"
+    private static func setupDependencies() {
+        DependencyInjector.registerDependencies()
+        DependencyInjector.resolver.register { StartupScreen() }.scope(.unique)
+
+        let translatorService: TranslatorService = DependencyInjector.resolve()
+        translatorService.start()
+    }
+
+    private static func setupAPI() {
+        OpenAPIClientAPI.basePath = appConfig.serverUrl
         OpenAPIClientAPI.apiResponseQueue = .global(qos: .userInitiated)
         OpenAPIClientAPI.requestBuilderFactory = TokenizableRequestBuilderFactory()
+    }
+
+    private static func setupTokenObservation() {
         NotificationCenter.addObserver(forName: .name(UIApplication.willEnterForegroundNotification)) {
             loginDomain
                 .action
                 .refreshToken()
-                .sink(receiveError: { _ in
-                    navigatorService.resetToDefault()
-                })
+                .sink(receiveError: { _ in navigatorService.reset(to: OnboardingScreen.self) })
                 .store(in: &cancellables)
         }
+    }
+
+    private static var environment: Environment {
+#if MOCK
+        .mock
+#else
+        .prod
+#endif
+    }
+
+    private static var appConfigs: [String: AppConfig] {
+        guard let url = Bundle.main.url(forResource: "Configuration", withExtension: "plist"),
+              let data = try? Data(contentsOf: url),
+              let appConfigs = try? PropertyListDecoder().decode([String: AppConfig].self, from: data) else {
+            preconditionFailure("AppConfig plist file cannot load!")
+        }
+        return appConfigs
     }
 }

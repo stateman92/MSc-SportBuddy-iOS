@@ -7,7 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable:next colon
 final class LoginScreen:
     ScrollingScreen<LoadingViewModelState, LoadingViewModelCommand, LoginDomainImpl, LoginViewModel> {
     // MARK: Properties

@@ -10,10 +10,30 @@ import Foundation
 struct SettingsItem {
     // MARK: Nested types
 
+    enum Details: Equatable {
+        case toggle(Toggle, action: (Bool) -> Void)
+        case segments([Segment], action: (Segment) -> Void)
+        case none
+
+        static func == (lhs: SettingsItem.Details, rhs: SettingsItem.Details) -> Bool {
+            switch (lhs, rhs) {
+            case (let .toggle(lhsToggle, _), let .toggle(rhsToggle, _)): return lhsToggle == rhsToggle
+            case (let .segments(lhsSegments, _), let .segments(rhsSegments, _)): return lhsSegments == rhsSegments
+            case (.none, .none): return true
+            default: return false
+            }
+        }
+    }
+
     enum Toggle {
         case on
         case off
-        case none
+    }
+
+    struct Segment: Equatable {
+        let id: String
+        let title: String
+        let selected: Bool
     }
 
     // MARK: Properties
@@ -21,7 +41,7 @@ struct SettingsItem {
     let id: UUID
     let title: String
     let subtitle: String
-    let toggle: Toggle
+    let details: Details
     let action: () -> Void
 
     // MARK: Initialization
@@ -29,12 +49,12 @@ struct SettingsItem {
     init(id: UUID = .init(),
          title: String,
          subtitle: String = .init(),
-         toggle: Toggle = .none,
+         details: Details = .none,
          action: @escaping () -> Void = { }) {
         self.id = id
         self.title = title
         self.subtitle = subtitle
-        self.toggle = toggle
+        self.details = details
         self.action = action
     }
 }

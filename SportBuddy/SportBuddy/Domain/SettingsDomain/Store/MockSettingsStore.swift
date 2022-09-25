@@ -15,4 +15,8 @@ extension MockSettingsStore: SettingsStore {
     func getBatterySavingSettings() -> DomainStorePublisher<Bool> {
         Just(false).autoEraseOnMain()
     }
+
+    func getLanguageSettings() -> DomainStorePublisher<LanguageSettings> {
+        Just(.notSet).autoEraseOnMain()
+    }
 }

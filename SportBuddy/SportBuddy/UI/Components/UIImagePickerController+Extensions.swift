@@ -99,7 +99,6 @@ extension UIImagePickerController {
     }
 }
 
-// swiftlint:disable:next colon
 extension UIImagePickerController:
     UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAdaptivePresentationControllerDelegate {
     public func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {

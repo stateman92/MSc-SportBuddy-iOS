@@ -18,72 +18,81 @@ private enum CacheHolder<Item: Codable> {
 
     var immediateValue: Item? {
         switch self {
-        case .default(let cache):
+        case let .default(cache):
             return cache.immediateValue
-        case .persistent(let persistentCache):
+        case let .persistent(persistentCache):
             return persistentCache.immediateValue
         }
     }
 
     func clear() {
         switch self {
-        case .default(let cache):
+        case let .default(cache):
             cache.clear()
-        case .persistent(let persistentCache):
+        case let .persistent(persistentCache):
             persistentCache.clear()
         }
     }
 
     func save(item: Item) {
         switch self {
-        case .default(let cache):
+        case let .default(cache):
             cache.save(item: item)
-        case .persistent(let persistentCache):
+        case let .persistent(persistentCache):
             persistentCache.save(item: item)
+        }
+    }
+
+    func modify(_ block: (inout Item) -> Void) {
+        switch self {
+        case let .default(cache):
+            cache.modify(block)
+        case let .persistent(persistentCache):
+            persistentCache.modify(block)
         }
     }
 
     func value() -> AnyPublisher<Item?, Never> {
         switch self {
-        case .default(let cache):
+        case let .default(cache):
             return cache.value()
-        case .persistent(let persistentCache):
+        case let .persistent(persistentCache):
             return persistentCache.value()
         }
     }
 
     func saveWithPublisher(item: Item) -> AnyPublisher<Void, Never> {
         switch self {
-        case .default(let cache):
+        case let .default(cache):
             return cache.saveWithPublisher(item: item)
-        case .persistent(let persistentCache):
+        case let .persistent(persistentCache):
             return persistentCache.saveWithPublisher(item: item)
         }
     }
 
-    func modify(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
+    func modifyWithPublisher(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
         switch self {
-        case .default(let cache):
-            return cache.modify(block)
-        case .persistent(let persistentCache):
-            return persistentCache.modify(block)
+        case let .default(cache):
+            return cache.modifyWithPublisher(block)
+        case let .persistent(persistentCache):
+            return persistentCache.modifyWithPublisher(block)
         }
     }
 
     func autoEraseOnMain() -> DomainStorePublisher<Item> {
         switch self {
-        case .default(let cache):
+        case let .default(cache):
             return cache.autoEraseOnMain()
-        case .persistent(let persistentCache):
+        case let .persistent(persistentCache):
             return persistentCache.autoEraseOnMain()
         }
     }
 
     func autoEraseOnMain() -> DomainStorePublisher<Item?> {
         switch self {
-        case .default(let cache):
+        case let .default(cache):
             return cache.autoEraseOnMain()
-        case .persistent(let persistentCache):
+        case let .persistent(persistentCache):
             return persistentCache.autoEraseOnMain()
         }
     }
@@ -117,6 +126,10 @@ class GeneralCache<Item: Codable> {
         cacheHolder.save(item: item)
     }
 
+    func modify(_ block: @escaping (inout Item) -> Void) {
+        cacheHolder.modify(block)
+    }
+
     func value() -> AnyPublisher<Item?, Never> {
         cacheHolder.value()
     }
@@ -125,8 +138,8 @@ class GeneralCache<Item: Codable> {
         cacheHolder.saveWithPublisher(item: item)
     }
 
-    func modify(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
-        cacheHolder.modify(block)
+    func modifyWithPublisher(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
+        cacheHolder.modifyWithPublisher(block)
     }
 
     func autoEraseOnMain() -> DomainStorePublisher<Item> {

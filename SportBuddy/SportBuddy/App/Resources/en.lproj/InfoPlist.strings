@@ -1,0 +1,2 @@
+NSPhotoLibraryUsageDescription = "This app would like to use your photo library.";
+NSCameraUsageDescription = "This app would like to use your camera.";

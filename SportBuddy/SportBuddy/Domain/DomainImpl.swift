@@ -86,7 +86,7 @@ extension DomainImpl {
 
     private func forceLoggingOutUser(showUnauthenticatedToast: Bool) {
         dispatchToMain { [self] in
-            navigatorService.resetToDefault()
+            navigatorService.reset(to: OnboardingScreen.self)
             if showUnauthenticatedToast {
                 toastService.showToast(with: .init(message: L10n.General.Session.expired, type: .error))
             }

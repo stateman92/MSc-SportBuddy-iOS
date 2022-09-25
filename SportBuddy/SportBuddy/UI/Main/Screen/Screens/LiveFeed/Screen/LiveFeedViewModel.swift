@@ -7,7 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable:next colon
 final class LiveFeedViewModel:
     BaseViewModel<LiveFeedViewModelState, LiveFeedViewModelCommand, LiveFeedDomainImpl> {
     // MARK: - Command

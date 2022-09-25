@@ -98,6 +98,13 @@
 		5854420D28230FB20078E772 /* MockLoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5854420C28230FB20078E772 /* MockLoginStore.swift */; };
 		5854420F282310260078E772 /* MockLoginAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5854420E282310260078E772 /* MockLoginAction.swift */; };
 		58544211282310770078E772 /* Mockables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58544210282310770078E772 /* Mockables.swift */; };
+		585CD70628DF989E0014430B /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 585CD70528DF989E0014430B /* Configuration.plist */; };
+		585CD70928DF9B6E0014430B /* StartupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CD70828DF9B6E0014430B /* StartupScreen.swift */; };
+		585CD70B28DF9BB70014430B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CD70A28DF9BB70014430B /* Constants.swift */; };
+		585CD70E28DFBEFC0014430B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585CD71028DFBEFC0014430B /* InfoPlist.strings */; };
+		585CD71728DFC3E90014430B /* TranslatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CD71628DFC3E90014430B /* TranslatorService.swift */; };
+		585CD71928DFC3F10014430B /* TranslatorServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CD71828DFC3F10014430B /* TranslatorServiceImpl.swift */; };
+		585CD71C28DFC42D0014430B /* LanguageSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CD71B28DFC42D0014430B /* LanguageSettings.swift */; };
 		5862DDC7280CC03000ABFD86 /* Domain+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862DDC6280CC03000ABFD86 /* Domain+DI.swift */; };
 		586CB04B281D7B0600D753FB /* OnboardingViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04A281D7B0600D753FB /* OnboardingViewModelState.swift */; };
 		586CB04D281D7D3D00D753FB /* LoadingViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CB04C281D7D3D00D753FB /* LoadingViewModelState.swift */; };
@@ -496,6 +503,14 @@
 		5854420C28230FB20078E772 /* MockLoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginStore.swift; sourceTree = "<group>"; };
 		5854420E282310260078E772 /* MockLoginAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginAction.swift; sourceTree = "<group>"; };
 		58544210282310770078E772 /* Mockables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockables.swift; sourceTree = "<group>"; };
+		585CD70528DF989E0014430B /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		585CD70828DF9B6E0014430B /* StartupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupScreen.swift; sourceTree = "<group>"; };
+		585CD70A28DF9BB70014430B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		585CD70F28DFBEFC0014430B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		585CD71128DFBEFE0014430B /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		585CD71628DFC3E90014430B /* TranslatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorService.swift; sourceTree = "<group>"; };
+		585CD71828DFC3F10014430B /* TranslatorServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorServiceImpl.swift; sourceTree = "<group>"; };
+		585CD71B28DFC42D0014430B /* LanguageSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettings.swift; sourceTree = "<group>"; };
 		5862DDC6280CC03000ABFD86 /* Domain+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Domain+DI.swift"; sourceTree = "<group>"; };
 		586CB04A281D7B0600D753FB /* OnboardingViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelState.swift; sourceTree = "<group>"; };
 		586CB04C281D7D3D00D753FB /* LoadingViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModelState.swift; sourceTree = "<group>"; };
@@ -756,7 +771,6 @@
 		58EE7E4428956D5000478CDA /* ConnectivityService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectivityService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58F208A22854EA9300401DBB /* GeneralCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCache.swift; sourceTree = "<group>"; };
 		58F274342812090900251284 /* NavigationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationType.swift; sourceTree = "<group>"; };
-		58F976D427DE76A600E74C5F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		58F976D927DE76CB00E74C5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58F976DB27DE76CD00E74C5F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58F976DC27DE77BB00E74C5F /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -960,6 +974,7 @@
 				5832042527FE294B009A4644 /* MLService */,
 				58EBF1E827FBB4F200BA81CB /* NavigatorService */,
 				580DF5EA280A0B7C00BE0493 /* SystemImageService */,
+				585CD71528DFC3DE0014430B /* TranslatorService */,
 				587F302F2809D92600EFA7E9 /* WebSocketService */,
 			);
 			path = Services;
@@ -1152,9 +1167,6 @@
 				58AAEC3E280BC14A0054E2F0 /* Domain */,
 				58F976CE27DE733000E74C5F /* UI */,
 				580521BE27EF6E7200B3A8B1 /* UIKit */,
-				58289BF127DE6E9300FCEF08 /* Assets.xcassets */,
-				58289BF327DE6E9300FCEF08 /* LaunchScreen.storyboard */,
-				58289BF627DE6E9300FCEF08 /* Info.plist */,
 			);
 			path = SportBuddy;
 			sourceTree = "<group>";
@@ -1309,12 +1321,110 @@
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
+		585CD70228DF97D80014430B /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				585CD70528DF989E0014430B /* Configuration.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		585CD70728DF9B620014430B /* StartupScreen */ = {
+			isa = PBXGroup;
+			children = (
+				585CD70828DF9B6E0014430B /* StartupScreen.swift */,
+			);
+			path = StartupScreen;
+			sourceTree = "<group>";
+		};
+		585CD71228DFC17C0014430B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		585CD71528DFC3DE0014430B /* TranslatorService */ = {
+			isa = PBXGroup;
+			children = (
+				585CD71A28DFC4230014430B /* Components */,
+				585CD71628DFC3E90014430B /* TranslatorService.swift */,
+				585CD71828DFC3F10014430B /* TranslatorServiceImpl.swift */,
+			);
+			path = TranslatorService;
+			sourceTree = "<group>";
+		};
+		585CD71A28DFC4230014430B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				585CD71B28DFC42D0014430B /* LanguageSettings.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		585CD71D28DFC4390014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585CD71E28DFC4430014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585CD71F28DFC44A0014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585CD72028DFC4550014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585CD72128DFC45F0014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585CD72228DFC46B0014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585CD72328DFC4740014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585CD72428DFC47C0014430B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5862DDB4280CBF1C00ABFD86 /* ChatDomain */ = {
 			isa = PBXGroup;
 			children = (
 				58DCE71D281EE38B00BCB07C /* Domain */,
 				584061A528134CDA00BF64CB /* Action */,
 				584061A428134CD400BF64CB /* Store */,
+				585CD72428DFC47C0014430B /* Model */,
 			);
 			path = ChatDomain;
 			sourceTree = "<group>";
@@ -1971,6 +2081,7 @@
 				58DCE6C2281EE03300BCB07C /* Domain */,
 				58DCE6B5281EDF6700BCB07C /* Action */,
 				58DCE6B6281EDF6F00BCB07C /* Store */,
+				585CD71E28DFC4430014430B /* Model */,
 			);
 			path = OnboardingDomain;
 			sourceTree = "<group>";
@@ -1981,6 +2092,7 @@
 				58DCE6D6281EE0EA00BCB07C /* Domain */,
 				58DCE6C9281EE0E900BCB07C /* Action */,
 				58DCE6D3281EE0E900BCB07C /* Store */,
+				585CD71F28DFC44A0014430B /* Model */,
 			);
 			path = LoginDomain;
 			sourceTree = "<group>";
@@ -1991,6 +2103,7 @@
 				58DCE6EF281EE1AF00BCB07C /* Domain */,
 				58DCE6E7281EE1AF00BCB07C /* Action */,
 				58DCE6EC281EE1AF00BCB07C /* Store */,
+				585CD72028DFC4550014430B /* Model */,
 			);
 			path = MainDomain;
 			sourceTree = "<group>";
@@ -2001,6 +2114,7 @@
 				58DCE701281EE25D00BCB07C /* Domain */,
 				58DCE6FE281EE25D00BCB07C /* Action */,
 				58DCE6FB281EE25D00BCB07C /* Store */,
+				585CD71228DFC17C0014430B /* Models */,
 			);
 			path = SettingsDomain;
 			sourceTree = "<group>";
@@ -2011,6 +2125,7 @@
 				58DCE70E281EE2FD00BCB07C /* Domain */,
 				58DCE713281EE2FD00BCB07C /* Action */,
 				58DCE70B281EE2FD00BCB07C /* Store */,
+				585CD71D28DFC4390014430B /* Model */,
 			);
 			path = TrainingsDomain;
 			sourceTree = "<group>";
@@ -2021,6 +2136,7 @@
 				58DCE746281EE88D00BCB07C /* Domain */,
 				58DCE749281EE88D00BCB07C /* Action */,
 				58DCE74E281EE88D00BCB07C /* Store */,
+				585CD72128DFC45F0014430B /* Model */,
 			);
 			path = ChatsDomain;
 			sourceTree = "<group>";
@@ -2031,6 +2147,7 @@
 				58DCE736281EE7E700BCB07C /* Domain */,
 				58DCE739281EE7E700BCB07C /* Action */,
 				58DCE73C281EE7E700BCB07C /* Store */,
+				585CD72228DFC46B0014430B /* Model */,
 			);
 			path = LiveFeedDomain;
 			sourceTree = "<group>";
@@ -2041,6 +2158,7 @@
 				58DCE72A281EE69A00BCB07C /* Domain */,
 				58DCE722281EE69A00BCB07C /* Action */,
 				58DCE727281EE69A00BCB07C /* Store */,
+				585CD72328DFC4740014430B /* Model */,
 			);
 			path = AddNewChatDomain;
 			sourceTree = "<group>";
@@ -2557,8 +2675,10 @@
 			isa = PBXGroup;
 			children = (
 				58289BE827DE6E9200FCEF08 /* AppDelegate.swift */,
+				585CD70A28DF9BB70014430B /* Constants.swift */,
 				5801910327F38A7D00BB3E3E /* Typealiases.swift */,
 				580190FA27F382EA00BB3E3E /* AppLoader */,
+				585CD70728DF9B620014430B /* StartupScreen */,
 				58F976D527DE76B100E74C5F /* Resources */,
 			);
 			path = App;
@@ -2567,11 +2687,16 @@
 		58F976D527DE76B100E74C5F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				585CD70228DF97D80014430B /* Configuration */,
+				58289BF627DE6E9300FCEF08 /* Info.plist */,
+				58289BF127DE6E9300FCEF08 /* Assets.xcassets */,
+				58289BF327DE6E9300FCEF08 /* LaunchScreen.storyboard */,
 				58F976E227DE77D500E74C5F /* Fonts */,
 				58F976E327DE795100E74C5F /* Generated */,
 				58B2E1CB27F3B595004135E2 /* Libraries */,
 				5829396128207AFD00CAF83A /* LottieFiles */,
 				58F976DA27DE76CB00E74C5F /* Localizable.strings */,
+				585CD71028DFBEFC0014430B /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2680,8 +2805,8 @@
 			buildConfigurationList = 58289C0F27DE6E9400FCEF08 /* Build configuration list for PBXNativeTarget "SportBuddy" */;
 			buildPhases = (
 				BCFEA288EDF803EAA60BAD0D /* [CP] Check Pods Manifest.lock */,
-				58F976D327DE75DC00E74C5F /* ShellScript */,
-				58289C1827DE6EF500FCEF08 /* ShellScript */,
+				58F976D327DE75DC00E74C5F /* Run Swiftgen */,
+				58289C1827DE6EF500FCEF08 /* Run Swiftlint */,
 				58289BE127DE6E9200FCEF08 /* Sources */,
 				58289BE227DE6E9200FCEF08 /* Frameworks */,
 				58289BE327DE6E9200FCEF08 /* Resources */,
@@ -2809,12 +2934,14 @@
 				58B2E1D827F3BC28004135E2 /* licence.txt in Resources */,
 				58F976EE27DE79E200E74C5F /* Fredoka-SemiBold.ttf in Resources */,
 				58D97DA4280A4978002FD22D /* Settings.bundle in Resources */,
+				585CD70E28DFBEFC0014430B /* InfoPlist.strings in Resources */,
 				58F976EC27DE79E200E74C5F /* Fredoka-Bold.ttf in Resources */,
 				58F976EB27DE79E200E74C5F /* Fredoka-Light.ttf in Resources */,
 				58F976EA27DE79E200E74C5F /* Fredoka-Medium.ttf in Resources */,
 				58289BF527DE6E9300FCEF08 /* LaunchScreen.storyboard in Resources */,
 				580B0EB22819291800E14F8B /* searching.json in Resources */,
 				58F976D827DE76CB00E74C5F /* Localizable.strings in Resources */,
+				585CD70628DF989E0014430B /* Configuration.plist in Resources */,
 				58289BF227DE6E9300FCEF08 /* Assets.xcassets in Resources */,
 				58F976ED27DE79E200E74C5F /* Fredoka-Regular.ttf in Resources */,
 			);
@@ -2893,8 +3020,9 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SportBuddy/Pods-SportBuddy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		58289C1827DE6EF500FCEF08 /* ShellScript */ = {
+		58289C1827DE6EF500FCEF08 /* Run Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2902,6 +3030,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Swiftlint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -2910,8 +3039,9 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		58F976D327DE75DC00E74C5F /* ShellScript */ = {
+		58F976D327DE75DC00E74C5F /* Run Swiftgen */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2919,6 +3049,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Swiftgen";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3027,6 +3158,7 @@
 				58EBF20727FBB76100BA81CB /* UIApplication+Extensions.swift in Sources */,
 				5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */,
 				58DCE71C281EE2FD00BCB07C /* TrainingsActionImpl.swift in Sources */,
+				585CD70928DF9B6E0014430B /* StartupScreen.swift in Sources */,
 				580190F927F3827D00BB3E3E /* DependencyInjector.swift in Sources */,
 				58731E58282312EC008A7562 /* MockMainAction.swift in Sources */,
 				58A199D2281C8FE800140140 /* DeferredFuture.swift in Sources */,
@@ -3201,6 +3333,7 @@
 				58731E6A282316A8008A7562 /* MockAddNewChatStore.swift in Sources */,
 				580521D527EFB2D400B3A8B1 /* StackView.swift in Sources */,
 				588F479827FE59F90062F838 /* ScrollingScreen.swift in Sources */,
+				585CD71C28DFC42D0014430B /* LanguageSettings.swift in Sources */,
 				58AAEC39280BBEAE0054E2F0 /* SettingsServiceImpl.swift in Sources */,
 				5832043D27FE2959009A4644 /* MLPoseLandmark.swift in Sources */,
 				587F303C2809DF5300EFA7E9 /* UI+DI.swift in Sources */,
@@ -3223,6 +3356,7 @@
 				58DCE753281EE88D00BCB07C /* ChatsAction.swift in Sources */,
 				58DCE6C4281EE04100BCB07C /* OnboardingDomain.swift in Sources */,
 				580B0EC3281935DF00E14F8B /* Throttling.swift in Sources */,
+				585CD71728DFC3E90014430B /* TranslatorService.swift in Sources */,
 				586CB055281D7EAE00D753FB /* TrainingsViewModelState.swift in Sources */,
 				586CB07A281D927C00D753FB /* ChatViewModelCommand.swift in Sources */,
 				580B0ED428197A2B00E14F8B /* ChatViewModel.swift in Sources */,
@@ -3272,6 +3406,7 @@
 				58E3423B28DF524D00CB1DFB /* Extensions.swift in Sources */,
 				580DF5DF2809EF9E00BE0493 /* SettingsViewModel.swift in Sources */,
 				58120ED828D676C10081D63D /* LiveFeedCache.swift in Sources */,
+				585CD70B28DF9BB70014430B /* Constants.swift in Sources */,
 				58B7313C28D7849B00FA9AA2 /* SettingsTableViewCell.swift in Sources */,
 				58731E6628231684008A7562 /* MockLiveFeedStore.swift in Sources */,
 				5853F9E22822EB9B00076D93 /* ChatInputField.swift in Sources */,
@@ -3310,6 +3445,7 @@
 				58DCE71F281EE39A00BCB07C /* ChatDomain.swift in Sources */,
 				58FD65072803116300FE6A51 /* LoadableImageView.swift in Sources */,
 				588F5E7E280B31AA00947800 /* LogType.swift in Sources */,
+				585CD71928DFC3F10014430B /* TranslatorServiceImpl.swift in Sources */,
 				58DCE718281EE2FD00BCB07C /* TrainingsDomainImpl.swift in Sources */,
 				5801910827F38F8D00BB3E3E /* RoundedView.swift in Sources */,
 				580DF5F8280A219B00BE0493 /* TabScreen.swift in Sources */,
@@ -3400,9 +3536,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				58289BF427DE6E9300FCEF08 /* Base */,
-				58F976D427DE76A600E74C5F /* hu */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		585CD71028DFBEFC0014430B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				585CD70F28DFBEFC0014430B /* en */,
+				585CD71128DFBEFE0014430B /* hu */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		58F976DA27DE76CB00E74C5F /* Localizable.strings */ = {
@@ -3469,7 +3613,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3525,7 +3669,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -3547,13 +3691,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SportBuddy/Info.plist;
+				INFOPLIST_FILE = SportBuddy/App/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SportBuddy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = InfoPlist.strings;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = InfoPlist.strings;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3562,9 +3709,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -3580,13 +3730,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SportBuddy/Info.plist;
+				INFOPLIST_FILE = SportBuddy/App/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SportBuddy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = InfoPlist.strings;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = InfoPlist.strings;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3595,9 +3748,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -3733,7 +3889,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3755,13 +3911,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SportBuddy/Info.plist;
+				INFOPLIST_FILE = SportBuddy/App/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SportBuddy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = InfoPlist.strings;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = InfoPlist.strings;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3770,9 +3929,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Mock;
 		};

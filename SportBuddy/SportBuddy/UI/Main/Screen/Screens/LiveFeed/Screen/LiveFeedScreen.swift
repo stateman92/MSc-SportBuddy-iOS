@@ -7,7 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable:next colon
 final class LiveFeedScreen:
     TabScreen<LiveFeedViewModelState, LiveFeedViewModelCommand, LiveFeedDomainImpl, LiveFeedViewModel> {
     // MARK: Properties

@@ -8,10 +8,11 @@ strings:
     params:
       forceProvidesNamespaces: true
       publicAccess: true
+      lookupFunction: TranslatorServiceImpl.string
 
 xcassets:
   inputs:
-    - ./SportBuddy/Assets.xcassets
+    - ./SportBuddy/App/Resources/Assets.xcassets
   outputs:
     - templateName: swift5
       output: ./SportBuddy/App/Resources/Generated/Assets.swift

@@ -28,6 +28,13 @@ class Cache<Item> {
     func save(item: Item) {
         cache.send(item)
     }
+
+    func modify(_ block: (inout Item) -> Void) {
+        if var immediateValue {
+            block(&immediateValue)
+            save(item: immediateValue)
+        }
+    }
 }
 
 // MARK: - Public methods
@@ -45,12 +52,9 @@ extension Cache {
         .eraseToAnyPublisher()
     }
 
-    func modify(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
+    func modifyWithPublisher(_ block: @escaping (inout Item) -> Void) -> AnyPublisher<Void, Never> {
         DeferredFuture { [unowned self] in
-            if var copy = cache.value {
-                block(&copy)
-                save(item: copy)
-            }
+            modify(block)
             $0(.success(()))
         }
         .eraseToAnyPublisher()

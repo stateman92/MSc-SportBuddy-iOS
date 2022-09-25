@@ -33,7 +33,18 @@ extension SettingsActionImpl: SettingsAction {
 
     func set(batterySaving: Bool) -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
-            settingsCache.save(item: .init(batterySaving: batterySaving))
+            settingsCache.modify {
+                $0.batterySaving = batterySaving
+            }
+            return .success(())
+        }
+    }
+
+    func set(languageSettings: LanguageSettings) -> DomainActionPublisher {
+        deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
+            settingsCache.modify {
+                $0.languageSettings = languageSettings
+            }
             return .success(())
         }
     }
@@ -45,7 +56,7 @@ extension SettingsActionImpl: SettingsAction {
                 userCache.clear()
                 tokenCache.clear()
                 dispatchToMain {
-                    self.navigatorService.resetToDefault()
+                    self.navigatorService.reset(to: OnboardingScreen.self)
                 }
                 return .success(())
             } catch {

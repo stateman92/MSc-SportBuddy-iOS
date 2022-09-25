@@ -17,4 +17,8 @@ extension SettingsStoreImpl: SettingsStore {
     func getBatterySavingSettings() -> DomainStorePublisher<Bool> {
         settingsCache.value().map(\.?.batterySaving).autoEraseOnMain()
     }
+
+    func getLanguageSettings() -> DomainStorePublisher<LanguageSettings> {
+        settingsCache.value().map(\.?.languageSettings).autoEraseOnMain()
+    }
 }

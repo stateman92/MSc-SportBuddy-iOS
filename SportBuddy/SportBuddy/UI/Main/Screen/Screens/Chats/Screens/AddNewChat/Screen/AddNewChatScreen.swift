@@ -7,7 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable:next colon
 final class AddNewChatScreen:
     BaseScreen<AddNewChatViewModelState, AddNewChatViewModelCommand, AddNewChatDomainImpl, AddNewChatViewModel> {
     // MARK: Properties

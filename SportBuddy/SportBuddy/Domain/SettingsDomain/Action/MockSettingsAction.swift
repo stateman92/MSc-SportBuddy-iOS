@@ -30,10 +30,17 @@ extension MockSettingsAction: SettingsAction {
         }
     }
 
+    func set(languageSettings: LanguageSettings) -> DomainActionPublisher {
+        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
+            await wait()
+            return .success(())
+        }
+    }
+
     func logout() -> DomainActionPublisher {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<Void> in
             dispatchToMain {
-                self.navigatorService.resetToDefault()
+                self.navigatorService.reset(to: OnboardingScreen.self)
             }
             return .success(())
         }

@@ -74,8 +74,8 @@ extension NavigatorService {
     }
 
     /// Reset the service to its default state.
-    func resetToDefault() {
+    func reset<T>(to _: T.Type) where T: UIViewController {
         isNavigationBarHidden = true
-        viewControllers = [DependencyInjector.resolve() as OnboardingScreen]
+        viewControllers = [DependencyInjector.resolve() as T]
     }
 }

@@ -1,0 +1,2 @@
+NSPhotoLibraryUsageDescription = "Az app használja a fotókat a telefonról.";
+NSCameraUsageDescription = "App használja a telefon kameráját.";

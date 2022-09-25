@@ -7,7 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable:next colon
 final class AddNewChatViewModel:
     BaseViewModel<AddNewChatViewModelState, AddNewChatViewModelCommand, AddNewChatDomainImpl> {
     // MARK: Properties

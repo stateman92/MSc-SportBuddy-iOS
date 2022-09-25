@@ -20,6 +20,7 @@
 "chat_send" = "Küldés";
 "chat_share" = "Megosztás";
 "chat_copy" = "Másolás";
+"chat_delete" = "Törlés";
 "chat_share_success" = "Üzenet megosztva!";
 "chat_share_error" = "Az üzenetet nem sikerült megosztani! Hiba: %@";
 "chat_copy_success" = "Üzenet vágólapra másolva!";

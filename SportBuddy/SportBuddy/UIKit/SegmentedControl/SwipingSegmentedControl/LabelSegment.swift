@@ -27,7 +27,7 @@ final class LabelSegment: SwipingSegment {
         createLabel(backgroundColor: selectedBackgroundColor, font: selectedFont, textColor: selectedTextColor)
     }()
     var intrinsicContentSize: CGSize? {
-        selectedView.intrinsicContentSize.applying(.init(scaleX: 1.5, y: 1.5))
+        selectedView.intrinsicContentSize.applying(.init(scaleX: 1.15, y: 1.5))
     }
 
     // MARK: Initialization

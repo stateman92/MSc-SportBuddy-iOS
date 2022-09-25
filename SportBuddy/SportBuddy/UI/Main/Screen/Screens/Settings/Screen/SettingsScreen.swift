@@ -7,7 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable:next colon
 final class SettingsScreen:
     TabScreen<SettingsViewModelState, SettingsViewModelCommand, SettingsDomainImpl, SettingsViewModel> {
     // MARK: Properties
@@ -25,7 +24,7 @@ final class SettingsScreen:
 
     override func receiveState(_ state: SettingsViewModelState) {
         super.receiveState(state)
-        tableView.reloadData([state.items])
+        tableView.reloadData(state.items)
     }
 }
 
@@ -57,7 +56,7 @@ extension SettingsScreen {
 extension SettingsScreen: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.tableView.data(for: indexPath)
-        if model.toggle == .none {
+        if model.details == .none {
             model.action()
         }
         tableView.deselectRow(at: indexPath, animated: true)

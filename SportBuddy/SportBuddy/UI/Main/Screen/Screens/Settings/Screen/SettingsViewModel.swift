@@ -7,7 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable:next colon
 final class SettingsViewModel:
     BaseViewModel<SettingsViewModelState, SettingsViewModelCommand, SettingsDomainImpl> {
     // MARK: - Command
@@ -17,6 +16,7 @@ final class SettingsViewModel:
         switch command {
         case .openImagePicker: openImagePicker()
         case let .toggleBatterySaving(state): toggleBatterySaving(to: state)
+        case let .select(language): select(language: language)
         case .close: close()
         case .logout: logout()
         }
@@ -48,6 +48,10 @@ extension SettingsViewModel {
         action.set(batterySaving: state).sink().store(in: &cancellables)
     }
 
+    private func select(language: LanguageSettings) {
+        action.set(languageSettings: language).sink().store(in: &cancellables)
+    }
+
     private func close() {
         action.close().sink().store(in: &cancellables)
     }
@@ -62,9 +66,9 @@ extension SettingsViewModel {
 extension SettingsViewModel {
     override func setup() {
         super.setup()
-        refreshSettingsItems(batterySaving: false)
         store.getBatterySavingSettings()
-            .sink { [unowned self] in refreshSettingsItems(batterySaving: $0) }
+            .combineLatest(store.getLanguageSettings())
+            .sink { [unowned self] in refreshSettingsItems(batterySaving: $0, languageSettings: $1) }
             .store(in: &cancellables)
     }
 }
@@ -72,15 +76,24 @@ extension SettingsViewModel {
 // MARK: - Private methods
 
 extension SettingsViewModel {
-    private func refreshSettingsItems(batterySaving: Bool) {
+    private func refreshSettingsItems(batterySaving: Bool, languageSettings: LanguageSettings) {
+        let languageSegments = LanguageSettings.allCases.map {
+            SettingsItem.Segment(id: $0.rawValue, title: $0.localizedTitle, selected: $0 == languageSettings)
+        }
         sendState(.init(items: [
-            .init(title: L10n.Settings.image, action: { [weak self] in self?.receiveCommand(.openImagePicker) }),
-            .init(title: L10n.Settings.battery,
-                  subtitle: L10n.Settings.Battery.description,
-                  toggle: batterySaving ? .on : .off,
-                  action: { [weak self] in self?.receiveCommand(.toggleBatterySaving(to: !batterySaving)) }),
-            .init(title: L10n.Settings.close, action: { [weak self] in self?.receiveCommand(.close) }),
-            .init(title: L10n.Settings.logout) { [weak self] in self?.receiveCommand(.logout) }
+            [.init(title: L10n.Settings.image, action: { [weak self] in self?.receiveCommand(.openImagePicker) }),
+             .init(title: L10n.Settings.battery,
+                   subtitle: L10n.Settings.Battery.description,
+                   details: .toggle(batterySaving ? .on : .off, action: { [weak self] in
+                       self?.receiveCommand(.toggleBatterySaving(to: $0))
+                   }))],
+            [.init(title: "Language",
+                   details: .segments(languageSegments, action: { [weak self] in
+                       guard let selectedLanguage = LanguageSettings(rawValue: $0.id) else { return }
+                       self?.receiveCommand(.select(language: selectedLanguage))
+                   }))],
+            [.init(title: L10n.Settings.close, action: { [weak self] in self?.receiveCommand(.close) }),
+             .init(title: L10n.Settings.logout) { [weak self] in self?.receiveCommand(.logout) }]
         ]))
     }
 }

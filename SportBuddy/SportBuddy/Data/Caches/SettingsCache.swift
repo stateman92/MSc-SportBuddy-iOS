@@ -9,7 +9,8 @@ final class SettingsCache: GeneralCache<SettingsCache.Object> {
     // MARK: Nested types
 
     struct Object: Codable {
-        let batterySaving: Bool
+        var batterySaving: Bool
+        var languageSettings: LanguageSettings
     }
 
     // MARK: Initialization

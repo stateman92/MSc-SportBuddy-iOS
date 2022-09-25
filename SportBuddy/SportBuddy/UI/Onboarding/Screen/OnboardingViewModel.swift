@@ -5,7 +5,6 @@
 //  Created by Kristof Kalai on 2022. 03. 29..
 //
 
-// swiftlint:disable:next colon
 final class OnboardingViewModel:
     BaseViewModel<OnboardingViewModelState, OnboardingViewModelCommand, OnboardingDomainImpl> {
     // MARK: - Command

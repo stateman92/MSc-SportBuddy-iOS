@@ -7,4 +7,5 @@
 
 protocol SettingsStore {
     func getBatterySavingSettings() -> DomainStorePublisher<Bool>
+    func getLanguageSettings() -> DomainStorePublisher<LanguageSettings>
 }

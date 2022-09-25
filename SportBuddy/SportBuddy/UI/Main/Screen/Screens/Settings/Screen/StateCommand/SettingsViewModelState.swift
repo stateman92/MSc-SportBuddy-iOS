@@ -6,7 +6,7 @@
 //
 
 struct SettingsViewModelState {
-    let items: [SettingsItem]
+    let items: [[SettingsItem]]
 }
 
 extension SettingsViewModelState: Initable {
