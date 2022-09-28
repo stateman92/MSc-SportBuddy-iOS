@@ -31,6 +31,18 @@ extension SettingsActionImpl: SettingsAction {
         }
     }
 
+    func clearImage() -> DomainActionPublisher {
+        deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
+            do {
+                let user = try await ClientAPI.imagePost()
+                userCache.save(item: .init(user: user))
+                return .success(())
+            } catch {
+                return .failure(error)
+            }
+        }
+    }
+
     func set(batterySaving: Bool) -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
             settingsCache.modify {

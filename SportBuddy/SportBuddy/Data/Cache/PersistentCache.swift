@@ -15,14 +15,14 @@ class PersistentCache<Item: Codable>: Cache<Item> {
 
     // MARK: Initialization
 
-    init(key: SettingsKey) {
+    init(key: SettingsKey, defaultValue: Item? = nil) {
         self.key = key
         super.init()
-        cache.send(settingsService.retrieve(forKey: key))
+        cache.send(settingsService.retrieve(forKey: key) ?? defaultValue)
     }
 
-    convenience init(key: String, secure: Bool = true) {
-        self.init(key: SettingsKey(keyName: key, secure: secure))
+    convenience init(key: String, secure: Bool = true, defaultValue: Item? = nil) {
+        self.init(key: SettingsKey(keyName: key, secure: secure), defaultValue: defaultValue)
     }
 
     @available(*, unavailable)

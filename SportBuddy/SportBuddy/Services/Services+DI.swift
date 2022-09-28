@@ -25,9 +25,15 @@ extension DependencyInjector {
         register(service: MLServiceImpl(), implements: MLService.self)
         register(service: NavigatorServiceImpl(rootViewController: resolve() as OnboardingScreen),
                  implements: NavigatorService.self)
+        register(service: NotificationServiceImpl(), implements: NotificationService.self)
         register(service: SystemImageServiceImpl(), implements: SystemImageService.self)
         register(service: TranslatorServiceImpl(), implements: TranslatorService.self)
+
+#if MOCK
+        register(service: MockWebSocketService(), implements: WebSocketService.self)
+#else
         register(service: WebSocketServiceImpl(), implements: WebSocketService.self)
+#endif
     }
 }
 

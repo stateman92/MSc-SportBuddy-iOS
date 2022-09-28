@@ -32,6 +32,7 @@ public enum Assets {
   }
   public enum Images {
     public static let appIcon = ImageAsset(name: "appIcon")
+    public static let fallbackProfileImage = ImageAsset(name: "fallbackProfileImage")
     public static let firstOnboarding = ImageAsset(name: "firstOnboarding")
     public static let secondOnboarding = ImageAsset(name: "secondOnboarding")
     public static let thirdOnboarding = ImageAsset(name: "thirdOnboarding")

@@ -23,6 +23,13 @@ extension MockSettingsAction: SettingsAction {
         }
     }
 
+    func clearImage() -> DomainActionPublisher {
+        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
+            await wait()
+            return .success(())
+        }
+    }
+
     func set(batterySaving: Bool) -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
             await wait()

@@ -18,7 +18,7 @@ extension SettingsKey {
 
 extension SettingsKey {
     var asDefaultSettingsKey: DefaultSettingsKey {
-        guard !secure else {
+        guard !secure || isSimulator else {
             preconditionFailure("A secure key shouldn't be obtained as a DefaultSettingsKey.")
         }
         return .init(keyName: keyName)

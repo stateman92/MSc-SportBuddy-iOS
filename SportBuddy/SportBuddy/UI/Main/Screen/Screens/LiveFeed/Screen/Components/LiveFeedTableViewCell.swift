@@ -11,7 +11,7 @@ final class LiveFeedTableViewCell: ReversedTableViewCell {
     // MARK: Properties
 
     @LazyInjected private var dateFormatterService: DateFormatterService
-    private let userImageView = LoadableImageView()
+    private let userImageView = CircleImageView()
     private let labelContentView = RoundedView()
     private let label = Label()
     private let dateLabel = Label()
@@ -27,15 +27,6 @@ final class LiveFeedTableViewCell: ReversedTableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
-    }
-}
-
-// MARK: - Overridden methods
-
-extension LiveFeedTableViewCell {
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        userImageView.cancelImageLoading()
     }
 }
 
@@ -112,11 +103,15 @@ extension LiveFeedTableViewCell {
             )
             labelContentViewTrailingConstraint?.isActive = true
 
-//            userImageView.image = .init(base64Encoding: image)
-
             dateLabelConstraint?.isActive = false
             dateLabelConstraint = dateLabel.leadingAnchor.constraint(equalTo: label.leadingAnchor)
             dateLabelConstraint?.isActive = true
+
+            if let imageData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) {
+                userImageView.image = UIImage(data: imageData)
+            } else {
+                userImageView.image = Images.fallbackProfileImage.image
+            }
         } else {
             labelContentViewLeadingConstraint?.isActive = false
             labelContentViewLeadingConstraint = labelContentView.leadingAnchor.constraint(

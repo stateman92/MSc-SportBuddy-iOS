@@ -16,8 +16,8 @@ final class WebSocketServiceImpl {
     private let socket: WebSocket
     private let autoReconnect: Bool
     @LazyInjected private var coderService: CoderService
-    let receivedText = PassthroughSubject<String, Never>()
-    let reconnected = PassthroughSubject<Void, Never>()
+    private let receivedTextSubject = PassthroughSubject<String, Never>()
+    private let reconnectedSubject = PassthroughSubject<Void, Never>()
 
     // MARK: Initialization
 
@@ -41,6 +41,16 @@ final class WebSocketServiceImpl {
 // MARK: - WebSocketService
 
 extension WebSocketServiceImpl: WebSocketService {
+    /// Notify if a message arrived.
+    var receivedText: AnyPublisher<String, Never> {
+        receivedTextSubject.eraseOnMain()
+    }
+
+    /// Notify if a connection is established.
+    var reconnected: AnyPublisher<Void, Never> {
+        reconnectedSubject.eraseOnMain()
+    }
+
     /// Connect to the remote service.
     func connect() {
         socket.connect()
@@ -65,12 +75,12 @@ extension WebSocketServiceImpl: WebSocketService {
 extension WebSocketServiceImpl: WebSocketDelegate {
     func didReceive(event: WebSocketEvent, client: WebSocket) {
         switch event {
-        case let .text(text): receivedText.send(text)
+        case let .text(text): receivedTextSubject.send(text)
         case .disconnected, .cancelled:
             if autoReconnect {
                 connect()
             }
-        case .connected: reconnected.send(())
+        case .connected: reconnectedSubject.send(())
         default: break
         }
     }

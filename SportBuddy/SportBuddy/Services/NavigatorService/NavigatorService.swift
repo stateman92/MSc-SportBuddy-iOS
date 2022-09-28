@@ -8,7 +8,7 @@
 import UIKit
 
 /// A protocol for managing the in-app navigation.
-protocol NavigatorService: AnyObject {
+protocol NavigatorService: class {
     /// Initialize the service.
     /// - Parameter rootViewController: the root view controller.
     init(rootViewController: UIViewController)

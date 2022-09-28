@@ -95,3 +95,11 @@ func wait(seconds: TimeInterval = 0.33) async {
 func className(target: AnyObject) -> String {
     NSStringFromClass(type(of: target)).components(separatedBy: ".").last ?? .init()
 }
+
+var isSimulator: Bool {
+#if targetEnvironment(simulator)
+    true
+#else
+    false
+#endif
+}

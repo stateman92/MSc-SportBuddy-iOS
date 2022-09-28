@@ -6,6 +6,7 @@
 //
 
 protocol SettingsStore {
+    func getUser() -> DomainStorePublisher<UserDTO>
     func getBatterySavingSettings() -> DomainStorePublisher<Bool>
     func getLanguageSettings() -> DomainStorePublisher<LanguageSettings>
 }

@@ -7,6 +7,7 @@
 
 protocol SettingsAction {
     func set(image: String) -> DomainActionPublisher
+    func clearImage() -> DomainActionPublisher
     func set(batterySaving: Bool) -> DomainActionPublisher
     func set(languageSettings: LanguageSettings) -> DomainActionPublisher
     func logout() -> DomainActionPublisher

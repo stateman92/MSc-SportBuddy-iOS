@@ -10,14 +10,17 @@ import Foundation
 enum LanguageSettings: String, Codable, CaseIterable {
     case en
     case hu
-    case notSet
+    case system
 
     var bundle: Bundle? {
-        guard let path = Bundle.main.path(forResource: rawValue, ofType: "lproj") else { return nil }
-        return Bundle(path: path)
+        Bundle.main.path(forResource: rawValue, ofType: Constants.Extensions.lproj.rawValue).flatMap(Bundle.init(path:))
     }
 
     var localizedTitle: String {
-        "abc"
+        switch self {
+        case .en: return L10n.Settings.Language.english
+        case .hu: return L10n.Settings.Language.hungarian
+        case .system: return L10n.Settings.Language.system
+        }
     }
 }

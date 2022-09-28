@@ -130,3 +130,9 @@ extension Date: Mockable {
         .init(secondsSince1970: 32000)
     }
 }
+
+extension LanguageSettings: Mockable {
+    static var mock: Self {
+        .system
+    }
+}

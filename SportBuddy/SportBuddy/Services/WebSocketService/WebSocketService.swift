@@ -10,10 +10,10 @@ import Combine
 /// A protocol for managing the socket calls.
 protocol WebSocketService: Initable {
     /// Notify if a message arrived.
-    var receivedText: PassthroughSubject<String, Never> { get }
+    var receivedText: AnyPublisher<String, Never> { get }
 
     /// Notify if a connection is established.
-    var reconnected: PassthroughSubject<Void, Never> { get }
+    var reconnected: AnyPublisher<Void, Never> { get }
 
     /// Initialize the service.
     /// - Parameters:

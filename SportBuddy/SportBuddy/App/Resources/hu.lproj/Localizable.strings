@@ -29,8 +29,17 @@
 "trainings_title" = "Edzések";
 "settings_title" = "Beállítások";
 "settings_image" = "Kép kiválasztása";
+"settings_image_deletion" = "Törlés";
 "settings_battery" = "Akkumulátorkímélő mód";
 "settings_battery_description" = "Ezzel eldöntheted, hogy szeretnél-e WebSocketeket használni";
+"settings_language" = "Nyelv";
+"settings_language_english" = "Angol";
+"settings_language_hungarian" = "Magyar";
+"settings_language_system" = "Rendszer";
+"settings_language_alert_title" = "Biztos vagy benne?";
+"settings_language_alert_message" = "Erősítsd meg";
+"settings_language_alert_button_restart" = "Újraindítás";
+"settings_language_alert_button_cancel" = "Mégse";
 "settings_close" = "Bezárás";
 "settings_logout" = "Kijelentkezés";
 "login_login" = "Bejelentkezés";

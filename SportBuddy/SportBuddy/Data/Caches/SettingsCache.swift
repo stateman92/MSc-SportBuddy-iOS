@@ -5,7 +5,7 @@
 //  Created by Kristof Kalai on 2022. 09. 18..
 //
 
-final class SettingsCache: GeneralCache<SettingsCache.Object> {
+final class SettingsCache: PersistentCache<SettingsCache.Object> {
     // MARK: Nested types
 
     struct Object: Codable {
@@ -15,7 +15,7 @@ final class SettingsCache: GeneralCache<SettingsCache.Object> {
 
     // MARK: Initialization
 
-    init() {
-        super.init(cacheType: .persistent(key: .settings))
+    required init() {
+        super.init(key: .settings, defaultValue: .init(batterySaving: false, languageSettings: .system))
     }
 }

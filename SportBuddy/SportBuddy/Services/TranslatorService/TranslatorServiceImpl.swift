@@ -18,9 +18,11 @@ final class TranslatorServiceImpl {
 
 extension TranslatorServiceImpl: TranslatorService {
     func start() {
-        let language = settingsCache.immediateValue?.languageSettings ?? preferredLanguage ?? .en
-        if let bundle = language.bundle {
+        if let bundle = settingsCache.immediateValue?.languageSettings.bundle {
             Self.appbundle = bundle
+        } else if let preferredLanguage, let bundle = preferredLanguage.bundle {
+            Self.appbundle = bundle
+            settingsCache.modify { $0.languageSettings = .system }
         } else if let bundle = LanguageSettings.en.bundle {
             Self.appbundle = bundle
             settingsCache.modify { $0.languageSettings = .en }

@@ -9,5 +9,4 @@ enum LoadingViewModelCommand {
     case login(email: String, password: String)
     case signUp(name: String, email: String, password: String)
     case forgotPassword(email: String)
-    case googleLogin(token: String)
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class TokenCache: GeneralCache<TokenCache.Object> {
+final class TokenCache: PersistentCache<TokenCache.Object> {
     // MARK: Nested types
 
     struct Object: Codable {
@@ -17,6 +17,6 @@ final class TokenCache: GeneralCache<TokenCache.Object> {
     // MARK: Initialization
 
     init() {
-        super.init(cacheType: .persistent(key: .token))
+        super.init(key: .token)
     }
 }

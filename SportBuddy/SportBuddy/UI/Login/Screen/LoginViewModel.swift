@@ -16,7 +16,6 @@ final class LoginViewModel: BaseViewModel<LoadingViewModelState, LoadingViewMode
         case let .login(email, password): login(email: email, password: password)
         case let .signUp(name, email, password): signUp(name: name, email: email, password: password)
         case let .forgotPassword(email): forgotPassword(email: email)
-        case let .googleLogin(token): googleLogin(token: token)
         }
     }
 }
@@ -71,9 +70,6 @@ extension LoginViewModel {
                 toastService.showToast(with: .init(message: L10n.Login.Forgot.Password.success, type: .success))
             })
             .store(in: &cancellables)
-    }
-
-    private func googleLogin(token: String) {
     }
 }
 

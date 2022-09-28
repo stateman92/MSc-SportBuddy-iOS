@@ -22,7 +22,7 @@ extension DependencyInjector {
         register(cache: SettingsCache())
     }
 
-    private static func register<T, S>(cache: T) where T: GeneralCache<S> {
+    private static func register<T, S>(cache: T) where T: Cache<S> {
         resolver.register { cache }.scope(.application)
     }
 }

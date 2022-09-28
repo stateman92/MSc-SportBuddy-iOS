@@ -8,6 +8,7 @@
 import Foundation
 
 /// A protocol for managing all types of key-value pairs persistently.
+/// Note: simulator doesn't support keychain.
 final class SettingsServiceImpl {
     // MARK: Properties
 
@@ -25,7 +26,7 @@ extension SettingsServiceImpl: SettingsService {
     /// - Returns:
     ///     Whether the operation was successful.
     @discardableResult func save<T>(object: T?, forKey key: SettingsKey) -> Bool where T: Codable {
-        if key.secure {
+        if key.secure, !isSimulator {
             return secureSettingsService.save(object: object, forKey: key.asSecureSettingsKey)
         } else {
             return defaultSettingsService.save(object: object, forKey: key.asDefaultSettingsKey)
@@ -40,7 +41,7 @@ extension SettingsServiceImpl: SettingsService {
     /// - Returns:
     ///     The value for the given key.
     func retrieve<T>(forKey key: SettingsKey) -> T? where T: Codable {
-        if key.secure {
+        if key.secure, !isSimulator {
             return secureSettingsService.retrieve(forKey: key.asSecureSettingsKey)
         } else {
             return defaultSettingsService.retrieve(forKey: key.asDefaultSettingsKey)
@@ -53,7 +54,7 @@ extension SettingsServiceImpl: SettingsService {
     /// - Returns:
     ///     Whether a stored value is found for the given key.
     func has(key: SettingsKey) -> Bool {
-        if key.secure {
+        if key.secure, !isSimulator {
             return secureSettingsService.has(key: key.asSecureSettingsKey)
         } else {
             return defaultSettingsService.has(key: key.asDefaultSettingsKey)
@@ -66,7 +67,7 @@ extension SettingsServiceImpl: SettingsService {
     /// - Returns:
     ///     Whether the operation was successful.
     @discardableResult func delete<T>(forKey key: SettingsKey) -> T? where T: Codable {
-        if key.secure {
+        if key.secure, !isSimulator {
             return secureSettingsService.delete(forKey: key.asSecureSettingsKey)
         } else {
             return defaultSettingsService.delete(forKey: key.asDefaultSettingsKey)
@@ -77,7 +78,7 @@ extension SettingsServiceImpl: SettingsService {
     /// - Parameters:
     ///   - forKey: the value that is associated with this key will be deleted.
     func delete(forKey key: SettingsKey) {
-        if key.secure {
+        if key.secure, !isSimulator {
             secureSettingsService.delete(forKey: key.asSecureSettingsKey)
         } else {
             defaultSettingsService.delete(forKey: key.asDefaultSettingsKey)

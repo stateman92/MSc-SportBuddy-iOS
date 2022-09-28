@@ -13,12 +13,14 @@ struct SettingsItem {
     enum Details: Equatable {
         case toggle(Toggle, action: (Bool) -> Void)
         case segments([Segment], action: (Segment) -> Void)
+        case button(String, action: () -> Void)
         case none
 
         static func == (lhs: SettingsItem.Details, rhs: SettingsItem.Details) -> Bool {
             switch (lhs, rhs) {
             case (let .toggle(lhsToggle, _), let .toggle(rhsToggle, _)): return lhsToggle == rhsToggle
             case (let .segments(lhsSegments, _), let .segments(rhsSegments, _)): return lhsSegments == rhsSegments
+            case (let .button(lhsTitle, _), let .button(rhsTitle, _)): return lhsTitle == rhsTitle
             case (.none, .none): return true
             default: return false
             }

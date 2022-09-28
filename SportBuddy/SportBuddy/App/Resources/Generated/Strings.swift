@@ -171,6 +171,8 @@ public enum L10n {
     public static var close: String { return L10n.tr("Localizable", "settings_close", fallback: "Close") }
     /// Choose image
     public static var image: String { return L10n.tr("Localizable", "settings_image", fallback: "Choose image") }
+    /// Language
+    public static var language: String { return L10n.tr("Localizable", "settings_language", fallback: "Language") }
     /// Logout
     public static var logout: String { return L10n.tr("Localizable", "settings_logout", fallback: "Logout") }
     /// Settings
@@ -178,6 +180,34 @@ public enum L10n {
     public enum Battery {
       /// With this you can control whether to use WebSocket or not
       public static var description: String { return L10n.tr("Localizable", "settings_battery_description", fallback: "With this you can control whether to use WebSocket or not") }
+    }
+    public enum Image {
+      /// Delete
+      public static var deletion: String { return L10n.tr("Localizable", "settings_image_deletion", fallback: "Delete") }
+    }
+    public enum Language {
+      /// English
+      public static var english: String { return L10n.tr("Localizable", "settings_language_english", fallback: "English") }
+      /// Hungarian
+      public static var hungarian: String { return L10n.tr("Localizable", "settings_language_hungarian", fallback: "Hungarian") }
+      /// System
+      public static var system: String { return L10n.tr("Localizable", "settings_language_system", fallback: "System") }
+      public enum Alert {
+        /// Please confirm
+        public static var message: String { return L10n.tr("Localizable", "settings_language_alert_message", fallback: "Please confirm") }
+        /// Are you sure?
+        public static var title: String { return L10n.tr("Localizable", "settings_language_alert_title", fallback: "Are you sure?") }
+        public enum Button {
+          /// Cancel
+          public static var cancel: String { return L10n.tr("Localizable", "settings_language_alert_button_cancel", fallback: "Cancel") }
+          /// Restart app
+          public static var restart: String { return L10n.tr("Localizable", "settings_language_alert_button_restart", fallback: "Restart app") }
+        }
+        public enum Notification {
+          /// Tap to restart the application
+          public static var title: String { return L10n.tr("Localizable", "settings_language_alert_notification_title", fallback: "Tap to restart the application") }
+        }
+      }
     }
   }
   public enum Trainings {

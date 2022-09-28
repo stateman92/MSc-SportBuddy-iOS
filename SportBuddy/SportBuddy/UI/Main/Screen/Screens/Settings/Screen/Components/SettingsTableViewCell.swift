@@ -16,10 +16,12 @@ final class SettingsTableViewCell: ReversedTableViewCell {
     private let detailsLabel = Label()
     private let toggle = Switch()
     private let segmentedControl = SegmentedControl()
+    private let button = ButtonLabel()
     private let segmentedControlStack = StackView()
     private var segmentedControlWidthConstraint: NSLayoutConstraint?
     private var toggleAction: UIAction?
     private var segmentedControlAction: UIAction?
+    private var buttonAction: UIAction?
     private var action = { }
 
     // MARK: Initializations
@@ -39,6 +41,7 @@ extension SettingsTableViewCell {
         setupHorizontalSpacer()
         setupTitleLabel()
         setupDetailsLabel()
+        setupButton()
         setupToggle()
         setupSegmentedControlStack()
     }
@@ -65,7 +68,7 @@ extension SettingsTableViewCell {
             })
             $0.addArrangedSubview(StackView().then {
                 $0.addArrangedSubview(detailsLabel)
-                $0.addArrangedSubview(View())
+                $0.addArrangedSubview(View().then { $0.setHeight(.zero) })
             })
         }
     }
@@ -84,6 +87,13 @@ extension SettingsTableViewCell {
         detailsLabel.then {
             $0.numberOfLines = .zero
             $0.font = $0.font.withSize(13)
+        }
+    }
+
+    private func setupButton() {
+        button.then {
+            horizontalStack.addArrangedSubview($0)
+            $0.setup(size: .tiny)
         }
     }
 
@@ -113,17 +123,35 @@ extension SettingsTableViewCell {
     func setup(with model: SettingsItem) {
         titleLabel.text = model.title
         detailsLabel.text = model.subtitle
-        detailsLabel.isHidden = model.subtitle.trimmingCharacters(in: .whitespaces).isEmpty
+        detailsLabel.setSafely(hidden: model.subtitle.trimmingCharacters(in: .whitespaces).isEmpty)
 
         switch model.details {
-        case .none:
-            selectionStyle = .default
-            segmentedControlStack.isHidden = true
-            toggle.isHidden = true
-            segmentedControlWidthConstraint?.isActive = false
+        case .none: setupAsNoneDetails()
+        case .toggle: setupAsToggleDetails(model: model.details)
+        case .segments: setupAsSegmentedControlDetails(model: model.details)
+        case .button: setupAsButtonDetails(model: model.details)
+        }
+    }
+}
+
+// MARK: - Private methods
+
+extension SettingsTableViewCell {
+    private func setupAsNoneDetails() {
+        selectionStyle = .default
+        segmentedControlStack.setSafely(hidden: true)
+        toggle.setSafely(hidden: true)
+        button.setSafely(hidden: true)
+        segmentedControlWidthConstraint?.isActive = false
+    }
+
+    private func setupAsToggleDetails(model: SettingsItem.Details) {
+        switch model {
         case let .toggle(state, action):
             selectionStyle = .none
-            segmentedControlStack.isHidden = true
+            segmentedControlStack.setSafely(hidden: true)
+            toggle.setSafely(hidden: false)
+            button.setSafely(hidden: true)
             toggle.setOn(state == .on ? true : false, animated: true)
             segmentedControlWidthConstraint?.isActive = false
             if let toggleAction {
@@ -134,10 +162,17 @@ extension SettingsTableViewCell {
             }
             guard let toggleAction else { return }
             toggle.addAction(toggleAction, for: .valueChanged)
+        default: break
+        }
+    }
+
+    private func setupAsSegmentedControlDetails(model: SettingsItem.Details) {
+        switch model {
         case let .segments(segments, action):
             selectionStyle = .none
-            segmentedControlStack.isHidden = false
-            toggle.isHidden = true
+            segmentedControlStack.setSafely(hidden: false)
+            toggle.setSafely(hidden: true)
+            button.setSafely(hidden: true)
             segmentedControl.removeAllSegments()
             segments.enumerated().forEach {
                 segmentedControl.insertSegment(withTitle: $0.1.title, at: $0.0, animated: false)
@@ -154,6 +189,38 @@ extension SettingsTableViewCell {
             }
             guard let segmentedControlAction else { return }
             segmentedControl.addAction(segmentedControlAction, for: .valueChanged)
+        default: break
+        }
+    }
+
+    private func setupAsButtonDetails(model: SettingsItem.Details) {
+        switch model {
+        case let .button(title, action):
+            selectionStyle = .none
+            segmentedControlStack.setSafely(hidden: true)
+            toggle.setSafely(hidden: true)
+            button.setSafely(hidden: false)
+            button.setup(text: title)
+            segmentedControlWidthConstraint?.isActive = false
+            if let buttonAction {
+                button.removeAction(buttonAction, for: .valueChanged)
+            }
+            buttonAction = .init { _ in
+                action()
+            }
+            guard let buttonAction else { return }
+            button.addAction(buttonAction, for: .valueChanged)
+        default: break
+        }
+    }
+}
+
+extension UIView {
+    fileprivate func setSafely(hidden: Bool) {
+        if hidden, !isHidden {
+            isHidden = hidden
+        } else if !hidden, isHidden {
+            isHidden = hidden
         }
     }
 }

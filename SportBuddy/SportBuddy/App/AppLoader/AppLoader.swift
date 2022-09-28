@@ -12,6 +12,7 @@ enum AppLoader {
 
     enum Environment: String {
         case mock
+        case dev
         case prod
     }
 
@@ -25,6 +26,7 @@ enum AppLoader {
 
     @LazyInjected private static var loginDomain: LoginDomainImpl
     @LazyInjected private static var navigatorService: NavigatorService
+    @LazyInjected private static var translatorService: TranslatorService
     private static let appConfig: AppConfig = {
         guard let appConfig = appConfigs.first(where: { $0.key == environment.rawValue })?.value else {
             preconditionFailure("AppConfig cannot load for environment \(environment.rawValue)!")
@@ -40,8 +42,20 @@ enum AppLoader {
 extension AppLoader {
     static func setup(window: UIWindow?) {
         self.window = window
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         setupLogics()
         setupUI()
+    }
+}
+
+// MARK: - Setups
+
+extension AppLoader {
+    private static func setupUI() {
+        guard let window else { return }
+        navigatorService.reset(to: StartupScreen.self)
+        navigatorService.becameRoot(in: window)
+        window.makeKeyAndVisible()
 
         DeferredFuture { (promise: @escaping (Result<Void, Never>) -> Void) -> Void in
             // if needed, here can be done some heavy work before the app starts while the users is watching the splash
@@ -50,18 +64,6 @@ extension AppLoader {
         }
         .sink()
         .store(in: &cancellables)
-    }
-}
-
-// MARK: - Setups
-
-extension AppLoader {
-    private static func setupUI() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        guard let window else { return }
-        navigatorService.reset(to: StartupScreen.self)
-        navigatorService.becameRoot(in: window)
-        window.makeKeyAndVisible()
     }
 }
 
@@ -101,14 +103,16 @@ extension AppLoader {
     private static var environment: Environment {
 #if MOCK
         .mock
+#elseif DEV
+        .dev
 #else
         .prod
 #endif
     }
 
     private static var appConfigs: [String: AppConfig] {
-        guard let url = Bundle.main.url(forResource: "Configuration", withExtension: "plist"),
-              let data = try? Data(contentsOf: url),
+        guard let data = Bundle.main.data(forResource: Constants.Files.configuration,
+                                          withExtension: Constants.Extensions.plist.rawValue),
               let appConfigs = try? PropertyListDecoder().decode([String: AppConfig].self, from: data) else {
             preconditionFailure("AppConfig plist file cannot load!")
         }

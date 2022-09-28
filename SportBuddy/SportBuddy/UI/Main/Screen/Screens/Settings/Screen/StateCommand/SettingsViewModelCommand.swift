@@ -6,6 +6,7 @@
 //
 
 enum SettingsViewModelCommand {
+    case deleteImage
     case openImagePicker
     case toggleBatterySaving(to: Bool)
     case select(language: LanguageSettings)

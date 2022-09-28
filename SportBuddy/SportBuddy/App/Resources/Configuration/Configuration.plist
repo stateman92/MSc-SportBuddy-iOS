@@ -2,10 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>mock</key>
+	<key>dev</key>
 	<dict>
 		<key>serverUrl</key>
 		<string>http://127.0.0.1:8080</string>
+	</dict>
+	<key>mock</key>
+	<dict>
+		<key>serverUrl</key>
+		<string></string>
 	</dict>
 	<key>prod</key>
 	<dict>
