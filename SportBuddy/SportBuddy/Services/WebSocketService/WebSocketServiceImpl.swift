@@ -16,6 +16,7 @@ final class WebSocketServiceImpl {
     private let socket: WebSocket
     private let autoReconnect: Bool
     @LazyInjected private var coderService: CoderService
+    private var wantConnection = false
     private let receivedTextSubject = PassthroughSubject<String, Never>()
     private let reconnectedSubject = PassthroughSubject<Void, Never>()
 
@@ -53,11 +54,13 @@ extension WebSocketServiceImpl: WebSocketService {
 
     /// Connect to the remote service.
     func connect() {
+        wantConnection = true
         socket.connect()
     }
 
     /// Disconnect from the remote service.
     func disconnect() {
+        wantConnection = false
         socket.disconnect()
     }
 
@@ -81,6 +84,10 @@ extension WebSocketServiceImpl: WebSocketDelegate {
                 connect()
             }
         case .connected: reconnectedSubject.send(())
+        case .error:
+            if wantConnection {
+                connect()
+            }
         default: break
         }
     }

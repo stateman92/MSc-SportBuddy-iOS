@@ -17,6 +17,14 @@ extension MockChatStore: ChatStore {
         Just(.mock).autoEraseOnMain()
     }
 
+    func getUser() -> DomainStorePublisher<UserDTO> {
+        Just(.mock).autoEraseOnMain()
+    }
+
+    func getImage(for chatId: UUID) -> DomainStorePublisher<String> {
+        Just(.mock).autoEraseOnMain()
+    }
+
     var immediateToken: UUID? {
         .mock
     }

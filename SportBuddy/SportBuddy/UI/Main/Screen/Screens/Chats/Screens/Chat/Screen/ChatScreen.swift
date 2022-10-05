@@ -10,8 +10,9 @@ import UIKit
 final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelCommand, ChatDomainImpl, ChatViewModel> {
     // MARK: Properties
 
-    private let tableView = AutoReversedTableView<ChatTableViewCell, ChatEntryDTO>(style: .grouped) { cell, data in
-        cell.setup(with: data)
+    private let tableView = AutoReversedTableView<ChatTableViewCell,
+                                                  (ChatEntryDTO, String?)>(style: .grouped) { cell, data in
+        cell.setup(with: data.0, image: data.1)
     }
     private let inputField = ChatInputField()
     private var bottomAnchor: NSLayoutConstraint?
@@ -22,8 +23,13 @@ final class ChatScreen: BaseScreen<ChatViewModelState, ChatViewModelCommand, Cha
 
     override func receiveState(_ state: ChatViewModelState) {
         super.receiveState(state)
-        title = state.chat.primaryId.uuidString
-        tableView.reloadData([state.chat.chatEntries].compactMap { $0 })
+        title = state.chat.otherParty
+        let chatEntries = [state.chat.chatEntries].compactMap { $0 }.map {
+            $0.map {
+                ($0, $0.sender == state.currentUserId ? nil as String? : state.image)
+            }
+        }
+        tableView.reloadData(chatEntries)
     }
 }
 
@@ -46,6 +52,7 @@ extension ChatScreen {
             $0.delegate = self
             $0.separatorStyle = .none
             $0.allowsSelection = true
+            $0.showsVerticalScrollIndicator = false
 
             $0.backgroundColor = .clear
             view.addSubview($0)
@@ -113,7 +120,7 @@ extension ChatScreen: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
                    point: CGPoint) -> UIContextMenuConfiguration? {
-        let message = self.tableView.data(for: indexPath).message
+        let message = self.tableView.data(for: indexPath).0.message
         return UIContextMenuConfiguration(identifier: indexPath as NSCopying,
                                           previewProvider: nil) { [weak self] _ in
             guard let self else { return nil }

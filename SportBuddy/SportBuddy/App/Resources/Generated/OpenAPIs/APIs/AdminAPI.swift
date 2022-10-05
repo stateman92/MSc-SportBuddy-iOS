@@ -698,574 +698,6 @@ open class AdminAPI {
     }
 
     /**
-     Group messaging
-     
-     - parameter groupEntryDTOId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupEntriesDelete(groupEntryDTOId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupEntriesDeleteWithRequestBuilder(groupEntryDTOId: groupEntryDTOId).execute(apiResponseQueue) { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging
-     - DELETE /groupEntries
-     - Delete a group message
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter groupEntryDTOId: (query)  
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupEntriesDeleteWithRequestBuilder(groupEntryDTOId: UUID) -> RequestBuilder<Void> {
-        let localVariablePath = "/groupEntries"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "GroupEntryDTOId": groupEntryDTOId.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Group messaging
-     
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: [GroupDTO]
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupEntriesGet(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws -> [GroupDTO] {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupEntriesGetWithRequestBuilder().execute(apiResponseQueue) { result in
-                    switch result {
-                    case let .success(response):
-                        continuation.resume(returning: response.body)
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging
-     - GET /groupEntries
-     - Get a group's messages
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - returns: RequestBuilder<[GroupDTO]> 
-     */
-    open class func groupEntriesGetWithRequestBuilder() -> RequestBuilder<[GroupDTO]> {
-        let localVariablePath = "/groupEntries"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<[GroupDTO]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Group messaging
-     
-     - parameter groupEntryDTOId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupEntriesPatch(groupEntryDTOId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupEntriesPatchWithRequestBuilder(groupEntryDTOId: groupEntryDTOId).execute(apiResponseQueue) { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging
-     - PATCH /groupEntries
-     - Undo message deletion
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter groupEntryDTOId: (query)  
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupEntriesPatchWithRequestBuilder(groupEntryDTOId: UUID) -> RequestBuilder<Void> {
-        let localVariablePath = "/groupEntries"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "GroupEntryDTOId": groupEntryDTOId.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Group messaging
-     
-     - parameter groupId: (query)  
-     - parameter message: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupEntriesPost(groupId: UUID, message: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupEntriesPostWithRequestBuilder(groupId: groupId, message: message).execute(apiResponseQueue) { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging
-     - POST /groupEntries
-     - Post a group message
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter groupId: (query)  
-     - parameter message: (query)  
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupEntriesPostWithRequestBuilder(groupId: UUID, message: String) -> RequestBuilder<Void> {
-        let localVariablePath = "/groupEntries"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "groupId": groupId.encodeToJSON(),
-            "message": message.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Group messaging
-     
-     - parameter groupEntryDTOId: (query)  
-     - parameter modifiedMessage: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupEntriesPut(groupEntryDTOId: UUID, modifiedMessage: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupEntriesPutWithRequestBuilder(groupEntryDTOId: groupEntryDTOId, modifiedMessage: modifiedMessage).execute(apiResponseQueue) { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging
-     - PUT /groupEntries
-     - Modify a group message
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter groupEntryDTOId: (query)  
-     - parameter modifiedMessage: (query)  
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupEntriesPutWithRequestBuilder(groupEntryDTOId: UUID, modifiedMessage: String) -> RequestBuilder<Void> {
-        let localVariablePath = "/groupEntries"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "GroupEntryDTOId": groupEntryDTOId.encodeToJSON(),
-            "modifiedMessage": modifiedMessage.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Group messaging managing
-     
-     - parameter groupId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupManagingDelete(groupId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupManagingDeleteWithRequestBuilder(groupId: groupId).execute(apiResponseQueue) { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging managing
-     - DELETE /groupManaging
-     - Leave group
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter groupId: (query)  
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupManagingDeleteWithRequestBuilder(groupId: UUID) -> RequestBuilder<Void> {
-        let localVariablePath = "/groupManaging"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "groupId": groupId.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Get groups
-     
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: [GroupDTO]
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupManagingGet(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws -> [GroupDTO] {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupManagingGetWithRequestBuilder().execute(apiResponseQueue) { result in
-                    switch result {
-                    case let .success(response):
-                        continuation.resume(returning: response.body)
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Get groups
-     - GET /groupManaging
-     - Get the list of groups
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - returns: RequestBuilder<[GroupDTO]> 
-     */
-    open class func groupManagingGetWithRequestBuilder() -> RequestBuilder<[GroupDTO]> {
-        let localVariablePath = "/groupManaging"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<[GroupDTO]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Group messaging managing
-     
-     - parameter groupId: (query)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupManagingPost(groupId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupManagingPostWithRequestBuilder(groupId: groupId).execute(apiResponseQueue) { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging managing
-     - POST /groupManaging
-     - Join a group
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter groupId: (query)  
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupManagingPostWithRequestBuilder(groupId: UUID) -> RequestBuilder<Void> {
-        let localVariablePath = "/groupManaging"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "groupId": groupId.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-     Group messaging
-     
-     - parameter groupId: (query)  
-     - parameter users: (query)  (optional)
-     - parameter image: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func groupPut(groupId: UUID, users: [UUID]? = nil, image: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
-        var requestTask: RequestTask?
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestTask = groupPutWithRequestBuilder(groupId: groupId, users: users, image: image).execute(apiResponseQueue) { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: { [requestTask] in
-            requestTask?.cancel()
-        }
-    }
-
-    /**
-     Group messaging
-     - PUT /group
-     - Update a group
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter groupId: (query)  
-     - parameter users: (query)  (optional)
-     - parameter image: (body)  (optional)
-     - returns: RequestBuilder<Void> 
-     */
-    open class func groupPutWithRequestBuilder(groupId: UUID, users: [UUID]? = nil, image: String? = nil) -> RequestBuilder<Void> {
-        let localVariablePath = "/group"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: image)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "groupId": groupId.encodeToJSON(),
-            "users": users?.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
      Login an existing user
      
      - parameter email: (query)  
@@ -1558,6 +990,69 @@ open class AdminAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Image gathering
+     
+     - parameter chatId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: String
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func userImageGet(chatId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws -> String {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = userImageGetWithRequestBuilder(chatId: chatId).execute(apiResponseQueue) { result in
+                    switch result {
+                    case let .success(response):
+                        continuation.resume(returning: response.body)
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Image gathering
+     - GET /userImage
+     - Image gathering of a chat (user)
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter chatId: (query)  
+     - returns: RequestBuilder<String> 
+     */
+    open class func userImageGetWithRequestBuilder(chatId: String) -> RequestBuilder<String> {
+        let localVariablePath = "/userImage"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "chatId": chatId.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

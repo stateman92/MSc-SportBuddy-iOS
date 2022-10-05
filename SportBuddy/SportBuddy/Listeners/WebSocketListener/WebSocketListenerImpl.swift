@@ -12,6 +12,8 @@ final class WebSocketListenerImpl: BaseListenerImpl {
 
     @LazyInjected private var webSocketService: WebSocketService
     @LazyInjected private var userCache: UserCache
+    @LazyInjected private var settingsCache: SettingsCache
+    private var webSocketCancellable: AnyCancellable?
 }
 
 // MARK: - WebSocketListener
@@ -19,9 +21,18 @@ final class WebSocketListenerImpl: BaseListenerImpl {
 extension WebSocketListenerImpl: WebSocketListener {
     override func start() {
         super.start()
-        webSocketService.reconnected
-            .combineLatest(userCache.value().compactMap(\.?.user.primaryId))
-            .sink { [unowned self] in webSocketService.send(WSConnectionDTO(clientIdentifier: $0.1)) }
+        settingsCache.value()
+            .compactMap(\.?.batterySaving)
+            .sink { [unowned self] saveBattery in
+                if saveBattery {
+                    webSocketService.disconnect()
+                } else {
+                    webSocketCancellable = webSocketService.reconnected
+                        .combineLatest(userCache.value().compactMap(\.?.user.primaryId))
+                        .sink { [unowned self] in webSocketService.send(WSConnectionDTO(clientIdentifier: $0.1)) }
+                    webSocketService.connect()
+                }
+            }
             .store(in: &cancellables)
     }
 }

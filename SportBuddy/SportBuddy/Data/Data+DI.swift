@@ -20,6 +20,7 @@ extension DependencyInjector {
         register(cache: TokenCache())
         register(cache: LiveFeedCache())
         register(cache: SettingsCache())
+        register(cache: UserImageCache())
     }
 
     private static func register<T, S>(cache: T) where T: Cache<S> {

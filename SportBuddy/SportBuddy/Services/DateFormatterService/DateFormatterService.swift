@@ -19,3 +19,12 @@ protocol DateFormatterService: Initable, AutoMockable {
     ///   - string: the string.
     func date(from string: String) -> Date?
 }
+
+extension DateFormatterService {
+    /// Format the given date.
+    /// - Parameters:
+    ///   - timestampe: the timestamp to be formatted.
+    func string(from timestamp: Int, format: DateFormat) -> String {
+        string(from: .init(secondsSince1970: timestamp), format: format)
+    }
+}

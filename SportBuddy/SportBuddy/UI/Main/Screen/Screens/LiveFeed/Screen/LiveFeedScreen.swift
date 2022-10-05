@@ -32,7 +32,14 @@ final class LiveFeedScreen:
 
     override func receiveState(_ state: LiveFeedViewModelState) {
         super.receiveState(state)
+        CATransaction.begin()
         tableView.reloadData([state.liveFeed])
+        CATransaction.setCompletionBlock { [self] in
+            if tableView.hasRow(at: state.lastIndexPath) {
+                tableView.scrollToRow(at: state.lastIndexPath, at: .bottom, animated: true)
+            }
+        }
+        CATransaction.commit()
     }
 }
 

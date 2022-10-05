@@ -186,6 +186,32 @@ paths:
             $ref: '#/definitions/UserDTO'
         "400":
           description: Invalid input, bad request
+  /userImage:
+    get:
+      tags:
+      - Client
+      - Admin
+      - Backend
+      summary: Image gathering
+      description: Image gathering of a chat (user)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chatId
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Image
+          schema:
+            type: string
+        "400":
+          description: Invalid input, bad request
   /searchUser:
     post:
       tags:
@@ -252,42 +278,97 @@ paths:
           description: Chat updated
         "400":
           description: Invalid input, bad request
-  /group:
-    put:
+  /exercise:
+    get:
       tags:
       - Client
       - Admin
       - Backend
-      summary: Group messaging
-      description: Update a group
+      summary: Handle exercises
+      description: Get the exercises
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Exercises
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ExerciseDTO'
+        "400":
+          description: Invalid input, bad request
+    post:
+      tags:
+      - Admin
+      - Backend
+      summary: Handle exercises
+      description: Post an exercises
       consumes:
       - application/json
       produces:
       - application/json
       parameters:
-      - name: groupId
-        in: query
-        required: true
-        type: string
-        format: uuid
       - in: body
-        name: image
-        required: false
+        name: exercise
+        required: true
         schema:
-          type: string
-      - name: users
-        in: query
-        required: false
-        type: array
-        items:
-          type: string
-          format: uuid
-        collectionFormat: multi
+          $ref: '#/definitions/ExerciseDTO'
       security:
       - Bearer: []
       responses:
         "200":
-          description: Group updated
+          description: Exercise added
+        "400":
+          description: Invalid input, bad request
+    put:
+      tags:
+      - Admin
+      - Backend
+      summary: Handle exercises
+      description: Modify an exercise
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: exercise
+        required: true
+        schema:
+          $ref: '#/definitions/ExerciseDTO'
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Exercise modified
+        "400":
+          description: Invalid input, bad request
+    delete:
+      tags:
+      - Admin
+      - Backend
+      summary: Handle exercises
+      description: Delete an exercise
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: exerciseId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Exercise deleted
         "400":
           description: Invalid input, bad request
   /chatEntries:
@@ -418,299 +499,6 @@ paths:
           description: Chat message restored
         "400":
           description: Invalid input, bad request
-  /groupEntries:
-    get:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Group messaging
-      description: Get a group's messages
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Group messages
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/GroupDTO'
-        "400":
-          description: Invalid input, bad request
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Group messaging
-      description: Post a group message
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: groupId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      - name: message
-        in: query
-        required: true
-        type: string
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Group message sent
-        "400":
-          description: Invalid input, bad request
-    put:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Group messaging
-      description: Modify a group message
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: GroupEntryDTOId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      - name: modifiedMessage
-        in: query
-        required: true
-        type: string
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Group message modified
-        "400":
-          description: Invalid input, bad request
-    delete:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Group messaging
-      description: Delete a group message
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: GroupEntryDTOId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Group message deleted
-        "400":
-          description: Invalid input, bad request
-    patch:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Group messaging
-      description: Undo message deletion
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: GroupEntryDTOId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Group message restored
-        "400":
-          description: Invalid input, bad request
-  /groupManaging:
-    get:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Get groups
-      description: Get the list of groups
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Groups
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/GroupDTO'
-        "400":
-          description: Invalid input, bad request
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Group messaging managing
-      description: Join a group
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: groupId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Joined group
-        "400":
-          description: Invalid input, bad request
-    delete:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Group messaging managing
-      description: Leave group
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: groupId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Left group
-        "400":
-          description: Invalid input, bad request
-  /exercise:
-    get:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Handle exercises
-      description: Get the exercises
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Exercises
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ExerciseDTO'
-        "400":
-          description: Invalid input, bad request
-    post:
-      tags:
-      - Admin
-      - Backend
-      summary: Handle exercises
-      description: Post an exercises
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: exercise
-        required: true
-        schema:
-          $ref: '#/definitions/ExerciseDTO'
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Exercise added
-        "400":
-          description: Invalid input, bad request
-    put:
-      tags:
-      - Admin
-      - Backend
-      summary: Handle exercises
-      description: Modify an exercise
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: exercise
-        required: true
-        schema:
-          $ref: '#/definitions/ExerciseDTO'
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Exercise modified
-        "400":
-          description: Invalid input, bad request
-    delete:
-      tags:
-      - Admin
-      - Backend
-      summary: Handle exercises
-      description: Delete an exercise
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: exerciseId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Exercise deleted
-        "400":
-          description: Invalid input, bad request
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -797,7 +585,6 @@ definitions:
     required:
     - chats
     - email
-    - groups
     - name
     - primaryId
     properties:
@@ -823,29 +610,14 @@ definitions:
           type: string
           format: uuid
           example: d290f1ee-6c54-4b01-90e6-d701748f0851
-      groups:
-        type: array
-        items:
-          type: string
-          format: uuid
-          example: d290f1ee-6c54-4b01-90e6-d701748f0851
   ChatDTO:
     required:
     - chatEntries
     - image
     - primaryId
     - users
+    - otherParty
     properties:
-      primaryId:
-        type: string
-        format: uuid
-        example: d290f1ee-6c54-4b01-90e6-d701748f0851
-      users:
-        type: array
-        items:
-          type: string
-          format: uuid
-          example: d290f1ee-6c54-4b01-90e6-d701748f0851
       chatEntries:
         type: array
         items:
@@ -853,60 +625,19 @@ definitions:
       image:
         type: string
         format: base64
-  ChatEntryDTO:
-    required:
-    - deleted
-    - message
-    - primaryId
-    - sender
-    - timestamp
-    properties:
       primaryId:
         type: string
         format: uuid
         example: d290f1ee-6c54-4b01-90e6-d701748f0851
-      message:
-        type: string
-        example: Hello world!
-      timestamp:
-        type: integer
-        example: 1634691600
-        description: In epoch seconds
-      sender:
-        type: string
-        format: uuid
-        example: d290f1ee-6c54-4b01-90e6-d701748f0851
-      deleted:
-        type: boolean
-        example: true
-  GroupDTO:
-    required:
-    - groupEntries
-    - image
-    - primaryId
-    - sportType
-    - users
-    properties:
-      primaryId:
-        type: string
-        format: uuid
-        example: d290f1ee-6c54-4b01-90e6-d701748f0851
-      sportType:
-        $ref: '#/definitions/SportTypeDTO'
       users:
         type: array
         items:
           type: string
           format: uuid
           example: d290f1ee-6c54-4b01-90e6-d701748f0851
-      groupEntries:
-        type: array
-        items:
-          $ref: '#/definitions/GroupEntryDTO'
-      image:
+      otherParty:
         type: string
-        format: base64
-  GroupEntryDTO:
+  ChatEntryDTO:
     required:
     - deleted
     - message

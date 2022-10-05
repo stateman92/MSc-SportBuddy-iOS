@@ -107,11 +107,7 @@ extension LiveFeedTableViewCell {
             dateLabelConstraint = dateLabel.leadingAnchor.constraint(equalTo: label.leadingAnchor)
             dateLabelConstraint?.isActive = true
 
-            if let imageData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) {
-                userImageView.image = UIImage(data: imageData)
-            } else {
-                userImageView.image = Images.fallbackProfileImage.image
-            }
+            userImageView.image = .base64(string: image) ?? Images.fallbackProfileImage.image
         } else {
             labelContentViewLeadingConstraint?.isActive = false
             labelContentViewLeadingConstraint = labelContentView.leadingAnchor.constraint(
@@ -130,6 +126,8 @@ extension LiveFeedTableViewCell {
             dateLabelConstraint?.isActive = false
             dateLabelConstraint = dateLabel.trailingAnchor.constraint(equalTo: label.trailingAnchor)
             dateLabelConstraint?.isActive = true
+
+            userImageView.image = nil
         }
     }
 }

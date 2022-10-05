@@ -98,6 +98,7 @@
 		5854420D28230FB20078E772 /* MockLoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5854420C28230FB20078E772 /* MockLoginStore.swift */; };
 		5854420F282310260078E772 /* MockLoginAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5854420E282310260078E772 /* MockLoginAction.swift */; };
 		58544211282310770078E772 /* Mockables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58544210282310770078E772 /* Mockables.swift */; };
+		585771EB28E9F6E8003E9CA4 /* UserImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585771EA28E9F6E8003E9CA4 /* UserImageCache.swift */; };
 		585CD70628DF989E0014430B /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 585CD70528DF989E0014430B /* Configuration.plist */; };
 		585CD70928DF9B6E0014430B /* StartupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CD70828DF9B6E0014430B /* StartupScreen.swift */; };
 		585CD70B28DF9BB70014430B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CD70A28DF9BB70014430B /* Constants.swift */; };
@@ -321,32 +322,30 @@
 		58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A17E28010A0A000A81A5 /* NavigationController.swift */; };
 		58E0A18228010CA5000A81A5 /* LoadingOverlayServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18128010CA5000A81A5 /* LoadingOverlayServiceImpl.swift */; };
 		58E0A18428010CC1000A81A5 /* LoadingOverlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18328010CC1000A81A5 /* LoadingOverlayService.swift */; };
-		58E3422728DF524D00CB1DFB /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3420B28DF524D00CB1DFB /* APIHelper.swift */; };
-		58E3422828DF524D00CB1DFB /* URLSessionImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3420C28DF524D00CB1DFB /* URLSessionImplementations.swift */; };
-		58E3422928DF524D00CB1DFB /* ClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3420E28DF524D00CB1DFB /* ClientAPI.swift */; };
-		58E3422A28DF524D00CB1DFB /* BackendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3420F28DF524D00CB1DFB /* BackendAPI.swift */; };
-		58E3422B28DF524D00CB1DFB /* AdminAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421028DF524D00CB1DFB /* AdminAPI.swift */; };
-		58E3422C28DF524D00CB1DFB /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421128DF524D00CB1DFB /* CodableHelper.swift */; };
-		58E3422D28DF524D00CB1DFB /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421228DF524D00CB1DFB /* APIs.swift */; };
-		58E3422E28DF524D00CB1DFB /* OpenISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421328DF524D00CB1DFB /* OpenISO8601DateFormatter.swift */; };
-		58E3422F28DF524D00CB1DFB /* SportTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421528DF524D00CB1DFB /* SportTypeDTO.swift */; };
-		58E3423028DF524D00CB1DFB /* ExerciseFractionTimeUnitDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421628DF524D00CB1DFB /* ExerciseFractionTimeUnitDTO.swift */; };
-		58E3423128DF524D00CB1DFB /* ExerciseTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421728DF524D00CB1DFB /* ExerciseTypeDTO.swift */; };
-		58E3423228DF524D00CB1DFB /* UserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421828DF524D00CB1DFB /* UserResponseDTO.swift */; };
-		58E3423328DF524D00CB1DFB /* MotionTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421928DF524D00CB1DFB /* MotionTypeDTO.swift */; };
-		58E3423428DF524D00CB1DFB /* ChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421A28DF524D00CB1DFB /* ChatDTO.swift */; };
-		58E3423528DF524D00CB1DFB /* ChatEntryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421B28DF524D00CB1DFB /* ChatEntryDTO.swift */; };
-		58E3423628DF524D00CB1DFB /* GroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421C28DF524D00CB1DFB /* GroupDTO.swift */; };
-		58E3423728DF524D00CB1DFB /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421D28DF524D00CB1DFB /* UserDTO.swift */; };
-		58E3423828DF524D00CB1DFB /* GroupEntryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421E28DF524D00CB1DFB /* GroupEntryDTO.swift */; };
-		58E3423928DF524D00CB1DFB /* ExerciseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3421F28DF524D00CB1DFB /* ExerciseDTO.swift */; };
-		58E3423A28DF524D00CB1DFB /* ExerciseFractionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3422028DF524D00CB1DFB /* ExerciseFractionDTO.swift */; };
-		58E3423B28DF524D00CB1DFB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3422128DF524D00CB1DFB /* Extensions.swift */; };
-		58E3423C28DF524D00CB1DFB /* JSONDataEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3422228DF524D00CB1DFB /* JSONDataEncoding.swift */; };
-		58E3423D28DF524D00CB1DFB /* JSONEncodingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3422328DF524D00CB1DFB /* JSONEncodingHelper.swift */; };
-		58E3423E28DF524D00CB1DFB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3422428DF524D00CB1DFB /* Models.swift */; };
-		58E3423F28DF524D00CB1DFB /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3422528DF524D00CB1DFB /* SynchronizedDictionary.swift */; };
-		58E3424028DF524D00CB1DFB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E3422628DF524D00CB1DFB /* Configuration.swift */; };
+		58E2E68328EE3E840080DF05 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E66928EE3E820080DF05 /* Models.swift */; };
+		58E2E68428EE3E840080DF05 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E66A28EE3E820080DF05 /* Extensions.swift */; };
+		58E2E68528EE3E840080DF05 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E66B28EE3E820080DF05 /* APIHelper.swift */; };
+		58E2E68628EE3E840080DF05 /* URLSessionImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E66C28EE3E820080DF05 /* URLSessionImplementations.swift */; };
+		58E2E68728EE3E840080DF05 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E66D28EE3E820080DF05 /* Configuration.swift */; };
+		58E2E68828EE3E840080DF05 /* JSONDataEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E66E28EE3E830080DF05 /* JSONDataEncoding.swift */; };
+		58E2E68928EE3E840080DF05 /* JSONEncodingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E66F28EE3E830080DF05 /* JSONEncodingHelper.swift */; };
+		58E2E68A28EE3E840080DF05 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67028EE3E830080DF05 /* APIs.swift */; };
+		58E2E68B28EE3E840080DF05 /* SportTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67228EE3E830080DF05 /* SportTypeDTO.swift */; };
+		58E2E68C28EE3E840080DF05 /* ExerciseFractionTimeUnitDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67328EE3E830080DF05 /* ExerciseFractionTimeUnitDTO.swift */; };
+		58E2E68D28EE3E840080DF05 /* ExerciseTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67428EE3E830080DF05 /* ExerciseTypeDTO.swift */; };
+		58E2E68E28EE3E840080DF05 /* UserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67528EE3E830080DF05 /* UserResponseDTO.swift */; };
+		58E2E68F28EE3E840080DF05 /* MotionTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67628EE3E830080DF05 /* MotionTypeDTO.swift */; };
+		58E2E69028EE3E840080DF05 /* ChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67728EE3E830080DF05 /* ChatDTO.swift */; };
+		58E2E69128EE3E840080DF05 /* ChatEntryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67828EE3E830080DF05 /* ChatEntryDTO.swift */; };
+		58E2E69228EE3E840080DF05 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67928EE3E830080DF05 /* UserDTO.swift */; };
+		58E2E69328EE3E840080DF05 /* ExerciseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67A28EE3E830080DF05 /* ExerciseDTO.swift */; };
+		58E2E69428EE3E840080DF05 /* ExerciseFractionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67B28EE3E830080DF05 /* ExerciseFractionDTO.swift */; };
+		58E2E69528EE3E840080DF05 /* ClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67D28EE3E830080DF05 /* ClientAPI.swift */; };
+		58E2E69628EE3E840080DF05 /* BackendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67E28EE3E830080DF05 /* BackendAPI.swift */; };
+		58E2E69728EE3E840080DF05 /* AdminAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E67F28EE3E830080DF05 /* AdminAPI.swift */; };
+		58E2E69828EE3E840080DF05 /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E68028EE3E840080DF05 /* CodableHelper.swift */; };
+		58E2E69928EE3E840080DF05 /* OpenISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E68128EE3E840080DF05 /* OpenISO8601DateFormatter.swift */; };
+		58E2E69A28EE3E840080DF05 /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E2E68228EE3E840080DF05 /* SynchronizedDictionary.swift */; };
 		58E790FD28232A0E00CF4443 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E790FC28232A0E00CF4443 /* TextView.swift */; };
 		58E790FF28232A1600CF4443 /* StyledTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E790FE28232A1600CF4443 /* StyledTextView.swift */; };
 		58E7910128232B0600CF4443 /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7910028232B0600CF4443 /* ScrollingTextView.swift */; };
@@ -511,6 +510,7 @@
 		5854420C28230FB20078E772 /* MockLoginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginStore.swift; sourceTree = "<group>"; };
 		5854420E282310260078E772 /* MockLoginAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginAction.swift; sourceTree = "<group>"; };
 		58544210282310770078E772 /* Mockables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockables.swift; sourceTree = "<group>"; };
+		585771EA28E9F6E8003E9CA4 /* UserImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageCache.swift; sourceTree = "<group>"; };
 		585CD70528DF989E0014430B /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		585CD70828DF9B6E0014430B /* StartupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupScreen.swift; sourceTree = "<group>"; };
 		585CD70A28DF9BB70014430B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -732,32 +732,30 @@
 		58E0A17E28010A0A000A81A5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		58E0A18128010CA5000A81A5 /* LoadingOverlayServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayServiceImpl.swift; sourceTree = "<group>"; };
 		58E0A18328010CC1000A81A5 /* LoadingOverlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayService.swift; sourceTree = "<group>"; };
-		58E3420B28DF524D00CB1DFB /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
-		58E3420C28DF524D00CB1DFB /* URLSessionImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionImplementations.swift; sourceTree = "<group>"; };
-		58E3420E28DF524D00CB1DFB /* ClientAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAPI.swift; sourceTree = "<group>"; };
-		58E3420F28DF524D00CB1DFB /* BackendAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendAPI.swift; sourceTree = "<group>"; };
-		58E3421028DF524D00CB1DFB /* AdminAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminAPI.swift; sourceTree = "<group>"; };
-		58E3421128DF524D00CB1DFB /* CodableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
-		58E3421228DF524D00CB1DFB /* APIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
-		58E3421328DF524D00CB1DFB /* OpenISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenISO8601DateFormatter.swift; sourceTree = "<group>"; };
-		58E3421528DF524D00CB1DFB /* SportTypeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportTypeDTO.swift; sourceTree = "<group>"; };
-		58E3421628DF524D00CB1DFB /* ExerciseFractionTimeUnitDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseFractionTimeUnitDTO.swift; sourceTree = "<group>"; };
-		58E3421728DF524D00CB1DFB /* ExerciseTypeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTypeDTO.swift; sourceTree = "<group>"; };
-		58E3421828DF524D00CB1DFB /* UserResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResponseDTO.swift; sourceTree = "<group>"; };
-		58E3421928DF524D00CB1DFB /* MotionTypeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionTypeDTO.swift; sourceTree = "<group>"; };
-		58E3421A28DF524D00CB1DFB /* ChatDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDTO.swift; sourceTree = "<group>"; };
-		58E3421B28DF524D00CB1DFB /* ChatEntryDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatEntryDTO.swift; sourceTree = "<group>"; };
-		58E3421C28DF524D00CB1DFB /* GroupDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDTO.swift; sourceTree = "<group>"; };
-		58E3421D28DF524D00CB1DFB /* UserDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
-		58E3421E28DF524D00CB1DFB /* GroupEntryDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEntryDTO.swift; sourceTree = "<group>"; };
-		58E3421F28DF524D00CB1DFB /* ExerciseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDTO.swift; sourceTree = "<group>"; };
-		58E3422028DF524D00CB1DFB /* ExerciseFractionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseFractionDTO.swift; sourceTree = "<group>"; };
-		58E3422128DF524D00CB1DFB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		58E3422228DF524D00CB1DFB /* JSONDataEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataEncoding.swift; sourceTree = "<group>"; };
-		58E3422328DF524D00CB1DFB /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
-		58E3422428DF524D00CB1DFB /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		58E3422528DF524D00CB1DFB /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
-		58E3422628DF524D00CB1DFB /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		58E2E66928EE3E820080DF05 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		58E2E66A28EE3E820080DF05 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		58E2E66B28EE3E820080DF05 /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		58E2E66C28EE3E820080DF05 /* URLSessionImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionImplementations.swift; sourceTree = "<group>"; };
+		58E2E66D28EE3E820080DF05 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		58E2E66E28EE3E830080DF05 /* JSONDataEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataEncoding.swift; sourceTree = "<group>"; };
+		58E2E66F28EE3E830080DF05 /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
+		58E2E67028EE3E830080DF05 /* APIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		58E2E67228EE3E830080DF05 /* SportTypeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportTypeDTO.swift; sourceTree = "<group>"; };
+		58E2E67328EE3E830080DF05 /* ExerciseFractionTimeUnitDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseFractionTimeUnitDTO.swift; sourceTree = "<group>"; };
+		58E2E67428EE3E830080DF05 /* ExerciseTypeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTypeDTO.swift; sourceTree = "<group>"; };
+		58E2E67528EE3E830080DF05 /* UserResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResponseDTO.swift; sourceTree = "<group>"; };
+		58E2E67628EE3E830080DF05 /* MotionTypeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionTypeDTO.swift; sourceTree = "<group>"; };
+		58E2E67728EE3E830080DF05 /* ChatDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDTO.swift; sourceTree = "<group>"; };
+		58E2E67828EE3E830080DF05 /* ChatEntryDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatEntryDTO.swift; sourceTree = "<group>"; };
+		58E2E67928EE3E830080DF05 /* UserDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		58E2E67A28EE3E830080DF05 /* ExerciseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDTO.swift; sourceTree = "<group>"; };
+		58E2E67B28EE3E830080DF05 /* ExerciseFractionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseFractionDTO.swift; sourceTree = "<group>"; };
+		58E2E67D28EE3E830080DF05 /* ClientAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAPI.swift; sourceTree = "<group>"; };
+		58E2E67E28EE3E830080DF05 /* BackendAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendAPI.swift; sourceTree = "<group>"; };
+		58E2E67F28EE3E830080DF05 /* AdminAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminAPI.swift; sourceTree = "<group>"; };
+		58E2E68028EE3E840080DF05 /* CodableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
+		58E2E68128EE3E840080DF05 /* OpenISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenISO8601DateFormatter.swift; sourceTree = "<group>"; };
+		58E2E68228EE3E840080DF05 /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
 		58E790FC28232A0E00CF4443 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		58E790FE28232A1600CF4443 /* StyledTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextView.swift; sourceTree = "<group>"; };
 		58E7910028232B0600CF4443 /* ScrollingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
@@ -1258,6 +1256,7 @@
 				58DCE6C8281EE0E900BCB07C /* UserCache.swift */,
 				58120ED728D676C10081D63D /* LiveFeedCache.swift */,
 				58B7313928D77F2A00FA9AA2 /* SettingsCache.swift */,
+				585771EA28E9F6E8003E9CA4 /* UserImageCache.swift */,
 			);
 			path = Caches;
 			sourceTree = "<group>";
@@ -2546,53 +2545,51 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		58E3420A28DF524D00CB1DFB /* OpenAPIs */ = {
+		58E2E67128EE3E830080DF05 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				58E3420B28DF524D00CB1DFB /* APIHelper.swift */,
-				58E3420C28DF524D00CB1DFB /* URLSessionImplementations.swift */,
-				58E3420D28DF524D00CB1DFB /* APIs */,
-				58E3421128DF524D00CB1DFB /* CodableHelper.swift */,
-				58E3421228DF524D00CB1DFB /* APIs.swift */,
-				58E3421328DF524D00CB1DFB /* OpenISO8601DateFormatter.swift */,
-				58E3421428DF524D00CB1DFB /* Models */,
-				58E3422128DF524D00CB1DFB /* Extensions.swift */,
-				58E3422228DF524D00CB1DFB /* JSONDataEncoding.swift */,
-				58E3422328DF524D00CB1DFB /* JSONEncodingHelper.swift */,
-				58E3422428DF524D00CB1DFB /* Models.swift */,
-				58E3422528DF524D00CB1DFB /* SynchronizedDictionary.swift */,
-				58E3422628DF524D00CB1DFB /* Configuration.swift */,
+				58E2E67228EE3E830080DF05 /* SportTypeDTO.swift */,
+				58E2E67328EE3E830080DF05 /* ExerciseFractionTimeUnitDTO.swift */,
+				58E2E67428EE3E830080DF05 /* ExerciseTypeDTO.swift */,
+				58E2E67528EE3E830080DF05 /* UserResponseDTO.swift */,
+				58E2E67628EE3E830080DF05 /* MotionTypeDTO.swift */,
+				58E2E67728EE3E830080DF05 /* ChatDTO.swift */,
+				58E2E67828EE3E830080DF05 /* ChatEntryDTO.swift */,
+				58E2E67928EE3E830080DF05 /* UserDTO.swift */,
+				58E2E67A28EE3E830080DF05 /* ExerciseDTO.swift */,
+				58E2E67B28EE3E830080DF05 /* ExerciseFractionDTO.swift */,
 			);
-			path = OpenAPIs;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		58E3420D28DF524D00CB1DFB /* APIs */ = {
+		58E2E67C28EE3E830080DF05 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				58E3420E28DF524D00CB1DFB /* ClientAPI.swift */,
-				58E3420F28DF524D00CB1DFB /* BackendAPI.swift */,
-				58E3421028DF524D00CB1DFB /* AdminAPI.swift */,
+				58E2E67D28EE3E830080DF05 /* ClientAPI.swift */,
+				58E2E67E28EE3E830080DF05 /* BackendAPI.swift */,
+				58E2E67F28EE3E830080DF05 /* AdminAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
 		};
-		58E3421428DF524D00CB1DFB /* Models */ = {
+		58E3420A28DF524D00CB1DFB /* OpenAPIs */ = {
 			isa = PBXGroup;
 			children = (
-				58E3421528DF524D00CB1DFB /* SportTypeDTO.swift */,
-				58E3421628DF524D00CB1DFB /* ExerciseFractionTimeUnitDTO.swift */,
-				58E3421728DF524D00CB1DFB /* ExerciseTypeDTO.swift */,
-				58E3421828DF524D00CB1DFB /* UserResponseDTO.swift */,
-				58E3421928DF524D00CB1DFB /* MotionTypeDTO.swift */,
-				58E3421A28DF524D00CB1DFB /* ChatDTO.swift */,
-				58E3421B28DF524D00CB1DFB /* ChatEntryDTO.swift */,
-				58E3421C28DF524D00CB1DFB /* GroupDTO.swift */,
-				58E3421D28DF524D00CB1DFB /* UserDTO.swift */,
-				58E3421E28DF524D00CB1DFB /* GroupEntryDTO.swift */,
-				58E3421F28DF524D00CB1DFB /* ExerciseDTO.swift */,
-				58E3422028DF524D00CB1DFB /* ExerciseFractionDTO.swift */,
+				58E2E66B28EE3E820080DF05 /* APIHelper.swift */,
+				58E2E67C28EE3E830080DF05 /* APIs */,
+				58E2E67028EE3E830080DF05 /* APIs.swift */,
+				58E2E68028EE3E840080DF05 /* CodableHelper.swift */,
+				58E2E66D28EE3E820080DF05 /* Configuration.swift */,
+				58E2E66A28EE3E820080DF05 /* Extensions.swift */,
+				58E2E66E28EE3E830080DF05 /* JSONDataEncoding.swift */,
+				58E2E66F28EE3E830080DF05 /* JSONEncodingHelper.swift */,
+				58E2E67128EE3E830080DF05 /* Models */,
+				58E2E66928EE3E820080DF05 /* Models.swift */,
+				58E2E68128EE3E840080DF05 /* OpenISO8601DateFormatter.swift */,
+				58E2E68228EE3E840080DF05 /* SynchronizedDictionary.swift */,
+				58E2E66C28EE3E820080DF05 /* URLSessionImplementations.swift */,
 			);
-			path = Models;
+			path = OpenAPIs;
 			sourceTree = "<group>";
 		};
 		58E790FB28232A0000CF4443 /* TextView */ = {
@@ -3197,9 +3194,9 @@
 				58284921280BA3DF00034010 /* FadingTableView.swift in Sources */,
 				58AAEC41280BC1EE0054E2F0 /* PersistentCache.swift in Sources */,
 				586CB07F281D9AEF00D753FB /* TabBarController.swift in Sources */,
-				58E3423528DF524D00CB1DFB /* ChatEntryDTO.swift in Sources */,
 				58EBF20727FBB76100BA81CB /* UIApplication+Extensions.swift in Sources */,
 				5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */,
+				58E2E69028EE3E840080DF05 /* ChatDTO.swift in Sources */,
 				58DCE71C281EE2FD00BCB07C /* TrainingsActionImpl.swift in Sources */,
 				585CD70928DF9B6E0014430B /* StartupScreen.swift in Sources */,
 				580190F927F3827D00BB3E3E /* DependencyInjector.swift in Sources */,
@@ -3209,21 +3206,24 @@
 				58DCE71B281EE2FD00BCB07C /* TrainingsAction.swift in Sources */,
 				580B0EBF2819325B00E14F8B /* AddNewChatScreen.swift in Sources */,
 				580521CE27EFB29300B3A8B1 /* Switch.swift in Sources */,
+				58E2E69628EE3E840080DF05 /* BackendAPI.swift in Sources */,
 				580521C227EF70AD00B3A8B1 /* ButtonLabel.swift in Sources */,
 				5853F9DC2822D2CF00076D93 /* TableViewCell.swift in Sources */,
 				58AAEC3B280BC0230054E2F0 /* Cache.swift in Sources */,
-				58E3423628DF524D00CB1DFB /* GroupDTO.swift in Sources */,
 				58B2E1CD27F3B5A3004135E2 /* Onboard.swift in Sources */,
 				586CB082281DA0CA00D753FB /* ChatType.swift in Sources */,
 				5854420F282310260078E772 /* MockLoginAction.swift in Sources */,
+				58E2E68E28EE3E840080DF05 /* UserResponseDTO.swift in Sources */,
 				58C3ECBE281A85D700DBD5BB /* LoadingState.swift in Sources */,
 				58DD9211280F2911006544AE /* Toast.swift in Sources */,
 				586CB057281D7ED600D753FB /* ChatsViewModelState.swift in Sources */,
 				58B2E1CF27F3B5B4004135E2 /* DefaultOnboardOverlay.swift in Sources */,
 				580521D327EFB2C900B3A8B1 /* ScrollView.swift in Sources */,
 				58E0A18228010CA5000A81A5 /* LoadingOverlayServiceImpl.swift in Sources */,
+				58E2E69128EE3E840080DF05 /* ChatEntryDTO.swift in Sources */,
 				587F30132809CECC00EFA7E9 /* MainScreen.swift in Sources */,
 				588B1C9228CFB274003C6F6A /* LiveFeedViewModelState.swift in Sources */,
+				58E2E68928EE3E840080DF05 /* JSONEncodingHelper.swift in Sources */,
 				58DCE732281EE69A00BCB07C /* AddNewChatDomain.swift in Sources */,
 				58B7313328D74FB700FA9AA2 /* DateFormat.swift in Sources */,
 				584061A928134DB700BF64CB /* ChatAction.swift in Sources */,
@@ -3234,7 +3234,6 @@
 				58E790FF28232A1600CF4443 /* StyledTextView.swift in Sources */,
 				580190FE27F383AC00BB3E3E /* LazyInjected.swift in Sources */,
 				5882AD12280E3A7A00A09023 /* ToastType.swift in Sources */,
-				58E3422E28DF524D00CB1DFB /* OpenISO8601DateFormatter.swift in Sources */,
 				58E790FD28232A0E00CF4443 /* TextView.swift in Sources */,
 				58DD921C280F3155006544AE /* AVCaptureDevice+Extensions.swift in Sources */,
 				58B7312B28D73A9400FA9AA2 /* LiveFeedTableViewCell.swift in Sources */,
@@ -3245,28 +3244,26 @@
 				58B7312928D7390C00FA9AA2 /* BaseView.swift in Sources */,
 				58DCE72E281EE69A00BCB07C /* AddNewChatActionImpl.swift in Sources */,
 				580521CC27EFB24400B3A8B1 /* ImageView.swift in Sources */,
-				58E3423028DF524D00CB1DFB /* ExerciseFractionTimeUnitDTO.swift in Sources */,
 				5853F9DE2822D73C00076D93 /* AutoReversedTableView.swift in Sources */,
 				5832044927FE2959009A4644 /* PathComponent.swift in Sources */,
 				582939602820744300CAF83A /* Data+DI.swift in Sources */,
 				5832044027FE2959009A4644 /* MLImage.swift in Sources */,
 				586CB068281D905F00D753FB /* MainViewModelCommand.swift in Sources */,
-				58E3423828DF524D00CB1DFB /* GroupEntryDTO.swift in Sources */,
 				58DCE716281EE2FD00BCB07C /* TrainingsStore.swift in Sources */,
 				5801910627F38B7F00BB3E3E /* BackgroundView.swift in Sources */,
-				58E3423A28DF524D00CB1DFB /* ExerciseFractionDTO.swift in Sources */,
-				58E3423F28DF524D00CB1DFB /* SynchronizedDictionary.swift in Sources */,
 				58EBF20927FBB76500BA81CB /* UITableView+Extensions.swift in Sources */,
 				5818CF3C28D908B8000C7CD3 /* UIImagePickerController+Extensions.swift in Sources */,
+				58E2E69428EE3E840080DF05 /* ExerciseFractionDTO.swift in Sources */,
+				58E2E68C28EE3E840080DF05 /* ExerciseFractionTimeUnitDTO.swift in Sources */,
 				58DCE6BA281EDF8C00BCB07C /* OnboardingActionImpl.swift in Sources */,
 				584061AF28134DE000BF64CB /* ChatStoreImpl.swift in Sources */,
 				58DCE6BE281EDFC800BCB07C /* OnboardingStoreImpl.swift in Sources */,
+				58E2E69228EE3E840080DF05 /* UserDTO.swift in Sources */,
 				5828B54727F4DF6D0079A727 /* Login+DI.swift in Sources */,
 				589AA53127FF00F20002C4D5 /* InputView.swift in Sources */,
 				580B0EB6281929DB00E14F8B /* Animations.swift in Sources */,
 				587F30332809D94F00EFA7E9 /* WebSocketServiceImpl.swift in Sources */,
 				580190FC27F382F900BB3E3E /* AppLoader.swift in Sources */,
-				58E3423128DF524D00CB1DFB /* ExerciseTypeDTO.swift in Sources */,
 				58DCE6F2281EE1AF00BCB07C /* MainAction.swift in Sources */,
 				58DD9218280F2FDE006544AE /* AVCaptureSession+Extensions.swift in Sources */,
 				586CB05D281D7FC300D753FB /* AddNewChatViewModelState.swift in Sources */,
@@ -3281,19 +3278,16 @@
 				58B7313028D74F3600FA9AA2 /* DateFormatterServiceImpl.swift in Sources */,
 				584061AD28134DD900BF64CB /* ChatStore.swift in Sources */,
 				589AA53727FF04880002C4D5 /* Publisher+Extensions.swift in Sources */,
-				58E3423328DF524D00CB1DFB /* MotionTypeDTO.swift in Sources */,
 				58DCE707281EE25D00BCB07C /* SettingsActionImpl.swift in Sources */,
 				58DCE730281EE69A00BCB07C /* AddNewChatStore.swift in Sources */,
 				5877509127FCBAFA00D638A0 /* UIViewController+Extensions.swift in Sources */,
+				585771EB28E9F6E8003E9CA4 /* UserImageCache.swift in Sources */,
 				58120ED628D676270081D63D /* LiveFeedDTO.swift in Sources */,
 				586CB077281D923F00D753FB /* AddNewChatViewModelCommand.swift in Sources */,
-				58E3423E28DF524D00CB1DFB /* Models.swift in Sources */,
 				580DF5DD2809EF9600BE0493 /* SettingsScreen.swift in Sources */,
 				58DCE70A281EE25D00BCB07C /* SettingsDomain.swift in Sources */,
 				587A7E6B28956320007363C6 /* ConnectivityServiceImpl.swift in Sources */,
-				58E3422D28DF524D00CB1DFB /* APIs.swift in Sources */,
 				5877508627FCA33D00D638A0 /* BaseViewModel.swift in Sources */,
-				58E3422A28DF524D00CB1DFB /* BackendAPI.swift in Sources */,
 				58DCE719281EE2FD00BCB07C /* TrainingsDomain.swift in Sources */,
 				586CB071281D918B00D753FB /* ChatsViewModelCommand.swift in Sources */,
 				580190F027F3820A00BB3E3E /* OnboardingScreen.swift in Sources */,
@@ -3301,7 +3295,6 @@
 				5882AD04280DC75100A09023 /* TokenCache.swift in Sources */,
 				58DCE757281EE88D00BCB07C /* ChatsStore.swift in Sources */,
 				58DD6EE228E110C1007C20F0 /* NotificationTiming.swift in Sources */,
-				58E3422F28DF524D00CB1DFB /* SportTypeDTO.swift in Sources */,
 				58C1D44827F51963005D13C4 /* SwipingSegment.swift in Sources */,
 				588B1C9428CFB299003C6F6A /* LiveFeedViewModelCommand.swift in Sources */,
 				580DF5EE280A0BB900BE0493 /* SystemImageService.swift in Sources */,
@@ -3322,37 +3315,36 @@
 				58DCE6B8281EDF8200BCB07C /* OnboardingAction.swift in Sources */,
 				58AAEC34280BBC660054E2F0 /* SecureSettingsServiceImpl.swift in Sources */,
 				58289BE927DE6E9200FCEF08 /* AppDelegate.swift in Sources */,
-				58E3423C28DF524D00CB1DFB /* JSONDataEncoding.swift in Sources */,
 				587F30112809CEC600EFA7E9 /* Main+DI.swift in Sources */,
 				58EBF1E727FBB4E900BA81CB /* LoadingService.swift in Sources */,
-				58E3423228DF524D00CB1DFB /* UserResponseDTO.swift in Sources */,
 				58544211282310770078E772 /* Mockables.swift in Sources */,
 				58C1D44627F51963005D13C4 /* SwipingSegmentedControl.swift in Sources */,
 				587A7E6F28956689007363C6 /* ConnectivityListener.swift in Sources */,
-				58E3422928DF524D00CB1DFB /* ClientAPI.swift in Sources */,
 				589AA53E27FF05B90002C4D5 /* AnimationCurve+Extensions.swift in Sources */,
 				58DCE733281EE69A00BCB07C /* AddNewChatDomainImpl.swift in Sources */,
 				586CB04F281D7E0D00D753FB /* MainViewModelState.swift in Sources */,
 				5862DDC7280CC03000ABFD86 /* Domain+DI.swift in Sources */,
+				58E2E68B28EE3E840080DF05 /* SportTypeDTO.swift in Sources */,
 				58DCE72D281EE69A00BCB07C /* AddNewChatAction.swift in Sources */,
 				58731E6828231693008A7562 /* MockLiveFeedAction.swift in Sources */,
 				584BC5FA2802713C004582E9 /* Initable.swift in Sources */,
 				584061AB28134DBE00BF64CB /* ChatActionImpl.swift in Sources */,
-				58E3423428DF524D00CB1DFB /* ChatDTO.swift in Sources */,
-				58E3422C28DF524D00CB1DFB /* CodableHelper.swift in Sources */,
 				58F274352812090900251284 /* NavigationType.swift in Sources */,
 				58DCE759281EF45E00BCB07C /* Domain.swift in Sources */,
+				58E2E68328EE3E840080DF05 /* Models.swift in Sources */,
 				580DF5D32809EF6800BE0493 /* Trainings+DI.swift in Sources */,
 				58B2E1D427F3BAA2004135E2 /* OnboardDataSource.swift in Sources */,
 				580DF5D52809EF7000BE0493 /* TrainingsScreen.swift in Sources */,
 				58DCE6E4281EE0EA00BCB07C /* LoginStore.swift in Sources */,
 				58F8C38728E0AD8C003E78FF /* Bundle+Extensions.swift in Sources */,
+				58E2E68628EE3E840080DF05 /* URLSessionImplementations.swift in Sources */,
 				58A199D0281C6E2700140140 /* WSConnectionDTO.swift in Sources */,
 				58E0A1602800C3CB000A81A5 /* NavigatorServiceImpl.swift in Sources */,
 				58DCE6F6281EE1AF00BCB07C /* MainStore.swift in Sources */,
 				58C1D44D27F51C7A005D13C4 /* TopLevel+Extensions.swift in Sources */,
 				5877507E27FCA31D00D638A0 /* LoadingOverlayView.swift in Sources */,
 				58120EE428D687BA0081D63D /* BaseListenerImpl.swift in Sources */,
+				58E2E68D28EE3E840080DF05 /* ExerciseTypeDTO.swift in Sources */,
 				58E0A1782800D9B8000A81A5 /* Key.swift in Sources */,
 				58DD6ED828E10472007C20F0 /* UIImage+Extensions.swift in Sources */,
 				587A7E6928956319007363C6 /* ConnectivityService.swift in Sources */,
@@ -3365,6 +3357,9 @@
 				580B0ED228197A2500E14F8B /* ChatScreen.swift in Sources */,
 				5854420D28230FB20078E772 /* MockLoginStore.swift in Sources */,
 				58DCE740281EE7E700BCB07C /* LiveFeedDomain.swift in Sources */,
+				58E2E69828EE3E840080DF05 /* CodableHelper.swift in Sources */,
+				58E2E68428EE3E840080DF05 /* Extensions.swift in Sources */,
+				58E2E68828EE3E840080DF05 /* JSONDataEncoding.swift in Sources */,
 				5801910B27F392A300BB3E3E /* VisualEffectView.swift in Sources */,
 				58FD65092803119100FE6A51 /* AnimationView.swift in Sources */,
 				58B6D3D32822AB32002D7650 /* ErrorResponse+Extensions.swift in Sources */,
@@ -3372,7 +3367,6 @@
 				58C1D44B27F51BFC005D13C4 /* UIView+GestureRecognizers.swift in Sources */,
 				5832043B27FE2959009A4644 /* MLService.swift in Sources */,
 				58B2E1DF27F3BCEB004135E2 /* OnboardOverlay.swift in Sources */,
-				58E3422B28DF524D00CB1DFB /* AdminAPI.swift in Sources */,
 				587F303A2809DE8600EFA7E9 /* Services+DI.swift in Sources */,
 				58B7312E28D74F2E00FA9AA2 /* DateFormatterService.swift in Sources */,
 				589AA54227FF06DE0002C4D5 /* CAMediaTimingFunction+Extensions.swift in Sources */,
@@ -3384,6 +3378,7 @@
 				5832043D27FE2959009A4644 /* MLPoseLandmark.swift in Sources */,
 				587F303C2809DF5300EFA7E9 /* UI+DI.swift in Sources */,
 				5801910427F38A7D00BB3E3E /* Typealiases.swift in Sources */,
+				58E2E69528EE3E840080DF05 /* ClientAPI.swift in Sources */,
 				58F8C38928E0B859003E78FF /* MockWebSocketService.swift in Sources */,
 				58AE043B2828149400D75E2D /* CopyServiceImpl.swift in Sources */,
 				58284928280BA7E900034010 /* CustomTabbedTabScreen.swift in Sources */,
@@ -3395,6 +3390,7 @@
 				58EBF1E627FBB4E900BA81CB /* LoadingServiceImpl.swift in Sources */,
 				587F30312809D94500EFA7E9 /* WebSocketService.swift in Sources */,
 				58DD6EE428E11409007C20F0 /* CircleImageView.swift in Sources */,
+				58E2E69328EE3E840080DF05 /* ExerciseDTO.swift in Sources */,
 				58DD9216280F2E28006544AE /* CameraServiceImpl.swift in Sources */,
 				58AE04392828148E00D75E2D /* CopyService.swift in Sources */,
 				580521DE27EFB47C00B3A8B1 /* View.swift in Sources */,
@@ -3409,9 +3405,9 @@
 				586CB055281D7EAE00D753FB /* TrainingsViewModelState.swift in Sources */,
 				586CB07A281D927C00D753FB /* ChatViewModelCommand.swift in Sources */,
 				580B0ED428197A2B00E14F8B /* ChatViewModel.swift in Sources */,
-				58E3424028DF524D00CB1DFB /* Configuration.swift in Sources */,
 				58C1D44727F51963005D13C4 /* LabelSegment.swift in Sources */,
 				58DCE705281EE25D00BCB07C /* SettingsStoreImpl.swift in Sources */,
+				58E2E68728EE3E840080DF05 /* Configuration.swift in Sources */,
 				58DCE743281EE7E700BCB07C /* LiveFeedAction.swift in Sources */,
 				586CB061281D841C00D753FB /* OnboardingViewModelCommand.swift in Sources */,
 				58EBF1EA27FBB4F200BA81CB /* NavigatorService.swift in Sources */,
@@ -3426,6 +3422,8 @@
 				58AAEC37280BBEA80054E2F0 /* SettingsService.swift in Sources */,
 				58DCE6E5281EE0EA00BCB07C /* LoginDomainImpl.swift in Sources */,
 				58731E5E28231320008A7562 /* MockTrainingsStore.swift in Sources */,
+				58E2E69A28EE3E840080DF05 /* SynchronizedDictionary.swift in Sources */,
+				58E2E69928EE3E840080DF05 /* OpenISO8601DateFormatter.swift in Sources */,
 				58DCE6F7281EE1AF00BCB07C /* MainDomainImpl.swift in Sources */,
 				58DD9214280F2E22006544AE /* CameraService.swift in Sources */,
 				58DCE721281EE3A300BCB07C /* ChatDomainImpl.swift in Sources */,
@@ -3443,16 +3441,14 @@
 				58C27EF728113D1F000FC602 /* RequestBuilder+Extensions.swift in Sources */,
 				580B0ECF28197A1300E14F8B /* Chat+DI.swift in Sources */,
 				58731E56282312DD008A7562 /* MockMainStore.swift in Sources */,
-				58E3423728DF524D00CB1DFB /* UserDTO.swift in Sources */,
 				587F300D2809CE9B00EFA7E9 /* BaseTabScreen.swift in Sources */,
+				58E2E68F28EE3E840080DF05 /* MotionTypeDTO.swift in Sources */,
 				58C27EF528113CAB000FC602 /* String+Extensions.swift in Sources */,
-				58E3422728DF524D00CB1DFB /* APIHelper.swift in Sources */,
 				58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */,
 				588F5E7B280B307F00947800 /* LoggingServiceImpl.swift in Sources */,
 				58E0A17A2800D9CC000A81A5 /* SettingsKey.swift in Sources */,
 				580DF5D92809EF8600BE0493 /* TrainingsViewModel.swift in Sources */,
 				580DF5DB2809EF8F00BE0493 /* Settings+DI.swift in Sources */,
-				58E3423B28DF524D00CB1DFB /* Extensions.swift in Sources */,
 				580DF5DF2809EF9E00BE0493 /* SettingsViewModel.swift in Sources */,
 				58120ED828D676C10081D63D /* LiveFeedCache.swift in Sources */,
 				585CD70B28DF9BB70014430B /* Constants.swift in Sources */,
@@ -3461,6 +3457,7 @@
 				5853F9E22822EB9B00076D93 /* ChatInputField.swift in Sources */,
 				58F976DF27DE77C500E74C5F /* Assets.swift in Sources */,
 				589AA54427FF07120002C4D5 /* BinaryFloatingPoint+Extensions.swift in Sources */,
+				58E2E68A28EE3E840080DF05 /* APIs.swift in Sources */,
 				5853F9E52823083500076D93 /* KeyboardObserver.swift in Sources */,
 				58120EDF28D687570081D63D /* WebSocketListenerImpl.swift in Sources */,
 				58C1D44527F51963005D13C4 /* IconSegment.swift in Sources */,
@@ -3474,7 +3471,6 @@
 				58DCE717281EE2FD00BCB07C /* TrainingsStoreImpl.swift in Sources */,
 				5832043F27FE2959009A4644 /* MLPoseLandmarkType.swift in Sources */,
 				58E0A1732800D918000A81A5 /* DefaultSettingsServiceImpl.swift in Sources */,
-				58E3423D28DF524D00CB1DFB /* JSONEncodingHelper.swift in Sources */,
 				58DCE6E3281EE0EA00BCB07C /* LoginStoreImpl.swift in Sources */,
 				58DCE6F5281EE1AF00BCB07C /* MainStoreImpl.swift in Sources */,
 				58E0A1752800D922000A81A5 /* DefaultSettingsService.swift in Sources */,
@@ -3482,13 +3478,13 @@
 				58FD650E2803135200FE6A51 /* ImageLoadingServiceImpl.swift in Sources */,
 				58EBF1EC27FBB50000BA81CB /* AutoMockable.swift in Sources */,
 				58DD6EDD28E1106D007C20F0 /* NotificationService.swift in Sources */,
-				58E3423928DF524D00CB1DFB /* ExerciseDTO.swift in Sources */,
+				58E2E69728EE3E840080DF05 /* AdminAPI.swift in Sources */,
 				5832043C27FE2959009A4644 /* MLServiceImpl.swift in Sources */,
 				586CB07C281D991700D753FB /* ViewController.swift in Sources */,
 				58DCE731281EE69A00BCB07C /* AddNewChatStoreImpl.swift in Sources */,
 				58DCE6C6281EE06A00BCB07C /* OnboardingDomainImpl.swift in Sources */,
 				58284923280BA4DA00034010 /* TabBar.swift in Sources */,
-				58E3422828DF524D00CB1DFB /* URLSessionImplementations.swift in Sources */,
+				58E2E68528EE3E840080DF05 /* APIHelper.swift in Sources */,
 				580DF5EC280A0BB000BE0493 /* SystemImageServiceImpl.swift in Sources */,
 				580DF5D12809EF5A00BE0493 /* ChatsScreen.swift in Sources */,
 				5853F9E92823088F00076D93 /* Notification+Extensions.swift in Sources */,
@@ -4288,7 +4284,7 @@
 			repositoryURL = "https://github.com/efremidze/VisualEffectView";
 			requirement = {
 				kind = exactVersion;
-				version = 4.1.3;
+				version = 4.1.4;
 			};
 		};
 		58FD65002803110100FE6A51 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {

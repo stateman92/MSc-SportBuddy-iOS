@@ -18,16 +18,14 @@ public struct UserDTO: Codable, JSONEncodable, Hashable {
     public var profileImage: String?
     public var bio: String?
     public var chats: [UUID]
-    public var groups: [UUID]
 
-    public init(primaryId: UUID, name: String, email: String, profileImage: String? = nil, bio: String? = nil, chats: [UUID], groups: [UUID]) {
+    public init(primaryId: UUID, name: String, email: String, profileImage: String? = nil, bio: String? = nil, chats: [UUID]) {
         self.primaryId = primaryId
         self.name = name
         self.email = email
         self.profileImage = profileImage
         self.bio = bio
         self.chats = chats
-        self.groups = groups
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,7 +35,6 @@ public struct UserDTO: Codable, JSONEncodable, Hashable {
         case profileImage
         case bio
         case chats
-        case groups
     }
 
     // Encodable protocol methods
@@ -50,7 +47,6 @@ public struct UserDTO: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(profileImage, forKey: .profileImage)
         try container.encodeIfPresent(bio, forKey: .bio)
         try container.encode(chats, forKey: .chats)
-        try container.encode(groups, forKey: .groups)
     }
 }
 

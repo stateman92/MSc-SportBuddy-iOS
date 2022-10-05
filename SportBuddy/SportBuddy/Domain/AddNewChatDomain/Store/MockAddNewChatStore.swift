@@ -16,4 +16,8 @@ extension MockAddNewChatStore: AddNewChatStore {
     var searchedUsers: DomainStorePublisher<[UserDTO]> {
         Just(.mock).autoEraseOnMain()
     }
+
+    var chats: DomainStorePublisher<[ChatDTO]> {
+        Just(.mock).autoEraseOnMain()
+    }
 }

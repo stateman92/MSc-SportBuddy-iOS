@@ -11,18 +11,27 @@ struct SettingsItem {
     // MARK: Nested types
 
     enum Details: Equatable {
-        case toggle(Toggle, action: (Bool) -> Void)
-        case segments([Segment], action: (Segment) -> Void)
-        case button(String, action: () -> Void)
+        case toggle(Toggle, performActionForSelection: Bool = false, action: (Bool) -> Void)
+        case segments([Segment], performActionForSelection: Bool = false, action: (Segment) -> Void)
+        case button(String, performActionForSelection: Bool = false, action: () -> Void)
         case none
 
         static func == (lhs: SettingsItem.Details, rhs: SettingsItem.Details) -> Bool {
             switch (lhs, rhs) {
-            case (let .toggle(lhsToggle, _), let .toggle(rhsToggle, _)): return lhsToggle == rhsToggle
-            case (let .segments(lhsSegments, _), let .segments(rhsSegments, _)): return lhsSegments == rhsSegments
-            case (let .button(lhsTitle, _), let .button(rhsTitle, _)): return lhsTitle == rhsTitle
+            case (let .toggle(lhsToggle, _, _), let .toggle(rhsToggle, _, _)): return lhsToggle == rhsToggle
+            case (let .segments(lhsSegments, _, _), let .segments(rhsSegments, _, _)): return lhsSegments == rhsSegments
+            case (let .button(lhsTitle, _, _), let .button(rhsTitle, _, _)): return lhsTitle == rhsTitle
             case (.none, .none): return true
             default: return false
+            }
+        }
+
+        var performActionForSelection: Bool {
+            switch self {
+            case let .toggle(_, performActionForSelection, _): return performActionForSelection
+            case let .segments(_, performActionForSelection, _): return performActionForSelection
+            case let .button(_, performActionForSelection, _): return performActionForSelection
+            case .none: return true
             }
         }
     }

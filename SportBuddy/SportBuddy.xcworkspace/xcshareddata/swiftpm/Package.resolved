@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/efremidze/VisualEffectView",
       "state" : {
-        "revision" : "8f35b1c6096d8d8474471b494efb5b56c5964186",
-        "version" : "4.1.3"
+        "revision" : "92f794bce4673e588f577b8477ec7a4f05f89222",
+        "version" : "4.1.4"
       }
     }
   ],

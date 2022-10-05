@@ -68,7 +68,7 @@ extension SettingsTableViewCell {
             })
             $0.addArrangedSubview(StackView().then {
                 $0.addArrangedSubview(detailsLabel)
-                $0.addArrangedSubview(View().then { $0.setHeight(.zero) })
+//                $0.addArrangedSubview(View().then { $0.setHeight(.zero) })
             })
         }
     }
@@ -147,12 +147,12 @@ extension SettingsTableViewCell {
 
     private func setupAsToggleDetails(model: SettingsItem.Details) {
         switch model {
-        case let .toggle(state, action):
+        case let .toggle(state, _, action):
             selectionStyle = .none
             segmentedControlStack.setSafely(hidden: true)
             toggle.setSafely(hidden: false)
             button.setSafely(hidden: true)
-            toggle.setOn(state == .on ? true : false, animated: true)
+            toggle.setOn(state == .on ? true : false, animated: false)
             segmentedControlWidthConstraint?.isActive = false
             if let toggleAction {
                 toggle.removeAction(toggleAction, for: .valueChanged)
@@ -168,7 +168,7 @@ extension SettingsTableViewCell {
 
     private func setupAsSegmentedControlDetails(model: SettingsItem.Details) {
         switch model {
-        case let .segments(segments, action):
+        case let .segments(segments, _, action):
             selectionStyle = .none
             segmentedControlStack.setSafely(hidden: false)
             toggle.setSafely(hidden: true)
@@ -195,7 +195,7 @@ extension SettingsTableViewCell {
 
     private func setupAsButtonDetails(model: SettingsItem.Details) {
         switch model {
-        case let .button(title, action):
+        case let .button(title, _, action):
             selectionStyle = .none
             segmentedControlStack.setSafely(hidden: true)
             toggle.setSafely(hidden: true)
@@ -203,13 +203,13 @@ extension SettingsTableViewCell {
             button.setup(text: title)
             segmentedControlWidthConstraint?.isActive = false
             if let buttonAction {
-                button.removeAction(buttonAction, for: .valueChanged)
+                button.removeAction(buttonAction, for: .touchUpInside)
             }
             buttonAction = .init { _ in
                 action()
             }
             guard let buttonAction else { return }
-            button.addAction(buttonAction, for: .valueChanged)
+            button.addAction(buttonAction, for: .touchUpInside)
         default: break
         }
     }

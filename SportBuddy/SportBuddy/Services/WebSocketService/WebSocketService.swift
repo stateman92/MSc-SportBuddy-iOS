@@ -34,8 +34,8 @@ protocol WebSocketService: Initable {
 }
 
 extension WebSocketService {
-    /// Initialize the service. By default `autoConnect` is `true`, `autoReconnect` is `true`.
+    /// Initialize the service. By default `autoConnect` is `false`, `autoReconnect` is `false`.
     init() {
-        self.init(autoConnect: true, autoReconnect: true)
+        self.init(autoConnect: false, autoReconnect: false)
     }
 }

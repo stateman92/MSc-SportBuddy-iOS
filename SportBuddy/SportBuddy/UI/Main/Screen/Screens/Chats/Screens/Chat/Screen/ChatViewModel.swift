@@ -5,6 +5,7 @@
 //  Created by Kristof Kalai on 2022. 04. 27..
 //
 
+import Combine
 import Foundation
 
 final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelCommand, ChatDomainImpl> {
@@ -12,10 +13,11 @@ final class ChatViewModel: BaseViewModel<ChatViewModelState, ChatViewModelComman
 
     private var chatType: ChatType! {
         didSet {
-            store
-                .getChat(id: chatType.id)
-                .sink { [unowned self] in sendState(.init(chat: $0)) }
-                .store(in: &cancellables)
+            Publishers.CombineLatest3(store.getChat(id: chatType.id),
+                                      store.getUser().map(\.primaryId),
+                                      store.getImage(for: chatType.id))
+            .sink { [unowned self] in sendState(.init(chat: $0.0, currentUserId: $0.1, image: $0.2)) }
+            .store(in: &cancellables)
         }
     }
 

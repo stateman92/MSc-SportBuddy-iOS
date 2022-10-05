@@ -12,33 +12,37 @@ import AnyCodable
 
 public struct ChatDTO: Codable, JSONEncodable, Hashable {
 
-    public var primaryId: UUID
-    public var users: [UUID]
     public var chatEntries: [ChatEntryDTO]
     public var image: String
+    public var primaryId: UUID
+    public var users: [UUID]
+    public var otherParty: String
 
-    public init(primaryId: UUID, users: [UUID], chatEntries: [ChatEntryDTO], image: String) {
-        self.primaryId = primaryId
-        self.users = users
+    public init(chatEntries: [ChatEntryDTO], image: String, primaryId: UUID, users: [UUID], otherParty: String) {
         self.chatEntries = chatEntries
         self.image = image
+        self.primaryId = primaryId
+        self.users = users
+        self.otherParty = otherParty
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case primaryId
-        case users
         case chatEntries
         case image
+        case primaryId
+        case users
+        case otherParty
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(primaryId, forKey: .primaryId)
-        try container.encode(users, forKey: .users)
         try container.encode(chatEntries, forKey: .chatEntries)
         try container.encode(image, forKey: .image)
+        try container.encode(primaryId, forKey: .primaryId)
+        try container.encode(users, forKey: .users)
+        try container.encode(otherParty, forKey: .otherParty)
     }
 }
 

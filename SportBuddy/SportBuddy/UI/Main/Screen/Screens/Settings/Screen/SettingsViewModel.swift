@@ -109,9 +109,12 @@ extension SettingsViewModel {
 
     private func imageSettingsItem(showDeleteButton: Bool) -> SettingsItem {
         if showDeleteButton {
-            return .init(title: L10n.Settings.image, details: .button(L10n.Settings.Image.deletion) { [weak self] in
+            return .init(title: L10n.Settings.image,
+                         details: .button(L10n.Settings.Image.deletion,
+                                          performActionForSelection: true,
+                                          action: { [weak self] in
                 self?.receiveCommand(.deleteImage)
-            })
+            })) { [weak self] in self?.receiveCommand(.openImagePicker) }
         } else {
             return .init(title: L10n.Settings.image, action: { [weak self] in self?.receiveCommand(.openImagePicker) })
         }

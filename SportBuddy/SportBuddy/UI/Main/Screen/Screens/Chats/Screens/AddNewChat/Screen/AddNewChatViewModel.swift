@@ -54,11 +54,22 @@ extension AddNewChatViewModel {
     }
 
     private func didSelect(id: UUID) {
-        navigatorService
-            .present(ChatScreen.self, type: .push) { [weak self] in
-                self?.navigatorService.pop(reverseIndex: 1)
+        store.chats
+            .first()
+            .sink { [unowned self] chats in
+                let chatType: ChatType
+                if let chat = chats.first(where: { $0.users.contains(id) }) {
+                    chatType = .existing(chat)
+                } else {
+                    chatType = .new(chatId: .init(), recipientId: id)
+                }
+                navigatorService
+                    .present(ChatScreen.self, type: .push) { [weak self] in
+                        self?.navigatorService.pop(reverseIndex: 1)
+                    }
+                    .sendCommand(.setChatType(chatType))
+                action.clearSearchedUser().sink().store(in: &cancellables)
             }
-            .sendCommand(.setChatType(.new(chatId: .init(), recipientId: id)))
-        action.clearSearchedUser().sink().store(in: &cancellables)
+            .store(in: &cancellables)
     }
 }

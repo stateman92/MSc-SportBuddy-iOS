@@ -23,14 +23,15 @@ extension ChatActionImpl: ChatAction {
                 assertionFailure("User's id didn't find!")
                 return .success(())
             }
-            webSocketService.send(ChatDTO(primaryId: toChat,
-                                          users: [userId, toRecipient],
-                                          chatEntries: [.init(primaryId: .init(),
+            webSocketService.send(ChatDTO(chatEntries: [.init(primaryId: .init(),
                                                               message: message,
                                                               timestamp: Date().secondsSince1970,
                                                               sender: userId,
                                                               deleted: false)],
-                                          image: .init()))
+                                          image: .init(),
+                                          primaryId: toChat,
+                                          users: [userId, toRecipient],
+                                          otherParty: .init()))
             return .success(())
         }
     }

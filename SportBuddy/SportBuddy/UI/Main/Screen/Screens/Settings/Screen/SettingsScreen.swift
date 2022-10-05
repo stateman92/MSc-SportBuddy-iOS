@@ -88,7 +88,7 @@ extension SettingsScreen {
 extension SettingsScreen: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.tableView.data(for: indexPath)
-        if model.details == .none {
+        if model.details.performActionForSelection {
             model.action()
         }
         tableView.deselectRow(at: indexPath, animated: true)

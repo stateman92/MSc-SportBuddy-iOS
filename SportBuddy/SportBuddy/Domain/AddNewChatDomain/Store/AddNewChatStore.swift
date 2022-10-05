@@ -8,4 +8,5 @@
 protocol AddNewChatStore {
     /// The searched users.
     var searchedUsers: DomainStorePublisher<[UserDTO]> { get }
+    var chats: DomainStorePublisher<[ChatDTO]> { get }
 }

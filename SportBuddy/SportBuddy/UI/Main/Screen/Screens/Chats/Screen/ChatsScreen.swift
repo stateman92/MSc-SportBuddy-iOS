@@ -11,7 +11,7 @@ final class ChatsScreen: TabScreen<ChatsViewModelState, ChatsViewModelCommand, C
     // MARK: Properties
 
     private let emptyStateView = AnimationView(animation: .searching)
-    private let tableView = TableView(frame: .zero, style: .plain)
+    private let tableView = TableView(frame: .zero, style: .insetGrouped)
     private var chats: [ChatDTO] = [] {
         didSet {
             tableView.reloadData()
@@ -101,7 +101,7 @@ extension ChatsScreen: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.textLabel?.text = chats[indexPath.row].primaryId.uuidString
+        cell.textLabel?.text = chats[indexPath.row].otherParty
         return cell
     }
 }

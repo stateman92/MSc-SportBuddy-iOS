@@ -21,3 +21,12 @@ extension UITableView {
         register(T.self, forCellReuseIdentifier: String(describing: T.self))
     }
 }
+
+extension UITableView {
+    func hasRow(at indexPath: IndexPath) -> Bool {
+        indexPath.section >= .zero &&
+        indexPath.row >= .zero &&
+        indexPath.section < numberOfSections &&
+        indexPath.row < numberOfRows(inSection: indexPath.section)
+    }
+}
