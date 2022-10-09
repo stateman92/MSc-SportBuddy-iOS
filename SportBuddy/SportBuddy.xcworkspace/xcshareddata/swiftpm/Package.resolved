@@ -5,17 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "747c8db8d57b68d5e35275f10c92d55f982adbd4",
-        "version" : "4.9.1"
-      }
-    },
-    {
-      "identity" : "kingfisher",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/onevcat/Kingfisher.git",
-      "state" : {
-        "revision" : "32e4acdf6971f58f5ad552389cf2d7d016334eaf",
-        "version" : "7.2.0"
+        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
+        "version" : "5.6.2"
       }
     },
     {
@@ -23,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios.git",
       "state" : {
-        "revision" : "4a6058cbbdfe4f74aeae92c8bd51ad3b0de2a1ee",
-        "version" : "3.3.0"
+        "revision" : "54aa8747da6998a94c1e901dd70013b70e804333",
+        "version" : "3.4.4"
       }
     },
     {
@@ -41,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SFSafeSymbols/SFSafeSymbols",
       "state" : {
-        "revision" : "25e688a85f1a21cf5bd5d7eaa3c498f10238f153",
-        "version" : "3.3.1"
+        "revision" : "50bc33264e6c0972f905b61af656201cf6091de8",
+        "version" : "4.0.0"
       }
     },
     {
@@ -59,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Square/Valet",
       "state" : {
-        "revision" : "2bf3329055f5d71d42a12801dd69d1d770fafa5e",
-        "version" : "4.1.2"
+        "revision" : "26689601804b0cc86ed212a6b137232c22210d28",
+        "version" : "4.1.3"
       }
     },
     {

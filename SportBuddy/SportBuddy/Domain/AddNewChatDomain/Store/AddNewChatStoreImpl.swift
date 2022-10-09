@@ -6,6 +6,8 @@
 //
 
 final class AddNewChatStoreImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var searchedUsersCache: SearchedUsersCache
     @LazyInjected private var chatsCache: ChatsCache
 }

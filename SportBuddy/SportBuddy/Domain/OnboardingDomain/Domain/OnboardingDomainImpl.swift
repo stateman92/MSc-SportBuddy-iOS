@@ -6,6 +6,8 @@
 //
 
 final class OnboardingDomainImpl {
+    // MARK: Properties
+
     @LazyInjected var store: OnboardingStore
     @LazyInjected var action: OnboardingAction
 }

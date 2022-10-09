@@ -8,7 +8,7 @@
 import UIKit
 
 /// A class for handling the copies in the app.
-final class CopyServiceImpl: Initable {
+final class CopyServiceImpl {
     // MARK: Properties
 
     private let pasteBoard: UIPasteboard = .general

@@ -9,6 +9,8 @@ import Combine
 import Foundation
 
 final class ChatStoreImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var chatsCache: ChatsCache
     @LazyInjected private var tokenCache: TokenCache
     @LazyInjected private var userCache: UserCache

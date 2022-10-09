@@ -6,6 +6,8 @@
 //
 
 final class TrainingsDomainImpl {
+    // MARK: Properties
+
     @LazyInjected var store: TrainingsStore
     @LazyInjected var action: TrainingsAction
 }

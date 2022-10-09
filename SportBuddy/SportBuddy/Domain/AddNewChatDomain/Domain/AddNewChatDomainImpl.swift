@@ -6,6 +6,8 @@
 //
 
 final class AddNewChatDomainImpl {
+    // MARK: Properties
+
     @LazyInjected var store: AddNewChatStore
     @LazyInjected var action: AddNewChatAction
 }

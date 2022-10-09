@@ -14,8 +14,8 @@ struct Queue<Item> {
     // MARK: Initialization
 
     /// Create a `Queue` data structure.
-    init() {
-        items = []
+    init(items: [Item] = []) {
+        self.items = items
     }
 }
 

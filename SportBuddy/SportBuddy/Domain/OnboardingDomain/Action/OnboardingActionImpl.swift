@@ -6,6 +6,8 @@
 //
 
 final class OnboardingActionImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var userCache: UserCache
     @LazyInjected private var tokenCache: TokenCache
 }

@@ -6,10 +6,14 @@
 //
 
 final class LiveFeedActionImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var userCache: UserCache
     @LazyInjected private var liveFeedCache: LiveFeedCache
     @LazyInjected private var webSocketService: WebSocketService
     @LazyInjected private var coderService: CoderService
+
+    // MARK: Initialization
 
     override init() {
         super.init()

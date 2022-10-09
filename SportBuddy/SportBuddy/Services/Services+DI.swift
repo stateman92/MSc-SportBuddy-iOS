@@ -20,7 +20,6 @@ extension DependencyInjector {
         register(service: ConnectivityServiceImpl(), implements: ConnectivityService.self)
         register(service: CopyServiceImpl(), implements: CopyService.self)
         register(service: DateFormatterServiceImpl(), implements: DateFormatterService.self)
-        register(service: ImageLoadingServiceImpl(), implements: ImageLoadingService.self)
         register(service: LoggingServiceImpl(), implements: LoggingService.self)
         register(service: MLServiceImpl(), implements: MLService.self)
         register(service: NavigatorServiceImpl(rootViewController: resolve() as OnboardingScreen),

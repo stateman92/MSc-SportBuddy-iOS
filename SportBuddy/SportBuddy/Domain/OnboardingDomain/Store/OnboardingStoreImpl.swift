@@ -8,6 +8,8 @@
 import Foundation
 
 final class OnboardingStoreImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var tokenCache: TokenCache
 }
 

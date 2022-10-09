@@ -8,7 +8,7 @@
 import UserNotifications
 
 /// A protocol for managing the notifications.
-protocol NotificationService: Initable {
+protocol NotificationService: Initable, AutoMockable {
     /// Send a notification
     /// - Parameters:
     ///   - title: the title of the notification.

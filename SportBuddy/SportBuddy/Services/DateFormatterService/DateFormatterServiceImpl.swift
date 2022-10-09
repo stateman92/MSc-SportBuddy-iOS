@@ -8,7 +8,7 @@
 import Foundation
 
 /// A class for handling the dates' formats in the app.
-final class DateFormatterServiceImpl: Initable, AutoMockable {
+final class DateFormatterServiceImpl {
     // MARK: Properties
 
     private let dateFormatter = DateFormatter()

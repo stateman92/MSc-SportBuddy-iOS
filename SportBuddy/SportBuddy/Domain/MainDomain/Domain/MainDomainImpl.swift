@@ -6,6 +6,8 @@
 //
 
 final class MainDomainImpl {
+    // MARK: Properties
+
     @LazyInjected var store: MainStore
     @LazyInjected var action: MainAction
 }

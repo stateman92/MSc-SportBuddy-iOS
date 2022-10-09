@@ -6,6 +6,8 @@
 //
 
 final class LiveFeedDomainImpl {
+    // MARK: Properties
+
     @LazyInjected var store: LiveFeedStore
     @LazyInjected var action: LiveFeedAction
 }

@@ -27,7 +27,7 @@ class PersistentCache<Item: Codable>: Cache<Item> {
 
     @available(*, unavailable)
     required init() {
-        fatalError("init() has not been implemented, must be overridden and call super.init(key:secure:).")
+        fatalError("init() has not been implemented, must be overridden and call super.init(key:defaultValue:).")
     }
 
     // MARK: - Overridden methods

@@ -8,6 +8,8 @@
 import Foundation
 
 final class LoginStoreImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var userCache: UserCache
     @LazyInjected private var tokenCache: TokenCache
 }

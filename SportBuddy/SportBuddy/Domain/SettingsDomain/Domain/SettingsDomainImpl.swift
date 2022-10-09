@@ -6,6 +6,8 @@
 //
 
 final class SettingsDomainImpl {
+    // MARK: Properties
+
     @LazyInjected var store: SettingsStore
     @LazyInjected var action: SettingsAction
 }

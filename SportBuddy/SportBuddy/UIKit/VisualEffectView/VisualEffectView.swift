@@ -34,11 +34,7 @@ extension EffectView {
 
 extension EffectView {
     func set(style: UIBlurEffect.Style?) {
-        if let style {
-            effect = UIBlurEffect(style: style)
-        } else {
-            effect = nil
-        }
+        effect = style.map(UIBlurEffect.init)
     }
 
     func set(tint: UIColor, alpha: CGFloat, blurRadius: CGFloat) {

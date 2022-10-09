@@ -6,6 +6,8 @@
 //
 
 final class ChatsStoreImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var chatsCache: ChatsCache
 }
 

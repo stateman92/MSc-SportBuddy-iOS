@@ -33,6 +33,8 @@ class Cache<Item> {
         if var immediateValue {
             block(&immediateValue)
             save(item: immediateValue)
+        } else {
+            print("WARNING: nil value wanted to be modified, there is a possibility of a silent bug!")
         }
     }
 }

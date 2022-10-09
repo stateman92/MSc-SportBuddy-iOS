@@ -6,6 +6,8 @@
 //
 
 final class LoginDomainImpl {
+    // MARK: Properties
+
     @LazyInjected var store: LoginStore
     @LazyInjected var action: LoginAction
 }

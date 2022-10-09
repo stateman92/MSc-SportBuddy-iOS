@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StyledTextView: View {
+final class StyledTextView: BaseView {
     // MARK: Properties
 
     private let textView = ScrollingTextView()
@@ -15,26 +15,24 @@ final class StyledTextView: View {
     var text: String {
         textView.text
     }
-
-    // MARK: Initialization
-
-    override init() {
-        super.init()
-        setupView()
-    }
 }
 
-// MARK: - Setups
+// MARK: - Overridden methods
 
 extension StyledTextView {
-    private func setupView() {
+    override func setupView() {
+        super.setupView()
         backgroundColor = Color.primary.color
         layer.cornerRadius = 16
 
         setupContentView()
         setupTextView()
     }
+}
 
+// MARK: - Setups
+
+extension StyledTextView {
     private func setupContentView() {
         contentView.then {
             $0.backgroundColor = .white

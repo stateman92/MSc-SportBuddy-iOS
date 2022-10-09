@@ -8,12 +8,20 @@ import UIKit
 import SFSafeSymbols
 @testable import SportBuddy
 
-class ConnectivityServiceMock: ConnectivityService {
-    var isNetworkReachable: AnyPublisher<Bool, Never> {
-        get { return underlyingIsNetworkReachable }
-        set(value) { underlyingIsNetworkReachable = value }
+class TranslatorServiceMock: TranslatorService {
+
+    //MARK: - start
+
+    var startCallsCount = 0
+    var startCalled: Bool {
+        return startCallsCount > 0
     }
-    var underlyingIsNetworkReachable: AnyPublisher<Bool, Never>!
+    var startClosure: (() -> Void)?
+
+    func start() {
+        startCallsCount += 1
+        startClosure?()
+    }
 
     //MARK: - init
 

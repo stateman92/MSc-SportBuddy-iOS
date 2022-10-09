@@ -194,6 +194,8 @@ extension BackgroundView {
     }
 }
 
+// MARK: - Private methods
+
 extension BackgroundView {
     private func finish(durationMultiplier: TimeInterval, completion: @escaping () -> Void = { }) {
         UIView.animate(withDuration: 0.9 * durationMultiplier,

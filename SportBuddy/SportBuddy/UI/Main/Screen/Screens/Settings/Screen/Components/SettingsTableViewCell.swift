@@ -24,7 +24,7 @@ final class SettingsTableViewCell: ReversedTableViewCell {
     private var buttonAction: UIAction?
     private var action = { }
 
-    // MARK: Initializations
+    // MARK: Initialization
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

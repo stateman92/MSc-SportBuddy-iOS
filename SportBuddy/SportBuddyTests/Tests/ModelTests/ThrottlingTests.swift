@@ -14,35 +14,29 @@ final class ThrottlingTests: BaseTestCase {
     @Throttling(seconds: 0.1) private var throttled: String = .init()
 }
 
-// MARK: - Overridden methods
-
-extension ThrottlingTests {
-    override func tearDown() {
-        super.tearDown()
-        $throttled.force(value: .init())
-        wait(for: 0.2)
-    }
-}
-
-// MARK: - Test throttling
+// MARK: - Tests
 
 extension ThrottlingTests {
     func testBackingState() {
         // Given
+
         throttled = "swift"
 
         // When
+
         let immediateValue = $throttled.wrappedValue
         wait(for: 0.2)
         let delayedValue = $throttled.wrappedValue
 
         // Then
-        XCTAssertEqual(immediateValue, "swift")
-        XCTAssertEqual(delayedValue, "swift")
+
+        XCTAssert(immediateValue == "swift")
+        XCTAssert(delayedValue == "swift")
     }
 
     func testThrottling() {
         // Given
+
         throttled = "swift"
         var throttledValue: String?
         $throttled.on { value in
@@ -50,14 +44,17 @@ extension ThrottlingTests {
         }
 
         // When
+
         wait(for: 0.2)
 
         // Then
-        XCTAssertEqual(throttledValue, "swift")
+
+        XCTAssert(throttledValue == "swift")
     }
 
     func testThrottlingWithoutWaiting() {
         // Given
+
         var throttledValue = throttled
         $throttled.on { value in
             throttledValue = value
@@ -65,47 +62,48 @@ extension ThrottlingTests {
         throttled = "swift"
 
         // When
+
         // Then
-        XCTAssertEqual(throttledValue, "")
+
+        XCTAssert(throttledValue.isEmpty == true)
     }
-}
 
-// MARK: - Test force throttling
-
-extension ThrottlingTests {
     func testForceThrottling() {
         // Given
+
         $throttled.force(value: "swift")
 
         // When
+
         let immediateValue = throttled
 
         // Then
-        XCTAssertEqual(immediateValue, "swift")
+
+        XCTAssert(immediateValue == "swift")
     }
-}
 
-// MARK: - Test distinct values
-
-extension ThrottlingTests {
     func testSendJustDistinctValues() {
         // Given
+
         var throttlingCount = 0
         $throttled.on { _ in
             throttlingCount += 1
         }
 
         // When
+
         $throttled.force(value: "swift")
         $throttled.force(value: "swift")
         $throttled.force(value: "swift")
 
         // Then
-        XCTAssertEqual(throttlingCount, 1)
+
+        XCTAssert(throttlingCount == 1)
     }
 
     func testSendNotJustDistinctValues() {
         // Given
+
         var throttlingCount = 0
         $throttled.on { _ in
             throttlingCount += 1
@@ -113,11 +111,13 @@ extension ThrottlingTests {
         $throttled.justDistinctValues = false
 
         // When
+
         $throttled.force(value: "swift")
         $throttled.force(value: "swift")
         $throttled.force(value: "swift")
 
         // Then
-        XCTAssertEqual(throttlingCount, 3)
+
+        XCTAssert(throttlingCount == 3)
     }
 }

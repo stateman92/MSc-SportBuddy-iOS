@@ -7,14 +7,7 @@
 
 import UIKit
 
-final class CardView: View {
-    // MARK: Initialization
-
-    override init() {
-        super.init()
-        setupView()
-    }
-}
+final class CardView: BaseView { }
 
 // MARK: - Overridden methods
 
@@ -29,12 +22,9 @@ extension CardView {
             }
         }
     }
-}
 
-// MARK: - Setups
-
-extension CardView {
-    private func setupView() {
+    override func setupView() {
+        super.setupView()
         backgroundColor = .white
     }
 }

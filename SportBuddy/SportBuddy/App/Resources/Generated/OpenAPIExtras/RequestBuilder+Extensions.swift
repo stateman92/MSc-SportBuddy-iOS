@@ -5,8 +5,6 @@
 //  Created by Kristof Kalai on 2022. 04. 21..
 //
 
-import Foundation
-
 extension RequestBuilder {
     @discardableResult func addToken() -> Self {
         guard let tokenObject: TokenCache.Object = SettingsHelper.retrieve(forKey: .token) else {

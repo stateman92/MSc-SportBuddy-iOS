@@ -12,21 +12,11 @@ import XCTest
 final class LoadingServiceTests: BaseTestCase {
     // MARK: Properties
 
-    private var sut: LoadingService!
-    private var cancellables: Cancellables!
+    private let sut: LoadingService = LoadingServiceImpl()
+    private var cancellables = Cancellables()
 }
 
-// MARK: - Overridden methods
-
-extension LoadingServiceTests {
-    override func setUp() {
-        super.setUp()
-        cancellables = .init()
-        sut = LoadingServiceImpl()
-    }
-}
-
-// MARK: - Test initial state
+// MARK: - Tests
 
 extension LoadingServiceTests {
     /// Test the service's initial state.
@@ -42,13 +32,9 @@ extension LoadingServiceTests {
 
         // Then
 
-        XCTAssertEqual(receivedValues, [.notLoading])
+        XCTAssert(receivedValues == [.notLoading])
     }
-}
 
-// MARK: - Test states
-
-extension LoadingServiceTests {
     /// Test the changes in the service's states if the user wants it to be loading.
     func testSetLoading() {
         // Given
@@ -64,7 +50,7 @@ extension LoadingServiceTests {
 
         // Then
 
-        XCTAssertEqual(receivedValues, [.fullScreenLoading])
+        XCTAssert(receivedValues == [.fullScreenLoading])
     }
 
     /// Test the changes in the service's states if the user not wants it to be loading.
@@ -82,7 +68,7 @@ extension LoadingServiceTests {
 
         // Then
 
-        XCTAssertEqual(receivedValues, [.notLoading])
+        XCTAssert(receivedValues == [.notLoading])
     }
 
     /// Test the changes in the service's states if the user wants it to be loading multiple times.
@@ -101,13 +87,9 @@ extension LoadingServiceTests {
 
         // Then
 
-        XCTAssertEqual(receivedValues, [.fullScreenLoading])
+        XCTAssert(receivedValues == [.fullScreenLoading])
     }
-}
 
-// MARK: - Test loading
-
-extension LoadingServiceTests {
     /// Test the changes in the service's states if the user wants it to be loading with closure.
     func testSetLoadingClosure() {
         // Given
@@ -124,6 +106,6 @@ extension LoadingServiceTests {
 
         // Then
 
-        XCTAssertEqual(receivedValues, [.notLoading, .fullScreenLoading, .notLoading])
+        XCTAssert(receivedValues == [.notLoading, .fullScreenLoading, .notLoading])
     }
 }

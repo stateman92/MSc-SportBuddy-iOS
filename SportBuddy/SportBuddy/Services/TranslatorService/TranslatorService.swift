@@ -8,7 +8,7 @@
 import Foundation
 
 /// A protocol for localizing the app.
-protocol TranslatorService {
+protocol TranslatorService: Initable, AutoMockable {
     /// Set the language based on  first supported language or if none is supported, English.
     func start()
 }

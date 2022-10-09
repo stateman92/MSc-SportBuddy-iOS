@@ -9,6 +9,8 @@ import Combine
 import Foundation
 
 final class ChatActionImpl: DomainImpl {
+    // MARK: Properties
+
     @LazyInjected private var chatsCache: ChatsCache
     @LazyInjected private var userCache: UserCache
     @LazyInjected private var webSocketService: WebSocketService
