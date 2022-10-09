@@ -355,6 +355,7 @@
 		58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A17E28010A0A000A81A5 /* NavigationController.swift */; };
 		58E0A18228010CA5000A81A5 /* LoadingOverlayServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18128010CA5000A81A5 /* LoadingOverlayServiceImpl.swift */; };
 		58E0A18428010CC1000A81A5 /* LoadingOverlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A18328010CC1000A81A5 /* LoadingOverlayService.swift */; };
+		58E6FFE128F3879100A60F4F /* CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E6FFE028F3879100A60F4F /* CacheTests.swift */; };
 		58E790FD28232A0E00CF4443 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E790FC28232A0E00CF4443 /* TextView.swift */; };
 		58E790FF28232A1600CF4443 /* StyledTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E790FE28232A1600CF4443 /* StyledTextView.swift */; };
 		58E7910128232B0600CF4443 /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7910028232B0600CF4443 /* ScrollingTextView.swift */; };
@@ -758,6 +759,7 @@
 		58E0A17E28010A0A000A81A5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		58E0A18128010CA5000A81A5 /* LoadingOverlayServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayServiceImpl.swift; sourceTree = "<group>"; };
 		58E0A18328010CC1000A81A5 /* LoadingOverlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayService.swift; sourceTree = "<group>"; };
+		58E6FFE028F3879100A60F4F /* CacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTests.swift; sourceTree = "<group>"; };
 		58E790FC28232A0E00CF4443 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		58E790FE28232A1600CF4443 /* StyledTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextView.swift; sourceTree = "<group>"; };
 		58E7910028232B0600CF4443 /* ScrollingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
@@ -2588,6 +2590,14 @@
 			path = OpenAPIs;
 			sourceTree = "<group>";
 		};
+		58E6FFDF28F3878200A60F4F /* DataTests */ = {
+			isa = PBXGroup;
+			children = (
+				58E6FFE028F3879100A60F4F /* CacheTests.swift */,
+			);
+			path = DataTests;
+			sourceTree = "<group>";
+		};
 		58E790FB28232A0000CF4443 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2658,6 +2668,7 @@
 		58EBF1FB27FBB6B500BA81CB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				58E6FFDF28F3878200A60F4F /* DataTests */,
 				582DF7A828F303DD0080662C /* ModelTests */,
 				58EBF1FE27FBB6B500BA81CB /* ServiceTests */,
 			);
@@ -3511,6 +3522,7 @@
 				58EBF1F727FBB68700BA81CB /* Mock+DI.swift in Sources */,
 				58EBF20427FBB6B500BA81CB /* LoadingServiceTests.swift in Sources */,
 				582DF7ED28F319E00080662C /* AnimationService+AutoMockable.generated.swift in Sources */,
+				58E6FFE128F3879100A60F4F /* CacheTests.swift in Sources */,
 				582DF7E528F319E00080662C /* SystemImageService+AutoMockable.generated.swift in Sources */,
 				582DF7E928F319E00080662C /* CameraService+AutoMockable.generated.swift in Sources */,
 				58EBF1FA27FBB69A00BA81CB /* XCTestCase+Extensions.swift in Sources */,
