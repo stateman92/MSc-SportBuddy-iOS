@@ -17,6 +17,38 @@
 		5801910627F38B7F00BB3E3E /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801910527F38B7F00BB3E3E /* BackgroundView.swift */; };
 		5801910827F38F8D00BB3E3E /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801910727F38F8D00BB3E3E /* RoundedView.swift */; };
 		5801910B27F392A300BB3E3E /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801910A27F392A300BB3E3E /* VisualEffectView.swift */; };
+		58043DBC28F7454800E09829 /* MLEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DBB28F7454800E09829 /* MLEngine.swift */; };
+		58043DBE28F7454F00E09829 /* MLEngineImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DBD28F7454F00E09829 /* MLEngineImpl.swift */; };
+		58043DC228F74B8B00E09829 /* DistanceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DC128F74B8B00E09829 /* DistanceType.swift */; };
+		58043DC428F74B9900E09829 /* PositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DC328F74B9900E09829 /* PositionType.swift */; };
+		58043DC628F74C3700E09829 /* FullPositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DC528F74C3700E09829 /* FullPositionType.swift */; };
+		58043DC828F7504B00E09829 /* HalfPositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DC728F7504B00E09829 /* HalfPositionType.swift */; };
+		58043DCA28F7509900E09829 /* FloatingPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DC928F7509900E09829 /* FloatingPoint+Extensions.swift */; };
+		58043DCD28F751A500E09829 /* LegPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DCC28F751A500E09829 /* LegPosition.swift */; };
+		58043DD028F751FF00E09829 /* ArmPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DCF28F751FF00E09829 /* ArmPosition.swift */; };
+		58043DD328F7528700E09829 /* Characteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DD228F7528700E09829 /* Characteristics.swift */; };
+		58043DD528F7566600E09829 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DD428F7566600E09829 /* Skeleton.swift */; };
+		58043DD828F756A600E09829 /* Bone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DD728F756A600E09829 /* Bone.swift */; };
+		58043DDA28F756EE00E09829 /* CGLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DD928F756EE00E09829 /* CGLine.swift */; };
+		58043DDD28F7576700E09829 /* BodyPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DDC28F7576700E09829 /* BodyPart.swift */; };
+		58043DDF28F7577E00E09829 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DDE28F7577E00E09829 /* Face.swift */; };
+		58043DE128F757F900E09829 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DE028F757F900E09829 /* Body.swift */; };
+		58043DE328F7580A00E09829 /* Arms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DE228F7580A00E09829 /* Arms.swift */; };
+		58043DE528F7581C00E09829 /* Legs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DE428F7581C00E09829 /* Legs.swift */; };
+		58043DE728F75CF600E09829 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DE628F75CF600E09829 /* Sequence+Extensions.swift */; };
+		58043DE928F75FC700E09829 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DE828F75FC700E09829 /* CGPoint+Extensions.swift */; };
+		58043DEB28F761E700E09829 /* StaticCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DEA28F761E700E09829 /* StaticCharacteristics.swift */; };
+		58043DED28F761F500E09829 /* DynamicCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DEC28F761F500E09829 /* DynamicCharacteristics.swift */; };
+		58043DF028F7625A00E09829 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DEF28F7625A00E09829 /* Motion.swift */; };
+		58043DF228F7626900E09829 /* TrajectoryElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DF128F7626900E09829 /* TrajectoryElement.swift */; };
+		58043DF428F7629200E09829 /* Trajectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DF328F7629200E09829 /* Trajectory.swift */; };
+		58043DF628F763BB00E09829 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DF528F763BB00E09829 /* Collection+Extensions.swift */; };
+		58043DFA28F7682100E09829 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DF928F7682100E09829 /* ExerciseModel.swift */; };
+		58043DFD28F7686900E09829 /* ExerciseMoment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DFC28F7686900E09829 /* ExerciseMoment.swift */; };
+		58043DFF28F768A300E09829 /* ExerciseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043DFE28F768A300E09829 /* ExerciseError.swift */; };
+		58043E0228F76F8800E09829 /* ExerciseConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043E0128F76F8800E09829 /* ExerciseConsumer.swift */; };
+		58043E0528F7817C00E09829 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043E0428F7817C00E09829 /* SkeletonView.swift */; };
+		58043E0728F782AC00E09829 /* UIBezierPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58043E0628F782AC00E09829 /* UIBezierPath+Extensions.swift */; };
 		580521C227EF70AD00B3A8B1 /* ButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580521C127EF70AD00B3A8B1 /* ButtonLabel.swift */; };
 		580521CC27EFB24400B3A8B1 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580521CB27EFB24400B3A8B1 /* ImageView.swift */; };
 		580521CE27EFB29300B3A8B1 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580521CD27EFB29300B3A8B1 /* Switch.swift */; };
@@ -421,6 +453,38 @@
 		5801910527F38B7F00BB3E3E /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		5801910727F38F8D00BB3E3E /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		5801910A27F392A300BB3E3E /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		58043DBB28F7454800E09829 /* MLEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLEngine.swift; sourceTree = "<group>"; };
+		58043DBD28F7454F00E09829 /* MLEngineImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLEngineImpl.swift; sourceTree = "<group>"; };
+		58043DC128F74B8B00E09829 /* DistanceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceType.swift; sourceTree = "<group>"; };
+		58043DC328F74B9900E09829 /* PositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionType.swift; sourceTree = "<group>"; };
+		58043DC528F74C3700E09829 /* FullPositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPositionType.swift; sourceTree = "<group>"; };
+		58043DC728F7504B00E09829 /* HalfPositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfPositionType.swift; sourceTree = "<group>"; };
+		58043DC928F7509900E09829 /* FloatingPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extensions.swift"; sourceTree = "<group>"; };
+		58043DCC28F751A500E09829 /* LegPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegPosition.swift; sourceTree = "<group>"; };
+		58043DCF28F751FF00E09829 /* ArmPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmPosition.swift; sourceTree = "<group>"; };
+		58043DD228F7528700E09829 /* Characteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characteristics.swift; sourceTree = "<group>"; };
+		58043DD428F7566600E09829 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		58043DD728F756A600E09829 /* Bone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bone.swift; sourceTree = "<group>"; };
+		58043DD928F756EE00E09829 /* CGLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGLine.swift; sourceTree = "<group>"; };
+		58043DDC28F7576700E09829 /* BodyPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPart.swift; sourceTree = "<group>"; };
+		58043DDE28F7577E00E09829 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
+		58043DE028F757F900E09829 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		58043DE228F7580A00E09829 /* Arms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arms.swift; sourceTree = "<group>"; };
+		58043DE428F7581C00E09829 /* Legs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Legs.swift; sourceTree = "<group>"; };
+		58043DE628F75CF600E09829 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		58043DE828F75FC700E09829 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		58043DEA28F761E700E09829 /* StaticCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCharacteristics.swift; sourceTree = "<group>"; };
+		58043DEC28F761F500E09829 /* DynamicCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCharacteristics.swift; sourceTree = "<group>"; };
+		58043DEF28F7625A00E09829 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
+		58043DF128F7626900E09829 /* TrajectoryElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrajectoryElement.swift; sourceTree = "<group>"; };
+		58043DF328F7629200E09829 /* Trajectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trajectory.swift; sourceTree = "<group>"; };
+		58043DF528F763BB00E09829 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
+		58043DF928F7682100E09829 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		58043DFC28F7686900E09829 /* ExerciseMoment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseMoment.swift; sourceTree = "<group>"; };
+		58043DFE28F768A300E09829 /* ExerciseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseError.swift; sourceTree = "<group>"; };
+		58043E0128F76F8800E09829 /* ExerciseConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseConsumer.swift; sourceTree = "<group>"; };
+		58043E0428F7817C00E09829 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
+		58043E0628F782AC00E09829 /* UIBezierPath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Extensions.swift"; sourceTree = "<group>"; };
 		580521C127EF70AD00B3A8B1 /* ButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLabel.swift; sourceTree = "<group>"; };
 		580521CB27EFB24400B3A8B1 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		580521CD27EFB29300B3A8B1 /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
@@ -892,6 +956,143 @@
 			path = VisualEffectView;
 			sourceTree = "<group>";
 		};
+		58043DB928F7448F00E09829 /* MLService */ = {
+			isa = PBXGroup;
+			children = (
+				5832042927FE2959009A4644 /* Components */,
+				5832042727FE2959009A4644 /* MLService.swift */,
+				5832042827FE2959009A4644 /* MLServiceImpl.swift */,
+			);
+			path = MLService;
+			sourceTree = "<group>";
+		};
+		58043DBA28F7449C00E09829 /* MLEngine */ = {
+			isa = PBXGroup;
+			children = (
+				58043DBF28F74ADE00E09829 /* Components */,
+				58043DBB28F7454800E09829 /* MLEngine.swift */,
+				58043DBD28F7454F00E09829 /* MLEngineImpl.swift */,
+			);
+			path = MLEngine;
+			sourceTree = "<group>";
+		};
+		58043DBF28F74ADE00E09829 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				58043E0028F76F7300E09829 /* ExerciseConsumer */,
+				58043DEE28F7624B00E09829 /* Motion */,
+				58043DD128F7525E00E09829 /* Characteristics */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		58043DC028F74B7D00E09829 /* PositionType */ = {
+			isa = PBXGroup;
+			children = (
+				58043DC128F74B8B00E09829 /* DistanceType.swift */,
+				58043DC328F74B9900E09829 /* PositionType.swift */,
+				58043DC528F74C3700E09829 /* FullPositionType.swift */,
+				58043DC728F7504B00E09829 /* HalfPositionType.swift */,
+			);
+			path = PositionType;
+			sourceTree = "<group>";
+		};
+		58043DCB28F7519700E09829 /* Position */ = {
+			isa = PBXGroup;
+			children = (
+				58043DC028F74B7D00E09829 /* PositionType */,
+				58043DCC28F751A500E09829 /* LegPosition.swift */,
+				58043DCF28F751FF00E09829 /* ArmPosition.swift */,
+			);
+			path = Position;
+			sourceTree = "<group>";
+		};
+		58043DD128F7525E00E09829 /* Characteristics */ = {
+			isa = PBXGroup;
+			children = (
+				58043DCB28F7519700E09829 /* Position */,
+				58043DD228F7528700E09829 /* Characteristics.swift */,
+				58043DEA28F761E700E09829 /* StaticCharacteristics.swift */,
+				58043DEC28F761F500E09829 /* DynamicCharacteristics.swift */,
+			);
+			path = Characteristics;
+			sourceTree = "<group>";
+		};
+		58043DD628F7568300E09829 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				58043DF728F767F100E09829 /* Exercise */,
+				58043DDB28F7575E00E09829 /* Body */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		58043DDB28F7575E00E09829 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				58043DD428F7566600E09829 /* Skeleton.swift */,
+				58043DD728F756A600E09829 /* Bone.swift */,
+				58043DF828F7680300E09829 /* BodyPart */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		58043DEE28F7624B00E09829 /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				58043DEF28F7625A00E09829 /* Motion.swift */,
+				58043DF128F7626900E09829 /* TrajectoryElement.swift */,
+				58043DF328F7629200E09829 /* Trajectory.swift */,
+			);
+			path = Motion;
+			sourceTree = "<group>";
+		};
+		58043DF728F767F100E09829 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				58043DFB28F7684500E09829 /* ExerciseModel */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		58043DF828F7680300E09829 /* BodyPart */ = {
+			isa = PBXGroup;
+			children = (
+				58043DDC28F7576700E09829 /* BodyPart.swift */,
+				58043DDE28F7577E00E09829 /* Face.swift */,
+				58043DE028F757F900E09829 /* Body.swift */,
+				58043DE228F7580A00E09829 /* Arms.swift */,
+				58043DE428F7581C00E09829 /* Legs.swift */,
+			);
+			path = BodyPart;
+			sourceTree = "<group>";
+		};
+		58043DFB28F7684500E09829 /* ExerciseModel */ = {
+			isa = PBXGroup;
+			children = (
+				58043DF928F7682100E09829 /* ExerciseModel.swift */,
+				58043DFC28F7686900E09829 /* ExerciseMoment.swift */,
+				58043DFE28F768A300E09829 /* ExerciseError.swift */,
+			);
+			path = ExerciseModel;
+			sourceTree = "<group>";
+		};
+		58043E0028F76F7300E09829 /* ExerciseConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				58043E0128F76F8800E09829 /* ExerciseConsumer.swift */,
+			);
+			path = ExerciseConsumer;
+			sourceTree = "<group>";
+		};
+		58043E0328F7817200E09829 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				58043E0428F7817C00E09829 /* SkeletonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		580521BE27EF6E7200B3A8B1 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -974,7 +1175,7 @@
 				58AE04372828147C00D75E2D /* CopyService */,
 				58B7312C28D74F1E00FA9AA2 /* DateFormatterService */,
 				588F5E77280B305900947800 /* LoggingService */,
-				5832042527FE294B009A4644 /* MLService */,
+				5832042527FE294B009A4644 /* ML */,
 				58EBF1E827FBB4F200BA81CB /* NavigatorService */,
 				58DD6EDB28E11058007C20F0 /* NotificationService */,
 				580DF5EA280A0B7C00BE0493 /* SystemImageService */,
@@ -1294,14 +1495,14 @@
 			path = ModelTests;
 			sourceTree = "<group>";
 		};
-		5832042527FE294B009A4644 /* MLService */ = {
+		5832042527FE294B009A4644 /* ML */ = {
 			isa = PBXGroup;
 			children = (
-				5832042927FE2959009A4644 /* Components */,
-				5832042727FE2959009A4644 /* MLService.swift */,
-				5832042827FE2959009A4644 /* MLServiceImpl.swift */,
+				58043DD628F7568300E09829 /* Components */,
+				58043DBA28F7449C00E09829 /* MLEngine */,
+				58043DB928F7448F00E09829 /* MLService */,
 			);
-			path = MLService;
+			path = ML;
 			sourceTree = "<group>";
 		};
 		5832042927FE2959009A4644 /* Components */ = {
@@ -1719,6 +1920,7 @@
 		587F301F2809D02D00EFA7E9 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				58043E0328F7817200E09829 /* Components */,
 				586CB06C281D90E000D753FB /* StateCommand */,
 				580DF5D42809EF7000BE0493 /* TrainingsScreen.swift */,
 				580DF5D82809EF8600BE0493 /* TrainingsViewModel.swift */,
@@ -2077,7 +2279,6 @@
 		58C1D44927F51BED005D13C4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5882AD13280E45D700A09023 /* UIView+Extensions */,
 				589AA53D27FF05B90002C4D5 /* AnimationCurve+Extensions.swift */,
 				58DD921B280F3155006544AE /* AVCaptureDevice+Extensions.swift */,
 				58DD921D280F3239006544AE /* AVCaptureDeviceInput+Extensions.swift */,
@@ -2086,17 +2287,23 @@
 				589AA54327FF07120002C4D5 /* BinaryFloatingPoint+Extensions.swift */,
 				58F8C38628E0AD8C003E78FF /* Bundle+Extensions.swift */,
 				589AA54127FF06DE0002C4D5 /* CAMediaTimingFunction+Extensions.swift */,
-				589AA53427FF04400002C4D5 /* NotificationCenter+Extensions.swift */,
+				58043DE828F75FC700E09829 /* CGPoint+Extensions.swift */,
+				58043DF528F763BB00E09829 /* Collection+Extensions.swift */,
+				58043DC928F7509900E09829 /* FloatingPoint+Extensions.swift */,
 				5853F9E82823088F00076D93 /* Notification+Extensions.swift */,
+				589AA53427FF04400002C4D5 /* NotificationCenter+Extensions.swift */,
 				58C1D44E27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift */,
 				589AA53627FF04880002C4D5 /* Publisher+Extensions.swift */,
+				58043DE628F75CF600E09829 /* Sequence+Extensions.swift */,
+				58DD6ED928E109A3007C20F0 /* String+Base64.swift */,
 				58C1D44C27F51C7A005D13C4 /* TopLevel+Extensions.swift */,
 				58EBF20627FBB76000BA81CB /* UIApplication+Extensions.swift */,
 				58A199D3281C945D00140140 /* UIControl+Extensions.swift */,
 				58DD6ED728E10472007C20F0 /* UIImage+Extensions.swift */,
 				58EBF20827FBB76500BA81CB /* UITableView+Extensions.swift */,
+				5882AD13280E45D700A09023 /* UIView+Extensions */,
 				5877509027FCBAFA00D638A0 /* UIViewController+Extensions.swift */,
-				58DD6ED928E109A3007C20F0 /* String+Base64.swift */,
+				58043E0628F782AC00E09829 /* UIBezierPath+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2705,6 +2912,7 @@
 				580B0EC2281935DF00E14F8B /* Throttling.swift */,
 				5882AD05280E39B200A09023 /* Queue.swift */,
 				58C1D44927F51BED005D13C4 /* Extensions */,
+				58043DD928F756EE00E09829 /* CGLine.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -3173,9 +3381,12 @@
 				5832043E27FE2959009A4644 /* MLPoseDetectorMode.swift in Sources */,
 				58284921280BA3DF00034010 /* FadingTableView.swift in Sources */,
 				58AAEC41280BC1EE0054E2F0 /* PersistentCache.swift in Sources */,
+				58043DBC28F7454800E09829 /* MLEngine.swift in Sources */,
 				586CB07F281D9AEF00D753FB /* TabBarController.swift in Sources */,
 				58EBF20727FBB76100BA81CB /* UIApplication+Extensions.swift in Sources */,
 				5877508927FCA33D00D638A0 /* BaseScreen.swift in Sources */,
+				58043DDF28F7577E00E09829 /* Face.swift in Sources */,
+				58043DCA28F7509900E09829 /* FloatingPoint+Extensions.swift in Sources */,
 				58DCE71C281EE2FD00BCB07C /* TrainingsActionImpl.swift in Sources */,
 				585CD70928DF9B6E0014430B /* StartupScreen.swift in Sources */,
 				582DF79B28F2022A0080662C /* OpenISO8601DateFormatter.swift in Sources */,
@@ -3183,6 +3394,7 @@
 				58731E58282312EC008A7562 /* MockMainAction.swift in Sources */,
 				58A199D2281C8FE800140140 /* DeferredFuture.swift in Sources */,
 				58A9971B27EFD9990003D3E9 /* TextField.swift in Sources */,
+				58043DD528F7566600E09829 /* Skeleton.swift in Sources */,
 				58DCE71B281EE2FD00BCB07C /* TrainingsAction.swift in Sources */,
 				580B0EBF2819325B00E14F8B /* AddNewChatScreen.swift in Sources */,
 				580521CE27EFB29300B3A8B1 /* Switch.swift in Sources */,
@@ -3198,17 +3410,22 @@
 				586CB057281D7ED600D753FB /* ChatsViewModelState.swift in Sources */,
 				58B2E1CF27F3B5B4004135E2 /* DefaultOnboardOverlay.swift in Sources */,
 				580521D327EFB2C900B3A8B1 /* ScrollView.swift in Sources */,
+				58043DD328F7528700E09829 /* Characteristics.swift in Sources */,
 				58E0A18228010CA5000A81A5 /* LoadingOverlayServiceImpl.swift in Sources */,
 				587F30132809CECC00EFA7E9 /* MainScreen.swift in Sources */,
 				588B1C9228CFB274003C6F6A /* LiveFeedViewModelState.swift in Sources */,
 				58DCE732281EE69A00BCB07C /* AddNewChatDomain.swift in Sources */,
 				58B7313328D74FB700FA9AA2 /* DateFormat.swift in Sources */,
 				584061A928134DB700BF64CB /* ChatAction.swift in Sources */,
+				58043DE328F7580A00E09829 /* Arms.swift in Sources */,
 				582DF79F28F2022A0080662C /* JSONDataEncoding.swift in Sources */,
 				58A199D4281C945D00140140 /* UIControl+Extensions.swift in Sources */,
 				587F302B2809D3C900EFA7E9 /* Chats+DI.swift in Sources */,
 				58DD921E280F3239006544AE /* AVCaptureDeviceInput+Extensions.swift in Sources */,
+				58043DDA28F756EE00E09829 /* CGLine.swift in Sources */,
 				589AA53527FF04400002C4D5 /* NotificationCenter+Extensions.swift in Sources */,
+				58043DE928F75FC700E09829 /* CGPoint+Extensions.swift in Sources */,
+				58043DBE28F7454F00E09829 /* MLEngineImpl.swift in Sources */,
 				58E790FF28232A1600CF4443 /* StyledTextView.swift in Sources */,
 				580190FE27F383AC00BB3E3E /* LazyInjected.swift in Sources */,
 				5882AD12280E3A7A00A09023 /* ToastType.swift in Sources */,
@@ -3227,6 +3444,7 @@
 				582939602820744300CAF83A /* Data+DI.swift in Sources */,
 				5832044027FE2959009A4644 /* MLImage.swift in Sources */,
 				582DF79C28F2022A0080662C /* CodableHelper.swift in Sources */,
+				58043DC628F74C3700E09829 /* FullPositionType.swift in Sources */,
 				586CB068281D905F00D753FB /* MainViewModelCommand.swift in Sources */,
 				58DCE716281EE2FD00BCB07C /* TrainingsStore.swift in Sources */,
 				5801910627F38B7F00BB3E3E /* BackgroundView.swift in Sources */,
@@ -3237,9 +3455,12 @@
 				584061AF28134DE000BF64CB /* ChatStoreImpl.swift in Sources */,
 				58DCE6BE281EDFC800BCB07C /* OnboardingStoreImpl.swift in Sources */,
 				582DF79928F2022A0080662C /* AdminAPI.swift in Sources */,
+				58043DC228F74B8B00E09829 /* DistanceType.swift in Sources */,
+				58043DED28F761F500E09829 /* DynamicCharacteristics.swift in Sources */,
 				5828B54727F4DF6D0079A727 /* Login+DI.swift in Sources */,
 				589AA53127FF00F20002C4D5 /* InputView.swift in Sources */,
 				580B0EB6281929DB00E14F8B /* Animations.swift in Sources */,
+				58043DCD28F751A500E09829 /* LegPosition.swift in Sources */,
 				587F30332809D94F00EFA7E9 /* WebSocketServiceImpl.swift in Sources */,
 				580190FC27F382F900BB3E3E /* AppLoader.swift in Sources */,
 				58DCE6F2281EE1AF00BCB07C /* MainAction.swift in Sources */,
@@ -3301,6 +3522,7 @@
 				58C1D44627F51963005D13C4 /* SwipingSegmentedControl.swift in Sources */,
 				587A7E6F28956689007363C6 /* ConnectivityListener.swift in Sources */,
 				589AA53E27FF05B90002C4D5 /* AnimationCurve+Extensions.swift in Sources */,
+				58043DFF28F768A300E09829 /* ExerciseError.swift in Sources */,
 				58DCE733281EE69A00BCB07C /* AddNewChatDomainImpl.swift in Sources */,
 				586CB04F281D7E0D00D753FB /* MainViewModelState.swift in Sources */,
 				5862DDC7280CC03000ABFD86 /* Domain+DI.swift in Sources */,
@@ -3309,6 +3531,7 @@
 				584BC5FA2802713C004582E9 /* Initable.swift in Sources */,
 				584061AB28134DBE00BF64CB /* ChatActionImpl.swift in Sources */,
 				58F274352812090900251284 /* NavigationType.swift in Sources */,
+				58043DF428F7629200E09829 /* Trajectory.swift in Sources */,
 				58DCE759281EF45E00BCB07C /* Domain.swift in Sources */,
 				580DF5D32809EF6800BE0493 /* Trainings+DI.swift in Sources */,
 				58B2E1D427F3BAA2004135E2 /* OnboardDataSource.swift in Sources */,
@@ -3316,9 +3539,11 @@
 				58DCE6E4281EE0EA00BCB07C /* LoginStore.swift in Sources */,
 				58F8C38728E0AD8C003E78FF /* Bundle+Extensions.swift in Sources */,
 				58A199D0281C6E2700140140 /* WSConnectionDTO.swift in Sources */,
+				58043DFD28F7686900E09829 /* ExerciseMoment.swift in Sources */,
 				58E0A1602800C3CB000A81A5 /* NavigatorServiceImpl.swift in Sources */,
 				58DCE6F6281EE1AF00BCB07C /* MainStore.swift in Sources */,
 				58C1D44D27F51C7A005D13C4 /* TopLevel+Extensions.swift in Sources */,
+				58043DD828F756A600E09829 /* Bone.swift in Sources */,
 				582DF7A128F2022A0080662C /* Models.swift in Sources */,
 				5877507E27FCA31D00D638A0 /* LoadingOverlayView.swift in Sources */,
 				58120EE428D687BA0081D63D /* BaseListenerImpl.swift in Sources */,
@@ -3335,16 +3560,21 @@
 				5854420D28230FB20078E772 /* MockLoginStore.swift in Sources */,
 				58DCE740281EE7E700BCB07C /* LiveFeedDomain.swift in Sources */,
 				582DF79728F2022A0080662C /* ClientAPI.swift in Sources */,
+				58043DC828F7504B00E09829 /* HalfPositionType.swift in Sources */,
 				5801910B27F392A300BB3E3E /* VisualEffectView.swift in Sources */,
+				58043DF028F7625A00E09829 /* Motion.swift in Sources */,
 				582DF79828F2022A0080662C /* BackendAPI.swift in Sources */,
 				58FD65092803119100FE6A51 /* AnimationView.swift in Sources */,
 				58B6D3D32822AB32002D7650 /* ErrorResponse+Extensions.swift in Sources */,
 				582DF7A328F2022A0080662C /* UserResponseDTO.swift in Sources */,
+				58043E0728F782AC00E09829 /* UIBezierPath+Extensions.swift in Sources */,
 				58B7312728D738A000FA9AA2 /* LiveFeedInputField.swift in Sources */,
 				58C1D44B27F51BFC005D13C4 /* UIView+GestureRecognizers.swift in Sources */,
 				5832043B27FE2959009A4644 /* MLService.swift in Sources */,
+				58043DE728F75CF600E09829 /* Sequence+Extensions.swift in Sources */,
 				58B2E1DF27F3BCEB004135E2 /* OnboardOverlay.swift in Sources */,
 				587F303A2809DE8600EFA7E9 /* Services+DI.swift in Sources */,
+				58043E0528F7817C00E09829 /* SkeletonView.swift in Sources */,
 				58B7312E28D74F2E00FA9AA2 /* DateFormatterService.swift in Sources */,
 				589AA54227FF06DE0002C4D5 /* CAMediaTimingFunction+Extensions.swift in Sources */,
 				58731E6A282316A8008A7562 /* MockAddNewChatStore.swift in Sources */,
@@ -3415,6 +3645,7 @@
 				58C27EF728113D1F000FC602 /* RequestBuilder+Extensions.swift in Sources */,
 				580B0ECF28197A1300E14F8B /* Chat+DI.swift in Sources */,
 				58731E56282312DD008A7562 /* MockMainStore.swift in Sources */,
+				58043DF628F763BB00E09829 /* Collection+Extensions.swift in Sources */,
 				587F300D2809CE9B00EFA7E9 /* BaseTabScreen.swift in Sources */,
 				58C27EF528113CAB000FC602 /* String+Extensions.swift in Sources */,
 				58E0A17F28010A0A000A81A5 /* NavigationController.swift in Sources */,
@@ -3423,10 +3654,13 @@
 				580DF5D92809EF8600BE0493 /* TrainingsViewModel.swift in Sources */,
 				580DF5DB2809EF8F00BE0493 /* Settings+DI.swift in Sources */,
 				580DF5DF2809EF9E00BE0493 /* SettingsViewModel.swift in Sources */,
+				58043DE528F7581C00E09829 /* Legs.swift in Sources */,
 				58120ED828D676C10081D63D /* LiveFeedCache.swift in Sources */,
 				585CD70B28DF9BB70014430B /* Constants.swift in Sources */,
 				58B7313C28D7849B00FA9AA2 /* SettingsTableViewCell.swift in Sources */,
 				58731E6628231684008A7562 /* MockLiveFeedStore.swift in Sources */,
+				58043DF228F7626900E09829 /* TrajectoryElement.swift in Sources */,
+				58043DDD28F7576700E09829 /* BodyPart.swift in Sources */,
 				5853F9E22822EB9B00076D93 /* ChatInputField.swift in Sources */,
 				58F976DF27DE77C500E74C5F /* Assets.swift in Sources */,
 				589AA54427FF07120002C4D5 /* BinaryFloatingPoint+Extensions.swift in Sources */,
@@ -3445,6 +3679,8 @@
 				5832043F27FE2959009A4644 /* MLPoseLandmarkType.swift in Sources */,
 				58E0A1732800D918000A81A5 /* DefaultSettingsServiceImpl.swift in Sources */,
 				58DCE6E3281EE0EA00BCB07C /* LoginStoreImpl.swift in Sources */,
+				58043E0228F76F8800E09829 /* ExerciseConsumer.swift in Sources */,
+				58043DEB28F761E700E09829 /* StaticCharacteristics.swift in Sources */,
 				58DCE6F5281EE1AF00BCB07C /* MainStoreImpl.swift in Sources */,
 				58E0A1752800D922000A81A5 /* DefaultSettingsService.swift in Sources */,
 				58E0A18428010CC1000A81A5 /* LoadingOverlayService.swift in Sources */,
@@ -3460,6 +3696,7 @@
 				580DF5D12809EF5A00BE0493 /* ChatsScreen.swift in Sources */,
 				5853F9E92823088F00076D93 /* Notification+Extensions.swift in Sources */,
 				58731E6C282316BE008A7562 /* MockAddNewChatAction.swift in Sources */,
+				58043DE128F757F900E09829 /* Body.swift in Sources */,
 				58DCE71F281EE39A00BCB07C /* ChatDomain.swift in Sources */,
 				588F5E7E280B31AA00947800 /* LogType.swift in Sources */,
 				585CD71928DFC3F10014430B /* TranslatorServiceImpl.swift in Sources */,
@@ -3468,6 +3705,7 @@
 				582DF7A628F2022A0080662C /* UserDTO.swift in Sources */,
 				580DF5F8280A219B00BE0493 /* TabScreen.swift in Sources */,
 				58DCE6D9281EE0EA00BCB07C /* UserCache.swift in Sources */,
+				58043DD028F751FF00E09829 /* ArmPosition.swift in Sources */,
 				58DCE708281EE25D00BCB07C /* SettingsAction.swift in Sources */,
 				58B7313828D77E5A00FA9AA2 /* SettingsItem.swift in Sources */,
 				587F30382809DCFE00EFA7E9 /* CoderServiceImpl.swift in Sources */,
@@ -3489,6 +3727,7 @@
 				587A7E7128956692007363C6 /* ConnectivityListenerImpl.swift in Sources */,
 				5828491F280BA3D800034010 /* TableView.swift in Sources */,
 				582DF7A528F2022A0080662C /* ChatEntryDTO.swift in Sources */,
+				58043DFA28F7682100E09829 /* ExerciseModel.swift in Sources */,
 				586CB06B281D90B100D753FB /* SettingsViewModelCommand.swift in Sources */,
 				5828B54927F4DF870079A727 /* LoginScreen.swift in Sources */,
 				586CB063281D84E000D753FB /* LoadingViewModelCommand.swift in Sources */,
@@ -3497,6 +3736,7 @@
 				588F475F27FE4FF60062F838 /* NetworkError.swift in Sources */,
 				586CB04D281D7D3D00D753FB /* LoadingViewModelState.swift in Sources */,
 				58C27EFC281141B9000FC602 /* TokenizableRequestBuilderFactory.swift in Sources */,
+				58043DC428F74B9900E09829 /* PositionType.swift in Sources */,
 				587F30152809CED200EFA7E9 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

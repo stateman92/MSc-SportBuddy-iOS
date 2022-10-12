@@ -29,14 +29,31 @@ struct BoneEndpoint {
     }
 }
 
+// MARK: - Equatable
+
 extension BoneEndpoint: Equatable {
     static func == (lhs: BoneEndpoint, rhs: BoneEndpoint) -> Bool {
         lhs.type == rhs.type
     }
 }
 
+// MARK: - Hashable
+
 extension BoneEndpoint: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(type.rawValue)
+    }
+}
+
+// MARK: - Public methods
+
+extension BoneEndpoint {
+    static func difference(lhs: BoneEndpoint?, rhs: BoneEndpoint?) -> BoneEndpoint? {
+        guard let lhs, let rhs, lhs.type == rhs.type else { return nil }
+        return BoneEndpoint(type: lhs.type, coordinate: lhs.coordinate - rhs.coordinate)
+    }
+
+    static func / (lhs: BoneEndpoint, rhs: CGFloat) -> BoneEndpoint {
+        BoneEndpoint(type: lhs.type, coordinate: lhs.coordinate / rhs)
     }
 }

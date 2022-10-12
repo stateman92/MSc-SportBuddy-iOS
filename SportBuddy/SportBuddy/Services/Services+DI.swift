@@ -13,6 +13,7 @@ extension DependencyInjector {
         registerToast()
         registerSettings()
         registerLoading()
+        registerML()
 
         register(service: AnimationServiceImpl(), implements: AnimationService.self)
         register(service: CameraServiceImpl(), implements: CameraService.self)
@@ -21,7 +22,6 @@ extension DependencyInjector {
         register(service: CopyServiceImpl(), implements: CopyService.self)
         register(service: DateFormatterServiceImpl(), implements: DateFormatterService.self)
         register(service: LoggingServiceImpl(), implements: LoggingService.self)
-        register(service: MLServiceImpl(), implements: MLService.self)
         register(service: NavigatorServiceImpl(rootViewController: resolve() as OnboardingScreen),
                  implements: NavigatorService.self)
         register(service: NotificationServiceImpl(), implements: NotificationService.self)
@@ -50,6 +50,11 @@ extension DependencyInjector {
     private static func registerLoading() {
         register(service: LoadingOverlayServiceImpl(), implements: LoadingOverlayService.self)
         register(service: LoadingServiceImpl(), implements: LoadingService.self)
+    }
+
+    private static func registerML() {
+        register(service: MLEngineImpl(), implements: MLEngine.self)
+        register(service: MLServiceImpl(), implements: MLService.self)
     }
 
     private static func register<T, S>(service: @autoclosure @escaping () -> T, implements implemented: S.Type) {

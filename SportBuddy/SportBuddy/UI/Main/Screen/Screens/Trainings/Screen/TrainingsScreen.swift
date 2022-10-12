@@ -29,14 +29,22 @@ extension TrainingsScreen {
 
 extension TrainingsScreen {
     private func setupCameraView() {
-        CameraView().then {
+        let skeletonView = SkeletonView()
+        let cameraView = CameraView().then {
             view.addSubview($0)
-            $0.anchorToCenter()
-            $0.setSize(.init(width: 200, height: 300))
+            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
             cameraService.set(cameraView: $0)
-            cameraService.skeletonShouldUpdate { boneEndpoints in
-                dump(boneEndpoints)
+            cameraService.skeletonShouldUpdate { [weak self] boneEndpoints in
+                dispatchToMain {
+                    let skeleton = Skeleton(from: boneEndpoints)
+                    skeletonView.skeleton = skeleton
+                    self?.sendCommand(.interpret(skeleton))
+                }
             }
+        }
+        skeletonView.then {
+            cameraView.addSubview($0)
+            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
         }
     }
 }
