@@ -7,7 +7,10 @@
 
 final class TrainingsScreen:
     TabScreen<TrainingsViewModelState, TrainingsViewModelCommand, TrainingsDomainImpl, TrainingsViewModel> {
-    @LazyInjected var cameraService: CameraService
+    // MARK: Properties
+
+    @LazyInjected private var cameraService: CameraService
+    private let cameraView = CameraSkeletonView()
 
     // MARK: Initialization
 
@@ -29,22 +32,34 @@ extension TrainingsScreen {
 
 extension TrainingsScreen {
     private func setupCameraView() {
-        let skeletonView = SkeletonView()
-        let cameraView = CameraView().then {
+        cameraView.then {
             view.addSubview($0)
             $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
             cameraService.set(cameraView: $0)
-            cameraService.skeletonShouldUpdate { [weak self] boneEndpoints in
-                dispatchToMain {
-                    let skeleton = Skeleton(from: boneEndpoints)
-                    skeletonView.skeleton = skeleton
-                    self?.sendCommand(.interpret(skeleton))
+
+//            cameraService.skeletonShouldUpdate { [weak self] boneEndpoints in
+//                dispatchToMain {
+//                    let skeleton = Skeleton(from: boneEndpoints)
+//                    cameraView.skeleton = skeleton
+//                    self?.sendCommand(.interpret(skeleton))
+//                }
+//            }
+
+//            Task { [unowned self] in
+//                for await endpoints in cameraService.skeletonShouldUpdate() {
+//                    let skeleton = Skeleton(from: endpoints)
+//                    cameraView.skeleton = skeleton
+//                    sendCommand(.interpret(skeleton))
+//                }
+//            }
+
+            cameraService.skeletonShouldUpdate()
+                .map(Skeleton.init(from:))
+                .sink { [unowned self] in
+                    cameraView.skeleton = $0
+                    sendCommand(.interpret($0))
                 }
-            }
-        }
-        skeletonView.then {
-            cameraView.addSubview($0)
-            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
+                .store(in: &cancellables)
         }
     }
 }

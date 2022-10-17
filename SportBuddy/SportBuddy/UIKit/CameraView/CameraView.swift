@@ -8,7 +8,7 @@
 import AVFoundation
 import UIKit
 
-final class CameraView: View {
+class CameraView: View {
     // MARK: Properties
 
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {

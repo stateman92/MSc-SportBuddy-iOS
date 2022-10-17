@@ -261,6 +261,7 @@
 		58A199D0281C6E2700140140 /* WSConnectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A199CF281C6E2700140140 /* WSConnectionDTO.swift */; };
 		58A199D2281C8FE800140140 /* DeferredFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A199D1281C8FE800140140 /* DeferredFuture.swift */; };
 		58A199D4281C945D00140140 /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A199D3281C945D00140140 /* UIControl+Extensions.swift */; };
+		58A23E0328FB47C500FA27D6 /* CameraSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A23E0228FB47C500FA27D6 /* CameraSkeletonView.swift */; };
 		58A9971627EFB73D0003D3E9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 58A9971527EFB73D0003D3E9 /* Alamofire */; };
 		58A9971B27EFD9990003D3E9 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9971A27EFD9990003D3E9 /* TextField.swift */; };
 		58AAEC2F280BBC040054E2F0 /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = 58AAEC2E280BBC040054E2F0 /* Valet */; };
@@ -700,6 +701,7 @@
 		58A199CF281C6E2700140140 /* WSConnectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSConnectionDTO.swift; sourceTree = "<group>"; };
 		58A199D1281C8FE800140140 /* DeferredFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredFuture.swift; sourceTree = "<group>"; };
 		58A199D3281C945D00140140 /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
+		58A23E0228FB47C500FA27D6 /* CameraSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSkeletonView.swift; sourceTree = "<group>"; };
 		58A9971A27EFD9990003D3E9 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		58AAEC31280BBC4A0054E2F0 /* SecureSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureSettingsService.swift; sourceTree = "<group>"; };
 		58AAEC33280BBC660054E2F0 /* SecureSettingsServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureSettingsServiceImpl.swift; sourceTree = "<group>"; };
@@ -1198,6 +1200,7 @@
 			isa = PBXGroup;
 			children = (
 				580521D827EFB36B00B3A8B1 /* CameraView.swift */,
+				58A23E0228FB47C500FA27D6 /* CameraSkeletonView.swift */,
 			);
 			path = CameraView;
 			sourceTree = "<group>";
@@ -3526,6 +3529,7 @@
 				58DCE733281EE69A00BCB07C /* AddNewChatDomainImpl.swift in Sources */,
 				586CB04F281D7E0D00D753FB /* MainViewModelState.swift in Sources */,
 				5862DDC7280CC03000ABFD86 /* Domain+DI.swift in Sources */,
+				58A23E0328FB47C500FA27D6 /* CameraSkeletonView.swift in Sources */,
 				58DCE72D281EE69A00BCB07C /* AddNewChatAction.swift in Sources */,
 				58731E6828231693008A7562 /* MockLiveFeedAction.swift in Sources */,
 				584BC5FA2802713C004582E9 /* Initable.swift in Sources */,

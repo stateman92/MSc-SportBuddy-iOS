@@ -6,6 +6,7 @@
 //
 
 import AVFoundation
+import Combine
 
 /// A protocol for handling the camera.
 protocol CameraService: Initable, AutoMockable {
@@ -32,5 +33,27 @@ extension CameraService {
     ///   - cameraView: the preview view.
     func set(cameraView: CameraView) {
         set(videoPreviewLayer: cameraView.videoPreviewLayer)
+    }
+
+    /// Call to get a result for each recogized states.
+    /// - Returns:
+    ///     The sequence of endpoints.
+    func skeletonShouldUpdate() -> AsyncStream<[BoneEndpoint]> {
+        .init {
+            skeletonShouldUpdate { [continuation = $0] in
+                continuation.yield($0)
+            }
+        }
+    }
+
+    /// Call to get a result for each recogized states.
+    /// - Returns:
+    ///     The sequence of endpoints.
+    func skeletonShouldUpdate() -> AnyPublisher<[BoneEndpoint], Never> {
+        let subject = PassthroughSubject<[BoneEndpoint], Never>()
+        skeletonShouldUpdate {
+            subject.send($0)
+        }
+        return subject.autoEraseOnMain()
     }
 }

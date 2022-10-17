@@ -11,6 +11,26 @@ import UIKit
 
 /// A class for handling the camera.
 final class CameraServiceImpl {
+    // MARK: Nested types
+
+    enum DetectionDelay {
+        case seconds(TimeInterval)
+
+        static var noDelay: Self {
+            .seconds(.zero)
+        }
+
+        static func fps(_ count: Int) -> Self {
+            .seconds(1 / TimeInterval(count))
+        }
+
+        var delay: TimeInterval {
+            switch self {
+            case let .seconds(seconds): return seconds
+            }
+        }
+    }
+
     // MARK: Properties
 
     private let captureSession = AVCaptureSession()
@@ -21,6 +41,9 @@ final class CameraServiceImpl {
     private var isBackCameraInOperation = true
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var skeletonShouldUpdated: ([BoneEndpoint]) -> Void = { _ in }
+    private let delay: DetectionDelay = .fps(60)
+    private var timer: Timer?
+    private var lastDetectionTime: Date?
     @LazyInjected private var mlService: MLService
 
     // MARK: Initialization
@@ -96,7 +119,9 @@ extension CameraServiceImpl {
         captureSession.configure { _ in
             setupCamera()
         }
-        captureSession.startRunning()
+        DispatchQueue.global().async {
+            self.captureSession.startRunning()
+        }
     }
 
     private func setupCamera() {
@@ -115,8 +140,28 @@ extension CameraServiceImpl {
 
         dataOutput.connections.first?.isVideoMirrored = !isBackCameraInOperation
         dataOutput.setSampleBufferDelegate(on: dataOutputQueue) { [weak self] in
-            guard let self else { return }
-            self.skeletonShouldUpdated(self.getBoneEndpoints(from: .buffer($0)))
+            self?.bufferUpdated(buffer: $0)
+        }
+    }
+}
+
+// MARK: - Private method
+
+extension CameraServiceImpl {
+    private func bufferUpdated(buffer: CMSampleBuffer) {
+        if timer == nil {
+            skeletonShouldUpdated(getBoneEndpoints(from: .buffer(buffer)))
+            dispatchToMain { [self] in
+                timer = .scheduledTimer(withTimeInterval: delay.delay, repeats: false) { [weak self] _ in
+                    self?.timer?.invalidate()
+                    self?.timer = nil
+                }
+            }
+            if let lastDetectionTime {
+                let interval = Date().timeIntervalSince(lastDetectionTime)
+                print("FPS: \(1 / interval)")
+            }
+            lastDetectionTime = .init()
         }
     }
 }
