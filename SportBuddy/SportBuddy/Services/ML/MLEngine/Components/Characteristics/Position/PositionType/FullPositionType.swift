@@ -7,17 +7,17 @@
 
 import CoreGraphics
 
-enum FullPositionType: String, PositionType {
+enum FullPositionType: String, PositionType, Codable {
     // i means the degrees between the upper arm and the shoulder-line (shoulder-line means the rightShoulder - leftShoulder line),
     // of between the thigh and the hip-line (hip-line means the leftHip - leftShoulder line)
-    case around0 = "  0"
-    case around45 = " 45"
-    case around90 = " 90"
-    case around135 = "135"
-    case around180 = "180"
-    case around225 = "225"
-    case around270 = "270"
-    case around315 = "315"
+    case around0
+    case around45
+    case around90
+    case around135
+    case around180
+    case around225
+    case around270
+    case around315
 }
 
 // MARK: - Initialization

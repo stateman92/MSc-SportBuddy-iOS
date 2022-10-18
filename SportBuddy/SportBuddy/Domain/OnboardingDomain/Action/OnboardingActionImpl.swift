@@ -21,7 +21,7 @@ extension OnboardingActionImpl: OnboardingAction {
             showUnauthenticatedToast: tokenCache.immediateValue != nil
         ) { [weak self] () -> DomainActionResult<Void> in
             do {
-                try await ClientAPI.refreshTokenPost()
+                try await BackendAPI.refreshTokenPost()
                 return .success(())
             } catch {
                 self?.userCache.clear()

@@ -22,7 +22,7 @@ extension LoginActionImpl: LoginAction {
     func login(email: String, password: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
             do {
-                let result = try await ClientAPI.loginPost(email: email, password: password)
+                let result = try await BackendAPI.loginPost(email: email, password: password)
                 userCache.save(item: .init(user: result.user))
                 tokenCache.save(item: .init(token: result.token))
                 return .success(result)
@@ -38,7 +38,7 @@ extension LoginActionImpl: LoginAction {
             showUnauthenticatedToast: tokenCache.immediateValue != nil
         ) { [unowned self] () -> DomainActionResult<Void> in
             do {
-                try await ClientAPI.refreshTokenPost()
+                try await BackendAPI.refreshTokenPost()
                 return .success(())
             } catch {
                 userCache.clear()
@@ -56,7 +56,7 @@ extension LoginActionImpl: LoginAction {
     func signUp(name: String, email: String, password: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
             do {
-                let result = try await ClientAPI.registerPost(name: name, email: email, password: password)
+                let result = try await BackendAPI.registerPost(name: name, email: email, password: password)
                 userCache.save(item: .init(user: result.user))
                 tokenCache.save(item: .init(token: result.token))
                 return .success(result)
@@ -72,7 +72,7 @@ extension LoginActionImpl: LoginAction {
     func forgotPassword(email: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
             do {
-                try await ClientAPI.forgotPasswordPost(email: email)
+                try await BackendAPI.forgotPasswordPost(email: email)
                 return .success(())
             } catch {
                 return .failure(error)

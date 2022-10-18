@@ -30,7 +30,7 @@ final class ChatsActionImpl: DomainImpl {
                 if userImageCache.immediateValue?.images[id] == nil {
                     deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
                         do {
-                            let image = try await ClientAPI.userImageGet(chatId: id.uuidString)
+                            let image = try await BackendAPI.userImageGet(chatId: id.uuidString)
                             var currentValue = userImageCache.immediateValue ?? .init(images: [:])
                             currentValue.images[id] = image
                             userImageCache.save(item: currentValue)
@@ -53,7 +53,7 @@ extension ChatsActionImpl: ChatsAction {
     func getChats() -> DomainActionPublisher {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<[ChatDTO]> in
             do {
-                let results = try await ClientAPI.chatEntriesGet()
+                let results = try await BackendAPI.chatEntriesGet()
                 chatsCache.save(item: .init(chats: results))
                 return .success(results)
             } catch {

@@ -7,13 +7,13 @@
 
 import CoreGraphics
 
-enum HalfPositionType: String, PositionType {
+enum HalfPositionType: String, PositionType, Codable {
     // aroundi means the degrees between the forearm and the upper arm or calf and thigh
-    case around0 = "  0"
-    case around45 = " 45"
-    case around90 = " 90"
-    case around135 = "135"
-    case around180 = "180"
+    case around0
+    case around45
+    case around90
+    case around135
+    case around180
 }
 
 // MARK: - Initialization

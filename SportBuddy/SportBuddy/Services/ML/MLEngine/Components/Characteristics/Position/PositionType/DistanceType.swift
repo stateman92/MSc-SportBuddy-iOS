@@ -7,17 +7,17 @@
 
 import CoreGraphics
 
-enum DistanceType: String, PositionType {
+enum DistanceType: String, PositionType, Codable {
     // aroundi means that the two hands are i * (hip - shoulder) distance away
-    case around0 = "0"
-    case around1 = "1"
-    case around2 = "2"
-    case around3 = "3"
-    case around4 = "4"
-    case aroundMinus1 = "-1"
-    case aroundMinus2 = "-2"
-    case aroundMinus3 = "-3"
-    case aroundMinus4 = "-4"
+    case around0
+    case around1
+    case around2
+    case around3
+    case around4
+    case aroundMinus1
+    case aroundMinus2
+    case aroundMinus3
+    case aroundMinus4
 }
 
 // MARK: - Initialization

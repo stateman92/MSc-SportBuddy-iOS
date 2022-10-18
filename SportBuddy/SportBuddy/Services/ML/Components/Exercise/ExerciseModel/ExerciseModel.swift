@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseModel {
+struct ExerciseModel: Codable {
     let sequence: [ExerciseMoment]
     let sequenceCount: Int
     let delay: TimeInterval

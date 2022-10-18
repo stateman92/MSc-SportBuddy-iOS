@@ -19,7 +19,7 @@ extension AddNewChatActionImpl: AddNewChatAction {
     func searchUsers(searchTerm: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<[UserDTO]> in
             do {
-                let results = try await ClientAPI.searchUserPost(name: searchTerm)
+                let results = try await BackendAPI.searchUserPost(name: searchTerm)
                 searchedUsersCache.save(item: .init(users: results))
                 return .success(results)
             } catch {

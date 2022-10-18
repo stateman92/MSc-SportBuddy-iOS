@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseMoment {
+struct ExerciseMoment: Codable {
     let armCharacteristics: Characteristics
     let legCharacteristics: Characteristics
     let errors: [ExerciseError]

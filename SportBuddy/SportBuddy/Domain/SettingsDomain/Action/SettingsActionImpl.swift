@@ -22,7 +22,7 @@ extension SettingsActionImpl: SettingsAction {
     func set(image: String) -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
             do {
-                let user = try await ClientAPI.imagePost(image: image)
+                let user = try await BackendAPI.imagePost(image: image)
                 userCache.save(item: .init(user: user))
                 return .success(())
             } catch {
@@ -34,7 +34,7 @@ extension SettingsActionImpl: SettingsAction {
     func clearImage() -> DomainActionPublisher {
         deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
             do {
-                let user = try await ClientAPI.imagePost(image: .init())
+                let user = try await BackendAPI.imagePost(image: .init())
                 userCache.save(item: .init(user: user))
                 return .success(())
             } catch {
@@ -64,7 +64,7 @@ extension SettingsActionImpl: SettingsAction {
     func logout() -> DomainActionPublisher {
         deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<Void> in
             do {
-                try await ClientAPI.logoutPost()
+                try await BackendAPI.logoutPost()
                 userCache.clear()
                 tokenCache.clear()
                 dispatchToMain {

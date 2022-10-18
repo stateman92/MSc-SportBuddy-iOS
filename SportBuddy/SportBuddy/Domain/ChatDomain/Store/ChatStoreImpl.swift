@@ -24,7 +24,7 @@ extension ChatStoreImpl: ChatStore {
         if userImageCache.immediateValue?.images[id] == nil {
             deferredFutureOnMainLoading(blocking: false) { [unowned self] () -> DomainActionResult<Void> in
                 do {
-                    let image = try await ClientAPI.userImageGet(chatId: id.uuidString)
+                    let image = try await BackendAPI.userImageGet(chatId: id.uuidString)
                     var currentValue = userImageCache.immediateValue ?? .init(images: [:])
                     currentValue.images[id] = image
                     userImageCache.save(item: currentValue)

@@ -12,405 +12,17 @@ info:
 host: virtserver.swaggerhub.com
 basePath: /stateman-team/SportBuddy/2.0.0
 tags:
-- name: Client
-  description: iOS client
-- name: Admin
-  description: Webadmin client
 - name: Backend
   description: Backend
 schemes:
 - https
-paths:
-  /login:
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Login an existing user
-      description: Login an existing user of the application or an admin
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: email
-        in: query
-        required: true
-        type: string
-      - name: password
-        in: query
-        required: true
-        type: string
-      responses:
-        "200":
-          description: User logged in
-          schema:
-            $ref: '#/definitions/UserResponseDTO'
-        "400":
-          description: Invalid input, bad request
-  /test:
-    get:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Test
-      description: Test
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        "200":
-          description: Test succeeded
-        "400":
-          description: Test failed
-  /forgotPassword:
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Send a recovery email to an existing user
-      description: Send a recovery email to an existing user of the application or an admin
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: email
-        in: query
-        required: true
-        type: string
-      responses:
-        "200":
-          description: Email sent or email not found
-        "400":
-          description: Bad request
-  /refreshToken:
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Refresh the stored token
-      description: Refresh the stored token
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Token refreshed
-        "400":
-          description: Bad request
-  /logout:
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Logout an existing user
-      description: Logout an existing user of the application or an admin
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: User logged out
-        "400":
-          description: Invalid input, bad request
-  /register:
-    post:
-      tags:
-      - Client
-      - Backend
-      summary: Register a user
-      description: Register a new user in the application
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: name
-        in: query
-        required: true
-        type: string
-      - name: email
-        in: query
-        required: true
-        type: string
-      - name: password
-        in: query
-        required: true
-        type: string
-      responses:
-        "200":
-          description: User registered
-          schema:
-            $ref: '#/definitions/UserResponseDTO'
-        "400":
-          description: Invalid input, bad request
-  /image:
-    post:
-      tags:
-      - Client
-      - Backend
-      summary: Upload an image
-      description: Upload an image of the user
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: image
-        required: false
-        schema:
-          type: string
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Image uploaded
-          schema:
-            $ref: '#/definitions/UserDTO'
-        "400":
-          description: Invalid input, bad request
-  /userImage:
-    get:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Image gathering
-      description: Image gathering of a chat (user)
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: chatId
-        in: query
-        required: true
-        type: string
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Image
-          schema:
-            type: string
-        "400":
-          description: Invalid input, bad request
-  /searchUser:
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Search a user
-      description: Search a user
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: name
-        in: query
-        required: true
-        type: string
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Users
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/UserDTO'
-        "400":
-          description: Invalid input, bad request
-  /chat:
-    put:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Chatting
-      description: Update a chat
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: chatId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      - in: body
-        name: image
-        required: false
-        schema:
-          type: string
-      - name: users
-        in: query
-        required: false
-        type: array
-        items:
-          type: string
-          format: uuid
-        collectionFormat: multi
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Chat updated
-        "400":
-          description: Invalid input, bad request
-  /chatEntries:
-    get:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Chatting
-      description: Get a chat's messages
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Chat messages
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ChatDTO'
-        "400":
-          description: Invalid input, bad request
-    post:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Chatting
-      description: Send a chat message
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: chatId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      - name: message
-        in: query
-        required: true
-        type: string
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Chat message sent
-        "400":
-          description: Invalid input, bad request
-    put:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Chatting
-      description: Modify a chat message
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: ChatEntryDTOId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      - name: modifiedMessage
-        in: query
-        required: true
-        type: string
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Chat message modified
-        "400":
-          description: Invalid input, bad request
-    delete:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Chatting
-      description: Delete a chat message
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: ChatEntryDTOId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Chat message deleted
-        "400":
-          description: Invalid input, bad request
-    patch:
-      tags:
-      - Client
-      - Admin
-      - Backend
-      summary: Chatting
-      description: Undo message deletion
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: ChatEntryDTOId
-        in: query
-        required: true
-        type: string
-        format: uuid
-      security:
-      - Bearer: []
-      responses:
-        "200":
-          description: Chat message restored
-        "400":
-          description: Invalid input, bad request
+
 securityDefinitions:
   Bearer:
     type: apiKey
     name: Authorization
     in: header
+
 definitions:
   UserResponseDTO:
     required:
@@ -446,6 +58,38 @@ definitions:
       bio:
         type: string
         example: Hi! I'm Bob.
+      chats:
+        type: array
+        items:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+  UserDB:
+    required:
+    - name
+    - email
+    - password # hashed, not the actual one
+    - profileImage
+    - chats
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      name:
+        type: string
+        example: Kovács Tibor
+      email:
+        type: string
+        example: kovacs.tibor@gmail.com
+      password:
+        type: string
+      profileImage:
+        type: string
+        format: base64
+      token:
+        type: string
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
       chats:
         type: array
         items:
@@ -505,3 +149,618 @@ definitions:
       deleted:
         type: boolean
         example: true
+  HalfPositionTypeDTO:
+    type: string
+    enum: &HALFPOSITIONTYPEDTO
+      - around0
+      - around45
+      - around90
+      - around135
+      - around180
+  FullPositionTypeDTO:
+    type: string
+    enum: &FULLPOSITIONTYPEDTO
+      - around0
+      - around45
+      - around90
+      - around135
+      - around180
+      - around225
+      - around270
+      - around315
+  DistanceTypeDTO:
+    type: string
+    enum: &DISTANCETYPEDTO
+      - around0
+      - around1
+      - around2
+      - around3
+      - around4
+      - aroundMinus1
+      - aroundMinus2
+      - aroundMinus3
+      - aroundMinus4
+  CharacteristicsTypeDTO:
+    type: string
+    enum: &CHARACTERISTICSTYPEDTO
+      - arms
+      - legs
+  CharacteristicsDTO:
+    required:
+    - firstHalfPositionType
+    - firstFullPositionType
+    - secondFullPositionType
+    - secondHalfPositionType
+    - distanceType
+    - type
+    properties:
+      firstHalfPositionType:
+        type: string
+        enum: *HALFPOSITIONTYPEDTO
+      firstFullPositionType:
+        type: string
+        enum: *FULLPOSITIONTYPEDTO
+      secondFullPositionType:
+        type: string
+        enum: *FULLPOSITIONTYPEDTO
+      secondHalfPositionType:
+        type: string
+        enum: *HALFPOSITIONTYPEDTO
+      distanceType:
+        type: string
+        enum: *DISTANCETYPEDTO
+      type:
+        type: string
+        enum: *CHARACTERISTICSTYPEDTO
+  ExerciseErrorDTO:
+    required:
+    - characteristics
+    - error
+    properties:
+      characteristics:
+        $ref: '#/definitions/CharacteristicsDTO'
+      error:
+        type: string
+        example: Unknown error
+  ExerciseMomentDTO:
+    required:
+    - armCharacteristics
+    - legCharacteristics
+    - errors
+    properties:
+      armCharacteristics:
+        $ref: '#/definitions/CharacteristicsDTO'
+      legCharacteristics:
+        $ref: '#/definitions/CharacteristicsDTO'
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/ExerciseErrorDTO'
+  ExerciseModelDTO:
+    required:
+    - sequence
+    - sequenceCount
+    - delay
+    properties:
+      sequence:
+        type: array
+        items:
+          $ref: '#/definitions/ExerciseMomentDTO'
+      sequenceCount:
+        type: integer
+        example: 4
+      delay:
+        type: number
+        format: double
+
+paths:
+  /login:
+    post:
+      tags:
+      - Backend
+      summary: Login an existing user
+      description: Login an existing user of the application or an admin
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: query
+        required: true
+        type: string
+      - name: password
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: User logged in
+          schema:
+            $ref: '#/definitions/UserResponseDTO'
+        "400":
+          description: Invalid input, bad request
+  /test:
+    get:
+      tags:
+      - Backend
+      summary: Test
+      description: Test
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        "200":
+          description: Test succeeded
+        "400":
+          description: Test failed
+  /forgotPassword:
+    post:
+      tags:
+      - Backend
+      summary: Send a recovery email to an existing user
+      description: Send a recovery email to an existing user of the application or an admin
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Email sent or email not found
+        "400":
+          description: Bad request
+  /refreshToken:
+    post:
+      tags:
+      - Backend
+      summary: Refresh the stored token
+      description: Refresh the stored token
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Token refreshed
+        "400":
+          description: Bad request
+  /logout:
+    post:
+      tags:
+      - Backend
+      summary: Logout an existing user
+      description: Logout an existing user of the application or an admin
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: User logged out
+        "400":
+          description: Invalid input, bad request
+  /register:
+    post:
+      tags:
+      - Backend
+      summary: Register a user
+      description: Register a new user in the application
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: name
+        in: query
+        required: true
+        type: string
+      - name: email
+        in: query
+        required: true
+        type: string
+      - name: password
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: User registered
+          schema:
+            $ref: '#/definitions/UserResponseDTO'
+        "400":
+          description: Invalid input, bad request
+  /image:
+    post:
+      tags:
+      - Backend
+      summary: Upload an image
+      description: Upload an image of the user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: image
+        required: false
+        schema:
+          type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Image uploaded
+          schema:
+            $ref: '#/definitions/UserDTO'
+        "400":
+          description: Invalid input, bad request
+  /userImage:
+    get:
+      tags:
+      - Backend
+      summary: Image gathering
+      description: Image gathering of a chat (user)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chatId
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Image
+          schema:
+            type: string
+        "400":
+          description: Invalid input, bad request
+  /searchUser:
+    post:
+      tags:
+      - Backend
+      summary: Search a user
+      description: Search a user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: name
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDTO'
+        "400":
+          description: Invalid input, bad request
+  /chat:
+    put:
+      tags:
+      - Backend
+      summary: Chatting
+      description: Update a chat
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chatId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - in: body
+        name: image
+        required: false
+        schema:
+          type: string
+      - name: users
+        in: query
+        required: false
+        type: array
+        items:
+          type: string
+          format: uuid
+        collectionFormat: multi
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat updated
+        "400":
+          description: Invalid input, bad request
+  /chatEntries:
+    get:
+      tags:
+      - Backend
+      summary: Chatting
+      description: Get a chat's messages
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat messages
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ChatDTO'
+        "400":
+          description: Invalid input, bad request
+    post:
+      tags:
+      - Backend
+      summary: Chatting
+      description: Send a chat message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chatId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - name: message
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message sent
+        "400":
+          description: Invalid input, bad request
+    put:
+      tags:
+      - Backend
+      summary: Chatting
+      description: Modify a chat message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ChatEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - name: modifiedMessage
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message modified
+        "400":
+          description: Invalid input, bad request
+    delete:
+      tags:
+      - Backend
+      summary: Chatting
+      description: Delete a chat message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ChatEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message deleted
+        "400":
+          description: Invalid input, bad request
+    patch:
+      tags:
+      - Backend
+      summary: Chatting
+      description: Undo message deletion
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ChatEntryDTOId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Chat message restored
+        "400":
+          description: Invalid input, bad request
+  /saveNewPassword:
+    post:
+      tags:
+      - Backend
+      summary: Forgotten password
+      description: Reset a forgotten pasword
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: requestId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      - name: newPassword
+        in: query
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Saved
+        "400":
+          description: Invalid input, bad request
+  /resetDatabase:
+    post:
+      tags:
+      - Backend
+      summary: Reset the database
+      description: Reset the database, clear everything except admin user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Reset
+        "400":
+          description: Invalid input, bad request
+  /clearDatabase:
+    post:
+      tags:
+      - Backend
+      summary: Clear the database
+      description: Clear the database, but leave the initial data in it
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Cleared
+        "400":
+          description: Invalid input, bad request
+  /users:
+    get:
+      tags:
+      - Backend
+      summary: Get all users' information
+      description: Get all users' information
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDB'
+        "400":
+          description: Invalid input, bad request
+  /exerciseModels:
+    get:
+      tags:
+      - Backend
+      summary: Get all exercises' information
+      description: Get all exercises' information
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: ExerciseModels
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ExerciseModelDTO'
+        "400":
+          description: Invalid input, bad request
+  /uploadExerciseModel:
+    post:
+      tags:
+      - Backend
+      summary: Upload a new exercise
+      description: Upload a new exercise
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: exercise
+        required: true
+        schema:
+          $ref: '#/definitions/ExerciseModelDTO'
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid input, bad request
+  /deleteExerciseModel:
+    post:
+      tags:
+      - Backend
+      summary: Delete an exercise
+      description: Delete an exercise
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: primaryId
+        in: query
+        required: true
+        type: string
+        format: uuid
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid input, bad request

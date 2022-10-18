@@ -397,6 +397,185 @@ open class BackendAPI {
     }
 
     /**
+     Clear the database
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Void
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func clearDatabasePost(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = clearDatabasePostWithRequestBuilder().execute(apiResponseQueue) { result in
+                    switch result {
+                    case .success:
+                        continuation.resume(returning: ())
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Clear the database
+     - POST /clearDatabase
+     - Clear the database, but leave the initial data in it
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - returns: RequestBuilder<Void> 
+     */
+    open class func clearDatabasePostWithRequestBuilder() -> RequestBuilder<Void> {
+        let localVariablePath = "/clearDatabase"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Delete an exercise
+     
+     - parameter primaryId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Void
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func deleteExerciseModelPost(primaryId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = deleteExerciseModelPostWithRequestBuilder(primaryId: primaryId).execute(apiResponseQueue) { result in
+                    switch result {
+                    case .success:
+                        continuation.resume(returning: ())
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Delete an exercise
+     - POST /deleteExerciseModel
+     - Delete an exercise
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter primaryId: (query)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteExerciseModelPostWithRequestBuilder(primaryId: UUID) -> RequestBuilder<Void> {
+        let localVariablePath = "/deleteExerciseModel"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "primaryId": primaryId.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Get all exercises' information
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: [ExerciseModelDTO]
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func exerciseModelsGet(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws -> [ExerciseModelDTO] {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = exerciseModelsGetWithRequestBuilder().execute(apiResponseQueue) { result in
+                    switch result {
+                    case let .success(response):
+                        continuation.resume(returning: response.body)
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Get all exercises' information
+     - GET /exerciseModels
+     - Get all exercises' information
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - returns: RequestBuilder<[ExerciseModelDTO]> 
+     */
+    open class func exerciseModelsGetWithRequestBuilder() -> RequestBuilder<[ExerciseModelDTO]> {
+        let localVariablePath = "/exerciseModels"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[ExerciseModelDTO]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Send a recovery email to an existing user
      
      - parameter email: (query)  
@@ -762,6 +941,130 @@ open class BackendAPI {
     }
 
     /**
+     Reset the database
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Void
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func resetDatabasePost(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = resetDatabasePostWithRequestBuilder().execute(apiResponseQueue) { result in
+                    switch result {
+                    case .success:
+                        continuation.resume(returning: ())
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Reset the database
+     - POST /resetDatabase
+     - Reset the database, clear everything except admin user
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - returns: RequestBuilder<Void> 
+     */
+    open class func resetDatabasePostWithRequestBuilder() -> RequestBuilder<Void> {
+        let localVariablePath = "/resetDatabase"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Forgotten password
+     
+     - parameter requestId: (query)  
+     - parameter newPassword: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Void
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func saveNewPasswordPost(requestId: UUID, newPassword: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = saveNewPasswordPostWithRequestBuilder(requestId: requestId, newPassword: newPassword).execute(apiResponseQueue) { result in
+                    switch result {
+                    case .success:
+                        continuation.resume(returning: ())
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Forgotten password
+     - POST /saveNewPassword
+     - Reset a forgotten pasword
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter requestId: (query)  
+     - parameter newPassword: (query)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func saveNewPasswordPostWithRequestBuilder(requestId: UUID, newPassword: String) -> RequestBuilder<Void> {
+        let localVariablePath = "/saveNewPassword"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "requestId": requestId.encodeToJSON(),
+            "newPassword": newPassword.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Search a user
      
      - parameter name: (query)  
@@ -880,6 +1183,66 @@ open class BackendAPI {
     }
 
     /**
+     Upload a new exercise
+     
+     - parameter exercise: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Void
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func uploadExerciseModelPost(exercise: ExerciseModelDTO, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = uploadExerciseModelPostWithRequestBuilder(exercise: exercise).execute(apiResponseQueue) { result in
+                    switch result {
+                    case .success:
+                        continuation.resume(returning: ())
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Upload a new exercise
+     - POST /uploadExerciseModel
+     - Upload a new exercise
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter exercise: (body)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func uploadExerciseModelPostWithRequestBuilder(exercise: ExerciseModelDTO) -> RequestBuilder<Void> {
+        let localVariablePath = "/uploadExerciseModel"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: exercise)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Image gathering
      
      - parameter chatId: (query)  
@@ -938,6 +1301,64 @@ open class BackendAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<String>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Get all users' information
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: [UserDB]
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func usersGet(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws -> [UserDB] {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = usersGetWithRequestBuilder().execute(apiResponseQueue) { result in
+                    switch result {
+                    case let .success(response):
+                        continuation.resume(returning: response.body)
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Get all users' information
+     - GET /users
+     - Get all users' information
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - returns: RequestBuilder<[UserDB]> 
+     */
+    open class func usersGetWithRequestBuilder() -> RequestBuilder<[UserDB]> {
+        let localVariablePath = "/users"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[UserDB]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

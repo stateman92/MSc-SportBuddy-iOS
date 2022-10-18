@@ -5,8 +5,8 @@
 //  Created by Kristof Kalai on 2022. 10. 12..
 //
 
-struct Characteristics {
-    enum CharacteristicsType {
+struct Characteristics: Codable {
+    enum CharacteristicsType: String, Codable {
         case arms
         case legs
     }
