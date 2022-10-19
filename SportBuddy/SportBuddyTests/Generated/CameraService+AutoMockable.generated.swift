@@ -9,6 +9,11 @@ import SFSafeSymbols
 @testable import SportBuddy
 
 class CameraServiceMock: CameraService {
+    var videoSize: CGSize {
+        get { return underlyingVideoSize }
+        set(value) { underlyingVideoSize = value }
+    }
+    var underlyingVideoSize: CGSize!
 
     //MARK: - set
 

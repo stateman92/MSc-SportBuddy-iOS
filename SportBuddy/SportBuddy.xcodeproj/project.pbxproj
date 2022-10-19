@@ -104,20 +104,6 @@
 		5828B54B27F4DFAA0079A727 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828B54A27F4DFAA0079A727 /* LoginViewModel.swift */; };
 		582939602820744300CAF83A /* Data+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5829395F2820744300CAF83A /* Data+DI.swift */; };
 		582DF7AA28F303ED0080662C /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7A928F303ED0080662C /* QueueTests.swift */; };
-		582DF7E028F319E00080662C /* CopyService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D128F319DF0080662C /* CopyService+AutoMockable.generated.swift */; };
-		582DF7E128F319E00080662C /* LoadingService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D228F319DF0080662C /* LoadingService+AutoMockable.generated.swift */; };
-		582DF7E228F319E00080662C /* LoggingService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D328F319DF0080662C /* LoggingService+AutoMockable.generated.swift */; };
-		582DF7E328F319E00080662C /* ToastService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D428F319DF0080662C /* ToastService+AutoMockable.generated.swift */; };
-		582DF7E428F319E00080662C /* TranslatorService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D528F319DF0080662C /* TranslatorService+AutoMockable.generated.swift */; };
-		582DF7E528F319E00080662C /* SystemImageService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D628F319DF0080662C /* SystemImageService+AutoMockable.generated.swift */; };
-		582DF7E628F319E00080662C /* LoadingOverlayService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D728F319E00080662C /* LoadingOverlayService+AutoMockable.generated.swift */; };
-		582DF7E728F319E00080662C /* DateFormatterService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D828F319E00080662C /* DateFormatterService+AutoMockable.generated.swift */; };
-		582DF7E828F319E00080662C /* MLService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7D928F319E00080662C /* MLService+AutoMockable.generated.swift */; };
-		582DF7E928F319E00080662C /* CameraService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7DA28F319E00080662C /* CameraService+AutoMockable.generated.swift */; };
-		582DF7EA28F319E00080662C /* ConnectivityService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7DB28F319E00080662C /* ConnectivityService+AutoMockable.generated.swift */; };
-		582DF7EB28F319E00080662C /* NotificationService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7DC28F319E00080662C /* NotificationService+AutoMockable.generated.swift */; };
-		582DF7ED28F319E00080662C /* AnimationService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7DE28F319E00080662C /* AnimationService+AutoMockable.generated.swift */; };
-		582DF7EE28F319E00080662C /* ToastOverlayService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582DF7DF28F319E00080662C /* ToastOverlayService+AutoMockable.generated.swift */; };
 		5832043B27FE2959009A4644 /* MLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832042727FE2959009A4644 /* MLService.swift */; };
 		5832043C27FE2959009A4644 /* MLServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832042827FE2959009A4644 /* MLServiceImpl.swift */; };
 		5832043D27FE2959009A4644 /* MLPoseLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832042A27FE2959009A4644 /* MLPoseLandmark.swift */; };
@@ -127,6 +113,22 @@
 		5832044927FE2959009A4644 /* PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043827FE2959009A4644 /* PathComponent.swift */; };
 		5832044A27FE2959009A4644 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043927FE2959009A4644 /* InputType.swift */; };
 		5832044B27FE2959009A4644 /* BoneEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832043A27FE2959009A4644 /* BoneEndpoint.swift */; };
+		583922462900270100ACFE81 /* LoadingService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922362900270000ACFE81 /* LoadingService+AutoMockable.generated.swift */; };
+		583922472900270100ACFE81 /* LoggingService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922372900270000ACFE81 /* LoggingService+AutoMockable.generated.swift */; };
+		583922482900270100ACFE81 /* MLService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922382900270000ACFE81 /* MLService+AutoMockable.generated.swift */; };
+		583922492900270100ACFE81 /* SystemImageService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922392900270000ACFE81 /* SystemImageService+AutoMockable.generated.swift */; };
+		5839224A2900270100ACFE81 /* LoadingOverlayService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5839223A2900270000ACFE81 /* LoadingOverlayService+AutoMockable.generated.swift */; };
+		5839224B2900270100ACFE81 /* AnimationService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5839223B2900270000ACFE81 /* AnimationService+AutoMockable.generated.swift */; };
+		5839224C2900270100ACFE81 /* CameraService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5839223C2900270000ACFE81 /* CameraService+AutoMockable.generated.swift */; };
+		5839224D2900270100ACFE81 /* DateFormatterService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5839223D2900270000ACFE81 /* DateFormatterService+AutoMockable.generated.swift */; };
+		5839224E2900270100ACFE81 /* SpeechService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5839223E2900270000ACFE81 /* SpeechService+AutoMockable.generated.swift */; };
+		5839224F2900270100ACFE81 /* ToastService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5839223F2900270000ACFE81 /* ToastService+AutoMockable.generated.swift */; };
+		583922502900270100ACFE81 /* TranslatorService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922402900270000ACFE81 /* TranslatorService+AutoMockable.generated.swift */; };
+		583922512900270100ACFE81 /* NotificationService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922412900270000ACFE81 /* NotificationService+AutoMockable.generated.swift */; };
+		583922522900270100ACFE81 /* CopyService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922422900270100ACFE81 /* CopyService+AutoMockable.generated.swift */; };
+		583922532900270100ACFE81 /* ConnectivityService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922432900270100ACFE81 /* ConnectivityService+AutoMockable.generated.swift */; };
+		583922542900270100ACFE81 /* MLEngine+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922442900270100ACFE81 /* MLEngine+AutoMockable.generated.swift */; };
+		583922552900270100ACFE81 /* ToastOverlayService+AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583922452900270100ACFE81 /* ToastOverlayService+AutoMockable.generated.swift */; };
 		58394B4028FF74910081AAA2 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 58394B3F28FF74910081AAA2 /* YouTubeiOSPlayerHelper */; };
 		58394B4228FF74B70081AAA2 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58394B4128FF74B70081AAA2 /* VideoPlayerView.swift */; };
 		58394B9228FFF7C30081AAA2 /* OpenISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58394B7728FFF7C00081AAA2 /* OpenISO8601DateFormatter.swift */; };
@@ -555,20 +557,6 @@
 		5828B54A27F4DFAA0079A727 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		5829395F2820744300CAF83A /* Data+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+DI.swift"; sourceTree = "<group>"; };
 		582DF7A928F303ED0080662C /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
-		582DF7D128F319DF0080662C /* CopyService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CopyService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D228F319DF0080662C /* LoadingService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D328F319DF0080662C /* LoggingService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoggingService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D428F319DF0080662C /* ToastService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D528F319DF0080662C /* TranslatorService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TranslatorService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D628F319DF0080662C /* SystemImageService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SystemImageService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D728F319E00080662C /* LoadingOverlayService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingOverlayService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D828F319E00080662C /* DateFormatterService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatterService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7D928F319E00080662C /* MLService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7DA28F319E00080662C /* CameraService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CameraService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7DB28F319E00080662C /* ConnectivityService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectivityService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7DC28F319E00080662C /* NotificationService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7DE28F319E00080662C /* AnimationService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
-		582DF7DF28F319E00080662C /* ToastOverlayService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastOverlayService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		5832042727FE2959009A4644 /* MLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLService.swift; sourceTree = "<group>"; };
 		5832042827FE2959009A4644 /* MLServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLServiceImpl.swift; sourceTree = "<group>"; };
 		5832042A27FE2959009A4644 /* MLPoseLandmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPoseLandmark.swift; sourceTree = "<group>"; };
@@ -578,6 +566,22 @@
 		5832043827FE2959009A4644 /* PathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
 		5832043927FE2959009A4644 /* InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
 		5832043A27FE2959009A4644 /* BoneEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoneEndpoint.swift; sourceTree = "<group>"; };
+		583922362900270000ACFE81 /* LoadingService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922372900270000ACFE81 /* LoggingService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoggingService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922382900270000ACFE81 /* MLService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922392900270000ACFE81 /* SystemImageService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SystemImageService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5839223A2900270000ACFE81 /* LoadingOverlayService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingOverlayService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5839223B2900270000ACFE81 /* AnimationService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5839223C2900270000ACFE81 /* CameraService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CameraService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5839223D2900270000ACFE81 /* DateFormatterService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatterService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5839223E2900270000ACFE81 /* SpeechService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpeechService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		5839223F2900270000ACFE81 /* ToastService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922402900270000ACFE81 /* TranslatorService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TranslatorService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922412900270000ACFE81 /* NotificationService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922422900270100ACFE81 /* CopyService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CopyService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922432900270100ACFE81 /* ConnectivityService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConnectivityService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922442900270100ACFE81 /* MLEngine+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLEngine+AutoMockable.generated.swift"; sourceTree = "<group>"; };
+		583922452900270100ACFE81 /* ToastOverlayService+AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastOverlayService+AutoMockable.generated.swift"; sourceTree = "<group>"; };
 		58394B4128FF74B70081AAA2 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		58394B7728FFF7C00081AAA2 /* OpenISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenISO8601DateFormatter.swift; sourceTree = "<group>"; };
 		58394B7828FFF7C00081AAA2 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -2884,20 +2888,22 @@
 		58EBF1ED27FBB5F200BA81CB /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				582DF7DE28F319E00080662C /* AnimationService+AutoMockable.generated.swift */,
-				582DF7DA28F319E00080662C /* CameraService+AutoMockable.generated.swift */,
-				582DF7DB28F319E00080662C /* ConnectivityService+AutoMockable.generated.swift */,
-				582DF7D128F319DF0080662C /* CopyService+AutoMockable.generated.swift */,
-				582DF7D828F319E00080662C /* DateFormatterService+AutoMockable.generated.swift */,
-				582DF7D728F319E00080662C /* LoadingOverlayService+AutoMockable.generated.swift */,
-				582DF7D228F319DF0080662C /* LoadingService+AutoMockable.generated.swift */,
-				582DF7D328F319DF0080662C /* LoggingService+AutoMockable.generated.swift */,
-				582DF7D928F319E00080662C /* MLService+AutoMockable.generated.swift */,
-				582DF7DC28F319E00080662C /* NotificationService+AutoMockable.generated.swift */,
-				582DF7D628F319DF0080662C /* SystemImageService+AutoMockable.generated.swift */,
-				582DF7DF28F319E00080662C /* ToastOverlayService+AutoMockable.generated.swift */,
-				582DF7D428F319DF0080662C /* ToastService+AutoMockable.generated.swift */,
-				582DF7D528F319DF0080662C /* TranslatorService+AutoMockable.generated.swift */,
+				5839223B2900270000ACFE81 /* AnimationService+AutoMockable.generated.swift */,
+				5839223C2900270000ACFE81 /* CameraService+AutoMockable.generated.swift */,
+				583922432900270100ACFE81 /* ConnectivityService+AutoMockable.generated.swift */,
+				583922422900270100ACFE81 /* CopyService+AutoMockable.generated.swift */,
+				5839223D2900270000ACFE81 /* DateFormatterService+AutoMockable.generated.swift */,
+				5839223A2900270000ACFE81 /* LoadingOverlayService+AutoMockable.generated.swift */,
+				583922362900270000ACFE81 /* LoadingService+AutoMockable.generated.swift */,
+				583922372900270000ACFE81 /* LoggingService+AutoMockable.generated.swift */,
+				583922442900270100ACFE81 /* MLEngine+AutoMockable.generated.swift */,
+				583922382900270000ACFE81 /* MLService+AutoMockable.generated.swift */,
+				583922412900270000ACFE81 /* NotificationService+AutoMockable.generated.swift */,
+				5839223E2900270000ACFE81 /* SpeechService+AutoMockable.generated.swift */,
+				583922392900270000ACFE81 /* SystemImageService+AutoMockable.generated.swift */,
+				583922452900270100ACFE81 /* ToastOverlayService+AutoMockable.generated.swift */,
+				5839223F2900270000ACFE81 /* ToastService+AutoMockable.generated.swift */,
+				583922402900270000ACFE81 /* TranslatorService+AutoMockable.generated.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -3805,27 +3811,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				582DF7E428F319E00080662C /* TranslatorService+AutoMockable.generated.swift in Sources */,
-				582DF7E228F319E00080662C /* LoggingService+AutoMockable.generated.swift in Sources */,
-				582DF7E628F319E00080662C /* LoadingOverlayService+AutoMockable.generated.swift in Sources */,
-				582DF7E328F319E00080662C /* ToastService+AutoMockable.generated.swift in Sources */,
-				582DF7E728F319E00080662C /* DateFormatterService+AutoMockable.generated.swift in Sources */,
+				583922542900270100ACFE81 /* MLEngine+AutoMockable.generated.swift in Sources */,
+				583922472900270100ACFE81 /* LoggingService+AutoMockable.generated.swift in Sources */,
+				5839224A2900270100ACFE81 /* LoadingOverlayService+AutoMockable.generated.swift in Sources */,
+				583922522900270100ACFE81 /* CopyService+AutoMockable.generated.swift in Sources */,
 				58C3ECC0281AAE7600DBD5BB /* ThrottlingTests.swift in Sources */,
-				582DF7EB28F319E00080662C /* NotificationService+AutoMockable.generated.swift in Sources */,
 				582DF7AA28F303ED0080662C /* QueueTests.swift in Sources */,
 				58EBF1F427FBB66E00BA81CB /* BaseTestCase.swift in Sources */,
-				582DF7E828F319E00080662C /* MLService+AutoMockable.generated.swift in Sources */,
-				582DF7EE28F319E00080662C /* ToastOverlayService+AutoMockable.generated.swift in Sources */,
-				582DF7E028F319E00080662C /* CopyService+AutoMockable.generated.swift in Sources */,
-				582DF7EA28F319E00080662C /* ConnectivityService+AutoMockable.generated.swift in Sources */,
-				582DF7E128F319E00080662C /* LoadingService+AutoMockable.generated.swift in Sources */,
+				583922502900270100ACFE81 /* TranslatorService+AutoMockable.generated.swift in Sources */,
+				583922532900270100ACFE81 /* ConnectivityService+AutoMockable.generated.swift in Sources */,
+				583922552900270100ACFE81 /* ToastOverlayService+AutoMockable.generated.swift in Sources */,
 				58EBF1F727FBB68700BA81CB /* Mock+DI.swift in Sources */,
+				583922492900270100ACFE81 /* SystemImageService+AutoMockable.generated.swift in Sources */,
+				583922462900270100ACFE81 /* LoadingService+AutoMockable.generated.swift in Sources */,
+				5839224B2900270100ACFE81 /* AnimationService+AutoMockable.generated.swift in Sources */,
 				58EBF20427FBB6B500BA81CB /* LoadingServiceTests.swift in Sources */,
-				582DF7ED28F319E00080662C /* AnimationService+AutoMockable.generated.swift in Sources */,
 				58E6FFE128F3879100A60F4F /* CacheTests.swift in Sources */,
-				582DF7E528F319E00080662C /* SystemImageService+AutoMockable.generated.swift in Sources */,
-				582DF7E928F319E00080662C /* CameraService+AutoMockable.generated.swift in Sources */,
+				583922482900270100ACFE81 /* MLService+AutoMockable.generated.swift in Sources */,
+				5839224C2900270100ACFE81 /* CameraService+AutoMockable.generated.swift in Sources */,
+				5839224F2900270100ACFE81 /* ToastService+AutoMockable.generated.swift in Sources */,
+				5839224E2900270100ACFE81 /* SpeechService+AutoMockable.generated.swift in Sources */,
 				58EBF1FA27FBB69A00BA81CB /* XCTestCase+Extensions.swift in Sources */,
+				583922512900270100ACFE81 /* NotificationService+AutoMockable.generated.swift in Sources */,
+				5839224D2900270100ACFE81 /* DateFormatterService+AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

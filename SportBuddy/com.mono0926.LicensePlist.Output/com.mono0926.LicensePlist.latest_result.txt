@@ -150,21 +150,21 @@ name: SwiftLint, nameSpecified:
 body: The MIT License (MIT…
 version: 0.49.1
 
-name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 4.9.1, source: https://github.com/Alamofire/Alamofire
+name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 5.6.2, source: https://github.com/Alamofire/Alamofire
 
-name: Kingfisher, nameSpecified: Kingfisher, owner: onevcat, version: 7.2.0, source: https://github.com/onevcat/Kingfisher
-
-name: lottie-ios, nameSpecified: Lottie, owner: airbnb, version: 3.3.0, source: https://github.com/airbnb/lottie-ios
+name: lottie-ios, nameSpecified: Lottie, owner: airbnb, version: 3.4.4, source: https://github.com/airbnb/lottie-ios
 
 name: Resolver, nameSpecified: Resolver, owner: hmlongco, version: 1.5.0, source: https://github.com/hmlongco/Resolver
 
-name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: SFSafeSymbols, version: 3.3.1, source: https://github.com/SFSafeSymbols/SFSafeSymbols
+name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: SFSafeSymbols, version: 4.0.0, source: https://github.com/SFSafeSymbols/SFSafeSymbols
 
 name: Starscream, nameSpecified: Starscream, owner: daltoniam, version: 4.0.4, source: https://github.com/daltoniam/Starscream
 
-name: Valet, nameSpecified: Valet, owner: Square, version: 4.1.2, source: https://github.com/Square/Valet
+name: Valet, nameSpecified: Valet, owner: Square, version: 4.1.3, source: https://github.com/Square/Valet
 
-name: VisualEffectView, nameSpecified: VisualEffectView, owner: efremidze, version: 4.1.3, source: https://github.com/efremidze/VisualEffectView
+name: VisualEffectView, nameSpecified: VisualEffectView, owner: efremidze, version: 4.1.4, source: https://github.com/efremidze/VisualEffectView
+
+name: youtube-ios-player-helper, nameSpecified: YouTubeiOSPlayerHelper, owner: youtube, version: 1.0.4, source: https://github.com/youtube/youtube-ios-player-helper
 
 add-version-numbers: false
 
