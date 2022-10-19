@@ -238,10 +238,16 @@ definitions:
           $ref: '#/definitions/ExerciseErrorDTO'
   ExerciseModelDTO:
     required:
+    - id
     - sequence
     - sequenceCount
     - delay
+    - videoId
     properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
       sequence:
         type: array
         items:
@@ -252,6 +258,10 @@ definitions:
       delay:
         type: number
         format: double
+      videoId:
+        type: string
+        description: the 11 character long id of the YouTube video
+        example: dQw4w9WgXcQ
 
 paths:
   /login:

@@ -12,29 +12,38 @@ import AnyCodable
 
 public struct ExerciseModelDTO: Codable, JSONEncodable, Hashable {
 
+    public var id: UUID
     public var sequence: [ExerciseMomentDTO]
     public var sequenceCount: Int
     public var delay: Double
+    /** the 11 character long id of the YouTube video */
+    public var videoId: String
 
-    public init(sequence: [ExerciseMomentDTO], sequenceCount: Int, delay: Double) {
+    public init(id: UUID, sequence: [ExerciseMomentDTO], sequenceCount: Int, delay: Double, videoId: String) {
+        self.id = id
         self.sequence = sequence
         self.sequenceCount = sequenceCount
         self.delay = delay
+        self.videoId = videoId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
         case sequence
         case sequenceCount
         case delay
+        case videoId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encode(sequence, forKey: .sequence)
         try container.encode(sequenceCount, forKey: .sequenceCount)
         try container.encode(delay, forKey: .delay)
+        try container.encode(videoId, forKey: .videoId)
     }
 }
 

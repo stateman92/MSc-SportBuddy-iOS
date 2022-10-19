@@ -10,6 +10,8 @@ import Combine
 
 /// A protocol for handling the camera.
 protocol CameraService: Initable, AutoMockable {
+    var videoSize: CGSize { get set }
+
     /// Set the preview layer for the camera.
     /// - Parameters:
     ///   - videoPreviewLayer: the preview layer.

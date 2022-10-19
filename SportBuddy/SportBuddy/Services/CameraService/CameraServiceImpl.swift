@@ -33,11 +33,11 @@ final class CameraServiceImpl {
 
     // MARK: Properties
 
+    var videoSize = CGSize(width: 1080, height: 1920)
     private let captureSession = AVCaptureSession()
     private let dataOutput = AVCaptureVideoDataOutput(alwaysDiscardsLateVideoFrames: true)
     private let dataOutputQueue = DispatchQueue(label: "dataOutputQueue")
     private let photoOutput = AVCapturePhotoOutput()
-    private var videoSize = CGSize(width: 1080, height: 1920)
     private var isBackCameraInOperation = true
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var skeletonShouldUpdated: ([BoneEndpoint]) -> Void = { _ in }
@@ -135,7 +135,7 @@ extension CameraServiceImpl {
             return
         }
 
-        videoSize = videoDeviceInput.size
+//        videoSize = videoDeviceInput.size
         videoDeviceInput.device.configure { $0.tryToSet(focusMode: .continuousAutoFocus) }
 
         dataOutput.connections.first?.isVideoMirrored = !isBackCameraInOperation

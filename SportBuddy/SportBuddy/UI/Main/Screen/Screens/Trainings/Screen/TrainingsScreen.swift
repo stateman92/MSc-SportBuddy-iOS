@@ -26,6 +26,11 @@ extension TrainingsScreen {
         super.setupView()
         setupCameraView()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        cameraService.videoSize = cameraView.bounds.size
+    }
 }
 
 // MARK: - Setups

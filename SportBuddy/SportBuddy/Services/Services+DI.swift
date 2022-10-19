@@ -25,6 +25,7 @@ extension DependencyInjector {
         register(service: NavigatorServiceImpl(rootViewController: resolve() as OnboardingScreen),
                  implements: NavigatorService.self)
         register(service: NotificationServiceImpl(), implements: NotificationService.self)
+        register(service: SpeechServiceImpl(), implements: SpeechService.self)
         register(service: SystemImageServiceImpl(), implements: SystemImageService.self)
         register(service: TranslatorServiceImpl(), implements: TranslatorService.self)
 
