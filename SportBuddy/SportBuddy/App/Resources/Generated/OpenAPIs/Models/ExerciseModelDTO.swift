@@ -18,13 +18,19 @@ public struct ExerciseModelDTO: Codable, JSONEncodable, Hashable {
     public var delay: Double
     /** the 11 character long id of the YouTube video */
     public var videoId: String
+    /** the identifier of the client side text */
+    public var name: String
+    /** the identifier of the client side text */
+    public var details: String?
 
-    public init(id: UUID, sequence: [ExerciseMomentDTO], sequenceCount: Int, delay: Double, videoId: String) {
+    public init(id: UUID, sequence: [ExerciseMomentDTO], sequenceCount: Int, delay: Double, videoId: String, name: String, details: String? = nil) {
         self.id = id
         self.sequence = sequence
         self.sequenceCount = sequenceCount
         self.delay = delay
         self.videoId = videoId
+        self.name = name
+        self.details = details
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -33,6 +39,8 @@ public struct ExerciseModelDTO: Codable, JSONEncodable, Hashable {
         case sequenceCount
         case delay
         case videoId
+        case name
+        case details
     }
 
     // Encodable protocol methods
@@ -44,6 +52,8 @@ public struct ExerciseModelDTO: Codable, JSONEncodable, Hashable {
         try container.encode(sequenceCount, forKey: .sequenceCount)
         try container.encode(delay, forKey: .delay)
         try container.encode(videoId, forKey: .videoId)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(details, forKey: .details)
     }
 }
 

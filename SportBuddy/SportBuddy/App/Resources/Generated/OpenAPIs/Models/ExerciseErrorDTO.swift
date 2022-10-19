@@ -13,6 +13,7 @@ import AnyCodable
 public struct ExerciseErrorDTO: Codable, JSONEncodable, Hashable {
 
     public var characteristics: CharacteristicsDTO
+    /** the identifier of the client side text */
     public var error: String
 
     public init(characteristics: CharacteristicsDTO, error: String) {

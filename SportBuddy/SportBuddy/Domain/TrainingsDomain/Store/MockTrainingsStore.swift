@@ -9,4 +9,8 @@ final class MockTrainingsStore: DomainImpl { }
 
 // MARK: - TrainingsStore
 
-extension MockTrainingsStore: TrainingsStore { }
+extension MockTrainingsStore: TrainingsStore {
+    func getExercises() -> DomainStorePublisher<[ExerciseModel]> {
+        .just(.mock).autoEraseOnMain()
+    }
+}

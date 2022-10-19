@@ -13,6 +13,6 @@ final class MockChatsStore: DomainImpl { }
 
 extension MockChatsStore: ChatsStore {
     func getChats() -> DomainStorePublisher<[ChatDTO]> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 }

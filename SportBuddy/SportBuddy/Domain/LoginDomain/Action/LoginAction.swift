@@ -26,7 +26,4 @@ protocol LoginAction {
     /// - Parameters:
     ///   - email: the user's email.
     func forgotPassword(email: String) -> DomainActionPublisher
-
-    /// Call to login the user with google services.
-    func loginWithGoogle() -> DomainActionPublisher
 }

@@ -15,18 +15,12 @@ extension MockLoginAction: LoginAction {
     ///   - email: the user's email.
     ///   - password: the user's password.
     func login(email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<UserResponseDTO> in
-            await wait()
-            return .success(.mock)
-        }
+        mockAction
     }
 
     /// Refresh the stored token.
     func refreshToken() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 
     /// Call to sign up the user.
@@ -35,24 +29,13 @@ extension MockLoginAction: LoginAction {
     ///   - email: the user's email.
     ///   - password: the user's password.
     func signUp(name: String, email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<UserResponseDTO> in
-            await wait()
-            return .success(.mock)
-        }
+        mockAction
     }
 
     /// Call to sign that the user forgot the password.
     /// - Parameters:
     ///   - email: the user's email.
     func forgotPassword(email: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
-    }
-
-    /// Call to login the user with google services.
-    func loginWithGoogle() -> DomainActionPublisher {
         deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
             await wait()
             return .success(())

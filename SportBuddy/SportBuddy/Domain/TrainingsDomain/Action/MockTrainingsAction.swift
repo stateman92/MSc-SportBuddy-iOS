@@ -9,4 +9,8 @@ final class MockTrainingsAction: DomainImpl { }
 
 // MARK: - TrainingsAction
 
-extension MockTrainingsAction: TrainingsAction { }
+extension MockTrainingsAction: TrainingsAction {
+    func refreshExerciseModels() -> DomainActionPublisher {
+        mockAction
+    }
+}

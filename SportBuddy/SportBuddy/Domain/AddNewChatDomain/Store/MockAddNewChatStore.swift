@@ -14,10 +14,10 @@ final class MockAddNewChatStore: DomainImpl { }
 extension MockAddNewChatStore: AddNewChatStore {
     /// The searched users.
     var searchedUsers: DomainStorePublisher<[UserDTO]> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 
     var chats: DomainStorePublisher<[ChatDTO]> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 }

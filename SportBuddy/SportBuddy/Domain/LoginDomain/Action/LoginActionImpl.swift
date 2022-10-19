@@ -20,12 +20,12 @@ extension LoginActionImpl: LoginAction {
     ///   - email: the user's email.
     ///   - password: the user's password.
     func login(email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
+        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<Void> in
             do {
                 let result = try await BackendAPI.loginPost(email: email, password: password)
                 userCache.save(item: .init(user: result.user))
                 tokenCache.save(item: .init(token: result.token))
-                return .success(result)
+                return .success(())
             } catch {
                 return .failure(error)
             }
@@ -54,12 +54,12 @@ extension LoginActionImpl: LoginAction {
     ///   - email: the user's email.
     ///   - password: the user's password.
     func signUp(name: String, email: String, password: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<UserResponseDTO> in
+        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<Void> in
             do {
                 let result = try await BackendAPI.registerPost(name: name, email: email, password: password)
                 userCache.save(item: .init(user: result.user))
                 tokenCache.save(item: .init(token: result.token))
-                return .success(result)
+                return .success(())
             } catch {
                 return .failure(error)
             }
@@ -77,13 +77,6 @@ extension LoginActionImpl: LoginAction {
             } catch {
                 return .failure(error)
             }
-        }
-    }
-
-    /// Call to login the user with google services.
-    func loginWithGoogle() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
-                .success(())
         }
     }
 }

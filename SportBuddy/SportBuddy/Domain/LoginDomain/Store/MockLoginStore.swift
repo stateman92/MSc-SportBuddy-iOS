@@ -15,12 +15,12 @@ final class MockLoginStore: DomainImpl { }
 extension MockLoginStore: LoginStore {
     /// The current user.
     var currentUser: DomainStorePublisher<UserDTO> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 
     /// The token.
     var token: DomainStorePublisher<UUID?> {
-        Just(nil).autoEraseOnMain()
+        .just(nil).autoEraseOnMain()
     }
 
     var immediateToken: UUID? {

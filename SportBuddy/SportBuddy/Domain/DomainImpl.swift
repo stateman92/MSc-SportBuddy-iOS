@@ -51,6 +51,13 @@ extension DomainImpl {
             }
         }
     }
+
+    var mockAction: DomainActionPublisher {
+        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
+            await wait()
+            return .success(())
+        }
+    }
 }
 
 // MARK: - Private methods

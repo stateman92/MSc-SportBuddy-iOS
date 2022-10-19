@@ -88,3 +88,21 @@ extension LanguageSettings: Mockable {
         .system
     }
 }
+
+extension ExerciseModel: Mockable {
+    static var mock: Self {
+        .init(id: .mock,
+              sequence: .init(),
+              sequenceCount: .mock,
+              delay: .mock,
+              videoId: .mock,
+              name: .mock,
+              details: .mock)
+    }
+}
+
+extension Double: Mockable {
+    static var mock: Self {
+        .zero
+    }
+}

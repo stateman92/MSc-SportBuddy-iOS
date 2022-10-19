@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct ExerciseModel: Codable {
+struct ExerciseModel: Codable, Equatable {
+    let id: UUID
     let sequence: [ExerciseMoment]
     let sequenceCount: Int
     let delay: TimeInterval
+    let videoId: String
+    let name: String
+    let details: String?
 
     lazy var states: [ExerciseMoment] = {
         var states = [ExerciseMoment]()

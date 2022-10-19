@@ -13,14 +13,14 @@ final class MockSettingsStore: DomainImpl { }
 
 extension MockSettingsStore: SettingsStore {
     func getUser() -> DomainStorePublisher<UserDTO> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 
     func getBatterySavingSettings() -> DomainStorePublisher<Bool> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 
     func getLanguageSettings() -> DomainStorePublisher<LanguageSettings> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 }

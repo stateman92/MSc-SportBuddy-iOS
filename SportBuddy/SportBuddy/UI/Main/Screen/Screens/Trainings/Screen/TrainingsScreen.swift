@@ -5,17 +5,26 @@
 //  Created by Kristof Kalai on 2022. 04. 15..
 //
 
+import UIKit
+
 final class TrainingsScreen:
     TabScreen<TrainingsViewModelState, TrainingsViewModelCommand, TrainingsDomainImpl, TrainingsViewModel> {
     // MARK: Properties
 
-    @LazyInjected private var cameraService: CameraService
-    private let cameraView = CameraSkeletonView()
+    private let tableView = AutoReversedTableView<TrainingsTableViewCell, ExerciseModel>(
+        style: .insetGrouped, reversed: false) { cell, data in
+        cell.setup(with: data)
+    }
 
     // MARK: Initialization
 
     init() {
         super.init(title: L10n.Trainings.title)
+    }
+
+    override func receiveState(_ state: TrainingsViewModelState) {
+        super.receiveState(state)
+        tableView.reloadData([state.exerciseModels])
     }
 }
 
@@ -24,47 +33,30 @@ final class TrainingsScreen:
 extension TrainingsScreen {
     override func setupView() {
         super.setupView()
-        setupCameraView()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        cameraService.videoSize = cameraView.bounds.size
+        setupTableView()
     }
 }
 
 // MARK: - Setups
 
 extension TrainingsScreen {
-    private func setupCameraView() {
-        cameraView.then {
+    private func setupTableView() {
+        tableView.then {
+            $0.delegate = self
+            $0.showsVerticalScrollIndicator = false
+            $0.backgroundColor = .clear
             view.addSubview($0)
-            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
-            cameraService.set(cameraView: $0)
-
-//            cameraService.skeletonShouldUpdate { [weak self] boneEndpoints in
-//                dispatchToMain {
-//                    let skeleton = Skeleton(from: boneEndpoints)
-//                    cameraView.skeleton = skeleton
-//                    self?.sendCommand(.interpret(skeleton))
-//                }
-//            }
-
-//            Task { [unowned self] in
-//                for await endpoints in cameraService.skeletonShouldUpdate() {
-//                    let skeleton = Skeleton(from: endpoints)
-//                    cameraView.skeleton = skeleton
-//                    sendCommand(.interpret(skeleton))
-//                }
-//            }
-
-            cameraService.skeletonShouldUpdate()
-                .map(Skeleton.init(from:))
-                .sink { [unowned self] in
-                    cameraView.skeleton = $0
-                    sendCommand(.interpret($0))
-                }
-                .store(in: &cancellables)
+            $0.anchorToSuperview(top: 8, bottom: -8, leading: 8, trailing: -8, safeArea: true)
         }
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension TrainingsScreen: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.tableView.data(for: indexPath)
+        sendCommand(.select(id: model.id))
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

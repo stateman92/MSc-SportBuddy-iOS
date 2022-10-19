@@ -5,4 +5,6 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-protocol TrainingsStore { }
+protocol TrainingsStore {
+    func getExercises() -> DomainStorePublisher<[ExerciseModel]>
+}

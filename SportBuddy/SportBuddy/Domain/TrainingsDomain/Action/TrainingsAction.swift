@@ -5,4 +5,6 @@
 //  Created by Kristof Kalai on 2022. 05. 01..
 //
 
-protocol TrainingsAction { }
+protocol TrainingsAction {
+    func refreshExerciseModels() -> DomainActionPublisher
+}

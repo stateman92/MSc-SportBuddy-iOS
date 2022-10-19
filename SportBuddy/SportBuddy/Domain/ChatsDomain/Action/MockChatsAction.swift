@@ -11,9 +11,6 @@ final class MockChatsAction: DomainImpl { }
 
 extension MockChatsAction: ChatsAction {
     func getChats() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<[ChatDTO]> in
-            await wait()
-            return .success(.mock)
-        }
+        mockAction
     }
 }

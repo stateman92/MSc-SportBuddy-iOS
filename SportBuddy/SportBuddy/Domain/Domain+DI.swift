@@ -23,6 +23,7 @@ extension DependencyInjector {
         registerMainDomain()
         registerLoginDomain()
         registerOnboardingDomain()
+        registerExerciseDomain()
     }
 }
 
@@ -88,6 +89,13 @@ extension DependencyInjector {
         register(domain: OnboardingActionImpl(), mock: MockOnboardingAction(), implements: OnboardingAction.self)
 
         resolver.register { OnboardingDomainImpl() }
+    }
+
+    private static func registerExerciseDomain() {
+        register(domain: ExerciseStoreImpl(), mock: MockExerciseStore(), implements: ExerciseStore.self)
+        register(domain: ExerciseActionImpl(), mock: MockExerciseAction(), implements: ExerciseAction.self)
+
+        resolver.register { ExerciseDomainImpl() }
     }
 }
 

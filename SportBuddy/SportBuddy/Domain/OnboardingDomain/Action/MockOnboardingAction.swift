@@ -12,9 +12,6 @@ final class MockOnboardingAction: DomainImpl { }
 extension MockOnboardingAction: OnboardingAction {
     /// Refresh the stored token.
     func refreshToken() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 }

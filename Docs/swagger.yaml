@@ -187,11 +187,6 @@ definitions:
       - legs
   CharacteristicsDTO:
     required:
-    - firstHalfPositionType
-    - firstFullPositionType
-    - secondFullPositionType
-    - secondHalfPositionType
-    - distanceType
     - type
     properties:
       firstHalfPositionType:
@@ -222,6 +217,7 @@ definitions:
       error:
         type: string
         example: Unknown error
+        description: the identifier of the client side text
   ExerciseMomentDTO:
     required:
     - armCharacteristics
@@ -243,6 +239,7 @@ definitions:
     - sequenceCount
     - delay
     - videoId
+    - name
     properties:
       id:
         type: string
@@ -262,6 +259,12 @@ definitions:
         type: string
         description: the 11 character long id of the YouTube video
         example: dQw4w9WgXcQ
+      name:
+        type: string
+        description: the identifier of the client side text
+      details:
+        type: string
+        description: the identifier of the client side text
 
 paths:
   /login:

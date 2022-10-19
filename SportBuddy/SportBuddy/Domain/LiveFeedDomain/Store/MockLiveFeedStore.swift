@@ -13,6 +13,6 @@ final class MockLiveFeedStore: DomainImpl { }
 
 extension MockLiveFeedStore: LiveFeedStore {
     func getLiveFeed() -> DomainStorePublisher<[LiveFeedResponseDTO]> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 }

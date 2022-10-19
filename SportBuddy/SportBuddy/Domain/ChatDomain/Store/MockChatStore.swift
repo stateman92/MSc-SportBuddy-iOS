@@ -14,15 +14,15 @@ final class MockChatStore: DomainImpl { }
 
 extension MockChatStore: ChatStore {
     func getChat(id: UUID) -> DomainStorePublisher<ChatDTO> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 
     func getUser() -> DomainStorePublisher<UserDTO> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 
     func getImage(for chatId: UUID) -> DomainStorePublisher<String> {
-        Just(.mock).autoEraseOnMain()
+        .just(.mock).autoEraseOnMain()
     }
 
     var immediateToken: UUID? {

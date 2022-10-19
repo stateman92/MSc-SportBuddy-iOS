@@ -57,6 +57,7 @@ extension SkeletonView {
     private func drawCircle(point: CGPoint, radius: CGFloat = 5, pathComponent: PathComponent) {
         UIBezierPath.circle(center: point, radius: radius).drawWith(pathComponent: pathComponent)
     }
+
     private func drawLine(line: CGLine, pathComponent: PathComponent) {
         UIBezierPath.line(line).drawWith(pathComponent: pathComponent)
     }

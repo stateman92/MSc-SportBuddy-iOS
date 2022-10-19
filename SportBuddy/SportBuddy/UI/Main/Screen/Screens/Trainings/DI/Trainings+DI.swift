@@ -10,5 +10,7 @@ extension DependencyInjector {
     static func registerTrainingsScreen() {
         resolver.register { TrainingsScreen() }
         resolver.register { TrainingsViewModel() }
+
+        registerExerciseScreen()
     }
 }

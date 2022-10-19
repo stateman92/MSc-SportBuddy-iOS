@@ -12,17 +12,11 @@ final class MockAddNewChatAction: DomainImpl { }
 extension MockAddNewChatAction: AddNewChatAction {
     /// Search the registered users.
     func searchUsers(searchTerm: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<[UserDTO]> in
-            await wait()
-            return .success(.mock)
-        }
+        mockAction
     }
 
     /// Clear the searched users
     func clearSearchedUser() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 }

@@ -14,9 +14,6 @@ final class MockChatAction: DomainImpl { }
 
 extension MockChatAction: ChatAction {
     func sendText(toChat: UUID, toRecipient: UUID, message: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 }

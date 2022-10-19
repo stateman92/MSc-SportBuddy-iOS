@@ -23,6 +23,24 @@ class TranslatorServiceMock: TranslatorService {
         startClosure?()
     }
 
+    //MARK: - translation
+
+    var translationOfCallsCount = 0
+    var translationOfCalled: Bool {
+        return translationOfCallsCount > 0
+    }
+    var translationOfReceivedKey: String?
+    var translationOfReceivedInvocations: [String] = []
+    var translationOfReturnValue: String!
+    var translationOfClosure: ((String) -> String)?
+
+    func translation(of key: String) -> String {
+        translationOfCallsCount += 1
+        translationOfReceivedKey = key
+        translationOfReceivedInvocations.append(key)
+        return translationOfClosure.map({ $0(key) }) ?? translationOfReturnValue
+    }
+
     //MARK: - init
 
     var initClosure: (() -> Void)?

@@ -5,6 +5,8 @@
 //  Created by Kristof Kalai on 2022. 04. 30..
 //
 
+import Foundation
+
 enum TrainingsViewModelCommand {
-    case interpret(Skeleton)
+    case select(id: UUID)
 }

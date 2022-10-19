@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseError: Codable {
+struct ExerciseError: Codable, Equatable {
     let characteristics: Characteristics
     let error: String
 }

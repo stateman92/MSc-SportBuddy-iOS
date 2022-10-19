@@ -11,9 +11,6 @@ final class MockLiveFeedAction: DomainImpl { }
 
 extension MockLiveFeedAction: LiveFeedAction {
     func sendText(message: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 }

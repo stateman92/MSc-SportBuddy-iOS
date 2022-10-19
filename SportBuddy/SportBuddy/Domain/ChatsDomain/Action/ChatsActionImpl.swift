@@ -51,11 +51,11 @@ final class ChatsActionImpl: DomainImpl {
 
 extension ChatsActionImpl: ChatsAction {
     func getChats() -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<[ChatDTO]> in
+        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<Void> in
             do {
                 let results = try await BackendAPI.chatEntriesGet()
                 chatsCache.save(item: .init(chats: results))
-                return .success(results)
+                return .success(())
             } catch {
                 return .failure(error)
             }

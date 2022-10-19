@@ -12,6 +12,6 @@ final class TrainingsDomainImpl {
     @LazyInjected var action: TrainingsAction
 }
 
-// MARK: - TrainingsAction
+// MARK: - TrainingsDomain
 
 extension TrainingsDomainImpl: TrainingsDomain { }

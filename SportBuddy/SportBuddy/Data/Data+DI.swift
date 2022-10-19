@@ -21,6 +21,7 @@ extension DependencyInjector {
         register(cache: LiveFeedCache())
         register(cache: SettingsCache())
         register(cache: UserImageCache())
+        register(cache: ExerciseModelsCache())
     }
 
     private static func register<T, S>(cache: T) where T: Cache<S> {

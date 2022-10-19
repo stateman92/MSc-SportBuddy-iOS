@@ -17,11 +17,11 @@ final class AddNewChatActionImpl: DomainImpl {
 extension AddNewChatActionImpl: AddNewChatAction {
     /// Search the registered users.
     func searchUsers(searchTerm: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<[UserDTO]> in
+        deferredFutureOnMainLoading { [unowned self] () -> DomainActionResult<Void> in
             do {
                 let results = try await BackendAPI.searchUserPost(name: searchTerm)
                 searchedUsersCache.save(item: .init(users: results))
-                return .success(results)
+                return .success(())
             } catch {
                 return .failure(error)
             }

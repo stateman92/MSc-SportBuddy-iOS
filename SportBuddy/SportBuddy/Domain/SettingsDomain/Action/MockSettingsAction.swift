@@ -17,31 +17,19 @@ final class MockSettingsAction: DomainImpl {
 
 extension MockSettingsAction: SettingsAction {
     func set(image: String) -> DomainActionPublisher {
-        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 
     func clearImage() -> DomainActionPublisher {
-        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 
     func set(batterySaving: Bool) -> DomainActionPublisher {
-        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 
     func set(languageSettings: LanguageSettings) -> DomainActionPublisher {
-        deferredFutureOnMainLoading(blocking: false) { () -> DomainActionResult<Void> in
-            await wait()
-            return .success(())
-        }
+        mockAction
     }
 
     func logout() -> DomainActionPublisher {

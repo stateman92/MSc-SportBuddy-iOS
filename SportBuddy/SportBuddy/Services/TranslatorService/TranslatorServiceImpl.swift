@@ -28,6 +28,10 @@ extension TranslatorServiceImpl: TranslatorService {
             settingsCache.modify { $0.languageSettings = .en }
         }
     }
+
+    func translation(of key: String) -> String {
+        Self.string(key, nil, key)
+    }
 }
 
 // MARK: - Public methods

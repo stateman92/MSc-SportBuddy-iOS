@@ -11,6 +11,8 @@ import Foundation
 protocol TranslatorService: Initable, AutoMockable {
     /// Set the language based on  first supported language or if none is supported, English.
     func start()
+
+    func translation(of key: String) -> String
 }
 
 extension TranslatorService {

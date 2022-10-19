@@ -12,63 +12,14 @@ import AnyCodable
 
 public struct CharacteristicsDTO: Codable, JSONEncodable, Hashable {
 
-    public enum FirstHalfPositionType: String, Codable, CaseIterable {
-        case around0 = "around0"
-        case around45 = "around45"
-        case around90 = "around90"
-        case around135 = "around135"
-        case around180 = "around180"
-    }
-    public enum FirstFullPositionType: String, Codable, CaseIterable {
-        case around0 = "around0"
-        case around45 = "around45"
-        case around90 = "around90"
-        case around135 = "around135"
-        case around180 = "around180"
-        case around225 = "around225"
-        case around270 = "around270"
-        case around315 = "around315"
-    }
-    public enum SecondFullPositionType: String, Codable, CaseIterable {
-        case around0 = "around0"
-        case around45 = "around45"
-        case around90 = "around90"
-        case around135 = "around135"
-        case around180 = "around180"
-        case around225 = "around225"
-        case around270 = "around270"
-        case around315 = "around315"
-    }
-    public enum SecondHalfPositionType: String, Codable, CaseIterable {
-        case around0 = "around0"
-        case around45 = "around45"
-        case around90 = "around90"
-        case around135 = "around135"
-        case around180 = "around180"
-    }
-    public enum DistanceType: String, Codable, CaseIterable {
-        case around0 = "around0"
-        case around1 = "around1"
-        case around2 = "around2"
-        case around3 = "around3"
-        case around4 = "around4"
-        case aroundminus1 = "aroundMinus1"
-        case aroundminus2 = "aroundMinus2"
-        case aroundminus3 = "aroundMinus3"
-        case aroundminus4 = "aroundMinus4"
-    }
-    public enum ModelType: String, Codable, CaseIterable {
-        case arms = "arms"
-        case legs = "legs"
-    }
-    public var firstHalfPositionType: FirstHalfPositionType
-    public var firstFullPositionType: FirstFullPositionType
-    public var secondFullPositionType: SecondFullPositionType
-    public var secondHalfPositionType: SecondHalfPositionType
-    public var distanceType: DistanceType
-    public var type: ModelType
+    public var firstHalfPositionType: HalfPositionTypeDTO?
+    public var firstFullPositionType: FullPositionTypeDTO?
+    public var secondFullPositionType: FullPositionTypeDTO?
+    public var secondHalfPositionType: HalfPositionTypeDTO?
+    public var distanceType: DistanceTypeDTO?
+    public var type: CharacteristicsTypeDTO
 
-    public init(firstHalfPositionType: FirstHalfPositionType, firstFullPositionType: FirstFullPositionType, secondFullPositionType: SecondFullPositionType, secondHalfPositionType: SecondHalfPositionType, distanceType: DistanceType, type: ModelType) {
+    public init(firstHalfPositionType: HalfPositionTypeDTO? = nil, firstFullPositionType: FullPositionTypeDTO? = nil, secondFullPositionType: FullPositionTypeDTO? = nil, secondHalfPositionType: HalfPositionTypeDTO? = nil, distanceType: DistanceTypeDTO? = nil, type: CharacteristicsTypeDTO) {
         self.firstHalfPositionType = firstHalfPositionType
         self.firstFullPositionType = firstFullPositionType
         self.secondFullPositionType = secondFullPositionType
@@ -90,11 +41,11 @@ public struct CharacteristicsDTO: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(firstHalfPositionType, forKey: .firstHalfPositionType)
-        try container.encode(firstFullPositionType, forKey: .firstFullPositionType)
-        try container.encode(secondFullPositionType, forKey: .secondFullPositionType)
-        try container.encode(secondHalfPositionType, forKey: .secondHalfPositionType)
-        try container.encode(distanceType, forKey: .distanceType)
+        try container.encodeIfPresent(firstHalfPositionType, forKey: .firstHalfPositionType)
+        try container.encodeIfPresent(firstFullPositionType, forKey: .firstFullPositionType)
+        try container.encodeIfPresent(secondFullPositionType, forKey: .secondFullPositionType)
+        try container.encodeIfPresent(secondHalfPositionType, forKey: .secondHalfPositionType)
+        try container.encodeIfPresent(distanceType, forKey: .distanceType)
         try container.encode(type, forKey: .type)
     }
 }
