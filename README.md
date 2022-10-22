@@ -53,6 +53,12 @@ Do not try to reach localhost (127.0.0.1) from a real device (when you build the
 
 - Run `openapi-generator generate -i /path/to/descriptor/swagger.yaml -g swift5 --additional-properties=responseAs=AsyncAwait -o /path/to/output` in the terminal
 
+#### Generate openapi generated files on all platforms
+
+- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) - if not, use e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
+
+- Run `sh openapi.sh` in the terminal in the root directory
+
 #### Visualize the dependencies between classes ([Issue](https://github.com/PaulTaykalo/objc-dependency-visualizer/issues/68#issuecomment-1113864431) with Xcode 13.0+)
 
 - Clone Objective-C And Swift Dependencies Visualizer - use e.g. `git clone https://github.com/PaulTaykalo/objc-dependency-visualizer.git` in the terminal (you can change directory before this step: `cd /Users/<yourName>/Downloads`)
