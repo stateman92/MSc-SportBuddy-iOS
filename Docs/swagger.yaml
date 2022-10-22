@@ -190,23 +190,17 @@ definitions:
     - type
     properties:
       firstHalfPositionType:
-        type: string
-        enum: *HALFPOSITIONTYPEDTO
+        $ref: '#/definitions/HalfPositionTypeDTO'
       firstFullPositionType:
-        type: string
-        enum: *FULLPOSITIONTYPEDTO
+        $ref: '#/definitions/FullPositionTypeDTO'
       secondFullPositionType:
-        type: string
-        enum: *FULLPOSITIONTYPEDTO
+        $ref: '#/definitions/FullPositionTypeDTO'
       secondHalfPositionType:
-        type: string
-        enum: *HALFPOSITIONTYPEDTO
+        $ref: '#/definitions/HalfPositionTypeDTO'
       distanceType:
-        type: string
-        enum: *DISTANCETYPEDTO
+        $ref: '#/definitions/DistanceTypeDTO'
       type:
-        type: string
-        enum: *CHARACTERISTICSTYPEDTO
+        $ref: '#/definitions/CharacteristicsTypeDTO'
   ExerciseErrorDTO:
     required:
     - characteristics
@@ -272,7 +266,33 @@ paths:
       tags:
       - Backend
       summary: Login an existing user
-      description: Login an existing user of the application or an admin
+      description: Login an existing user or an admin of the application
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: query
+        required: true
+        type: string
+      - name: password
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: User logged in
+          schema:
+            $ref: '#/definitions/UserResponseDTO'
+        "400":
+          description: Invalid input, bad request
+  /adminLogin:
+    post:
+      tags:
+      - Backend
+      summary: Login an existing admin
+      description: Login an existing admin of the application
       consumes:
       - application/json
       produces:

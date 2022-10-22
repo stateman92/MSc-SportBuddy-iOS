@@ -13,6 +13,69 @@ import AnyCodable
 open class BackendAPI {
 
     /**
+     Login an existing admin
+     
+     - parameter email: (query)  
+     - parameter password: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: UserResponseDTO
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func adminLoginPost(email: String, password: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue) async throws -> UserResponseDTO {
+        var requestTask: RequestTask?
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestTask = adminLoginPostWithRequestBuilder(email: email, password: password).execute(apiResponseQueue) { result in
+                    switch result {
+                    case let .success(response):
+                        continuation.resume(returning: response.body)
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: { [requestTask] in
+            requestTask?.cancel()
+        }
+    }
+
+    /**
+     Login an existing admin
+     - POST /adminLogin
+     - Login an existing admin of the application
+     - parameter email: (query)  
+     - parameter password: (query)  
+     - returns: RequestBuilder<UserResponseDTO> 
+     */
+    open class func adminLoginPostWithRequestBuilder(email: String, password: String) -> RequestBuilder<UserResponseDTO> {
+        let localVariablePath = "/adminLogin"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "email": email.encodeToJSON(),
+            "password": password.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UserResponseDTO>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Chatting
      
      - parameter chatEntryDTOId: (query)  
@@ -731,7 +794,7 @@ open class BackendAPI {
     /**
      Login an existing user
      - POST /login
-     - Login an existing user of the application or an admin
+     - Login an existing user or an admin of the application
      - parameter email: (query)  
      - parameter password: (query)  
      - returns: RequestBuilder<UserResponseDTO> 
