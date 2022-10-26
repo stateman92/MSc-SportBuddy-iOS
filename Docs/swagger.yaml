@@ -664,8 +664,6 @@ paths:
         in: query
         required: true
         type: string
-      security:
-      - Bearer: []
       responses:
         "200":
           description: Saved

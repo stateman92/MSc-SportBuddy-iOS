@@ -1098,9 +1098,6 @@ open class BackendAPI {
      Forgotten password
      - POST /saveNewPassword
      - Reset a forgotten pasword
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
      - parameter requestId: (query)  
      - parameter newPassword: (query)  
      - returns: RequestBuilder<Void> 
