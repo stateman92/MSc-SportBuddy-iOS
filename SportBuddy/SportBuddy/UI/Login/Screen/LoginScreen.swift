@@ -73,6 +73,13 @@ extension LoginScreen {
             $0.anchorToSuperview(leading: 48, trailing: -48)
             $0.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 64).isActive = true
         }
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        ButtonLabel(text: version, style: .label).then {
+            scrollView.addSubview($0)
+
+            $0.anchorToCenterX()
+            $0.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 24).isActive = true
+        }
     }
 
     private func setupInput() {

@@ -49,13 +49,15 @@ Do not try to reach localhost (127.0.0.1) from a real device (when you build the
 
 #### Update openapi generated files
 
-- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) - if not, use e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
+- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) 6.2.1 - if not, use e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
 
 - Run `openapi-generator generate -i /path/to/descriptor/swagger.yaml -g swift5 --additional-properties=responseAs=AsyncAwait -o /path/to/output` in the terminal
 
 #### Generate openapi generated files on all platforms
 
-- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) - if not, use e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
+- Make sure you've installed [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator) 6.2.1 - if not, use e.g. `brew install openapi-generator` via [Homebrew](https://brew.sh/)
+
+- Make sure you've downloaded [Vapor server codegen](https://github.com/thecheatah/vapor-server-codegen) [this commit, 4.0.0](https://github.com/thecheatah/vapor-server-codegen/commit/59f6a580ac618782d1c51a0a4ded8fa1779e6de7) - if not, download it via [Download link](https://github.com/thecheatah/vapor-server-codegen/archive/refs/heads/4.zip)
 
 - Run `sh openapi.sh` in the terminal in the root directory
 

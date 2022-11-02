@@ -203,9 +203,14 @@ definitions:
         $ref: '#/definitions/CharacteristicsTypeDTO'
   ExerciseErrorDTO:
     required:
+    - id
     - characteristics
     - error
     properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
       characteristics:
         $ref: '#/definitions/CharacteristicsDTO'
       error:
@@ -214,10 +219,15 @@ definitions:
         description: the identifier of the client side text
   ExerciseMomentDTO:
     required:
+    - id
     - armCharacteristics
     - legCharacteristics
     - errors
     properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
       armCharacteristics:
         $ref: '#/definitions/CharacteristicsDTO'
       legCharacteristics:
@@ -313,12 +323,12 @@ paths:
             $ref: '#/definitions/UserResponseDTO'
         "400":
           description: Invalid input, bad request
-  /test:
+  /version:
     get:
       tags:
       - Backend
-      summary: Test
-      description: Test
+      summary: Get the version
+      description: Get the version of the backend. It serves as a test endpoint too
       consumes:
       - application/json
       produces:
@@ -326,9 +336,11 @@ paths:
       parameters: []
       responses:
         "200":
-          description: Test succeeded
+          description: Success
+          schema:
+            type: string
         "400":
-          description: Test failed
+          description: Something failed
   /forgotPassword:
     post:
       tags:

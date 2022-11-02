@@ -12,16 +12,19 @@ import AnyCodable
 
 public struct ExerciseErrorDTO: Codable, JSONEncodable, Hashable {
 
+    public var id: UUID
     public var characteristics: CharacteristicsDTO
     /** the identifier of the client side text */
     public var error: String
 
-    public init(characteristics: CharacteristicsDTO, error: String) {
+    public init(id: UUID, characteristics: CharacteristicsDTO, error: String) {
+        self.id = id
         self.characteristics = characteristics
         self.error = error
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
         case characteristics
         case error
     }
@@ -30,6 +33,7 @@ public struct ExerciseErrorDTO: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encode(characteristics, forKey: .characteristics)
         try container.encode(error, forKey: .error)
     }

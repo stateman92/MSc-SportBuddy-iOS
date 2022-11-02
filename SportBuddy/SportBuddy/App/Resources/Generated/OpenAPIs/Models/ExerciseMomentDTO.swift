@@ -12,17 +12,20 @@ import AnyCodable
 
 public struct ExerciseMomentDTO: Codable, JSONEncodable, Hashable {
 
+    public var id: UUID
     public var armCharacteristics: CharacteristicsDTO
     public var legCharacteristics: CharacteristicsDTO
     public var errors: [ExerciseErrorDTO]
 
-    public init(armCharacteristics: CharacteristicsDTO, legCharacteristics: CharacteristicsDTO, errors: [ExerciseErrorDTO]) {
+    public init(id: UUID, armCharacteristics: CharacteristicsDTO, legCharacteristics: CharacteristicsDTO, errors: [ExerciseErrorDTO]) {
+        self.id = id
         self.armCharacteristics = armCharacteristics
         self.legCharacteristics = legCharacteristics
         self.errors = errors
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
         case armCharacteristics
         case legCharacteristics
         case errors
@@ -32,6 +35,7 @@ public struct ExerciseMomentDTO: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encode(armCharacteristics, forKey: .armCharacteristics)
         try container.encode(legCharacteristics, forKey: .legCharacteristics)
         try container.encode(errors, forKey: .errors)

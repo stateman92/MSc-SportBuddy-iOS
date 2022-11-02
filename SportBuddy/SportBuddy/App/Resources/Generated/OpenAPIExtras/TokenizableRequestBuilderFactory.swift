@@ -18,7 +18,7 @@ final class TokenizableRequestBuilderFactory: RequestBuilderFactory {
 }
 
 final class TokenizableURLSessionRequestBuilder<T>: URLSessionRequestBuilder<T> {
-    override func createURLRequest(urlSession: URLSession,
+    override func createURLRequest(urlSession: URLSessionProtocol,
                                    method: HTTPMethod,
                                    encoding: ParameterEncoding,
                                    headers: [String : String]) throws -> URLRequest {
@@ -29,7 +29,7 @@ final class TokenizableURLSessionRequestBuilder<T>: URLSessionRequestBuilder<T> 
 
 
 final class TokenizableURLSessionDecodableRequestBuilder<T: Decodable>: URLSessionDecodableRequestBuilder<T> {
-    override func createURLRequest(urlSession: URLSession,
+    override func createURLRequest(urlSession: URLSessionProtocol,
                                    method: HTTPMethod,
                                    encoding: ParameterEncoding,
                                    headers: [String : String]) throws -> URLRequest {
