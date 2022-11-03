@@ -61,6 +61,12 @@ Do not try to reach localhost (127.0.0.1) from a real device (when you build the
 
 - Run `sh openapi.sh` in the terminal in the root directory
 
+#### Update version
+
+- Run `sh bump.sh` in the terminal
+
+- By default it bumps the patch version. If you want other behavior, add a `major` / `minor` / `patch` flag, e.g. `sh bump.sh major`
+
 #### Visualize the dependencies between classes ([Issue](https://github.com/PaulTaykalo/objc-dependency-visualizer/issues/68#issuecomment-1113864431) with Xcode 13.0+)
 
 - Clone Objective-C And Swift Dependencies Visualizer - use e.g. `git clone https://github.com/PaulTaykalo/objc-dependency-visualizer.git` in the terminal (you can change directory before this step: `cd /Users/<yourName>/Downloads`)
