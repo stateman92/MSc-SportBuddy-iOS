@@ -67,6 +67,12 @@ Do not try to reach localhost (127.0.0.1) from a real device (when you build the
 
 - By default it bumps the patch version. If you want other behavior, add a `major` / `minor` / `patch` flag, e.g. `sh bump.sh major`
 
+#### Update version on all platforms
+
+- Run `sh bumpall.sh` in the terminal
+
+- By default it bumps the patch version. If you want other behavior, add a `major` / `minor` / `patch` flag, e.g. `sh bumpall.sh major`
+
 #### Visualize the dependencies between classes ([Issue](https://github.com/PaulTaykalo/objc-dependency-visualizer/issues/68#issuecomment-1113864431) with Xcode 13.0+)
 
 - Clone Objective-C And Swift Dependencies Visualizer - use e.g. `git clone https://github.com/PaulTaykalo/objc-dependency-visualizer.git` in the terminal (you can change directory before this step: `cd /Users/<yourName>/Downloads`)
