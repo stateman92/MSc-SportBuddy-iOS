@@ -1,16 +1,13 @@
----
 swagger: "2.0"
 info:
-  description: API specification for my thesis work
-  version: 2.0.0
+  description: API specification for my thesis work SportBuddy
+  version: 1.0.6
   title: SportBuddy
-  contact:
-    email: abc@def.com
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-host: virtserver.swaggerhub.com
-basePath: /stateman-team/SportBuddy/2.0.0
+    name: GNU General Public License v3.0
+    url: https://www.gnu.org/licenses/gpl-3.0.html
+host: sportbuddy-backend.herokuapp.com
+basePath: /
 tags:
 - name: Backend
   description: Backend
@@ -761,7 +758,6 @@ paths:
               $ref: '#/definitions/ExerciseModelDTO'
         "400":
           description: Invalid input, bad request
-  /uploadExerciseModel:
     post:
       tags:
       - Backend

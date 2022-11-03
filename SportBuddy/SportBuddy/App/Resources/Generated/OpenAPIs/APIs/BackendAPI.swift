@@ -639,6 +639,66 @@ open class BackendAPI {
     }
 
     /**
+     Upload a new exercise
+     
+     - parameter exercise: (body)  
+     - returns: Void
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func exerciseModelsPost(exercise: ExerciseModelDTO) async throws {
+        let requestBuilder = exerciseModelsPostWithRequestBuilder(exercise: exercise)
+        let requestTask = requestBuilder.requestTask
+        return try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            return try await withCheckedThrowingContinuation { continuation in
+                guard !Task.isCancelled else {
+                  continuation.resume(throwing: CancellationError())
+                  return
+                }
+
+                requestBuilder.execute { result in
+                    switch result {
+                    case .success:
+                        continuation.resume(returning: ())
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        } onCancel: {
+            requestTask.cancel()
+        }
+    }
+
+    /**
+     Upload a new exercise
+     - POST /exerciseModels
+     - Upload a new exercise
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter exercise: (body)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func exerciseModelsPostWithRequestBuilder(exercise: ExerciseModelDTO) -> RequestBuilder<Void> {
+        let localVariablePath = "/exerciseModels"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: exercise)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Send a recovery email to an existing user
      
      - parameter email: (query)  
@@ -1183,66 +1243,6 @@ open class BackendAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<[UserDTO]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Upload a new exercise
-     
-     - parameter exercise: (body)  
-     - returns: Void
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func uploadExerciseModelPost(exercise: ExerciseModelDTO) async throws {
-        let requestBuilder = uploadExerciseModelPostWithRequestBuilder(exercise: exercise)
-        let requestTask = requestBuilder.requestTask
-        return try await withTaskCancellationHandler {
-            try Task.checkCancellation()
-            return try await withCheckedThrowingContinuation { continuation in
-                guard !Task.isCancelled else {
-                  continuation.resume(throwing: CancellationError())
-                  return
-                }
-
-                requestBuilder.execute { result in
-                    switch result {
-                    case .success:
-                        continuation.resume(returning: ())
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-            }
-        } onCancel: {
-            requestTask.cancel()
-        }
-    }
-
-    /**
-     Upload a new exercise
-     - POST /uploadExerciseModel
-     - Upload a new exercise
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter exercise: (body)  
-     - returns: RequestBuilder<Void> 
-     */
-    open class func uploadExerciseModelPostWithRequestBuilder(exercise: ExerciseModelDTO) -> RequestBuilder<Void> {
-        let localVariablePath = "/uploadExerciseModel"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: exercise)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
