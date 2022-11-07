@@ -5,4 +5,6 @@
 //  Created by Kristof Kalai on 2022. 10. 19..
 //
 
-enum ExerciseViewModelCommand { }
+enum ExerciseViewModelCommand {
+    case set(exercise: ExerciseModel)
+}

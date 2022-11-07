@@ -35,6 +35,11 @@ extension TrainingsScreen {
         super.setupView()
         setupTableView()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        sendCommand(.viewDidAppear)
+    }
 }
 
 // MARK: - Setups

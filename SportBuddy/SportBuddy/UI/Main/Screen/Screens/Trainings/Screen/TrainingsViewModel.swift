@@ -15,6 +15,7 @@ final class TrainingsViewModel:
         super.receiveCommand(command)
         switch command {
         case let .select(id): select(id)
+        case .viewDidAppear: viewDidAppear()
         }
     }
 }
@@ -24,7 +25,6 @@ final class TrainingsViewModel:
 extension TrainingsViewModel {
     override func setup() {
         super.setup()
-        action.refreshExerciseModels().sink().store(in: &cancellables)
         store.getExercises()
             .sink { [unowned self] in sendState(.init(exerciseModels: $0)) }
             .store(in: &cancellables)
@@ -35,6 +35,12 @@ extension TrainingsViewModel {
 
 extension TrainingsViewModel {
     private func select(_ id: UUID) {
-        navigatorService.present(ExerciseScreen.self)
+        guard let exercise = viewState.value.exerciseModels.first(where: { $0.id == id }) else { return }
+        let screen = navigatorService.present(ExerciseScreen.self)
+        screen.sendCommand(.set(exercise: exercise))
+    }
+
+    private func viewDidAppear() {
+        action.refreshExerciseModels().sink().store(in: &cancellables)
     }
 }

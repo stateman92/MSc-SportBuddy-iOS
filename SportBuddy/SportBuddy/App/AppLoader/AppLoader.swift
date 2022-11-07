@@ -100,7 +100,7 @@ extension AppLoader {
         }
     }
 
-    private static var environment: Environment {
+    static var environment: Environment {
 #if MOCK
         .mock
 #elseif DEV
@@ -108,6 +108,10 @@ extension AppLoader {
 #else
         .prod
 #endif
+    }
+
+    static var version: String? {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
 
     private static var appConfigs: [String: AppConfig] {

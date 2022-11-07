@@ -9,4 +9,5 @@ import Foundation
 
 enum TrainingsViewModelCommand {
     case select(id: UUID)
+    case viewDidAppear
 }

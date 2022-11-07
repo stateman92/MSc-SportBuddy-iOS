@@ -73,8 +73,7 @@ extension LoginScreen {
             $0.anchorToSuperview(leading: 48, trailing: -48)
             $0.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 64).isActive = true
         }
-        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
-        ButtonLabel(text: version, style: .label).then {
+        ButtonLabel(text: "\(AppLoader.version ?? .init()) - \(AppLoader.environment.rawValue)", style: .label).then {
             scrollView.addSubview($0)
 
             $0.anchorToCenterX()
