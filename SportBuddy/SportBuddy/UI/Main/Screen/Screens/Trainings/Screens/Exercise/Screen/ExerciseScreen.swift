@@ -11,9 +11,12 @@ final class ExerciseScreen:
     BaseScreen<ExerciseViewModelState, ExerciseViewModelCommand, ExerciseDomainImpl, ExerciseViewModel> {
     // MAKR: Properties
 
+    @LazyInjected private var translatorService: TranslatorService
+    @LazyInjected private var cameraService: CameraService
+    @LazyInjected private var loadingService: LoadingService
     private let videoPlayerView = VideoPlayerView()
     private let cameraSkeletonView = CameraSkeletonView()
-    private let changeCameraButton = ButtonLabel(text: "Change camera", size: .small)
+    private let changeCameraButton = ButtonLabel(text: L10n.Exercise.Change.camera, size: .small)
     private var isSmall = true
     private lazy var smallConstraints = {
         [
@@ -31,10 +34,10 @@ final class ExerciseScreen:
             cameraSkeletonView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
     }()
-    @LazyInjected private var cameraService: CameraService
 
     override func receiveState(_ state: ExerciseViewModelState) {
         super.receiveState(state)
+        title = translatorService.translation(of: state.exercise.name)
         videoPlayerView.load(id: state.exercise.videoId)
     }
 }
@@ -51,7 +54,12 @@ extension ExerciseScreen {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cameraService.videoSize = cameraSkeletonView.bounds.size
+        loadingService.set(state: .notLoading)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cameraService.stop()
     }
 }
 
@@ -61,7 +69,7 @@ extension ExerciseScreen {
     private func setupVideoPlayerView() {
         videoPlayerView.then {
             view.addSubview($0)
-            $0.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.33).isActive = true
+            $0.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 9 / 16).isActive = true
             $0.anchorToSuperview(top: .zero, leading: 16, trailing: -16, safeArea: true)
         }
     }
@@ -69,8 +77,7 @@ extension ExerciseScreen {
     private func setupCameraSkeletonView() {
         cameraSkeletonView.then {
             view.addSubview($0)
-//            NSLayoutConstraint.activate(bigConstraint)
-            $0.anchorToSuperview(top: .zero, bottom: .zero, leading: .zero, trailing: .zero)
+            NSLayoutConstraint.activate(smallConstraints)
             cameraService.set(cameraView: $0)
             cameraService.changeCamera()
             cameraService.skeletonShouldUpdate { [weak self] in

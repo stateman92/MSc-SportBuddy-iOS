@@ -41,6 +41,10 @@ extension VideoPlayerView {
 // MARK: - YTPlayerViewDelegate
 
 extension VideoPlayerView: YTPlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        playerView.playVideo()
+    }
+
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
         id.map(load(id:))
     }

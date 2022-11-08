@@ -9,6 +9,10 @@ import Foundation
 
 final class TrainingsViewModel:
     BaseViewModel<TrainingsViewModelState, TrainingsViewModelCommand, TrainingsDomainImpl> {
+    // MARK: Properties
+
+    @LazyInjected private var loadingService: LoadingService
+
     // MARK: - Command
 
     override func receiveCommand(_ command: TrainingsViewModelCommand) {
@@ -36,8 +40,11 @@ extension TrainingsViewModel {
 extension TrainingsViewModel {
     private func select(_ id: UUID) {
         guard let exercise = viewState.value.exerciseModels.first(where: { $0.id == id }) else { return }
-        let screen = navigatorService.present(ExerciseScreen.self)
-        screen.sendCommand(.set(exercise: exercise))
+        loadingService.set(state: .fullScreenLoading)
+        DispatchQueue.main.async {
+            let screen = self.navigatorService.present(ExerciseScreen.self)
+            screen.sendCommand(.set(exercise: exercise))
+        }
     }
 
     private func viewDidAppear() {

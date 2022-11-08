@@ -56,3 +56,9 @@
 "login_sign_up_success" = "Sikeres regisztráció";
 "login_forgot_password_error" = "A jelszókérés sikertelen! Próbáld újra később";
 "login_forgot_password_success" = "Sikeres jelszókérés!";
+"exercise_change_camera" = "Váltás";
+
+"exercise_kettlebell_1_name" = "Kettlebell emelés";
+"exercise_kettlebell_1_details" = "Ezzel a gyakorlattal ketlebelleket emelhetsz";
+"exercise_kettlebell_1_error_1" = "Tedd szét jobban a lábaidat";
+"exercise_kettlebell_1_error_2" = "Zárd össze jobban a lábaidat";

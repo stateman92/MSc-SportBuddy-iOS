@@ -14,6 +14,8 @@ final class ExerciseConsumer {
     private var exercise: ExerciseModel?
 }
 
+// MARK: - Public methods
+
 extension ExerciseConsumer {
     func set(exercise: ExerciseModel) {
         self.exercise = exercise

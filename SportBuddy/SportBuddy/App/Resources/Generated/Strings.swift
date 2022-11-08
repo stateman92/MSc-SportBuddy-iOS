@@ -50,6 +50,26 @@ public enum L10n {
     /// Chats
     public static var title: String { return L10n.tr("Localizable", "chats_title", fallback: "Chats") }
   }
+  public enum Exercise {
+    public enum Change {
+      /// Change camera
+      public static var camera: String { return L10n.tr("Localizable", "exercise_change_camera", fallback: "Change camera") }
+    }
+    public enum Kettlebell {
+      public enum _1 {
+        /// With this you can lift your ketlebells
+        public static var details: String { return L10n.tr("Localizable", "exercise_kettlebell_1_details", fallback: "With this you can lift your ketlebells") }
+        /// Kettlebell lifting
+        public static var name: String { return L10n.tr("Localizable", "exercise_kettlebell_1_name", fallback: "Kettlebell lifting") }
+        public enum Error {
+          /// Put your legs wider
+          public static var _1: String { return L10n.tr("Localizable", "exercise_kettlebell_1_error_1", fallback: "Put your legs wider") }
+          /// Put your legs narrower
+          public static var _2: String { return L10n.tr("Localizable", "exercise_kettlebell_1_error_2", fallback: "Put your legs narrower") }
+        }
+      }
+    }
+  }
   public enum General {
     public enum Connectivity {
       /// Internet is available!
