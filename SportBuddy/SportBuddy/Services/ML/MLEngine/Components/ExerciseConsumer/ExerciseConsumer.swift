@@ -19,19 +19,21 @@ extension ExerciseConsumer {
         self.exercise = exercise
     }
 
-    func consume(characteristics: (Characteristics, Characteristics)) {
-        guard var exercise else { return }
+    func consume(skeleton: Skeleton) {
+        guard var exercise,
+              let arm = skeleton.armPosition()?.characteristics,
+              let leg = skeleton.legPosition()?.characteristics else { return }
         let states = exercise.states
         if exercise.states.count >= nextStateIndex {
             // finished
             self.exercise = nil
         } else {
             if let nextState = states[safe: nextStateIndex] {
-                if (nextState.armCharacteristics, nextState.legCharacteristics) == characteristics {
+                if (nextState.armCharacteristics, nextState.legCharacteristics) == (arm, leg) {
                     nextStateIndex += 1
-                    print("Consumed state: \(characteristics.0.description)")
-                    print("Consumed state: \(characteristics.1.description)")
-                } else if let error = nextState.errors.first(for: characteristics.0, characteristics.1) {
+                    print("Consumed state: \(arm.description)")
+                    print("Consumed state: \(leg.description)")
+                } else if let error = nextState.errors.first(for: arm, leg) {
                     print("Consumed error: \(error)")
                 } else {
                     print("Unknown error")

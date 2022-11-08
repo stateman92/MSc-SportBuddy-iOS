@@ -10,8 +10,11 @@ final class CameraSkeletonView: CameraView {
 
     private let skeletonView = SkeletonView()
     var skeleton: Skeleton? {
-        didSet {
-            skeletonView.skeleton = skeleton
+        get {
+            skeletonView.skeleton
+        }
+        set {
+            skeletonView.skeleton = newValue
         }
     }
     var showSkeleton = true {

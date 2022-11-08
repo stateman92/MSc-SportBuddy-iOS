@@ -16,6 +16,15 @@ extension CGPoint {
     func distance(from other: Self) -> CGFloat {
         sqrt(pow((x - other.x), 2) + pow((y - other.y), 2))
     }
+
+    /// Calculate the middle point between two `CGPoint`s.
+    /// - Parameters:
+    ///   - _: the other `CGPoint`.
+    /// - Returns:
+    ///     The middle point.
+    public func midBetween(_ other: CGPoint) -> CGPoint {
+        CGPoint(x: (x + other.x) / 2, y: (y + other.y) / 2)
+    }
 }
 
 extension CGPoint {

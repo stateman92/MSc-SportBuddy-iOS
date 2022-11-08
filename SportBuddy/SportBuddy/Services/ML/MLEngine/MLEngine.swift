@@ -17,3 +17,12 @@ protocol MLEngine: Initable, AutoMockable {
     ///   - skeleton: the skeleton.
     func interpret(skeleton: Skeleton)
 }
+
+extension MLEngine {
+    /// Interpret some bone endpoints.
+    /// - Parameters:
+    ///   - boneEndpoints: the bone endpoints.
+    func interpret(boneEndpoints: [BoneEndpoint]) {
+        interpret(skeleton: .init(from: boneEndpoints))
+    }
+}

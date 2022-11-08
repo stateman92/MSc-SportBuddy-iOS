@@ -43,10 +43,24 @@ extension Skeleton: BodyPart {
 
 extension Skeleton {
     var referenceDistance: CGFloat {
-        guard let rightShoulder = boneEndpoints.first(where: { $0.type == .rightShoulder }),
-              let referenceDistance = boneEndpoints.first(where: { $0.type == .rightHip })?
-            .coordinate.distance(from: rightShoulder.coordinate) else { return .ulpOfOne }
-        return referenceDistance
+        let shoulder = {
+            let rightShoulder = boneEndpoints.first(where: { $0.type == .rightShoulder })
+            let leftShoulder = boneEndpoints.first(where: { $0.type == .leftShoulder })
+            if let rightShoulder, let leftShoulder {
+                return rightShoulder.coordinate.midBetween(leftShoulder.coordinate)
+            }
+            return rightShoulder?.coordinate ?? leftShoulder?.coordinate ?? .zero
+        }()
+        let hip = {
+            let rightHip = boneEndpoints.first(where: { $0.type == .rightHip })
+            let leftHip = boneEndpoints.first(where: { $0.type == .leftHip })
+            if let rightHip, let leftHip {
+                return rightHip.coordinate.midBetween(leftHip.coordinate)
+            }
+            return rightHip?.coordinate ?? leftHip?.coordinate ?? .zero
+        }()
+        let distance = shoulder.distance(from: hip)
+        return distance > .zero ? distance : .ulpOfOne
     }
 
     func armPosition(referenceDistance: CGFloat? = nil) -> ArmPosition? {

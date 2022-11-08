@@ -41,7 +41,7 @@ final class CameraServiceImpl {
     private var isBackCameraInOperation = true
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var skeletonShouldUpdated: ([BoneEndpoint]) -> Void = { _ in }
-    private let delay: DetectionDelay = .fps(60)
+    private let delay: DetectionDelay = .fps(1)
     private var timer: Timer?
     private var lastDetectionTime: Date?
     @LazyInjected private var mlService: MLService
@@ -103,13 +103,9 @@ extension CameraServiceImpl {
     }
 
     private func requestPermission() {
-        func accessDenied() {
-        }
-
         AVCaptureDevice.requestPermission { [weak self] in
             self?.setup()
         } denied: {
-            accessDenied()
         }
     }
 
@@ -156,10 +152,6 @@ extension CameraServiceImpl {
                     self?.timer?.invalidate()
                     self?.timer = nil
                 }
-            }
-            if let lastDetectionTime {
-                let interval = Date().timeIntervalSince(lastDetectionTime)
-                print("FPS: \(1 / interval)")
             }
             lastDetectionTime = .init()
         }

@@ -7,4 +7,5 @@
 
 enum ExerciseViewModelCommand {
     case set(exercise: ExerciseModel)
+    case detect(skeleton: Skeleton)
 }

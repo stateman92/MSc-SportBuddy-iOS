@@ -11,6 +11,7 @@ import YouTubeiOSPlayerHelper
 final class VideoPlayerView: View {
     // MARK: Properties
 
+    private var id: String?
     private let youtubeView = YTPlayerView()
 
     // MARK: Initialization
@@ -41,7 +42,7 @@ extension VideoPlayerView {
 
 extension VideoPlayerView: YTPlayerViewDelegate {
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
-        print("error: \(error)")
+        id.map(load(id:))
     }
 
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
@@ -53,6 +54,7 @@ extension VideoPlayerView: YTPlayerViewDelegate {
 
 extension VideoPlayerView {
     func load(id: String) {
+        self.id = id
         youtubeView.load(withVideoId: id, playerVars: [
             "controls": 0, // remove controls
             "fs": 0, // remove full screen button

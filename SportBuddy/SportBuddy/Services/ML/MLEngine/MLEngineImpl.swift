@@ -19,11 +19,13 @@ extension MLEngineImpl: MLEngine {
     /// - Parameters:
     ///   - exercise: the exercise.
     func set(exercise: ExerciseModel) {
+        exerciseConsumer.set(exercise: exercise)
     }
 
     /// Interpret the skeleton.
     /// - Parameters:
     ///   - skeleton: the skeleton.
     func interpret(skeleton: Skeleton) {
+        exerciseConsumer.consume(skeleton: skeleton)
     }
 }
