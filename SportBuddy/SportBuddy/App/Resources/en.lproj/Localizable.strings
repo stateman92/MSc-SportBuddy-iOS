@@ -59,7 +59,7 @@
 "login_forgot_password_success" = "You've requested a password reset email successfully!";
 "exercise_change_camera" = "Change camera";
 
-"exercise_kettlebell_1_name" = "Kettlebell lifting";
-"exercise_kettlebell_1_details" = "With this you can lift your ketlebells";
+"exercise_kettlebell_1_name" = "Kettlebell double arm snatch";
+"exercise_kettlebell_1_details" = "With this you can lift your kettlebells";
 "exercise_kettlebell_1_error_1" = "Put your legs wider";
 "exercise_kettlebell_1_error_2" = "Put your legs narrower";

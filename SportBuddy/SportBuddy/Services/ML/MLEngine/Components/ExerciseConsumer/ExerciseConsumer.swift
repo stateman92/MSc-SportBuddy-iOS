@@ -12,6 +12,8 @@ final class ExerciseConsumer {
 
     private var nextStateIndex = 0
     private var exercise: ExerciseModel?
+    @LazyInjected private var speechService: SpeechService
+    @LazyInjected private var translatorService: TranslatorService
 }
 
 // MARK: - Public methods
@@ -37,6 +39,8 @@ extension ExerciseConsumer {
                     print("Consumed state: \(leg.description)")
                 } else if let error = nextState.errors.first(for: arm, leg) {
                     print("Consumed error: \(error)")
+                    speechService.read(text: translatorService.translation(of: error.error),
+                                       language: translatorService.preferredLanguage == .hu ? .hu : .en)
                 } else {
                     print("Unknown error")
                 }

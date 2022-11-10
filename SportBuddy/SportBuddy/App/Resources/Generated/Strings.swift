@@ -57,10 +57,10 @@ public enum L10n {
     }
     public enum Kettlebell {
       public enum _1 {
-        /// With this you can lift your ketlebells
-        public static var details: String { return L10n.tr("Localizable", "exercise_kettlebell_1_details", fallback: "With this you can lift your ketlebells") }
-        /// Kettlebell lifting
-        public static var name: String { return L10n.tr("Localizable", "exercise_kettlebell_1_name", fallback: "Kettlebell lifting") }
+        /// With this you can lift your kettlebells
+        public static var details: String { return L10n.tr("Localizable", "exercise_kettlebell_1_details", fallback: "With this you can lift your kettlebells") }
+        /// Kettlebell double arm snatch
+        public static var name: String { return L10n.tr("Localizable", "exercise_kettlebell_1_name", fallback: "Kettlebell double arm snatch") }
         public enum Error {
           /// Put your legs wider
           public static var _1: String { return L10n.tr("Localizable", "exercise_kettlebell_1_error_1", fallback: "Put your legs wider") }
