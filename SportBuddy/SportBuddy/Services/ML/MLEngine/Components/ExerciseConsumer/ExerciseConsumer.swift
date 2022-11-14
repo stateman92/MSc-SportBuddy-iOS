@@ -14,6 +14,7 @@ final class ExerciseConsumer {
     private var exercise: ExerciseModel?
     @LazyInjected private var speechService: SpeechService
     @LazyInjected private var translatorService: TranslatorService
+    @LazyInjected private var loggingService: LoggingService
 }
 
 // MARK: - Public methods
@@ -35,21 +36,21 @@ extension ExerciseConsumer {
             if let nextState = states[safe: nextStateIndex] {
                 if (nextState.armCharacteristics, nextState.legCharacteristics) == (arm, leg) {
                     nextStateIndex += 1
-                    print("Consumed state: \(arm.description)")
-                    print("Consumed state: \(leg.description)")
+                    loggingService.default(message: "Consumed state: \(arm.description)")
+                    loggingService.default(message: "Consumed state: \(leg.description)")
                 } else if let error = nextState.errors.first(for: arm, leg) {
-                    print("Consumed error: \(error)")
+                    loggingService.default(message: "Consumed error: \(error)")
                     speechService.read(text: translatorService.translation(of: error.error),
                                        language: translatorService.preferredLanguage == .hu ? .hu : .en)
                 } else {
-                    print("Unknown error")
+                    loggingService.default(message: "Unknown error")
                 }
             }
             if states[safe: nextStateIndex] == nil {
                 // finished
                 self.exercise = nil
             } else if nextStateIndex % exercise.sequence.count == .zero {
-                print("A sequence is recognized")
+                loggingService.default(message: "A sequence is recognized")
             }
         }
     }

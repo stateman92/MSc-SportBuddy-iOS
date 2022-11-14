@@ -19,6 +19,7 @@ final class SecureSettingsServiceImpl {
     // MARK: Properties
 
     @LazyInjected private var coderService: CoderService
+    @LazyInjected private var loggingService: LoggingService
     private let valet = Valet.sharedGroupValet(with: SharedGroupIdentifier(appIDPrefix: Constants.teamId,
                                                                            nonEmptyGroup: Constants.accessGroup)!,
                                                accessibility: .afterFirstUnlock)
@@ -44,7 +45,7 @@ extension SecureSettingsServiceImpl: SecureSettingsService {
             try valet.setObject(data, forKey: key.keyName)
             return true
         } catch {
-            dump(error)
+            loggingService.error(message: error.localizedDescription)
             return false
         }
     }

@@ -59,7 +59,31 @@
 "login_forgot_password_success" = "You've requested a password reset email successfully!";
 "exercise_change_camera" = "Change camera";
 
+"exercise_mountain_1_name" = "Mountain climb";
+"exercise_mountain_1_details" = "";
+"exercise_mountain_1_error_1" = "Put your legs wider";
+"exercise_mountain_1_error_2" = "Put your legs narrower";
+
+"exercise_swiss_1_name" = "Swiss ball Jack knife";
+"exercise_swiss_1_details" = "";
+"exercise_swiss_1_error_1" = "Put your legs narrower";
+
 "exercise_kettlebell_1_name" = "Kettlebell double arm snatch";
-"exercise_kettlebell_1_details" = "With this you can lift your kettlebells";
+"exercise_kettlebell_1_details" = "With this you can lift your kettlebells and make fun of them!";
 "exercise_kettlebell_1_error_1" = "Put your legs wider";
 "exercise_kettlebell_1_error_2" = "Put your legs narrower";
+
+"exercise_sandbag_1_name" = "Sandbag burpee";
+"exercise_sandbag_1_details" = "";
+"exercise_swiss_1_error_1" = "Put your legs narrower";
+"exercise_swiss_1_error_2" = "Put your legs wider";
+
+"exercise_medicine_1_name" = "Medicine ball alternating twist lunge";
+"exercise_medicine_1_details" = "";
+"exercise_medicine_1_error_1" = "Put your legs narrower";
+"exercise_medicine_1_error_2" = "Put your legs wider";
+
+"exercise_ropes_1_name" = "Battle ropes alternating lateral squat waves";
+"exercise_ropes_1_details" = "";
+"exercise_ropes_1_error_1" = "Put your legs narrower";
+"exercise_ropes_1_error_2" = "Put your legs wider";

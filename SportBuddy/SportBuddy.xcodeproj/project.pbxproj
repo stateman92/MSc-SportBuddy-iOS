@@ -248,6 +248,7 @@
 		588B1C9028CFB21A003C6F6A /* LiveFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588B1C8F28CFB21A003C6F6A /* LiveFeedViewModel.swift */; };
 		588B1C9228CFB274003C6F6A /* LiveFeedViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588B1C9128CFB274003C6F6A /* LiveFeedViewModelState.swift */; };
 		588B1C9428CFB299003C6F6A /* LiveFeedViewModelCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588B1C9328CFB299003C6F6A /* LiveFeedViewModelCommand.swift */; };
+		588C693D2921AAAA0072AB52 /* BaseTwoRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588C693C2921AAAA0072AB52 /* BaseTwoRowTableViewCell.swift */; };
 		588F475F27FE4FF60062F838 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F475E27FE4FF60062F838 /* NetworkError.swift */; };
 		588F479827FE59F90062F838 /* ScrollingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F479727FE59F90062F838 /* ScrollingScreen.swift */; };
 		588F5E79280B306C00947800 /* LoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F5E78280B306C00947800 /* LoggingService.swift */; };
@@ -717,6 +718,7 @@
 		588B1C8F28CFB21A003C6F6A /* LiveFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFeedViewModel.swift; sourceTree = "<group>"; };
 		588B1C9128CFB274003C6F6A /* LiveFeedViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFeedViewModelState.swift; sourceTree = "<group>"; };
 		588B1C9328CFB299003C6F6A /* LiveFeedViewModelCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFeedViewModelCommand.swift; sourceTree = "<group>"; };
+		588C693C2921AAAA0072AB52 /* BaseTwoRowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTwoRowTableViewCell.swift; sourceTree = "<group>"; };
 		588F475E27FE4FF60062F838 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		588F479727FE59F90062F838 /* ScrollingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingScreen.swift; sourceTree = "<group>"; };
 		588F5E78280B306C00947800 /* LoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingService.swift; sourceTree = "<group>"; };
@@ -1152,6 +1154,7 @@
 			isa = PBXGroup;
 			children = (
 				58043E0428F7817C00E09829 /* SkeletonView.swift */,
+				588C693C2921AAAA0072AB52 /* BaseTwoRowTableViewCell.swift */,
 				583922902900680700ACFE81 /* TrainingsTableViewCell.swift */,
 			);
 			path = Components;
@@ -3833,6 +3836,7 @@
 				58B2E1D627F3BABE004135E2 /* OnboardDelegate.swift in Sources */,
 				58D7FE132914455800159209 /* APIHelper.swift in Sources */,
 				5853F9DA2822D2C300076D93 /* ReversedTableViewCell.swift in Sources */,
+				588C693D2921AAAA0072AB52 /* BaseTwoRowTableViewCell.swift in Sources */,
 				58AAEC37280BBEA80054E2F0 /* SettingsService.swift in Sources */,
 				58DCE6E5281EE0EA00BCB07C /* LoginDomainImpl.swift in Sources */,
 				58731E5E28231320008A7562 /* MockTrainingsStore.swift in Sources */,
@@ -4131,7 +4135,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4155,7 +4159,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4177,7 +4181,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4334,7 +4338,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4373,7 +4377,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4397,7 +4401,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4421,7 +4425,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4443,7 +4447,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4465,7 +4469,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4566,7 +4570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4590,7 +4594,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4612,7 +4616,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

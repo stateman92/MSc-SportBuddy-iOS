@@ -13,6 +13,7 @@ final class VideoPlayerView: View {
 
     private var id: String?
     private let youtubeView = YTPlayerView()
+    @LazyInjected private var loggingService: LoggingService
 
     // MARK: Initialization
 
@@ -47,6 +48,7 @@ extension VideoPlayerView: YTPlayerViewDelegate {
 
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
         id.map(load(id:))
+        loggingService.default(message: "YouTube error: \(error)")
     }
 
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {

@@ -14,6 +14,7 @@ class Cache<Item> {
         cache.value
     }
     let cache = CurrentValueSubject<Item?, Never>(nil)
+    @LazyInjected private var loggingService: LoggingService
 
     // MARK: Initialization
 
@@ -34,7 +35,8 @@ class Cache<Item> {
             block(&immediateValue)
             save(item: immediateValue)
         } else {
-            print("WARNING: nil value wanted to be modified, there is a possibility of a silent bug!")
+            loggingService.default(
+                message: "WARNING: nil value wanted to be modified, there is a possibility of a silent bug!")
         }
     }
 }

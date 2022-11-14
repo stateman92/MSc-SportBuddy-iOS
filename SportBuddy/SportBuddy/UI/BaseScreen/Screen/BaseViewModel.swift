@@ -15,6 +15,7 @@ class BaseViewModel<State: Equatable, Command, Domain: SportBuddy.Domain> {
     @LazyInjected var settingService: SettingsService
     @LazyInjected var toastService: ToastService
     @LazyInjected var copyService: CopyService
+    @LazyInjected private var loggingService: LoggingService
     @LazyInjected private var domain: Domain
     private let _stateSubject: PassthroughSubject<State, Never> = .init()
     private let stateSubject: CurrentValueSubject<State, Never>
@@ -57,14 +58,16 @@ class BaseViewModel<State: Equatable, Command, Domain: SportBuddy.Domain> {
     // MARK: - State
 
     final func sendState(_ state: State) {
-        print("ViewModel ---state---> View: \(className(target: self)) sends \(state) state.")
+        loggingService.default(
+            message: "ViewModel ---state---> View: \(className(target: self)) sends \(state) state.")
         _stateSubject.send(state)
     }
 
     // MARK: - Command
 
     func receiveCommand(_ command: Command) {
-        print("View ---command---> ViewModel: \(className(target: self)) receives \(command) command.")
+        loggingService.default(
+            message: "View ---command---> ViewModel: \(className(target: self)) receives \(command) command.")
     }
 
     func createNewState(creation: (State) -> State) {

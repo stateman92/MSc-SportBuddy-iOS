@@ -68,7 +68,6 @@ extension SettingsTableViewCell {
             })
             $0.addArrangedSubview(StackView().then {
                 $0.addArrangedSubview(detailsLabel)
-//                $0.addArrangedSubview(View().then { $0.setHeight(.zero) })
             })
         }
     }

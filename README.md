@@ -23,7 +23,7 @@ Do not try to reach localhost (127.0.0.1) from a real device (when you build the
 
 - Checkout repo
 
-- Make sure you've installed Xcode 14.0.0 (Swift 5.7)
+- Make sure you've installed Xcode 14.1.0 (Swift 5.7)
 
 - Run `pod install` in the terminal in the SportBuddy directory
 

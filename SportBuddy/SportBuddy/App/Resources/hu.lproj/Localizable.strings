@@ -58,7 +58,31 @@
 "login_forgot_password_success" = "Sikeres jelszókérés!";
 "exercise_change_camera" = "Váltás";
 
+"exercise_mountain_1_name" = "Hegymászó gyakorlat";
+"exercise_mountain_1_details" = "";
+"exercise_mountain_1_error_1" = "Tedd szét jobban a lábaidat";
+"exercise_mountain_1_error_2" = "Zárd össze jobban a lábaidat";
+
+"exercise_swiss_1_name" = "Gimnasztikai labdás nyújtás";
+"exercise_swiss_1_details" = "";
+"exercise_swiss_1_error_1" = "Zárd össze jobban a lábaidat";
+
 "exercise_kettlebell_1_name" = "Duplakezes kettlebell emelés";
 "exercise_kettlebell_1_details" = "Ezzel a gyakorlattal kettlebelleket emelhetsz";
 "exercise_kettlebell_1_error_1" = "Tedd szét jobban a lábaidat";
 "exercise_kettlebell_1_error_2" = "Zárd össze jobban a lábaidat";
+
+"exercise_sandbag_1_name" = "Homokzsákos négyütemű fekvőtámasz";
+"exercise_sandbag_1_details" = "";
+"exercise_swiss_1_error_1" = "Zárd össze jobban a lábaidat";
+"exercise_swiss_1_error_2" = "Tedd szét jobban a lábaidat";
+
+"exercise_medicine_1_name" = "Medicinlabdás váltakozó oldalra csavart kitörés";
+"exercise_medicine_1_details" = "";
+"exercise_medicine_1_error_1" = "Zárd össze jobban a lábaidat";
+"exercise_medicine_1_error_2" = "Tedd szét jobban a lábaidat";
+
+"exercise_ropes_1_name" = "Hajókötes edzés váltakozó oldalirányú guggolásokkal";
+"exercise_ropes_1_details" = "";
+"exercise_ropes_1_error_1" = "Zárd össze jobban a lábaidat";
+"exercise_ropes_1_error_2" = "Tedd szét jobban a lábaidat";

@@ -24,7 +24,7 @@ final class TrainingsScreen:
 
     override func receiveState(_ state: TrainingsViewModelState) {
         super.receiveState(state)
-        tableView.reloadData([state.exerciseModels])
+        tableView.reloadData(state.exerciseModels)
     }
 }
 

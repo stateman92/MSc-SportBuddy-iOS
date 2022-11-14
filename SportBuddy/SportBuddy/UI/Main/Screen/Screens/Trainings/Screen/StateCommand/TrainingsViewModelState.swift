@@ -6,7 +6,7 @@
 //
 
 struct TrainingsViewModelState {
-    let exerciseModels: [ExerciseModel]
+    let exerciseModels: [[ExerciseModel]]
 }
 
 extension TrainingsViewModelState: Initable {

@@ -57,8 +57,8 @@ public enum L10n {
     }
     public enum Kettlebell {
       public enum _1 {
-        /// With this you can lift your kettlebells
-        public static var details: String { return L10n.tr("Localizable", "exercise_kettlebell_1_details", fallback: "With this you can lift your kettlebells") }
+        /// With this you can lift your kettlebells and make fun of them!
+        public static var details: String { return L10n.tr("Localizable", "exercise_kettlebell_1_details", fallback: "With this you can lift your kettlebells and make fun of them!") }
         /// Kettlebell double arm snatch
         public static var name: String { return L10n.tr("Localizable", "exercise_kettlebell_1_name", fallback: "Kettlebell double arm snatch") }
         public enum Error {
@@ -66,6 +66,70 @@ public enum L10n {
           public static var _1: String { return L10n.tr("Localizable", "exercise_kettlebell_1_error_1", fallback: "Put your legs wider") }
           /// Put your legs narrower
           public static var _2: String { return L10n.tr("Localizable", "exercise_kettlebell_1_error_2", fallback: "Put your legs narrower") }
+        }
+      }
+    }
+    public enum Medicine {
+      public enum _1 {
+        /// 
+        public static var details: String { return L10n.tr("Localizable", "exercise_medicine_1_details", fallback: "") }
+        /// Medicine ball alternating twist lunge
+        public static var name: String { return L10n.tr("Localizable", "exercise_medicine_1_name", fallback: "Medicine ball alternating twist lunge") }
+        public enum Error {
+          /// Put your legs narrower
+          public static var _1: String { return L10n.tr("Localizable", "exercise_medicine_1_error_1", fallback: "Put your legs narrower") }
+          /// Put your legs wider
+          public static var _2: String { return L10n.tr("Localizable", "exercise_medicine_1_error_2", fallback: "Put your legs wider") }
+        }
+      }
+    }
+    public enum Mountain {
+      public enum _1 {
+        /// 
+        public static var details: String { return L10n.tr("Localizable", "exercise_mountain_1_details", fallback: "") }
+        /// Mountain climb
+        public static var name: String { return L10n.tr("Localizable", "exercise_mountain_1_name", fallback: "Mountain climb") }
+        public enum Error {
+          /// Put your legs wider
+          public static var _1: String { return L10n.tr("Localizable", "exercise_mountain_1_error_1", fallback: "Put your legs wider") }
+          /// Put your legs narrower
+          public static var _2: String { return L10n.tr("Localizable", "exercise_mountain_1_error_2", fallback: "Put your legs narrower") }
+        }
+      }
+    }
+    public enum Ropes {
+      public enum _1 {
+        /// 
+        public static var details: String { return L10n.tr("Localizable", "exercise_ropes_1_details", fallback: "") }
+        /// Battle ropes alternating lateral squat waves
+        public static var name: String { return L10n.tr("Localizable", "exercise_ropes_1_name", fallback: "Battle ropes alternating lateral squat waves") }
+        public enum Error {
+          /// Put your legs narrower
+          public static var _1: String { return L10n.tr("Localizable", "exercise_ropes_1_error_1", fallback: "Put your legs narrower") }
+          /// Put your legs wider
+          public static var _2: String { return L10n.tr("Localizable", "exercise_ropes_1_error_2", fallback: "Put your legs wider") }
+        }
+      }
+    }
+    public enum Sandbag {
+      public enum _1 {
+        /// 
+        public static var details: String { return L10n.tr("Localizable", "exercise_sandbag_1_details", fallback: "") }
+        /// Sandbag burpee
+        public static var name: String { return L10n.tr("Localizable", "exercise_sandbag_1_name", fallback: "Sandbag burpee") }
+      }
+    }
+    public enum Swiss {
+      public enum _1 {
+        /// 
+        public static var details: String { return L10n.tr("Localizable", "exercise_swiss_1_details", fallback: "") }
+        /// Swiss ball Jack knife
+        public static var name: String { return L10n.tr("Localizable", "exercise_swiss_1_name", fallback: "Swiss ball Jack knife") }
+        public enum Error {
+          /// Put your legs narrower
+          public static var _1: String { return L10n.tr("Localizable", "exercise_swiss_1_error_1", fallback: "Put your legs narrower") }
+          /// Put your legs wider
+          public static var _2: String { return L10n.tr("Localizable", "exercise_swiss_1_error_2", fallback: "Put your legs wider") }
         }
       }
     }
