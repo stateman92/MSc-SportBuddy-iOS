@@ -79,7 +79,6 @@ extension ExerciseScreen {
             view.addSubview($0)
             NSLayoutConstraint.activate(smallConstraints)
             cameraService.set(cameraView: $0)
-            cameraService.changeCamera()
             cameraService.skeletonShouldUpdate { [weak self] in
                 let skeleton = Skeleton(from: $0)
                 dispatchToMain {

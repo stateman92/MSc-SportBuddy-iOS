@@ -316,6 +316,10 @@
 		58C27EFC281141B9000FC602 /* TokenizableRequestBuilderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C27EFB281141B9000FC602 /* TokenizableRequestBuilderFactory.swift */; };
 		58C3ECBE281A85D700DBD5BB /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3ECBD281A85D700DBD5BB /* LoadingState.swift */; };
 		58C3ECC0281AAE7600DBD5BB /* ThrottlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3ECBF281AAE7600DBD5BB /* ThrottlingTests.swift */; };
+		58D42F7129255E8300132C6C /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D42F7029255E8300132C6C /* TimerService.swift */; };
+		58D42F7329255E8B00132C6C /* TimerServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D42F7229255E8B00132C6C /* TimerServiceImpl.swift */; };
+		58D42F762925663900132C6C /* VolumeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D42F752925663900132C6C /* VolumeService.swift */; };
+		58D42F782925664300132C6C /* VolumeServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D42F772925664300132C6C /* VolumeServiceImpl.swift */; };
 		58D6CD1B2814CB0E00727035 /* ReversedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6CD1A2814CB0E00727035 /* ReversedTableView.swift */; };
 		58D7FE102914455800159209 /* JSONEncodingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D7FDF52914455600159209 /* JSONEncodingHelper.swift */; };
 		58D7FE112914455800159209 /* OpenISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D7FDF62914455600159209 /* OpenISO8601DateFormatter.swift */; };
@@ -783,6 +787,10 @@
 		58C27EFB281141B9000FC602 /* TokenizableRequestBuilderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizableRequestBuilderFactory.swift; sourceTree = "<group>"; };
 		58C3ECBD281A85D700DBD5BB /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		58C3ECBF281AAE7600DBD5BB /* ThrottlingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrottlingTests.swift; sourceTree = "<group>"; };
+		58D42F7029255E8300132C6C /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
+		58D42F7229255E8B00132C6C /* TimerServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerServiceImpl.swift; sourceTree = "<group>"; };
+		58D42F752925663900132C6C /* VolumeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeService.swift; sourceTree = "<group>"; };
+		58D42F772925664300132C6C /* VolumeServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeServiceImpl.swift; sourceTree = "<group>"; };
 		58D6CD1A2814CB0E00727035 /* ReversedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReversedTableView.swift; sourceTree = "<group>"; };
 		58D7FDF52914455600159209 /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
 		58D7FDF62914455600159209 /* OpenISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenISO8601DateFormatter.swift; sourceTree = "<group>"; };
@@ -1247,7 +1255,9 @@
 				58DD6EDB28E11058007C20F0 /* NotificationService */,
 				58394BAD29000B3A0081AAA2 /* SpeechService */,
 				580DF5EA280A0B7C00BE0493 /* SystemImageService */,
+				58D42F6F29255E6E00132C6C /* TimerService */,
 				585CD71528DFC3DE0014430B /* TranslatorService */,
+				58D42F742925662700132C6C /* VolumeService */,
 				587F302F2809D92600EFA7E9 /* WebSocketService */,
 			);
 			path = Services;
@@ -2489,6 +2499,24 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		58D42F6F29255E6E00132C6C /* TimerService */ = {
+			isa = PBXGroup;
+			children = (
+				58D42F7029255E8300132C6C /* TimerService.swift */,
+				58D42F7229255E8B00132C6C /* TimerServiceImpl.swift */,
+			);
+			path = TimerService;
+			sourceTree = "<group>";
+		};
+		58D42F742925662700132C6C /* VolumeService */ = {
+			isa = PBXGroup;
+			children = (
+				58D42F752925663900132C6C /* VolumeService.swift */,
+				58D42F772925664300132C6C /* VolumeServiceImpl.swift */,
+			);
+			path = VolumeService;
+			sourceTree = "<group>";
+		};
 		58D7FDFC2914455700159209 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -3604,6 +3632,7 @@
 				58C3ECBE281A85D700DBD5BB /* LoadingState.swift in Sources */,
 				58DD9211280F2911006544AE /* Toast.swift in Sources */,
 				586CB057281D7ED600D753FB /* ChatsViewModelState.swift in Sources */,
+				58D42F7129255E8300132C6C /* TimerService.swift in Sources */,
 				58B2E1CF27F3B5B4004135E2 /* DefaultOnboardOverlay.swift in Sources */,
 				583922572900317600ACFE81 /* ExerciseModelsCache.swift in Sources */,
 				583922D12900A4B100ACFE81 /* ExerciseViewModelCommand.swift in Sources */,
@@ -3778,6 +3807,7 @@
 				58B7312728D738A000FA9AA2 /* LiveFeedInputField.swift in Sources */,
 				58C1D44B27F51BFC005D13C4 /* UIView+GestureRecognizers.swift in Sources */,
 				5832043B27FE2959009A4644 /* MLService.swift in Sources */,
+				58D42F7329255E8B00132C6C /* TimerServiceImpl.swift in Sources */,
 				58043DE728F75CF600E09829 /* Sequence+Extensions.swift in Sources */,
 				58B2E1DF27F3BCEB004135E2 /* OnboardOverlay.swift in Sources */,
 				587F303A2809DE8600EFA7E9 /* Services+DI.swift in Sources */,
@@ -3801,6 +3831,7 @@
 				58D7FE162914455800159209 /* Configuration.swift in Sources */,
 				580DF5D72809EF7700BE0493 /* ChatsViewModel.swift in Sources */,
 				58C1D44F27F524E0005D13C4 /* NSObjectProtocol+Extensions.swift in Sources */,
+				58D42F782925664300132C6C /* VolumeServiceImpl.swift in Sources */,
 				58EBF1E627FBB4E900BA81CB /* LoadingServiceImpl.swift in Sources */,
 				587F30312809D94500EFA7E9 /* WebSocketService.swift in Sources */,
 				58DD6EE428E11409007C20F0 /* CircleImageView.swift in Sources */,
@@ -3918,6 +3949,7 @@
 				58043DE128F757F900E09829 /* Body.swift in Sources */,
 				58DCE71F281EE39A00BCB07C /* ChatDomain.swift in Sources */,
 				588F5E7E280B31AA00947800 /* LogType.swift in Sources */,
+				58D42F762925663900132C6C /* VolumeService.swift in Sources */,
 				585CD71928DFC3F10014430B /* TranslatorServiceImpl.swift in Sources */,
 				58DCE718281EE2FD00BCB07C /* TrainingsDomainImpl.swift in Sources */,
 				5801910827F38F8D00BB3E3E /* RoundedView.swift in Sources */,
@@ -4135,7 +4167,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4159,7 +4191,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4181,7 +4213,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4338,7 +4370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4377,7 +4409,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4401,7 +4433,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4425,7 +4457,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4447,7 +4479,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4469,7 +4501,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4570,7 +4602,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4594,7 +4626,7 @@
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -4616,7 +4648,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KJTVFSV88;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.SportBuddyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

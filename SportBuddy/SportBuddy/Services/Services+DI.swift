@@ -27,6 +27,7 @@ extension DependencyInjector {
         register(service: NotificationServiceImpl(), implements: NotificationService.self)
         register(service: SpeechServiceImpl(), implements: SpeechService.self)
         register(service: SystemImageServiceImpl(), implements: SystemImageService.self)
+        resolver.register { TimerServiceImpl() }.implements(TimerService.self).scope(.unique)
         register(service: TranslatorServiceImpl(), implements: TranslatorService.self)
 
 #if MOCK
@@ -34,6 +35,8 @@ extension DependencyInjector {
 #else
         register(service: WebSocketServiceImpl(), implements: WebSocketService.self)
 #endif
+
+        register(service: VolumeServiceImpl(), implements: VolumeService.self)
     }
 }
 

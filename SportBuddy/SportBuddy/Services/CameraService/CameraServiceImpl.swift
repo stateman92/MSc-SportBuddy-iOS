@@ -41,7 +41,7 @@ final class CameraServiceImpl {
     private var isBackCameraInOperation = true
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var skeletonShouldUpdated: ([BoneEndpoint]) -> Void = { _ in }
-    private let delay: DetectionDelay = .fps(1)
+    private let delay: DetectionDelay = .fps(30)
     private var timer: Timer?
     private var lastDetectionTime: Date?
     @LazyInjected private var mlService: MLService
@@ -115,7 +115,7 @@ extension CameraServiceImpl {
         captureSession.configure { _ in
             setupCamera()
         }
-        DispatchQueue.global().async {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.15) {
             self.captureSession.startRunning()
         }
     }

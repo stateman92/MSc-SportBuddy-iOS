@@ -86,6 +86,7 @@ extension OnboardingScreen: OnboardDataSource {
     func onboardPageForIndex(_ onboard: Onboard, index: Int) -> OnboardPage? {
         let page = OnboardingPage()
         page.title.setup(text: L10n.Onboarding.title)
+        page.title.titleLabel?.textAlignment = .center
         page.subTitle.setup(text: L10n.Onboarding.subtitle)
         switch index {
         case 0: page.imageView.image = Images.firstOnboarding.image

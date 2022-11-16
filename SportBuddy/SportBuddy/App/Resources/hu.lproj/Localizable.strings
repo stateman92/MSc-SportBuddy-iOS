@@ -1,7 +1,7 @@
 "onboarding_continue" = "Folytatás";
 "onboarding_skip" = "Kihagyás";
-"onboarding_title" = "Cím";
-"onboarding_subtitle" = "Alcím";
+"onboarding_title" = "Szeretnél te is sikeres és egészséges lenni?";
+"onboarding_subtitle" = "Vágj bele!";
 "onboarding_get_started" = "Kezdjük!";
 "general_connectivity_internet" = "Az internet újra elérhető!";
 "general_connectivity_no_internet" = "Nincs internet!";
@@ -57,6 +57,9 @@
 "login_forgot_password_error" = "A jelszókérés sikertelen! Próbáld újra később";
 "login_forgot_password_success" = "Sikeres jelszókérés!";
 "exercise_change_camera" = "Váltás";
+"exercise_successful_moment" = "Sikeres mozdulat";
+"exercise_successful_sequence" = "Sikeres mozdulatsor!";
+"exercise_successful_exercise" = "Sikeres gyakorlat, gratulálok!";
 
 "exercise_mountain_1_name" = "Hegymászó gyakorlat";
 "exercise_mountain_1_details" = "";

@@ -119,6 +119,14 @@ public enum L10n {
         public static var name: String { return L10n.tr("Localizable", "exercise_sandbag_1_name", fallback: "Sandbag burpee") }
       }
     }
+    public enum Successful {
+      /// Successful exercise, well done!
+      public static var exercise: String { return L10n.tr("Localizable", "exercise_successful_exercise", fallback: "Successful exercise, well done!") }
+      /// Successful movement
+      public static var moment: String { return L10n.tr("Localizable", "exercise_successful_moment", fallback: "Successful movement") }
+      /// Successful sequence of moves!
+      public static var sequence: String { return L10n.tr("Localizable", "exercise_successful_sequence", fallback: "Successful sequence of moves!") }
+    }
     public enum Swiss {
       public enum _1 {
         /// 
@@ -239,10 +247,10 @@ public enum L10n {
     public static var `continue`: String { return L10n.tr("Localizable", "onboarding_continue", fallback: "Continue") }
     /// Skip
     public static var skip: String { return L10n.tr("Localizable", "onboarding_skip", fallback: "Skip") }
-    /// Subtitle
-    public static var subtitle: String { return L10n.tr("Localizable", "onboarding_subtitle", fallback: "Subtitle") }
-    /// Title
-    public static var title: String { return L10n.tr("Localizable", "onboarding_title", fallback: "Title") }
+    /// Give it a chance!
+    public static var subtitle: String { return L10n.tr("Localizable", "onboarding_subtitle", fallback: "Give it a chance!") }
+    /// Would you mind if you became successful and healthy?
+    public static var title: String { return L10n.tr("Localizable", "onboarding_title", fallback: "Would you mind if you became successful and healthy?") }
     public enum Get {
       /// Get started
       public static var started: String { return L10n.tr("Localizable", "onboarding_get_started", fallback: "Get started") }

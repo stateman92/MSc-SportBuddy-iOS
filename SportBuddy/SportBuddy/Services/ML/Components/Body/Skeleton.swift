@@ -277,20 +277,21 @@ extension Skeleton.Builder {
 
 extension Skeleton: CustomStringConvertible {
     var description: String {
-        let armPosition = armPosition()
-        let legPosition = legPosition()
-        return """
-            Arms: right forearm and upperarm angle:     \(armPosition?.rightArmAngle.degrees ?? .nan) degrees,
-                  right upperarm and shoulder angle:    \(armPosition?.rightShoulderAngle.degrees ?? .nan) degrees,
-                  left shoulder and upperarm angle:     \(armPosition?.leftShoulderAngle.degrees ?? .nan) degrees,
-                  left upperarm and forearm angle:      \(armPosition?.leftArmAngle.degrees ?? .nan) degrees,
-                  distance between the two hands:       \(armPosition?.handsDistance ?? .nan) * hip-shoulder distance.
-            Leg: right calf and thigh angle:            \(legPosition?.rightLegAngle.degrees ?? .nan) degrees,
-                 right thigh and hip angle:             \(legPosition?.rightHipAngle.degrees ?? .nan) degrees,
-                 left hip and thigh angle:              \(legPosition?.leftHipAngle.degrees ?? .nan) degrees,
-                 left thigh and calf angle:             \(legPosition?.leftLegAngle.degrees ?? .nan) degrees,
-                 distance between the two feet:         \(legPosition?.feetDistance ?? .nan) * hip-shoulder distance.
-            """
+//        let armPosition = armPosition()
+//        let legPosition = legPosition()
+//        return """
+//            Arms: right forearm and upperarm angle:     \(armPosition?.rightArmAngle.degrees ?? .nan) degrees,
+//                  right upperarm and shoulder angle:    \(armPosition?.rightShoulderAngle.degrees ?? .nan) degrees,
+//                  left shoulder and upperarm angle:     \(armPosition?.leftShoulderAngle.degrees ?? .nan) degrees,
+//                  left upperarm and forearm angle:      \(armPosition?.leftArmAngle.degrees ?? .nan) degrees,
+//                  distance between the two hands:       \(armPosition?.handsDistance ?? .nan) * hip-shoulder distance.
+//            Leg: right calf and thigh angle:            \(legPosition?.rightLegAngle.degrees ?? .nan) degrees,
+//                 right thigh and hip angle:             \(legPosition?.rightHipAngle.degrees ?? .nan) degrees,
+//                 left hip and thigh angle:              \(legPosition?.leftHipAngle.degrees ?? .nan) degrees,
+//                 left thigh and calf angle:             \(legPosition?.leftLegAngle.degrees ?? .nan) degrees,
+//                 distance between the two feet:         \(legPosition?.feetDistance ?? .nan) * hip-shoulder distance.
+//            """
+        "..." // skip printing for concise logging
     }
 
     func derivativeCoordinateDescription(referenceDistance: CGFloat?) -> String {

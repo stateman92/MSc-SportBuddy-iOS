@@ -1,7 +1,7 @@
 "onboarding_continue" = "Continue";
 "onboarding_skip" = "Skip";
-"onboarding_title" = "Title";
-"onboarding_subtitle" = "Subtitle";
+"onboarding_title" = "Would you mind if you became successful and healthy?";
+"onboarding_subtitle" = "Give it a chance!";
 "onboarding_get_started" = "Get started";
 "general_connectivity_internet" = "Internet is available!";
 "general_connectivity_no_internet" = "Internet connection is lost!";
@@ -58,6 +58,9 @@
 "login_forgot_password_error" = "Forgot password request failed! Try again later.";
 "login_forgot_password_success" = "You've requested a password reset email successfully!";
 "exercise_change_camera" = "Change camera";
+"exercise_successful_moment" = "Successful movement";
+"exercise_successful_sequence" = "Successful sequence of moves!";
+"exercise_successful_exercise" = "Successful exercise, well done!";
 
 "exercise_mountain_1_name" = "Mountain climb";
 "exercise_mountain_1_details" = "";

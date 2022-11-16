@@ -44,7 +44,7 @@ extension OnboardingPage {
 
         addSubview(title)
         title.anchorToSuperview(leading: 32, trailing: -32)
-        title.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -32).isActive = true
+        title.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -48).isActive = true
 
         addSubview(subTitle)
         subTitle.anchorToSuperview(leading: 32, trailing: -32)

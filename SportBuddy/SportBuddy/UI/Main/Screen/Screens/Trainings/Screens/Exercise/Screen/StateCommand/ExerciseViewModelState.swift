@@ -22,3 +22,9 @@ extension ExerciseViewModelState: Initable {
 }
 
 extension ExerciseViewModelState: Equatable { }
+
+extension ExerciseViewModelState: CustomStringConvertible {
+    var description: String {
+        "..." // skip printing for concise logging
+    }
+}

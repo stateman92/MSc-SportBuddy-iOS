@@ -22,7 +22,8 @@ extension ConnectivityListenerImpl: ConnectivityListener {
         connectivityService
             .isNetworkReachable
             .removeDuplicates()
-            .drop { $0 }
+            .drop { !$0 }
+            .dropFirst()
             .map {
                 ToastItem(message: $0 ? L10n.General.Connectivity.internet : L10n.General.Connectivity.No.internet,
                           type: $0 ? .success : .error)
