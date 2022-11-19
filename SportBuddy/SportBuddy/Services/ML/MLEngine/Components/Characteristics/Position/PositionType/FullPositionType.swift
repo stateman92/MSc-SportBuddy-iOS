@@ -43,6 +43,7 @@ extension FullPositionType {
 extension FullPositionType {
     /// Initialize the object from a DTO object.
     /// - Parameter dto: the DTO object.
+    // swiftlint:disable:next cyclomatic_complexity
     init(from dto: FullPositionTypeDTO) {
         switch dto {
         case .around0: self = .around0
