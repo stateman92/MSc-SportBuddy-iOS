@@ -13,7 +13,7 @@ final class SecureSettingsServiceImpl {
 
     private enum Constants {
         static var teamId: String { "7KJTVFSV88" }
-        static var accessGroup: String { "hu.bme.aut.SportBuddy1" }
+        static var accessGroup: String { "hu.bme.aut.SBuddy" }
     }
 
     // MARK: Properties
